@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reseñas de juegos en español — Dos para Dúo</title>
+<meta name="description" content="52 juegos que jugamos juntos, reseñados de verdad: co-op, terror, plataformas y joyitas raras. Las reseñas de Steam del dúo, con video del canal cuando existe.">
+<link rel="icon" href="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s48-c-k-c0x00ffffff-no-rj">
+<meta property="og:title" content="Reseñas — Dos para Dúo">
+<meta property="og:description" content="Los juegos que jugamos juntos, reseñados de verdad.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://onlyjackdaniel.github.io/dosparaduo/resenas/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Reseñas — Dos para Dúo","description":"Reseñas en español de los juegos que jugamos juntos.","isPartOf":{"@type":"WebSite","name":"Dos para Dúo","url":"https://onlyjackdaniel.github.io/dosparaduo/"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0e1a;--bg-2:#11152a;--panel:#161b33;--line:#252c4f;--p1:#ff4d8d;--p2:#2de2c9;--gold:#ffd166;--text:#eef0ff;--muted:#8b92b8;--display:'Bungee',cursive;--body:'Outfit',sans-serif;--mono:'Space Mono',monospace}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;overflow-x:hidden}
+::selection{background:var(--p1);color:#fff}
+.atmos{position:fixed;inset:0;pointer-events:none;z-index:0}
+.atmos::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(45,226,201,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(45,226,201,.04) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 75%)}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:rgba(11,14,26,.78);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo img{width:36px;height:36px;border-radius:50%;border:2px solid var(--p2)}
+.logo span{font-family:var(--display);font-size:.95rem;color:var(--text)}
+.nav-links{display:flex;align-items:center;gap:26px}
+.nav-links a{color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:1.5px;transition:color .2s}
+.nav-links a:hover{color:var(--p2)}
+.btn-yt{display:inline-flex;align-items:center;gap:8px;background:var(--p1);color:#fff !important;padding:9px 18px;border-radius:8px;font-weight:700;letter-spacing:1px;box-shadow:0 0 18px rgba(255,77,141,.45)}
+main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 24px 80px}
+.crumb{font-family:var(--mono);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.crumb a{color:var(--p2);text-decoration:none}
+h1.sec{font-family:var(--display);font-size:clamp(1.8rem,5vw,3rem);text-transform:uppercase;margin:10px 0 8px}
+.sub{color:var(--muted);max-width:640px;font-weight:300;margin-bottom:40px}
+footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:40px 24px;text-align:center;background:var(--bg-2)}
+footer .f-logo{font-family:var(--display);font-size:1rem;text-transform:uppercase}
+footer p{color:var(--muted);font-size:.78rem;margin-top:8px;font-family:var(--mono)}
+footer a{color:var(--p2);text-decoration:none}
+@media(max-width:760px){.nav-links a:not(.btn-yt){display:none}}
+
+.tools{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+#buscar{flex:1;min-width:220px;padding:12px 16px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);font-family:var(--body);font-size:.95rem}
+#buscar:focus{outline:none;border-color:var(--p2)}
+.fbtn{font-family:var(--mono);font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:10px 16px;cursor:pointer}
+.fbtn.on{border-color:var(--p1);color:var(--p1)}
+.ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.gcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;transition:transform .22s,border-color .22s}
+.gcard:hover{transform:translateY(-5px);border-color:var(--p2)}
+.gimg{position:relative;aspect-ratio:460/215;background:var(--bg-2)}
+.gimg img{width:100%;height:100%;object-fit:cover;display:block}
+.gimg.noimg img{display:none}
+.vbadge{position:absolute;top:8px;left:8px;font-family:var(--mono);font-size:.55rem;letter-spacing:1px;background:rgba(255,77,141,.92);color:#fff;padding:4px 8px;border-radius:4px}
+.ginfo{padding:14px 16px 16px}
+.ginfo h3{font-size:.95rem;font-weight:600;color:var(--text);line-height:1.35}
+.ginfo p{font-family:var(--mono);font-size:.66rem;letter-spacing:1px;color:var(--muted);margin-top:6px}
+.extras-head{font-family:var(--display);font-size:clamp(1.2rem,3.5vw,1.8rem);text-transform:uppercase;margin:70px 0 8px}
+.extras-head span{color:var(--gold)}
+.extras-sub{color:var(--muted);font-weight:300;margin-bottom:26px}
+.ggrid.minis{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+.empty{display:none;text-align:center;color:var(--muted);padding:50px 0;font-family:var(--mono);font-size:.8rem;letter-spacing:1px}
+</style>
+</head>
+<body>
+<div class="atmos"></div>
+<nav>
+  <a class="logo" href="../index.html">
+    <img src="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s240-c-k-c0x00ffffff-no-rj" alt="Logo Dos para Dúo">
+    <span>Dos <em style="color:var(--gold);font-style:normal">para</em> <b style="color:var(--p2)">Dúo</b></span>
+  </a>
+  <div class="nav-links">
+    <a href="../index.html#inicio">Inicio</a>
+    <a href="../index.html#videos">Videos</a>
+    <a href="../resenas/">Reseñas</a>
+    <a href="../index.html#nosotros">Nosotros</a>
+    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+  </div>
+</nav>
+<main>
+  <p class="crumb"><a href="../index.html">← Inicio</a> / Reseñas</p>
+  <h1 class="sec">Reseñas</h1>
+  <p class="sub">Los <b style="color:var(--text)">52 juegos que hemos jugado juntos</b>, reseñados de verdad en Steam — con la reseña de cada quien y el video del canal cuando lo grabamos. Player 2 está afilando su teclado: sus reseñas vienen en camino.</p>
+  <div class="tools">
+    <input id="buscar" type="text" placeholder="Buscar juego...">
+    <button class="fbtn on" data-f="todos" type="button">Todos</button>
+    <button class="fbtn" data-f="video" type="button">▶ Con video</button>
+  </div>
+  <div class="ggrid" id="grid">
+<a class="gcard" href="radical-rabbit-stew.html" data-nombre="radical rabbit stew">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1232010/header.jpg" alt="Carátula de Radical Rabbit Stew" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Radical Rabbit Stew</h3>
+      <p>👍 · 4.2 hrs · 8 feb 2026</p></div>
+    </a>
+<a class="gcard" href="split-fiction.html" data-nombre="split fiction">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/header.jpg" alt="Carátula de Split Fiction" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Split Fiction</h3>
+      <p>👍 · 23.8 hrs · 27 dic 2025</p></div>
+    </a>
+<a class="gcard" href="borderlands-2.html" data-nombre="borderlands 2">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/49520/header.jpg" alt="Carátula de Borderlands 2" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Borderlands 2</h3>
+      <p>👍 · 112.8 hrs · 31 oct 2025</p></div>
+    </a>
+<a class="gcard" href="blanc.html" data-nombre="blanc">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1982340/header.jpg" alt="Carátula de Blanc" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Blanc</h3>
+      <p>👍 · 4.6 hrs · 31 oct 2025</p></div>
+    </a>
+<a class="gcard" href="we-were-here-too.html" data-nombre="we were here too">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/677160/header.jpg" alt="Carátula de We Were Here Too" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>We Were Here Too</h3>
+      <p>👍 · 8.9 hrs · 19 oct 2025</p></div>
+    </a>
+<a class="gcard" href="we-were-here-expeditions-the-friendship.html" data-nombre="we were here expeditions: the friendship">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2296990/header.jpg" alt="Carátula de We Were Here Expeditions: The FriendShip" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>We Were Here Expeditions: The FriendShip</h3>
+      <p>👍 · 7.9 hrs · 28 sep 2025</p></div>
+    </a>
+<a class="gcard" href="super-crazy-rhythm-castle.html" data-nombre="super crazy rhythm castle">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1812560/header.jpg" alt="Carátula de SUPER CRAZY RHYTHM CASTLE" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>SUPER CRAZY RHYTHM CASTLE</h3>
+      <p>👍 · 13.5 hrs · 2 sep 2025</p></div>
+    </a>
+<a class="gcard" href="stumble-guys.html" data-nombre="stumble guys">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1677740/header.jpg" alt="Carátula de Stumble Guys" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Stumble Guys</h3>
+      <p>👍 · 10.5 hrs · 2 sep 2025</p></div>
+    </a>
+<a class="gcard" href="screencheat.html" data-nombre="screencheat">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/301970/header.jpg" alt="Carátula de Screencheat" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Screencheat</h3>
+      <p>👍 · 1.2 hrs · 2 sep 2025</p></div>
+    </a>
+<a class="gcard" href="sagrada.html" data-nombre="sagrada">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/965590/header.jpg" alt="Carátula de Sagrada" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Sagrada</h3>
+      <p>👍 · 7.2 hrs · 31 ago 2025</p></div>
+    </a>
+<a class="gcard" href="pummel-party.html" data-nombre="pummel party">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/880940/header.jpg" alt="Carátula de Pummel Party" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Pummel Party</h3>
+      <p>👍 · 7.8 hrs · 31 ago 2025</p></div>
+    </a>
+<a class="gcard" href="move-or-die.html" data-nombre="move or die" data-video="1">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/323850/header.jpg" alt="Carátula de Move or Die" loading="lazy" onerror="this.parentElement.classList.add('noimg')"><span class="vbadge">▶ EN EL CANAL</span></div>
+      <div class="ginfo"><h3>Move or Die</h3>
+      <p>👍 · 7.6 hrs · 31 ago 2025</p></div>
+    </a>
+<a class="gcard" href="portal-2.html" data-nombre="portal 2">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/620/header.jpg" alt="Carátula de Portal 2" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Portal 2</h3>
+      <p>👍 · 23.1 hrs · 22 ago 2025</p></div>
+    </a>
+<a class="gcard" href="overcooked-all-you-can-eat.html" data-nombre="overcooked! all you can eat">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1243830/header.jpg" alt="Carátula de Overcooked! All You Can Eat" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Overcooked! All You Can Eat</h3>
+      <p>👍 · 59.5 hrs · 22 ago 2025</p></div>
+    </a>
+<a class="gcard" href="metal-slug-3.html" data-nombre="metal slug 3">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/250180/header.jpg" alt="Carátula de METAL SLUG 3" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>METAL SLUG 3</h3>
+      <p>👍 · 2.8 hrs · 22 ago 2025</p></div>
+    </a>
+<a class="gcard" href="metal-slug.html" data-nombre="metal slug">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/366250/header.jpg" alt="Carátula de METAL SLUG" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>METAL SLUG</h3>
+      <p>👍 · 1.5 hrs · 22 ago 2025</p></div>
+    </a>
+<a class="gcard" href="keep-talking-and-nobody-explodes.html" data-nombre="keep talking and nobody explodes">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/341800/header.jpg" alt="Carátula de Keep Talking and Nobody Explodes" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Keep Talking and Nobody Explodes</h3>
+      <p>👍 · 10.8 hrs · 22 ago 2025</p></div>
+    </a>
+<a class="gcard" href="exploding-kittens-2.html" data-nombre="exploding kittens 2">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2999030/header.jpg" alt="Carátula de Exploding Kittens® 2" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Exploding Kittens® 2</h3>
+      <p>👍 · 2.6 hrs · 22 ago 2025</p></div>
+    </a>
+<a class="gcard" href="disney-epic-mickey-2-the-power-of-two.html" data-nombre="disney epic mickey 2: the power of two">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/245300/header.jpg" alt="Carátula de Disney Epic Mickey 2:  The Power of Two" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Disney Epic Mickey 2:  The Power of Two</h3>
+      <p>👍 · 27.0 hrs · 11 feb 2025</p></div>
+    </a>
+<a class="gcard" href="biped.html" data-nombre="biped">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1071870/header.jpg" alt="Carátula de Biped" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Biped</h3>
+      <p>👍 · 5.7 hrs · 11 feb 2025</p></div>
+    </a>
+<a class="gcard" href="bloons-td-6.html" data-nombre="bloons td 6">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/960090/header.jpg" alt="Carátula de Bloons TD 6" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Bloons TD 6</h3>
+      <p>👍 · 114.6 hrs · 11 feb 2025</p></div>
+    </a>
+<a class="gcard" href="it-takes-two.html" data-nombre="it takes two">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/header.jpg" alt="Carátula de It Takes Two" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>It Takes Two</h3>
+      <p>👍 · 15.9 hrs · 9 ene 2025</p></div>
+    </a>
+<a class="gcard" href="cuphead.html" data-nombre="cuphead">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/268910/header.jpg" alt="Carátula de Cuphead" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Cuphead</h3>
+      <p>👍 · 43.4 hrs · 26 abr 2020</p></div>
+    </a>
+<a class="gcard" href="the-typing-of-the-dead-overkill.html" data-nombre="the typing of the dead: overkill">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/246580/header.jpg" alt="Carátula de The Typing of The Dead: Overkill" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>The Typing of The Dead: Overkill</h3>
+      <p>👍 · 20.7 hrs · 10 jun 2026</p></div>
+    </a>
+<a class="gcard" href="vvvvvv.html" data-nombre="vvvvvv">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/70300/header.jpg" alt="Carátula de VVVVVV" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>VVVVVV</h3>
+      <p>👍 · 5.0 hrs · 10 jun 2026</p></div>
+    </a>
+<a class="gcard" href="resident-evil-requiem.html" data-nombre="resident evil requiem">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3764200/header.jpg" alt="Carátula de Resident Evil Requiem" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Resident Evil Requiem</h3>
+      <p>👍 · 41.3 hrs · 23 abr 2026</p></div>
+    </a>
+<a class="gcard" href="the-stanley-parable-ultra-deluxe.html" data-nombre="the stanley parable: ultra deluxe">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1703340/header.jpg" alt="Carátula de The Stanley Parable: Ultra Deluxe" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>The Stanley Parable: Ultra Deluxe</h3>
+      <p>👍 · 4.5 hrs · 11 ene 2026</p></div>
+    </a>
+<a class="gcard" href="a-game-about-digging-a-holetm.html" data-nombre="a game about digging a hole">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3244220/header.jpg" alt="Carátula de A Game About Digging A Hole™" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>A Game About Digging A Hole™</h3>
+      <p>👍 · 4.6 hrs · 22 ene 2026</p></div>
+    </a>
+<a class="gcard" href="bongo-cat.html" data-nombre="bongo cat">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3419430/header.jpg" alt="Carátula de Bongo Cat" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Bongo Cat</h3>
+      <p>👍 · 962.0 hrs · 31 oct 2025</p></div>
+    </a>
+<a class="gcard" href="fuck-hitler.html" data-nombre="fuck hitler">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2157110/header.jpg" alt="Carátula de FUCK HITLER" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>FUCK HITLER</h3>
+      <p>👍 · 1.3 hrs · 7 oct 2025</p></div>
+    </a>
+<a class="gcard" href="tiny-pasture.html" data-nombre="tiny pasture">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3167550/header.jpg" alt="Carátula de Tiny Pasture" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Tiny Pasture</h3>
+      <p>👍 · 47.4 hrs · 28 sep 2025</p></div>
+    </a>
+<a class="gcard" href="a-park-full-of-cats.html" data-nombre="a park full of cats">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2610090/header.jpg" alt="Carátula de A Park Full of Cats" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>A Park Full of Cats</h3>
+      <p>👍 · 1.9 hrs · 1 sep 2025</p></div>
+    </a>
+<a class="gcard" href="a-shelter-full-of-cats.html" data-nombre="a shelter full of cats">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3087650/header.jpg" alt="Carátula de A Shelter Full of Cats" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>A Shelter Full of Cats</h3>
+      <p>👍 · 3.8 hrs · 2 sep 2025</p></div>
+    </a>
+<a class="gcard" href="the-room-two.html" data-nombre="the room two">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/425580/header.jpg" alt="Carátula de The Room Two" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>The Room Two</h3>
+      <p>👍 · 3.2 hrs · 31 ago 2025</p></div>
+    </a>
+<a class="gcard" href="resident-evil-3.html" data-nombre="resident evil 3">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/952060/header.jpg" alt="Carátula de Resident Evil 3" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Resident Evil 3</h3>
+      <p>👍 · 17.3 hrs · 31 ago 2025</p></div>
+    </a>
+<a class="gcard" href="resident-evil-2.html" data-nombre="resident evil 2">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/883710/header.jpg" alt="Carátula de Resident Evil 2" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Resident Evil 2</h3>
+      <p>👍 · 28.2 hrs · 31 ago 2025</p></div>
+    </a>
+<a class="gcard" href="ori-and-the-blind-forest-definitive-edition.html" data-nombre="ori and the blind forest: definitive edition">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/387290/header.jpg" alt="Carátula de Ori and the Blind Forest: Definitive Edition" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Ori and the Blind Forest: Definitive Edition</h3>
+      <p>👍 · 17.1 hrs · 22 ago 2025</p></div>
+    </a>
+<a class="gcard" href="the-last-campfire.html" data-nombre="the last campfire">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/990630/header.jpg" alt="Carátula de The Last Campfire" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>The Last Campfire</h3>
+      <p>👍 · 8.8 hrs · 22 ago 2025</p></div>
+    </a>
+<a class="gcard" href="ghost-of-tsushima-director-s-cut.html" data-nombre="ghost of tsushima directors cut">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2215430/header.jpg" alt="Carátula de Ghost of Tsushima DIRECTOR&#x27;S CUT" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Ghost of Tsushima DIRECTOR&#x27;S CUT</h3>
+      <p>👍 · 114.3 hrs · 21 ago 2025</p></div>
+    </a>
+<a class="gcard" href="dofamine.html" data-nombre="dofamine">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1441180/header.jpg" alt="Carátula de Dofamine" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Dofamine</h3>
+      <p>👍 · 4.8 hrs · 22 ago 2025</p></div>
+    </a>
+<a class="gcard" href="spirit-city-lofi-sessions.html" data-nombre="spirit city: lofi sessions">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2113850/header.jpg" alt="Carátula de Spirit City: Lofi Sessions" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Spirit City: Lofi Sessions</h3>
+      <p>👍 · 241.7 hrs · 21 ago 2025</p></div>
+    </a>
+<a class="gcard" href="god-of-war-ragnarok.html" data-nombre="god of war ragnarok" data-video="1">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2322010/header.jpg" alt="Carátula de God of War Ragnarök" loading="lazy" onerror="this.parentElement.classList.add('noimg')"><span class="vbadge">▶ EN EL CANAL</span></div>
+      <div class="ginfo"><h3>God of War Ragnarök</h3>
+      <p>👍 · 88.1 hrs · 19 abr 2025</p></div>
+    </a>
+<a class="gcard" href="florence.html" data-nombre="florence">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1102130/header.jpg" alt="Carátula de Florence" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Florence</h3>
+      <p>👍 · 0.7 hrs · 17 ago 2025</p></div>
+    </a>
+<a class="gcard" href="a-castle-full-of-cats.html" data-nombre="a castle full of cats">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2070550/header.jpg" alt="Carátula de A Castle Full of Cats" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>A Castle Full of Cats</h3>
+      <p>👍 · 1.8 hrs · 11 feb 2025</p></div>
+    </a>
+<a class="gcard" href="a-building-full-of-cats.html" data-nombre="a building full of cats">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1969080/header.jpg" alt="Carátula de A Building Full of Cats" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>A Building Full of Cats</h3>
+      <p>👍 · 0.8 hrs · 11 feb 2025</p></div>
+    </a>
+<a class="gcard" href="cats-in-time.html" data-nombre="cats in time">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1599880/header.jpg" alt="Carátula de Cats in Time" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Cats in Time</h3>
+      <p>👍 · 5.2 hrs · 11 feb 2025</p></div>
+    </a>
+<a class="gcard" href="bendy-and-the-dark-revival.html" data-nombre="bendy and the dark revival">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1063660/header.jpg" alt="Carátula de Bendy and the Dark Revival" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Bendy and the Dark Revival</h3>
+      <p>👍 · 13.2 hrs · 11 feb 2025</p></div>
+    </a>
+<a class="gcard" href="resident-evil-village.html" data-nombre="resident evil village">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1196590/header.jpg" alt="Carátula de Resident Evil Village" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Resident Evil Village</h3>
+      <p>👍 · 47.9 hrs · 9 oct 2024</p></div>
+    </a>
+<a class="gcard" href="sekirotm-shadows-die-twice-goty-edition.html" data-nombre="sekiro: shadows die twice - goty edition">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/814380/header.jpg" alt="Carátula de Sekiro™: Shadows Die Twice - GOTY Edition" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Sekiro™: Shadows Die Twice - GOTY Edition</h3>
+      <p>👍 · 78.0 hrs · 9 oct 2024</p></div>
+    </a>
+<a class="gcard" href="god-of-war.html" data-nombre="god of war">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1593500/header.jpg" alt="Carátula de God of War" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>God of War</h3>
+      <p>👍 · 52.0 hrs · 9 oct 2024</p></div>
+    </a>
+<a class="gcard" href="marvels-spider-man-remastered.html" data-nombre="marvels spider-man remastered">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1817070/header.jpg" alt="Carátula de Marvel’s Spider-Man Remastered" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Marvel’s Spider-Man Remastered</h3>
+      <p>👍 · 73.1 hrs · 9 oct 2024</p></div>
+    </a>
+<a class="gcard" href="resident-evil-4.html" data-nombre="resident evil 4" data-video="1">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2050650/header.jpg" alt="Carátula de Resident Evil 4" loading="lazy" onerror="this.parentElement.classList.add('noimg')"><span class="vbadge">▶ EN EL CANAL</span></div>
+      <div class="ginfo"><h3>Resident Evil 4</h3>
+      <p>👍 · 140.2 hrs · 21 nov 2023</p></div>
+    </a>
+  </div>
+  <p class="empty" id="empty">— NADA POR AQUÍ. PRUEBA OTRA BÚSQUEDA —</p>
+  <h2 class="extras-head">Cosas que <span>también</span> reseñamos</h2>
+  <p class="extras-sub">Porque también le escribimos reseñas a un plátano, a la mayonesa y al programa con el que grabamos. Sin filtro.</p>
+  <div class="ggrid minis">
+<a class="gcard mini" href="obs-studio.html" data-nombre="obs studio">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1905180/header.jpg" alt="Carátula de OBS Studio" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>OBS Studio</h3>
+      <p>👍 · 97.5 hrs · 5 feb 2026</p></div>
+    </a>
+<a class="gcard mini" href="3dmark.html" data-nombre="3dmark">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/223850/header.jpg" alt="Carátula de 3DMark" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>3DMark</h3>
+      <p>👍 · 14.4 hrs · 21 ago 2025</p></div>
+    </a>
+<a class="gcard mini" href="banana.html" data-nombre="banana">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2923300/header.jpg" alt="Carátula de Banana" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Banana</h3>
+      <p>👍 · 13.4 hrs · 31 oct 2025</p></div>
+    </a>
+<a class="gcard mini" href="my-name-is-mayo.html" data-nombre="my name is mayo">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/434260/header.jpg" alt="Carátula de My Name is Mayo" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>My Name is Mayo</h3>
+      <p>👍 · 0.5 hrs · 3 feb 2026</p></div>
+    </a>
+<a class="gcard mini" href="my-name-is-mayo-2.html" data-nombre="my name is mayo 2">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1437340/header.jpg" alt="Carátula de My Name is Mayo 2" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>My Name is Mayo 2</h3>
+      <p>👍 · 0.5 hrs · 3 feb 2026</p></div>
+    </a>
+<a class="gcard mini" href="my-name-is-mayo-3.html" data-nombre="my name is mayo 3">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1779460/header.jpg" alt="Carátula de My Name is Mayo 3" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>My Name is Mayo 3</h3>
+      <p>👍 · 1.0 hrs · 4 feb 2026</p></div>
+    </a>
+<a class="gcard mini" href="achievement-clicker-2018.html" data-nombre="achievement clicker 2018">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/771350/header.jpg" alt="Carátula de Achievement Clicker 2018" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Achievement Clicker 2018</h3>
+      <p>👍 · 0.2 hrs · 5 feb 2026</p></div>
+    </a>
+<a class="gcard mini" href="cookie-clicker.html" data-nombre="cookie clicker">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1454400/header.jpg" alt="Carátula de Cookie Clicker" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Cookie Clicker</h3>
+      <p>👍 · 31.0 hrs · 22 ago 2025</p></div>
+    </a>
+<a class="gcard mini" href="duck-simulator-2.html" data-nombre="duck simulator 2">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1808800/header.jpg" alt="Carátula de Duck Simulator 2" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Duck Simulator 2</h3>
+      <p>👍 · 0.1 hrs · 11 feb 2025</p></div>
+    </a>
+<a class="gcard mini" href="a-story-about-farting.html" data-nombre="a story about farting">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2619940/header.jpg" alt="Carátula de A Story About Farting" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>A Story About Farting</h3>
+      <p>👍 · 0.5 hrs · 8 feb 2026</p></div>
+    </a>
+  </div>
+</main>
+<footer>
+  <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Dúo</b></div>
+  <p>© 2026 Dos para Dúo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a></p>
+</footer>
+<script>
+const q=document.getElementById('buscar'),cards=[...document.querySelectorAll('#grid .gcard')];
+let filtro='todos';
+function aplicar(){
+  const t=q.value.toLowerCase().trim();let vis=0;
+  cards.forEach(c=>{
+    const okT=!t||c.dataset.nombre.includes(t);
+    const okF=filtro==='todos'||c.dataset.video==='1';
+    c.style.display=(okT&&okF)?'':'none';if(okT&&okF)vis++;
+  });
+  document.getElementById('empty').style.display=vis?'none':'block';
+}
+q.addEventListener('input',aplicar);
+document.querySelectorAll('.fbtn').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');filtro=b.dataset.f;aplicar();
+});
+</script>
+</body>
+</html>
