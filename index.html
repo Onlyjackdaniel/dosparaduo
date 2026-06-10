@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dos para Dúo — Canal de gaming cooperativo en pareja</title>
+<meta name="description" content="Dos para Dúo es un canal de gaming en español donde una pareja juega, sufre y se ríe en cooperativo. Resident Evil, Elden Ring, God of War y todo lo que se pueda jugar de a dos.">
+<link rel="icon" href="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s48-c-k-c0x00ffffff-no-rj">
+<meta property="og:title" content="Dos para Dúo — Gaming cooperativo en pareja">
+<meta property="og:description" content="Una pareja, dos controles, cero mercy rules. Canal de gaming en español: co-op, retos y reseñas.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s480-c-k-c0x00ffffff-no-rj">
+<meta name="theme-color" content="#0b0e1a">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Dos para Dúo",
+  "alternateName": "Dos para Duo",
+  "description": "Canal de gaming en español donde una pareja juega en cooperativo: Resident Evil, Elden Ring, God of War y más.",
+  "logo": "https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s480-c-k-c0x00ffffff-no-rj",
+  "sameAs": [
+    "https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw"
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0e1a;
+    --bg-2:#11152a;
+    --panel:#161b33;
+    --line:#252c4f;
+    --p1:#ff4d8d;
+    --p2:#2de2c9;
+    --gold:#ffd166;
+    --text:#eef0ff;
+    --muted:#8b92b8;
+    --display:'Bungee',cursive;
+    --body:'Outfit',sans-serif;
+    --mono:'Space Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--body);
+    overflow-x:hidden;
+    line-height:1.6;
+  }
+  ::selection{background:var(--p1);color:#fff}
+
+  /* ── atmósfera: grid + scanlines + grain ───────────────── */
+  .atmos{position:fixed;inset:0;pointer-events:none;z-index:0}
+  .atmos::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(45,226,201,.04) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(45,226,201,.04) 1px,transparent 1px);
+    background-size:48px 48px;
+    mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 75%);
+  }
+  .atmos::after{
+    content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(0,0,0,.12) 2px 4px);
+    opacity:.35;
+  }
+  .glow{position:fixed;width:60vw;height:60vw;border-radius:50%;filter:blur(120px);opacity:.16;z-index:0;pointer-events:none}
+  .glow.g1{background:var(--p1);top:-25vw;left:-15vw}
+  .glow.g2{background:var(--p2);bottom:-30vw;right:-15vw}
+
+  /* ── nav ────────────────────────────────────────────────── */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 28px;
+    background:rgba(11,14,26,.78);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+  .logo img{width:36px;height:36px;border-radius:50%;border:2px solid var(--p2)}
+  .logo span{font-family:var(--display);font-size:.95rem;color:var(--text);letter-spacing:.5px}
+  .logo b{color:var(--p1)}
+  .nav-links{display:flex;align-items:center;gap:26px}
+  .nav-links a{
+    color:var(--muted);text-decoration:none;font-family:var(--mono);
+    font-size:.78rem;text-transform:uppercase;letter-spacing:1.5px;
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--p2)}
+  .btn-yt{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--p1);color:#fff !important;
+    padding:9px 18px;border-radius:8px;
+    font-weight:700;letter-spacing:1px;
+    box-shadow:0 0 18px rgba(255,77,141,.45);
+    transition:transform .15s,box-shadow .2s;
+  }
+  .btn-yt:hover{transform:translateY(-2px);box-shadow:0 0 28px rgba(255,77,141,.7);color:#fff}
+
+  /* ── hero ───────────────────────────────────────────────── */
+  header{
+    position:relative;z-index:1;
+    min-height:100svh;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:110px 24px 60px;
+  }
+  .hud-tag{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:3px;text-transform:uppercase;
+    color:var(--p2);border:1px solid var(--p2);border-radius:4px;
+    padding:6px 14px;margin-bottom:28px;
+    animation:blink 2.4s steps(2) infinite;
+  }
+  @keyframes blink{50%{opacity:.45}}
+  h1{
+    font-family:var(--display);
+    font-size:clamp(2.6rem,9vw,6.5rem);
+    line-height:1.04;
+    text-transform:uppercase;
+  }
+  h1 .l1{display:block;color:var(--text)}
+  h1 .l2{display:block}
+  h1 .l2 em{font-style:normal;color:var(--p1);text-shadow:0 0 30px rgba(255,77,141,.55)}
+  h1 .l2 b{color:var(--p2);text-shadow:0 0 30px rgba(45,226,201,.55)}
+  .tagline{
+    margin-top:22px;max-width:560px;color:var(--muted);
+    font-size:clamp(1rem,2.2vw,1.2rem);font-weight:300;
+  }
+  .tagline strong{color:var(--text);font-weight:600}
+  .hero-cta{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+  .btn-start{
+    font-family:var(--mono);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;
+    background:var(--p2);color:#06251f;text-decoration:none;font-weight:700;
+    padding:15px 30px;border-radius:8px;
+    box-shadow:0 0 22px rgba(45,226,201,.4);
+    transition:transform .15s,box-shadow .2s;
+  }
+  .btn-start:hover{transform:translateY(-2px);box-shadow:0 0 34px rgba(45,226,201,.65)}
+  .btn-ghost{
+    font-family:var(--mono);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;
+    color:var(--text);text-decoration:none;
+    padding:15px 30px;border-radius:8px;border:1px solid var(--line);
+    transition:border-color .2s,color .2s;
+  }
+  .btn-ghost:hover{border-color:var(--p1);color:var(--p1)}
+
+  /* jugadores flotantes */
+  .players{
+    display:flex;gap:clamp(20px,6vw,80px);margin-top:60px;
+    align-items:flex-end;
+  }
+  .player{
+    position:relative;
+    width:clamp(120px,18vw,180px);
+    animation:float 5s ease-in-out infinite;
+  }
+  .player.p2{animation-delay:-2.5s}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  .player .frame{
+    aspect-ratio:3/4;border-radius:16px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--display);font-size:3rem;
+    background:linear-gradient(160deg,var(--panel),var(--bg-2));
+    border:1.5px dashed var(--line);
+    position:relative;overflow:hidden;
+  }
+  .player.p1 .frame{border-color:rgba(255,77,141,.5);color:rgba(255,77,141,.55)}
+  .player.p2 .frame{border-color:rgba(45,226,201,.5);color:rgba(45,226,201,.55)}
+  .player .frame::after{
+    content:"PRÓXIMAMENTE";
+    position:absolute;bottom:10px;
+    font-family:var(--mono);font-size:.55rem;letter-spacing:2px;color:var(--muted);
+  }
+  .player .badge{
+    position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+    font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:1.5px;
+    padding:4px 10px;border-radius:4px;white-space:nowrap;
+  }
+  .player.p1 .badge{background:var(--p1);color:#fff}
+  .player.p2 .badge{background:var(--p2);color:#06251f}
+  .vs{
+    font-family:var(--display);font-size:clamp(1.2rem,3vw,2rem);
+    color:var(--gold);align-self:center;
+    text-shadow:0 0 20px rgba(255,209,102,.5);
+  }
+
+  /* ── marquee de juegos ──────────────────────────────────── */
+  .marquee{
+    position:relative;z-index:1;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    background:var(--bg-2);
+    overflow:hidden;white-space:nowrap;
+    padding:14px 0;
+  }
+  .marquee-track{display:inline-block;animation:scroll 28s linear infinite}
+  .marquee span{
+    font-family:var(--mono);font-size:.8rem;letter-spacing:2px;text-transform:uppercase;
+    color:var(--muted);margin:0 28px;
+  }
+  .marquee span b{color:var(--gold);font-weight:400}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ── secciones ──────────────────────────────────────────── */
+  section{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:100px 24px}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:14px;flex-wrap:wrap}
+  .sec-head h2{
+    font-family:var(--display);font-size:clamp(1.6rem,4.5vw,2.6rem);
+    text-transform:uppercase;
+  }
+  .sec-head .num{font-family:var(--mono);color:var(--p1);font-size:.85rem;letter-spacing:2px}
+  .sec-sub{color:var(--muted);max-width:600px;margin-bottom:48px;font-weight:300}
+
+  /* videos largos */
+  .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:24px}
+  .vcard{
+    background:var(--panel);border:1px solid var(--line);border-radius:14px;
+    overflow:hidden;
+    transition:transform .25s,border-color .25s,box-shadow .25s;
+  }
+  .vcard:hover{transform:translateY(-6px);border-color:var(--p2);box-shadow:0 14px 40px rgba(0,0,0,.45)}
+  .vthumb{position:relative;aspect-ratio:16/9;cursor:pointer;background:#000}
+  .vthumb img{width:100%;height:100%;object-fit:cover;display:block;opacity:.92}
+  .vthumb .play{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  }
+  .vthumb .play span{
+    width:64px;height:64px;border-radius:50%;
+    background:rgba(255,77,141,.92);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 0 30px rgba(255,77,141,.6);
+    transition:transform .2s;
+  }
+  .vthumb:hover .play span{transform:scale(1.12)}
+  .vthumb .play svg{width:22px;height:22px;fill:#fff;margin-left:4px}
+  .vthumb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .vinfo{padding:18px 20px 22px}
+  .vinfo .vtag{font-family:var(--mono);font-size:.62rem;letter-spacing:2px;color:var(--p2);text-transform:uppercase}
+  .vinfo h3{font-size:1.02rem;font-weight:600;margin-top:8px;line-height:1.4}
+
+  /* shorts */
+  .shorts-head{margin-top:80px}
+  .shorts-row{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;
+  }
+  .scard{
+    position:relative;aspect-ratio:9/16;border-radius:12px;overflow:hidden;
+    border:1px solid var(--line);text-decoration:none;display:block;
+    transition:transform .25s,border-color .25s;
+  }
+  .scard:hover{transform:translateY(-5px) scale(1.02);border-color:var(--p1)}
+  .scard img{width:100%;height:100%;object-fit:cover;display:block}
+  .scard::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(to top,rgba(11,14,26,.85) 0%,transparent 45%);
+  }
+  .scard p{
+    position:absolute;bottom:10px;left:10px;right:10px;z-index:2;
+    font-size:.72rem;font-weight:600;line-height:1.35;color:#fff;
+    display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+  }
+  .scard .s-ico{
+    position:absolute;top:8px;right:8px;z-index:2;
+    font-family:var(--mono);font-size:.58rem;letter-spacing:1px;
+    background:rgba(0,0,0,.6);color:var(--gold);
+    padding:3px 7px;border-radius:4px;
+  }
+
+  /* nosotros */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .pcard{
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    padding:34px 30px;position:relative;overflow:hidden;
+    transition:transform .25s,border-color .25s;
+  }
+  .pcard:hover{transform:translateY(-5px)}
+  .pcard.p1c:hover{border-color:var(--p1)}
+  .pcard.p2c:hover{border-color:var(--p2)}
+  .pcard::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  }
+  .pcard.p1c::before{background:linear-gradient(90deg,var(--p1),transparent)}
+  .pcard.p2c::before{background:linear-gradient(90deg,var(--p2),transparent)}
+  .pcard .ptag{font-family:var(--mono);font-size:.65rem;letter-spacing:2.5px}
+  .pcard.p1c .ptag{color:var(--p1)}
+  .pcard.p2c .ptag{color:var(--p2)}
+  .pcard h3{font-family:var(--display);font-size:1.5rem;margin:10px 0 12px;text-transform:uppercase}
+  .pcard p{color:var(--muted);font-weight:300;font-size:.95rem}
+  .stat-bar{margin-top:20px}
+  .stat-bar .lbl{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.62rem;letter-spacing:1px;color:var(--muted);margin-bottom:5px;text-transform:uppercase}
+  .stat-bar .bar{height:7px;border-radius:4px;background:var(--bg);overflow:hidden}
+  .stat-bar .fill{height:100%;border-radius:4px;width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+  .p1c .fill{background:var(--p1)}
+  .p2c .fill{background:var(--p2)}
+
+  .duo-note{
+    grid-column:1/-1;
+    background:linear-gradient(120deg,rgba(255,77,141,.09),rgba(45,226,201,.09));
+    border:1px solid var(--line);border-radius:16px;
+    padding:38px 34px;text-align:center;
+  }
+  .duo-note h3{font-family:var(--display);font-size:clamp(1.2rem,3vw,1.8rem);text-transform:uppercase;margin-bottom:12px}
+  .duo-note h3 span{color:var(--gold)}
+  .duo-note p{color:var(--muted);max-width:640px;margin:0 auto;font-weight:300}
+
+  /* footer */
+  footer{
+    position:relative;z-index:1;
+    border-top:1px solid var(--line);
+    padding:50px 24px 36px;text-align:center;
+    background:var(--bg-2);
+  }
+  footer .f-logo{font-family:var(--display);font-size:1.1rem;text-transform:uppercase}
+  footer .f-logo em{font-style:normal;color:var(--p1)}
+  footer .f-logo b{color:var(--p2)}
+  footer p{color:var(--muted);font-size:.8rem;margin-top:10px;font-family:var(--mono)}
+  footer a{color:var(--p2);text-decoration:none}
+
+  /* reveals */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:760px){
+    .nav-links a:not(.btn-yt){display:none}
+    .about-grid{grid-template-columns:1fr}
+    section{padding:70px 20px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  }
+</style>
+</head>
+<body>
+
+<div class="atmos"></div>
+<div class="glow g1"></div>
+<div class="glow g2"></div>
+
+<nav>
+  <a class="logo" href="#inicio">
+    <img src="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s240-c-k-c0x00ffffff-no-rj" alt="Logo Dos para Dúo">
+    <span>Dos <em style="color:var(--gold);font-style:normal">para</em> <b>Dúo</b></span>
+  </a>
+  <div class="nav-links">
+    <a href="#inicio">Inicio</a>
+    <a href="#videos">Videos</a>
+    <a href="#nosotros">Nosotros</a>
+    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+  </div>
+</nav>
+
+<header id="inicio">
+  <div class="hud-tag">● REC — JUGANDO EN COOPERATIVO</div>
+  <h1>
+    <span class="l1">Una pareja.</span>
+    <span class="l2"><em>Dos</em> controles. <b>Cero</b> mercy.</span>
+  </h1>
+  <p class="tagline"><strong>Dos para Dúo</strong> es un canal de gaming en español donde jugamos, sufrimos y nos reímos de a dos. Co-op, retos, reseñas y la eterna pregunta: <strong>¿quién es el peor del equipo?</strong></p>
+  <div class="hero-cta">
+    <a class="btn-start" href="#videos">▸ Press Start</a>
+    <a class="btn-ghost" href="#nosotros">Conócenos</a>
+  </div>
+
+  <div class="players">
+    <div class="player p1">
+      <span class="badge">PLAYER 1</span>
+      <div class="frame">?</div>
+    </div>
+    <div class="vs">VS</div>
+    <div class="player p2">
+      <span class="badge">PLAYER 2</span>
+      <div class="frame">?</div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Resident Evil <b>★</b></span><span>Elden Ring <b>★</b></span><span>God of War <b>★</b></span><span>Move or Die <b>★</b></span><span>Clone Hero <b>★</b></span><span>Co-op gaming <b>★</b></span><span>Pareja gamer <b>★</b></span><span>Gaming en español <b>★</b></span>
+    <span>Resident Evil <b>★</b></span><span>Elden Ring <b>★</b></span><span>God of War <b>★</b></span><span>Move or Die <b>★</b></span><span>Clone Hero <b>★</b></span><span>Co-op gaming <b>★</b></span><span>Pareja gamer <b>★</b></span><span>Gaming en español <b>★</b></span>
+  </div>
+</div>
+
+<section id="videos">
+  <div class="sec-head reveal"><span class="num">[ 01 ]</span><h2>Últimos videos</h2></div>
+  <p class="sec-sub reveal">Lo más reciente del canal. Dale play aquí mismo o míralo en YouTube.</p>
+
+  <div class="video-grid">
+    <article class="vcard reveal">
+      <div class="vthumb" data-video="Ra5H1bkkEj4">
+        <img src="https://i.ytimg.com/vi/Ra5H1bkkEj4/maxresdefault.jpg" alt="Move or Die con mi pareja" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/Ra5H1bkkEj4/hqdefault.jpg'">
+        <div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      </div>
+      <div class="vinfo">
+        <span class="vtag">Co-op / Caos</span>
+        <h3>Move or Die con mi pareja: ¿Quién gana cuando todo es azar?</h3>
+      </div>
+    </article>
+
+    <article class="vcard reveal">
+      <div class="vthumb" data-video="PnrH_GSsT8k">
+        <img src="https://i.ytimg.com/vi/PnrH_GSsT8k/maxresdefault.jpg" alt="God of War Ragnarok" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/PnrH_GSsT8k/hqdefault.jpg'">
+        <div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      </div>
+      <div class="vinfo">
+        <span class="vtag">Reseña / Opinión</span>
+        <h3>¿Juego o película? God of War Ragnarok desde la perspectiva correcta</h3>
+      </div>
+    </article>
+
+    <article class="vcard reveal">
+      <div class="vthumb" data-video="EU0jZirCx6k">
+        <img src="https://i.ytimg.com/vi/EU0jZirCx6k/maxresdefault.jpg" alt="Resident Evil 4 Remake" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/EU0jZirCx6k/hqdefault.jpg'">
+        <div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      </div>
+      <div class="vinfo">
+        <span class="vtag">Reto / Primera vez</span>
+        <h3>Mi pareja jugó Resident Evil 4 Remake sin experiencia: esto pasó</h3>
+      </div>
+    </article>
+  </div>
+
+  <div class="sec-head shorts-head reveal"><span class="num">[ 01.5 ]</span><h2>Shorts</h2></div>
+  <p class="sec-sub reveal">Dosis rápidas de caos cooperativo.</p>
+
+  <div class="shorts-row">
+    <a class="scard reveal" href="https://www.youtube.com/shorts/kC8Q3PhEV-0" target="_blank" rel="noopener">
+      <img src="https://i.ytimg.com/vi/kC8Q3PhEV-0/oar2.jpg" alt="Top 3 jefes de Elden Ring" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/kC8Q3PhEV-0/hqdefault.jpg'">
+      <span class="s-ico">SHORT</span>
+      <p>Top 3 jefes de Elden Ring que SÍ valen la pena 🔥</p>
+    </a>
+    <a class="scard reveal" href="https://www.youtube.com/shorts/zM1p3Bzfwjc" target="_blank" rel="noopener">
+      <img src="https://i.ytimg.com/vi/zM1p3Bzfwjc/oar2.jpg" alt="POV setup gamer" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/zM1p3Bzfwjc/hqdefault.jpg'">
+      <span class="s-ico">SHORT</span>
+      <p>POV: mi novio lleva años construyendo el setup de sus sueños 🥲🎮</p>
+    </a>
+    <a class="scard reveal" href="https://www.youtube.com/shorts/iyRJnkHyJKk" target="_blank" rel="noopener">
+      <img src="https://i.ytimg.com/vi/iyRJnkHyJKk/oar2.jpg" alt="Resident Evil 3 Remake" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/iyRJnkHyJKk/hqdefault.jpg'">
+      <span class="s-ico">SHORT</span>
+      <p>De verdad que los videojuegos tienen de todo 🎮</p>
+    </a>
+    <a class="scard reveal" href="https://www.youtube.com/shorts/QYwGHQggD5s" target="_blank" rel="noopener">
+      <img src="https://i.ytimg.com/vi/QYwGHQggD5s/oar2.jpg" alt="10 millones de copias RE3" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/QYwGHQggD5s/hqdefault.jpg'">
+      <span class="s-ico">SHORT</span>
+      <p>¡Más de 10 millones de copias! 😳</p>
+    </a>
+    <a class="scard reveal" href="https://www.youtube.com/shorts/TT_UkBmsu2I" target="_blank" rel="noopener">
+      <img src="https://i.ytimg.com/vi/TT_UkBmsu2I/oar2.jpg" alt="Lo que no ves de los videojuegos" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/TT_UkBmsu2I/hqdefault.jpg'">
+      <span class="s-ico">SHORT</span>
+      <p>Lo que NO ves de los videojuegos 👀</p>
+    </a>
+    <a class="scard reveal" href="https://www.youtube.com/shorts/30riR4CEIbo" target="_blank" rel="noopener">
+      <img src="https://i.ytimg.com/vi/30riR4CEIbo/oar2.jpg" alt="Estaba actuando raro" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/30riR4CEIbo/hqdefault.jpg'">
+      <span class="s-ico">SHORT</span>
+      <p>Ya decía yo que estaba actuando raro 🤔</p>
+    </a>
+  </div>
+</section>
+
+<section id="nosotros">
+  <div class="sec-head reveal"><span class="num">[ 02 ]</span><h2>Nosotros</h2></div>
+  <p class="sec-sub reveal">Dos personas, un sillón, demasiadas muertes evitables.</p>
+
+  <div class="about-grid">
+    <div class="pcard p1c reveal">
+      <span class="ptag">▮ PLAYER 1</span>
+      <h3>Él</h3>
+      <p>El veterano del dúo. Años construyendo el setup de sus sueños, main de los souls y el que dice "confía en mí" justo antes del game over.</p>
+      <div class="stat-bar">
+        <div class="lbl"><span>Skill</span><span>87/100</span></div>
+        <div class="bar"><div class="fill" data-w="87%"></div></div>
+      </div>
+      <div class="stat-bar">
+        <div class="lbl"><span>Paciencia</span><span>42/100</span></div>
+        <div class="bar"><div class="fill" data-w="42%"></div></div>
+      </div>
+    </div>
+
+    <div class="pcard p2c reveal">
+      <span class="ptag">▮ PLAYER 2</span>
+      <h3>Ella</h3>
+      <p>Apenas va en el tutorial pero ya tiene más clips virales que él. Especialista en encontrar el bug que nadie conocía y en gritar primero.</p>
+      <div class="stat-bar">
+        <div class="lbl"><span>Suerte</span><span>95/100</span></div>
+        <div class="bar"><div class="fill" data-w="95%"></div></div>
+      </div>
+      <div class="stat-bar">
+        <div class="lbl"><span>Sentido del drama</span><span>99/100</span></div>
+        <div class="bar"><div class="fill" data-w="99%"></div></div>
+      </div>
+    </div>
+
+    <div class="duo-note reveal">
+      <h3>¿Por qué <span>"Dos para Dúo"</span>?</h3>
+      <p>Porque los mejores juegos no se juegan solos. Este canal nació de las noches de co-op en pareja: las victorias compartidas, las derrotas culpa del otro, y la certeza de que jugar de a dos siempre es mejor historia. Súmate al party.</p>
+      <div class="hero-cta" style="margin-top:26px">
+        <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener" style="text-decoration:none">▶ Únete al dúo en YouTube</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">Dos <em>para</em> <b>Dúo</b></div>
+  <p>© <span id="year"></span> Dos para Dúo — Canal de gaming cooperativo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a></p>
+  <p style="opacity:.55;margin-top:6px">GAME OVER? INSERT COIN TO CONTINUE ●</p>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // reveals al hacer scroll
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        e.target.querySelectorAll('.fill').forEach(f=>{ f.style.width = f.dataset.w; });
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // click-to-load de videos (no carga iframes hasta que el visitante da play)
+  document.querySelectorAll('.vthumb').forEach(t=>{
+    t.addEventListener('click',()=>{
+      const id = t.dataset.video;
+      const ifr = document.createElement('iframe');
+      ifr.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
+      ifr.allow = 'autoplay; encrypted-media; picture-in-picture';
+      ifr.allowFullscreen = true;
+      t.innerHTML = ''; t.appendChild(ifr);
+    });
+  });
+</script>
+</body>
+</html>
