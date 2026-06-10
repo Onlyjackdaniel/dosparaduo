@@ -25,6 +25,7 @@ def norm(s):
     return re.sub(r'\s+',' ', s.lower()).strip()
 
 def slug(s):
+    s = s.replace('™','').replace('®','').replace('’',"'")
     s = unicodedata.normalize('NFKD', s).encode('ascii','ignore').decode().lower()
     return re.sub(r'-+','-', re.sub(r'[^a-z0-9]+','-', s)).strip('-')
 
