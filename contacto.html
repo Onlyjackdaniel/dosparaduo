@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NXJ8PNJZFP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NXJ8PNJZFP');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto — Colaboraciones y dudas | Dos para Duo</title>
+<meta name="description" content="¿Colaboración, propuesta o duda? Escríbele a Dos para Duo — leemos todo y contestamos en cuanto soltamos el control.">
+<link rel="icon" href="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s48-c-k-c0x00ffffff-no-rj">
+<meta property="og:title" content="Contacto — Dos para Duo">
+<meta property="og:description" content="Colaboraciones, propuestas y dudas: aquí nos encuentras.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://onlyjackdaniel.github.io/dosparaduo/contacto.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tokens.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;overflow-x:hidden}
+::selection{background:var(--p1);color:#fff}
+.atmos{position:fixed;inset:0;pointer-events:none;z-index:0}
+.atmos::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(var(--p1-rgb),.04) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--p1-rgb),.04) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 75%)}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:rgba(11,14,26,.78);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo img{width:36px;height:36px;border-radius:50%;border:2px solid var(--p2)}
+.logo span{font-family:var(--display);font-size:.95rem;color:var(--text)}
+.nav-links{display:flex;align-items:center;gap:26px}
+.nav-links a{color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:1.5px;transition:color .2s}
+.nav-links a:hover{color:var(--p2)}
+.btn-yt{display:inline-flex;align-items:center;gap:8px;background:var(--p2);color:#fff !important;padding:9px 18px;border-radius:8px;font-weight:700;letter-spacing:1px;box-shadow:0 0 18px rgba(var(--p2-rgb),.45)}
+main{position:relative;z-index:1;max-width:640px;margin:0 auto;padding:120px 24px 80px}
+.crumb{font-family:var(--mono);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.crumb a{color:var(--p1);text-decoration:none}
+h1{font-family:var(--display);font-size:clamp(1.8rem,5.5vw,3rem);text-transform:uppercase;margin:12px 0 8px}
+h1 span{color:var(--p1)}
+.sub{color:var(--muted);font-weight:300;margin-bottom:40px}
+.sub b{color:var(--text);font-weight:600}
+.exito{display:none;background:rgba(108,242,168,.1);border:1px solid rgba(108,242,168,.45);color:#6cf2a8;border-radius:12px;padding:18px 20px;margin-bottom:26px;font-weight:300}
+.exito b{font-weight:600}
+form{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:34px 30px}
+label{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin:0 0 7px}
+input,select,textarea{width:100%;background:var(--bg-2);border:1px solid var(--line);border-radius:8px;color:var(--text);font-family:var(--body);font-size:.95rem;padding:13px 15px;margin-bottom:22px;transition:border-color .2s}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--p1)}
+textarea{min-height:150px;resize:vertical}
+button{width:100%;font-family:var(--mono);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;background:var(--p1);color:#062536;font-weight:700;border:0;border-radius:8px;padding:16px;cursor:pointer;box-shadow:0 0 22px rgba(var(--p1-rgb),.4);transition:transform .15s}
+button:hover{transform:translateY(-2px)}
+.alt{margin-top:24px;text-align:center;color:var(--muted);font-weight:300;font-size:.88rem}
+.alt a{color:var(--p2);text-decoration:none}
+footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:40px 24px;text-align:center;background:var(--bg-2);margin-top:80px}
+footer .f-logo{font-family:var(--display);font-size:1rem;text-transform:uppercase}
+footer p{color:var(--muted);font-size:.78rem;margin-top:8px;font-family:var(--mono)}
+footer a{color:var(--p1);text-decoration:none}
+@media(max-width:760px){.nav-links a:not(.btn-yt){display:none}}
+</style>
+</head>
+<body>
+<div class="atmos"></div>
+<nav>
+  <a class="logo" href="index.html">
+    <img src="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s240-c-k-c0x00ffffff-no-rj" alt="Logo Dos para Duo">
+    <span>Dos <em style="color:var(--gold);font-style:normal">para</em> <b style="color:var(--p2)">Duo</b></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#inicio">Inicio</a>
+    <a href="index.html#videos">Videos</a>
+    <a href="resenas/">Reseñas</a>
+    <a href="merch.html">Merch</a>
+    <a href="apoyo.html">Apóyanos</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+  </div>
+</nav>
+<main>
+  <p class="crumb"><a href="index.html">← Inicio</a> / Contacto</p>
+  <h1>Manda <span>señal</span></h1>
+  <p class="sub">¿Colaboración, propuesta, duda o solo saludar? <b>Leemos todo</b> — contestamos en cuanto soltamos el control.</p>
+
+  <div class="exito" id="exito">✔ <b>¡Mensaje recibido!</b> Gracias por escribirnos — te contestamos pronto.</div>
+
+  <form action="https://formsubmit.co/gear.jackdaniel@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="📨 Mensaje desde dosparaduo (sitio web)">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="https://onlyjackdaniel.github.io/dosparaduo/contacto.html?enviado=1">
+    <input type="text" name="_honey" style="display:none">
+
+    <label for="nombre">Tu nombre</label>
+    <input id="nombre" type="text" name="nombre" placeholder="¿Cómo te llamas?" required>
+
+    <label for="correo">Tu correo</label>
+    <input id="correo" type="email" name="email" placeholder="para poder contestarte" required>
+
+    <label for="asunto">Asunto</label>
+    <select id="asunto" name="asunto" required>
+      <option value="" disabled selected>Elige uno…</option>
+      <option>🤝 Colaboración / propuesta</option>
+      <option>❓ Duda</option>
+      <option>🎮 Recomendarnos un juego</option>
+      <option>👋 Solo saludar</option>
+    </select>
+
+    <label for="mensaje">Mensaje</label>
+    <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos…" required></textarea>
+
+    <button type="submit">▸ Enviar mensaje</button>
+  </form>
+
+  <p class="alt">¿Prefieres YouTube? Déjanos un comentario en <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">cualquier video</a> — también los leemos todos.</p>
+</main>
+<footer>
+  <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
+  <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="resenas/">Reseñas</a> · <a href="apoyo.html">Apóyanos</a></p>
+</footer>
+<script>
+if (new URLSearchParams(location.search).get('enviado') === '1') {
+  document.getElementById('exito').style.display = 'block';
+  document.querySelector('form').reset();
+}
+</script>
+</body>
+</html>

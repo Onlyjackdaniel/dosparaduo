@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NXJ8PNJZFP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NXJ8PNJZFP');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apóyanos — Power-ups para el canal | Dos para Duo</title>
+<meta name="description" content="Formas de apoyar a Dos para Duo: invítanos un café en Buy Me a Coffee o échanos la mano con nuestras wishlists. Todo va de regreso al canal: mejor setup, juegos para regalar en dinámicas y más.">
+<link rel="icon" href="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s48-c-k-c0x00ffffff-no-rj">
+<meta property="og:title" content="Apóyanos — Dos para Duo">
+<meta property="og:description" content="Power-ups para el canal: café, wishlists, o simplemente ver los videos.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://onlyjackdaniel.github.io/dosparaduo/apoyo.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tokens.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;overflow-x:hidden}
+::selection{background:var(--p1);color:#fff}
+.atmos{position:fixed;inset:0;pointer-events:none;z-index:0}
+.atmos::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(var(--gold-rgb,255,209,102),.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,209,102,.04) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 75%)}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:rgba(11,14,26,.78);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo img{width:36px;height:36px;border-radius:50%;border:2px solid var(--p2)}
+.logo span{font-family:var(--display);font-size:.95rem;color:var(--text)}
+.nav-links{display:flex;align-items:center;gap:26px}
+.nav-links a{color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:1.5px;transition:color .2s}
+.nav-links a:hover{color:var(--p2)}
+.btn-yt{display:inline-flex;align-items:center;gap:8px;background:var(--p2);color:#fff !important;padding:9px 18px;border-radius:8px;font-weight:700;letter-spacing:1px;box-shadow:0 0 18px rgba(var(--p2-rgb),.45)}
+main{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:120px 24px 80px;text-align:center}
+.crumb{font-family:var(--mono);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-align:left}
+.crumb a{color:var(--p1);text-decoration:none}
+h1{font-family:var(--display);font-size:clamp(2rem,6.5vw,3.6rem);text-transform:uppercase;margin:14px 0 8px}
+h1 span{color:var(--gold);text-shadow:0 0 26px rgba(255,209,102,.4)}
+.sub{color:var(--muted);max-width:620px;font-weight:300;margin:0 auto 14px}
+.sub b{color:var(--text);font-weight:600}
+.promesa{font-family:var(--mono);font-size:.66rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border:1px solid rgba(255,209,102,.4);border-radius:8px;padding:11px 18px;display:inline-block;margin:10px 0 50px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;text-align:left}
+.pcard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:32px 28px;position:relative;overflow:hidden;transition:transform .22s,border-color .22s;display:flex;flex-direction:column}
+.pcard:hover{transform:translateY(-5px)}
+.pcard::before{content:"";position:absolute;top:0;left:0;right:0;height:3px}
+.pcard.cafe::before{background:linear-gradient(90deg,var(--gold),transparent)}
+.pcard.wl::before{background:linear-gradient(90deg,var(--p1),var(--p2))}
+.pcard.free::before{background:linear-gradient(90deg,var(--p2),transparent)}
+.pcard.cafe:hover{border-color:var(--gold)}
+.pcard.wl:hover{border-color:var(--p1)}
+.pcard.free:hover{border-color:var(--p2)}
+.pcard .ico{font-size:2.2rem;margin-bottom:12px}
+.pcard h2{font-family:var(--display);font-size:1.2rem;text-transform:uppercase;margin-bottom:10px}
+.pcard p{color:var(--muted);font-weight:300;font-size:.93rem;flex:1}
+.pcard p b{color:var(--text);font-weight:600}
+.acciones{margin-top:20px;display:flex;flex-direction:column;gap:10px}
+.btn-go{font-family:var(--mono);font-size:.74rem;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;font-weight:700;padding:13px 20px;border-radius:8px;text-align:center;transition:transform .15s}
+.btn-go:hover{transform:translateY(-2px)}
+.btn-go.gold{background:var(--gold);color:#3a2a05;box-shadow:0 0 20px rgba(255,209,102,.35)}
+.btn-go.azul{background:var(--p1);color:#062536;box-shadow:0 0 18px rgba(var(--p1-rgb),.35)}
+.btn-go.naranja{background:var(--p2);color:var(--p2-ink);box-shadow:0 0 18px rgba(var(--p2-rgb),.35)}
+.btn-go.linea{border:1px solid var(--line);color:var(--text)}
+.btn-go.linea:hover{border-color:var(--p2);color:var(--p2)}
+.nota{margin-top:46px;color:var(--muted);font-weight:300;font-size:.88rem;max-width:560px;margin-left:auto;margin-right:auto}
+footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:40px 24px;text-align:center;background:var(--bg-2);margin-top:80px}
+footer .f-logo{font-family:var(--display);font-size:1rem;text-transform:uppercase}
+footer p{color:var(--muted);font-size:.78rem;margin-top:8px;font-family:var(--mono)}
+footer a{color:var(--p1);text-decoration:none}
+@media(max-width:760px){.nav-links a:not(.btn-yt){display:none}}
+</style>
+</head>
+<body>
+<div class="atmos"></div>
+<nav>
+  <a class="logo" href="index.html">
+    <img src="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s240-c-k-c0x00ffffff-no-rj" alt="Logo Dos para Duo">
+    <span>Dos <em style="color:var(--gold);font-style:normal">para</em> <b style="color:var(--p2)">Duo</b></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#inicio">Inicio</a>
+    <a href="index.html#videos">Videos</a>
+    <a href="resenas/">Reseñas</a>
+    <a href="merch.html">Merch</a>
+    <a href="apoyo.html">Apóyanos</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+  </div>
+</nav>
+<main>
+  <p class="crumb"><a href="index.html">← Inicio</a> / Apóyanos</p>
+  <h1>Power-<span>ups</span></h1>
+  <p class="sub">El canal es gratis y lo seguirá siendo. Pero si quieren darle un <b>power-up al proyecto</b>, estas son las maneras — todas opcionales, todas apreciadas de más.</p>
+  <p class="promesa">★ TODO REGRESA AL CANAL: MEJOR SETUP · JUEGOS PARA REGALAR EN DINÁMICAS · MERCH PARA LA COMUNIDAD</p>
+
+  <div class="grid">
+    <div class="pcard cafe">
+      <span class="ico">☕</span>
+      <h2>Invítanos un café</h2>
+      <p>La forma más directa. Cada café se convierte en <b>mejor equipo para grabar</b>, en <b>juegos que regalamos en dinámicas</b> de la comunidad, y cuando el merch exista, en merch que también regalaremos. Sin suscripciones ni compromisos: un café y ya.</p>
+      <div class="acciones">
+        <a class="btn-go gold" href="https://buymeacoffee.com/dosparaduo" target="_blank" rel="noopener">☕ Buy Me a Coffee ↗</a>
+      </div>
+    </div>
+
+    <div class="pcard wl">
+      <span class="ico">🎁</span>
+      <h2>Wishlists del dúo</h2>
+      <p>Si prefieren regalar algo concreto, estas son nuestras listas de Amazon — cosas que de verdad usaríamos para <b>seguir creciendo el canal</b> (y una que otra debilidad personal, no vamos a mentir).</p>
+      <div class="acciones">
+        <a class="btn-go azul" href="https://www.amazon.com.mx/hz/wishlist/ls/115LDIO8OBSPF?ref_=wl_share" target="_blank" rel="noopener">🎮 Wishlist de Jack (P1) ↗</a>
+        <a class="btn-go naranja" href="https://www.amazon.com.mx/hz/wishlist/ls/2GUZ0KO4WU2S4?ref_=wl_share" target="_blank" rel="noopener">🎨 Wishlist de Anahí (P2) ↗</a>
+      </div>
+    </div>
+
+    <div class="pcard free">
+      <span class="ico">🕹️</span>
+      <h2>El power-up gratis</h2>
+      <p>El apoyo que más mueve la aguja no cuesta nada: <b>ver los videos completos, dejar un like, comentar y compartir</b> con esa pareja que conocen que necesita un juego co-op. El algoritmo hace el resto.</p>
+      <div class="acciones">
+        <a class="btn-go linea" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscribirse al canal</a>
+        <a class="btn-go linea" href="listas/mejores-juegos-cooperativos-para-parejas.html">Compartir nuestra guía co-op</a>
+      </div>
+    </div>
+  </div>
+
+  <p class="nota">Gracias por estar aquí — en serio. Cada vista, café o regalo nos acerca a hacer de esto algo más grande. <b style="color:var(--text)">— Jack & Anahí</b></p>
+</main>
+<footer>
+  <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
+  <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="resenas/">Reseñas</a> · <a href="contacto.html">Contacto</a></p>
+</footer>
+</body>
+</html>

@@ -30,6 +30,16 @@ def es_short(video_id):
         return False
 
 
+def es_en_vivo(video_id):
+    """Las transmisiones en vivo (y sus VOD) llevan isLiveBroadcast en el microdata
+    de la página de watch. Esos no van a la portada del sitio."""
+    try:
+        html_page = fetch(f'https://www.youtube.com/watch?v={video_id}').read(400000).decode('utf-8', 'ignore')
+        return 'isLiveBroadcast' in html_page
+    except Exception:
+        return False
+
+
 def main():
     xml = fetch(FEED).read().decode('utf-8', 'ignore')
     entries = re.findall(r'<entry>(.*?)</entry>', xml, re.S)
@@ -51,7 +61,10 @@ def main():
     for v in videos:
         if len(largos) >= N_LARGOS and len(shorts) >= N_SHORTS:
             break
-        (shorts if es_short(v['id']) else largos).append(v)
+        if es_short(v['id']):
+            shorts.append(v)
+        elif len(largos) < N_LARGOS and not es_en_vivo(v['id']):
+            largos.append(v)
 
     largos = largos[:N_LARGOS]
     shorts = shorts[:N_SHORTS]

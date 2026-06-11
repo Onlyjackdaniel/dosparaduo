@@ -104,22 +104,23 @@ footer a{color:var(--p2);text-decoration:none}
 
 NAV = """<nav>
   <a class="logo" href="__HOME__index.html">
-    <img src="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s240-c-k-c0x00ffffff-no-rj" alt="Logo Dos para Dúo">
-    <span>Dos <em style="color:var(--gold);font-style:normal">para</em> <b style="color:var(--p2)">Dúo</b></span>
+    <img src="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s240-c-k-c0x00ffffff-no-rj" alt="Logo Dos para Duo">
+    <span>Dos <em style="color:var(--gold);font-style:normal">para</em> <b style="color:var(--p2)">Duo</b></span>
   </a>
   <div class="nav-links">
     <a href="__HOME__index.html#inicio">Inicio</a>
     <a href="__HOME__index.html#videos">Videos</a>
     <a href="__HOME__resenas/">Reseñas</a>
     <a href="__HOME__merch.html">Merch</a>
+    <a href="__HOME__apoyo.html">Apóyanos</a>
     <a href="__HOME__nosotros.html">Nosotros</a>
     <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
   </div>
 </nav>"""
 
 FOOTER = """<footer>
-  <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Dúo</b></div>
-  <p>© 2026 Dos para Dúo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="__HOME__resenas/">Reseñas</a></p>
+  <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
+  <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="__HOME__resenas/">Reseñas</a> · <a href="__HOME__apoyo.html">Apóyanos</a> · <a href="__HOME__contacto.html">Contacto</a></p>
 </footer>"""
 
 # ---------- página individual ----------
@@ -127,10 +128,10 @@ PAGE = """<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>__NOMBRE__ — Reseña en español | Dos para Dúo</title>
+<title>__NOMBRE__ — Reseña en español | Dos para Duo</title>
 <meta name="description" content="__DESC__">
 <link rel="icon" href="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s48-c-k-c0x00ffffff-no-rj">
-<meta property="og:title" content="Reseña: __NOMBRE__ — Dos para Dúo">
+<meta property="og:title" content="Reseña: __NOMBRE__ — Dos para Duo">
 <meta property="og:description" content="__DESC__">
 <meta property="og:type" content="article">
 <meta property="og:image" content="__CAPSULE__">
@@ -212,7 +213,7 @@ __FOOTER__
 
 VIDEO_BLOCK = """<section class="video-sec">
     <h2>Lo jugamos <span>en el canal</span></h2>
-    <div class="vframe"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/__VID__?rel=0" allow="encrypted-media; picture-in-picture" allowfullscreen title="Video de __NOMBRE_ESC__ en Dos para Dúo"></iframe></div>
+    <div class="vframe"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/__VID__?rel=0" allow="encrypted-media; picture-in-picture" allowfullscreen title="Video de __NOMBRE_ESC__ en Dos para Duo"></iframe></div>
   </section>"""
 
 def render_page(r, solo=False):
@@ -224,8 +225,8 @@ def render_page(r, solo=False):
     schema = json.dumps({
         "@context":"https://schema.org","@type":"Review",
         "itemReviewed":{"@type":"VideoGame","name":nombre},
-        "author":{"@type":"Person","name":"Jack — Dos para Dúo"},
-        "publisher":{"@type":"Organization","name":"Dos para Dúo","sameAs":"https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw"},
+        "author":{"@type":"Person","name":"Jack — Dos para Duo"},
+        "publisher":{"@type":"Organization","name":"Dos para Duo","sameAs":"https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw"},
         "inLanguage":"es","reviewBody":desc,
         "positiveNotes" if rec else "negativeNotes":{"@type":"ItemList","itemListElement":[]}
     }, ensure_ascii=False)
@@ -294,14 +295,14 @@ INDEX = """<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reseñas de juegos en español — Dos para Dúo</title>
+<title>Reseñas de juegos en español — Dos para Duo</title>
 <meta name="description" content="__NJ__ juegos que jugamos juntos, reseñados de verdad: co-op, terror, plataformas y joyitas raras. Las reseñas de Steam del dúo, con video del canal cuando existe.">
 <link rel="icon" href="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s48-c-k-c0x00ffffff-no-rj">
-<meta property="og:title" content="Reseñas — Dos para Dúo">
+<meta property="og:title" content="Reseñas — Dos para Duo">
 <meta property="og:description" content="Los juegos que jugamos juntos, reseñados de verdad.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="__BASE__/resenas/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Reseñas — Dos para Dúo","description":"Reseñas en español de los juegos que jugamos juntos.","isPartOf":{"@type":"WebSite","name":"Dos para Dúo","url":"__BASE__/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Reseñas — Dos para Duo","description":"Reseñas en español de los juegos que jugamos juntos.","isPartOf":{"@type":"WebSite","name":"Dos para Duo","url":"__BASE__/"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
@@ -393,14 +394,14 @@ SOLO_INDEX = """<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Solo runs — reseñas de Player 1 | Dos para Dúo</title>
-<meta name="description" content="__NS__ juegos que Player 1 jugó en solitario, reseñados en Steam: souls, terror, indies y más. La otra mitad de la biblioteca de Dos para Dúo.">
+<title>Solo runs — reseñas de Player 1 | Dos para Duo</title>
+<meta name="description" content="__NS__ juegos que Player 1 jugó en solitario, reseñados en Steam: souls, terror, indies y más. La otra mitad de la biblioteca de Dos para Duo.">
 <link rel="icon" href="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s48-c-k-c0x00ffffff-no-rj">
-<meta property="og:title" content="Solo runs — Dos para Dúo">
+<meta property="og:title" content="Solo runs — Dos para Duo">
 <meta property="og:description" content="Los juegos que Player 1 jugó en solitario, reseñados de verdad.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="__BASE__/resenas/solo.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Solo runs — Dos para Dúo","description":"Reseñas en español de los juegos que Player 1 jugó en solitario.","isPartOf":{"@type":"WebSite","name":"Dos para Dúo","url":"__BASE__/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Solo runs — Dos para Duo","description":"Reseñas en español de los juegos que Player 1 jugó en solitario.","isPartOf":{"@type":"WebSite","name":"Dos para Duo","url":"__BASE__/"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
@@ -466,7 +467,7 @@ slugs = [render_page(r) for r in juntos + extras]
 slugs += [render_page(r, solo=True) for r in solo]
 
 # ---------- sitemap + robots + nojekyll ----------
-urls = [f'{BASE}/', f'{BASE}/nosotros.html', f'{BASE}/merch.html', f'{BASE}/listas/mejores-juegos-cooperativos-para-parejas.html', f'{BASE}/resenas/', f'{BASE}/resenas/solo.html'] + [f'{BASE}/resenas/{s}.html' for s in slugs]
+urls = [f'{BASE}/', f'{BASE}/nosotros.html', f'{BASE}/merch.html', f'{BASE}/apoyo.html', f'{BASE}/contacto.html', f'{BASE}/listas/mejores-juegos-cooperativos-para-parejas.html', f'{BASE}/resenas/', f'{BASE}/resenas/solo.html'] + [f'{BASE}/resenas/{s}.html' for s in slugs]
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 sm += '\n'.join(f'  <url><loc>{u}</loc></url>' for u in urls) + '\n</urlset>'
 (ROOT/'sitemap.xml').write_text(sm, encoding='utf-8')
