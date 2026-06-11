@@ -1,0 +1,28 @@
+/* ============================================================
+   DOS PARA DÚO — TOKENS DE MARCA
+   Única fuente de verdad visual del sitio. Cuando llegue el
+   kit de marca definitivo, se ajusta ESTE archivo y todas las
+   páginas se actualizan solas.
+   ============================================================ */
+
+:root{
+  /* Fondos */
+  --bg:#0b0e1a;        /* fondo principal (noche) */
+  --bg-2:#11152a;      /* fondo secundario (franjas/footer) */
+  --panel:#161b33;     /* tarjetas y paneles */
+  --line:#252c4f;      /* bordes y líneas */
+
+  /* Identidad dual */
+  --p1:#ff4d8d;        /* Player 1 — magenta */
+  --p2:#2de2c9;        /* Player 2 — cian */
+  --gold:#ffd166;      /* acento arcade (monedas/estrellas) */
+
+  /* Texto */
+  --text:#eef0ff;      /* texto principal */
+  --muted:#8b92b8;     /* texto secundario */
+
+  /* Tipografías */
+  --display:'Bungee',cursive;        /* títulos y logo */
+  --body:'Outfit',sans-serif;        /* texto corrido */
+  --mono:'Space Mono',monospace;     /* etiquetas HUD */
+}
