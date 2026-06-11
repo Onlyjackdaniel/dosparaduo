@@ -4,8 +4,8 @@
    kit de marca definitivo, se ajusta ESTE archivo y todas las
    páginas se actualizan solas.
 
-   Paleta v2 (10 jun 2026): naranja calabaza + azul cerúleo
-   (colores favoritos de la marca) sobre noche azul profundo.
+   Paleta v2.1 (10 jun 2026): Jack/P1 = azul cerúleo,
+   Anahí/P2 = naranja calabaza, sobre noche azul profundo.
    ============================================================ */
 
 :root{
@@ -16,11 +16,11 @@
   --line:#273b5e;      /* bordes y líneas */
 
   /* Identidad dual */
-  --p1:#ff7a29;        /* Player 1 — naranja calabaza */
-  --p1-rgb:255,122,41; /* mismo color en RGB para sombras/transparencias */
-  --p2:#3cb8ec;        /* Player 2 — azul cerúleo */
-  --p2-rgb:60,184,236;
-  --p2-ink:#062536;    /* texto oscuro sobre botones cerúleo */
+  --p1:#3cb8ec;        /* Player 1 (Jack) — azul cerúleo */
+  --p1-rgb:60,184,236;
+  --p2:#ff7a29;        /* Player 2 (Anahí) — naranja calabaza */
+  --p2-rgb:255,122,41;
+  --p2-ink:#2a1606;    /* texto oscuro sobre botones naranja */
   --gold:#ffd166;      /* acento arcade (monedas/estrellas) */
 
   /* Texto */

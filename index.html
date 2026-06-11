@@ -124,13 +124,13 @@
   .nav-links a:hover{color:var(--p2)}
   .btn-yt{
     display:inline-flex;align-items:center;gap:8px;
-    background:var(--p1);color:#fff !important;
+    background:var(--p2);color:#fff !important;
     padding:9px 18px;border-radius:8px;
     font-weight:700;letter-spacing:1px;
-    box-shadow:0 0 18px rgba(var(--p1-rgb),.45);
+    box-shadow:0 0 18px rgba(var(--p2-rgb),.45);
     transition:transform .15s,box-shadow .2s;
   }
-  .btn-yt:hover{transform:translateY(-2px);box-shadow:0 0 28px rgba(var(--p1-rgb),.7);color:#fff}
+  .btn-yt:hover{transform:translateY(-2px);box-shadow:0 0 28px rgba(var(--p2-rgb),.7);color:#fff}
 
   /* ── hero ───────────────────────────────────────────────── */
   header{
@@ -209,6 +209,7 @@
     position:absolute;top:-12px;left:50%;transform:translateX(-50%);
     font-family:var(--mono);font-size:.62rem;font-weight:700;letter-spacing:1.5px;
     padding:4px 10px;border-radius:4px;white-space:nowrap;
+    z-index:2;
   }
   .player.p1 .badge{background:var(--p1);color:#fff}
   .player.p2 .badge{background:var(--p2);color:var(--p2-ink)}
@@ -379,7 +380,7 @@
     <a href="#videos">Videos</a>
     <a href="resenas/">Reseñas</a>
     <a href="merch.html">Merch</a>
-    <a href="#nosotros">Nosotros</a>
+    <a href="nosotros.html">Nosotros</a>
     <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
   </div>
 </nav>
@@ -393,7 +394,7 @@
   <p class="tagline"><strong>Dos para Dúo</strong> es un canal de gaming en español donde jugamos, sufrimos y nos reímos de a dos. Co-op, retos, reseñas y la eterna pregunta: <strong>¿quién es el peor del equipo?</strong></p>
   <div class="hero-cta">
     <a class="btn-start" href="#videos">▸ Press Start</a>
-    <a class="btn-ghost" href="#nosotros">Conócenos</a>
+    <a class="btn-ghost" href="nosotros.html">Conócenos</a>
   </div>
 
   <div class="players">
@@ -421,74 +422,76 @@
   <p class="sec-sub reveal">Lo más reciente del canal. Dale play aquí mismo o míralo en YouTube.</p>
 
   <div class="video-grid">
+<!-- AUTO:LARGOS:START -->
     <article class="vcard reveal">
-      <div class="vthumb" data-video="Ra5H1bkkEj4">
-        <img src="https://i.ytimg.com/vi/Ra5H1bkkEj4/maxresdefault.jpg" alt="Move or Die con mi pareja" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/Ra5H1bkkEj4/hqdefault.jpg'">
+      <div class="vthumb" data-video="PWU2UfjCi8E">
+        <img src="https://i.ytimg.com/vi/PWU2UfjCi8E/maxresdefault.jpg" alt="Resident Evil Requiem | En vivo" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/PWU2UfjCi8E/hqdefault.jpg'">
         <div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
       </div>
       <div class="vinfo">
-        <span class="vtag">Co-op / Caos</span>
+        <span class="vtag">1 mar 2026</span>
+        <h3>Resident Evil Requiem | En vivo</h3>
+      </div>
+    </article>
+    <article class="vcard reveal">
+      <div class="vthumb" data-video="Ra5H1bkkEj4">
+        <img src="https://i.ytimg.com/vi/Ra5H1bkkEj4/maxresdefault.jpg" alt="Move or Die con mi pareja: ¿Quién gana cuando todo es azar?" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/Ra5H1bkkEj4/hqdefault.jpg'">
+        <div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      </div>
+      <div class="vinfo">
+        <span class="vtag">3 feb 2026</span>
         <h3>Move or Die con mi pareja: ¿Quién gana cuando todo es azar?</h3>
       </div>
     </article>
-
     <article class="vcard reveal">
       <div class="vthumb" data-video="PnrH_GSsT8k">
-        <img src="https://i.ytimg.com/vi/PnrH_GSsT8k/maxresdefault.jpg" alt="God of War Ragnarok" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/PnrH_GSsT8k/hqdefault.jpg'">
+        <img src="https://i.ytimg.com/vi/PnrH_GSsT8k/maxresdefault.jpg" alt="¿Juego o película? God of War Ragnarok desde la perspectiva correcta" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/PnrH_GSsT8k/hqdefault.jpg'">
         <div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
       </div>
       <div class="vinfo">
-        <span class="vtag">Reseña / Opinión</span>
+        <span class="vtag">18 ene 2026</span>
         <h3>¿Juego o película? God of War Ragnarok desde la perspectiva correcta</h3>
       </div>
     </article>
-
-    <article class="vcard reveal">
-      <div class="vthumb" data-video="EU0jZirCx6k">
-        <img src="https://i.ytimg.com/vi/EU0jZirCx6k/maxresdefault.jpg" alt="Resident Evil 4 Remake" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/EU0jZirCx6k/hqdefault.jpg'">
-        <div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
-      </div>
-      <div class="vinfo">
-        <span class="vtag">Reto / Primera vez</span>
-        <h3>Mi pareja jugó Resident Evil 4 Remake sin experiencia: esto pasó</h3>
-      </div>
-    </article>
+<!-- AUTO:LARGOS:END -->
   </div>
 
   <div class="sec-head shorts-head reveal"><span class="num">[ 01.5 ]</span><h2>Shorts</h2></div>
   <p class="sec-sub reveal">Dosis rápidas de caos cooperativo.</p>
 
   <div class="shorts-row">
+<!-- AUTO:SHORTS:START -->
+    <a class="scard reveal" href="https://www.youtube.com/shorts/xOJwvhrMUAg" target="_blank" rel="noopener">
+      <img src="https://i.ytimg.com/vi/xOJwvhrMUAg/oar2.jpg" alt="Así crearon a Grace Ashcroft, la protagonista de RE Requiem" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/xOJwvhrMUAg/hqdefault.jpg'">
+      <span class="s-ico">SHORT</span>
+      <p>Así crearon a Grace Ashcroft, la protagonista de RE Requiem</p>
+    </a>
+    <a class="scard reveal" href="https://www.youtube.com/shorts/3pQqjp6ojEA" target="_blank" rel="noopener">
+      <img src="https://i.ytimg.com/vi/3pQqjp6ojEA/oar2.jpg" alt="Lo que Capcom hizo para crear a Alissa y Grace de RE Requiem" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/3pQqjp6ojEA/hqdefault.jpg'">
+      <span class="s-ico">SHORT</span>
+      <p>Lo que Capcom hizo para crear a Alissa y Grace de RE Requiem</p>
+    </a>
+    <a class="scard reveal" href="https://www.youtube.com/shorts/VDI21lRX9Ms" target="_blank" rel="noopener">
+      <img src="https://i.ytimg.com/vi/VDI21lRX9Ms/oar2.jpg" alt="La escena con la que empezó todo en  Resident Evil Requiem" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/VDI21lRX9Ms/hqdefault.jpg'">
+      <span class="s-ico">SHORT</span>
+      <p>La escena con la que empezó todo en  Resident Evil Requiem</p>
+    </a>
     <a class="scard reveal" href="https://www.youtube.com/shorts/kC8Q3PhEV-0" target="_blank" rel="noopener">
-      <img src="https://i.ytimg.com/vi/kC8Q3PhEV-0/oar2.jpg" alt="Top 3 jefes de Elden Ring" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/kC8Q3PhEV-0/hqdefault.jpg'">
+      <img src="https://i.ytimg.com/vi/kC8Q3PhEV-0/oar2.jpg" alt="Top 3 jefes de Elden Ring que SÍ valen la pena 🔥 #gaming #eldenring #fromsoftware #soulslike #shorts" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/kC8Q3PhEV-0/hqdefault.jpg'">
       <span class="s-ico">SHORT</span>
-      <p>Top 3 jefes de Elden Ring que SÍ valen la pena 🔥</p>
+      <p>Top 3 jefes de Elden Ring que SÍ valen la pena 🔥 #gaming #eldenring #fromsoftware #soulslike #shorts</p>
     </a>
-    <a class="scard reveal" href="https://www.youtube.com/shorts/zM1p3Bzfwjc" target="_blank" rel="noopener">
-      <img src="https://i.ytimg.com/vi/zM1p3Bzfwjc/oar2.jpg" alt="POV setup gamer" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/zM1p3Bzfwjc/hqdefault.jpg'">
+    <a class="scard reveal" href="https://www.youtube.com/shorts/Bp-F7gfcVKw" target="_blank" rel="noopener">
+      <img src="https://i.ytimg.com/vi/Bp-F7gfcVKw/oar2.jpg" alt="Así nacieron los villanos más icónicos de RE Village 🎮 #mocap #ResidentEvil #gaming" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/Bp-F7gfcVKw/hqdefault.jpg'">
       <span class="s-ico">SHORT</span>
-      <p>POV: mi novio lleva años construyendo el setup de sus sueños 🥲🎮</p>
-    </a>
-    <a class="scard reveal" href="https://www.youtube.com/shorts/iyRJnkHyJKk" target="_blank" rel="noopener">
-      <img src="https://i.ytimg.com/vi/iyRJnkHyJKk/oar2.jpg" alt="Resident Evil 3 Remake" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/iyRJnkHyJKk/hqdefault.jpg'">
-      <span class="s-ico">SHORT</span>
-      <p>De verdad que los videojuegos tienen de todo 🎮</p>
-    </a>
-    <a class="scard reveal" href="https://www.youtube.com/shorts/QYwGHQggD5s" target="_blank" rel="noopener">
-      <img src="https://i.ytimg.com/vi/QYwGHQggD5s/oar2.jpg" alt="10 millones de copias RE3" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/QYwGHQggD5s/hqdefault.jpg'">
-      <span class="s-ico">SHORT</span>
-      <p>¡Más de 10 millones de copias! 😳</p>
+      <p>Así nacieron los villanos más icónicos de RE Village 🎮 #mocap #ResidentEvil #gaming</p>
     </a>
     <a class="scard reveal" href="https://www.youtube.com/shorts/TT_UkBmsu2I" target="_blank" rel="noopener">
-      <img src="https://i.ytimg.com/vi/TT_UkBmsu2I/oar2.jpg" alt="Lo que no ves de los videojuegos" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/TT_UkBmsu2I/hqdefault.jpg'">
+      <img src="https://i.ytimg.com/vi/TT_UkBmsu2I/oar2.jpg" alt="Lo que NO ves de los videojuegos  #residentevil #residentevil8" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/TT_UkBmsu2I/hqdefault.jpg'">
       <span class="s-ico">SHORT</span>
-      <p>Lo que NO ves de los videojuegos 👀</p>
+      <p>Lo que NO ves de los videojuegos  #residentevil #residentevil8</p>
     </a>
-    <a class="scard reveal" href="https://www.youtube.com/shorts/30riR4CEIbo" target="_blank" rel="noopener">
-      <img src="https://i.ytimg.com/vi/30riR4CEIbo/oar2.jpg" alt="Estaba actuando raro" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/30riR4CEIbo/hqdefault.jpg'">
-      <span class="s-ico">SHORT</span>
-      <p>Ya decía yo que estaba actuando raro 🤔</p>
-    </a>
+<!-- AUTO:SHORTS:END -->
   </div>
 </section>
 
@@ -499,11 +502,23 @@
   <div class="about-grid">
     <div class="pcard p1c reveal">
       <span class="ptag">▮ PLAYER 1</span>
-      <h3>Él</h3>
-      <p>El veterano del dúo. Años construyendo el setup de sus sueños, main de los souls y el que dice "confía en mí" justo antes del game over.</p>
+      <h3>Jack</h3>
+      <p>Veterano desde el GBA y el PlayStation 1 — ha pasado por todas las consolas desde entonces. Disfruta casi cualquier género, es bastante obstinado, y su combo perfecto: la buena compañía de su novia y un juego con reto o creatividad.</p>
       <div class="stat-bar">
         <div class="lbl"><span>Skill</span><span>87/100</span></div>
         <div class="bar"><div class="fill" data-w="87%"></div></div>
+      </div>
+      <div class="stat-bar">
+        <div class="lbl"><span>Tiempo de juego</span><span>5,300+ hrs</span></div>
+        <div class="bar"><div class="fill" data-w="93%"></div></div>
+      </div>
+      <div class="stat-bar">
+        <div class="lbl"><span>Veteranía</span><span>95/100</span></div>
+        <div class="bar"><div class="fill" data-w="95%"></div></div>
+      </div>
+      <div class="stat-bar">
+        <div class="lbl"><span>Obstinación</span><span>96/100</span></div>
+        <div class="bar"><div class="fill" data-w="96%"></div></div>
       </div>
       <div class="stat-bar">
         <div class="lbl"><span>Paciencia</span><span>42/100</span></div>
@@ -513,15 +528,27 @@
 
     <div class="pcard p2c reveal">
       <span class="ptag">▮ PLAYER 2</span>
-      <h3>Ella</h3>
-      <p>Apenas va en el tutorial pero ya tiene más clips virales que él. Especialista en encontrar el bug que nadie conocía y en gritar primero.</p>
+      <h3>Anahí</h3>
+      <p>No será la más habilidosa del party, pero no le huye a ningún combate. Siempre abierta a vivir nuevas experiencias — y cuando toca soltar el control, disfruta igual (o más) el backseat gaming.</p>
+      <div class="stat-bar">
+        <div class="lbl"><span>Skill</span><span>36/100</span></div>
+        <div class="bar"><div class="fill" data-w="36%"></div></div>
+      </div>
+      <div class="stat-bar">
+        <div class="lbl"><span>Tiempo de juego</span><span>EN CONTEO…</span></div>
+        <div class="bar"><div class="fill" data-w="58%"></div></div>
+      </div>
+      <div class="stat-bar">
+        <div class="lbl"><span>Valentía</span><span>88/100</span></div>
+        <div class="bar"><div class="fill" data-w="88%"></div></div>
+      </div>
+      <div class="stat-bar">
+        <div class="lbl"><span>Backseat gaming</span><span>97/100</span></div>
+        <div class="bar"><div class="fill" data-w="97%"></div></div>
+      </div>
       <div class="stat-bar">
         <div class="lbl"><span>Suerte</span><span>95/100</span></div>
         <div class="bar"><div class="fill" data-w="95%"></div></div>
-      </div>
-      <div class="stat-bar">
-        <div class="lbl"><span>Sentido del drama</span><span>99/100</span></div>
-        <div class="bar"><div class="fill" data-w="99%"></div></div>
       </div>
     </div>
 
@@ -530,6 +557,7 @@
       <p>Porque los mejores juegos no se juegan solos. Este canal nació de las noches de co-op en pareja: las victorias compartidas, las derrotas culpa del otro, y la certeza de que jugar de a dos siempre es mejor historia. Súmate al party.</p>
       <div class="hero-cta" style="margin-top:26px">
         <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener" style="text-decoration:none">▶ Únete al dúo en YouTube</a>
+        <a class="btn-ghost" href="nosotros.html">Conócenos a fondo ▸</a>
       </div>
     </div>
   </div>
