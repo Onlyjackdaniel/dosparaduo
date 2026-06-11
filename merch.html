@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NXJ8PNJZFP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NXJ8PNJZFP');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merch — Nivel bloqueado | Dos para Dúo</title>
+<meta name="description" content="El merch oficial de Dos para Dúo está en desarrollo. Playeras, stickers y cosas que gritarán Player 1 y Player 2. Suscríbete al canal para enterarte cuando se desbloquee.">
+<link rel="icon" href="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s48-c-k-c0x00ffffff-no-rj">
+<meta property="og:title" content="Merch — Dos para Dúo">
+<meta property="og:description" content="Nivel bloqueado: el merch del dúo está en desarrollo.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://onlyjackdaniel.github.io/dosparaduo/merch.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tokens.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;overflow-x:hidden}
+::selection{background:var(--p1);color:#fff}
+.atmos{position:fixed;inset:0;pointer-events:none;z-index:0}
+.atmos::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(var(--p2-rgb),.04) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--p2-rgb),.04) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 75%)}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:rgba(11,14,26,.78);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo img{width:36px;height:36px;border-radius:50%;border:2px solid var(--p2)}
+.logo span{font-family:var(--display);font-size:.95rem;color:var(--text)}
+.nav-links{display:flex;align-items:center;gap:26px}
+.nav-links a{color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:1.5px;transition:color .2s}
+.nav-links a:hover{color:var(--p2)}
+.btn-yt{display:inline-flex;align-items:center;gap:8px;background:var(--p1);color:#fff !important;padding:9px 18px;border-radius:8px;font-weight:700;letter-spacing:1px;box-shadow:0 0 18px rgba(var(--p1-rgb),.45)}
+main{position:relative;z-index:1;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px}
+.lock{
+  width:120px;height:120px;border-radius:20px;margin-bottom:30px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:3.2rem;
+  background:linear-gradient(160deg,var(--panel),var(--bg-2));
+  border:1.5px dashed rgba(var(--p1-rgb),.5);
+  animation:float 5s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.hud-tag{font-family:var(--mono);font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--p1);border:1px solid var(--p1);border-radius:4px;padding:6px 14px;margin-bottom:24px;animation:blink 2.4s steps(2) infinite}
+@keyframes blink{50%{opacity:.45}}
+h1{font-family:var(--display);font-size:clamp(2.4rem,8vw,5rem);text-transform:uppercase;line-height:1.05}
+h1 span{color:var(--p1);text-shadow:0 0 30px rgba(var(--p1-rgb),.55)}
+.sub{color:var(--muted);max-width:520px;font-weight:300;margin:18px 0 40px}
+.sub b{color:var(--text);font-weight:600}
+.forge{width:min(420px,90%);}
+.forge .lbl{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.forge .lbl b{color:var(--gold)}
+.forge .bar{height:12px;border-radius:6px;background:var(--bg-2);border:1px solid var(--line);overflow:hidden}
+.forge .fill{height:100%;width:37%;border-radius:6px;background:linear-gradient(90deg,var(--p1),var(--gold));background-size:200% 100%;animation:forge 2.4s linear infinite}
+@keyframes forge{0%{background-position:0 0}100%{background-position:200% 0}}
+.ideas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:44px 0 10px}
+.ideas span{font-family:var(--mono);font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:8px 16px}
+.ideas span:hover{border-color:var(--p2);color:var(--p2)}
+.cta{margin-top:36px}
+.cta a{font-family:var(--mono);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;background:var(--p2);color:var(--p2-ink);text-decoration:none;font-weight:700;padding:15px 30px;border-radius:8px;box-shadow:0 0 22px rgba(var(--p2-rgb),.4);transition:transform .15s}
+.cta a:hover{transform:translateY(-2px)}
+.cta p{font-family:var(--mono);font-size:.62rem;letter-spacing:2px;color:var(--muted);margin-top:16px;text-transform:uppercase}
+footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:40px 24px;text-align:center;background:var(--bg-2)}
+footer .f-logo{font-family:var(--display);font-size:1rem;text-transform:uppercase}
+footer p{color:var(--muted);font-size:.78rem;margin-top:8px;font-family:var(--mono)}
+footer a{color:var(--p2);text-decoration:none}
+@media(max-width:760px){.nav-links a:not(.btn-yt){display:none}}
+</style>
+</head>
+<body>
+<div class="atmos"></div>
+<nav>
+  <a class="logo" href="index.html">
+    <img src="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s240-c-k-c0x00ffffff-no-rj" alt="Logo Dos para Dúo">
+    <span>Dos <em style="color:var(--gold);font-style:normal">para</em> <b style="color:var(--p2)">Dúo</b></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#inicio">Inicio</a>
+    <a href="index.html#videos">Videos</a>
+    <a href="resenas/">Reseñas</a>
+    <a href="merch.html">Merch</a>
+    <a href="index.html#nosotros">Nosotros</a>
+    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+  </div>
+</nav>
+<main>
+  <div class="hud-tag">⚠ NIVEL BLOQUEADO</div>
+  <div class="lock">🔒</div>
+  <h1>El <span>merch</span> se está forjando</h1>
+  <p class="sub">Estamos craftendo el merch oficial del dúo: cosas que vas a querer ponerte aunque tu main sea el sillón. <b>Todavía no hay nada a la venta</b> — pero el horno ya está encendido.</p>
+  <div class="forge">
+    <div class="lbl"><span>Forjando…</span><b>37%</b></div>
+    <div class="bar"><div class="fill"></div></div>
+  </div>
+  <div class="ideas">
+    <span>Playeras P1 / P2</span>
+    <span>Stickers</span>
+    <span>Tazas co-op</span>
+    <span>??? (secreto)</span>
+  </div>
+  <div class="cta">
+    <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▸ Avísame cuando se desbloquee</a>
+    <p>Suscríbete al canal — ahí se anuncia primero</p>
+  </div>
+</main>
+<footer>
+  <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Dúo</b></div>
+  <p>© 2026 Dos para Dúo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="resenas/">Reseñas</a></p>
+</footer>
+</body>
+</html>

@@ -66,12 +66,22 @@ extras = buscar(EXTRAS)
 _sel = {norm(n) for n in SELECCION} | {norm(n) for n in EXTRAS}
 solo = [r for r in reviews if norm(r['nombre']) not in _sel]
 
+# Reseñas manuales de Anahí (Player 2). Formato de cada entrada en reviews_anahi.json:
+# {"nombre": "It Takes Two", "voto": "up"|"down", "horas": "15", "fecha": "jun 2026", "html": "<p>texto...</p>"}
+# horas y fecha son opcionales. El match es por nombre normalizado contra el juego de la página.
+ANAHI = {}
+_anahi_path = ROOT / 'reviews_anahi.json'
+if _anahi_path.exists():
+    for a in json.loads(_anahi_path.read_text(encoding='utf-8')):
+        ANAHI[norm(a['nombre'])] = a
+print(f'Reseñas de Anahí cargadas: {len(ANAHI)}')
+
 CSS = """
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;overflow-x:hidden}
 ::selection{background:var(--p1);color:#fff}
 .atmos{position:fixed;inset:0;pointer-events:none;z-index:0}
-.atmos::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(45,226,201,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(45,226,201,.04) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 75%)}
+.atmos::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(var(--p2-rgb),.04) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--p2-rgb),.04) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 75%)}
 nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:rgba(11,14,26,.78);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
 .logo img{width:36px;height:36px;border-radius:50%;border:2px solid var(--p2)}
@@ -79,7 +89,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
 .nav-links{display:flex;align-items:center;gap:26px}
 .nav-links a{color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:1.5px;transition:color .2s}
 .nav-links a:hover{color:var(--p2)}
-.btn-yt{display:inline-flex;align-items:center;gap:8px;background:var(--p1);color:#fff !important;padding:9px 18px;border-radius:8px;font-weight:700;letter-spacing:1px;box-shadow:0 0 18px rgba(255,77,141,.45)}
+.btn-yt{display:inline-flex;align-items:center;gap:8px;background:var(--p1);color:#fff !important;padding:9px 18px;border-radius:8px;font-weight:700;letter-spacing:1px;box-shadow:0 0 18px rgba(var(--p1-rgb),.45)}
 main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 24px 80px}
 .crumb{font-family:var(--mono);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
 .crumb a{color:var(--p2);text-decoration:none}
@@ -101,6 +111,7 @@ NAV = """<nav>
     <a href="__HOME__index.html#inicio">Inicio</a>
     <a href="__HOME__index.html#videos">Videos</a>
     <a href="__HOME__resenas/">Reseñas</a>
+    <a href="__HOME__merch.html">Merch</a>
     <a href="__HOME__index.html#nosotros">Nosotros</a>
     <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
   </div>
@@ -152,8 +163,8 @@ PAGE = """<!DOCTYPE html>
 .rbody img{max-width:100%}
 .steam-link{display:inline-block;margin-top:18px;font-family:var(--mono);font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--p2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
 .steam-link:hover{border-color:var(--p2)}
-.pending{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:220px;text-align:center;color:var(--muted);border:1.5px dashed rgba(45,226,201,.35);border-radius:12px;padding:30px;font-weight:300}
-.pending .q{font-family:var(--display);font-size:2.2rem;color:rgba(45,226,201,.5);margin-bottom:10px}
+.pending{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:220px;text-align:center;color:var(--muted);border:1.5px dashed rgba(var(--p2-rgb),.35);border-radius:12px;padding:30px;font-weight:300}
+.pending .q{font-family:var(--display);font-size:2.2rem;color:rgba(var(--p2-rgb),.5);margin-bottom:10px}
 .video-sec{margin-top:46px;text-align:center}
 .video-sec h2{font-family:var(--display);font-size:1.3rem;text-transform:uppercase;margin-bottom:18px}
 .video-sec h2 span{color:var(--p1)}
@@ -189,7 +200,7 @@ __NAV__
     <aside class="rcard p2">
       <span class="ptag">▮ PLAYER 2 — ELLA</span>
       <h2>Su reseña</h2>
-      <div class="pending"><span class="q">?</span>__P2PENDING__</div>
+      __P2BODY__
     </aside>
   </div>
   __VIDEO__
@@ -229,12 +240,21 @@ def render_page(r, solo=False):
     p2txt = ('Run en solitario de Player 1.<br>Si Player 2 lo juega algún día, su reseña aparecerá aquí.'
              if solo else
              'La reseña de Player 2 está en camino.<br>Mientras tanto, ya saben quién escribe más rápido.')
+    a2 = ANAHI.get(norm(nombre))
+    if a2:
+        chips = [('👍 Recomendado' if a2.get('voto','up')=='up' else '👎 No recomendado')]
+        if a2.get('horas'): chips.append(f"{a2['horas']} hrs jugadas")
+        if a2.get('fecha'): chips.append(a2['fecha'])
+        chips_html = ''.join(f'<span class="chip{" rec" if i==0 and a2.get("voto","up")=="up" else (" norec" if i==0 else "")}">{c}</span>' for i,c in enumerate(chips))
+        p2body = f'<div class="meta-row" style="justify-content:flex-start;margin:0 0 16px">{chips_html}</div><div class="rbody">{a2["html"]}</div>'
+    else:
+        p2body = f'<div class="pending"><span class="q">?</span>{p2txt}</div>'
     vid = VIDEOS.get(norm(nombre))
     video_html = VIDEO_BLOCK.replace('__VID__', vid).replace('__NOMBRE_ESC__', htmlmod.escape(nombre)) if vid else ''
     page = (PAGE
         .replace('<head>', '<head>\n' + GTAG, 1)
         .replace('__BREADCRUMB__', breadcrumb)
-        .replace('__P2PENDING__', p2txt)
+        .replace('__P2BODY__', p2body)
         .replace('__CSS__', CSS)
         .replace('__NAV__', NAV.replace('__HOME__','../'))
         .replace('__FOOTER__', FOOTER.replace('__HOME__','../'))
@@ -297,7 +317,7 @@ INDEX = """<!DOCTYPE html>
 .gimg{position:relative;aspect-ratio:460/215;background:var(--bg-2)}
 .gimg img{width:100%;height:100%;object-fit:cover;display:block}
 .gimg.noimg img{display:none}
-.vbadge{position:absolute;top:8px;left:8px;font-family:var(--mono);font-size:.55rem;letter-spacing:1px;background:rgba(255,77,141,.92);color:#fff;padding:4px 8px;border-radius:4px}
+.vbadge{position:absolute;top:8px;left:8px;font-family:var(--mono);font-size:.55rem;letter-spacing:1px;background:rgba(var(--p1-rgb),.92);color:#fff;padding:4px 8px;border-radius:4px}
 .ginfo{padding:14px 16px 16px}
 .ginfo h3{font-size:.95rem;font-weight:600;color:var(--text);line-height:1.35}
 .ginfo p{font-family:var(--mono);font-size:.66rem;letter-spacing:1px;color:var(--muted);margin-top:6px}
@@ -392,7 +412,7 @@ SOLO_INDEX = """<!DOCTYPE html>
 .gimg{position:relative;aspect-ratio:460/215;background:var(--bg-2)}
 .gimg img{width:100%;height:100%;object-fit:cover;display:block}
 .gimg.noimg img{display:none}
-.vbadge{position:absolute;top:8px;left:8px;font-family:var(--mono);font-size:.55rem;letter-spacing:1px;background:rgba(255,77,141,.92);color:#fff;padding:4px 8px;border-radius:4px}
+.vbadge{position:absolute;top:8px;left:8px;font-family:var(--mono);font-size:.55rem;letter-spacing:1px;background:rgba(var(--p1-rgb),.92);color:#fff;padding:4px 8px;border-radius:4px}
 .ginfo{padding:14px 16px 16px}
 .ginfo h3{font-size:.95rem;font-weight:600;color:var(--text);line-height:1.35}
 .ginfo p{font-family:var(--mono);font-size:.66rem;letter-spacing:1px;color:var(--muted);margin-top:6px}
@@ -442,7 +462,7 @@ slugs = [render_page(r) for r in juntos + extras]
 slugs += [render_page(r, solo=True) for r in solo]
 
 # ---------- sitemap + robots + nojekyll ----------
-urls = [f'{BASE}/', f'{BASE}/resenas/', f'{BASE}/resenas/solo.html'] + [f'{BASE}/resenas/{s}.html' for s in slugs]
+urls = [f'{BASE}/', f'{BASE}/merch.html', f'{BASE}/resenas/', f'{BASE}/resenas/solo.html'] + [f'{BASE}/resenas/{s}.html' for s in slugs]
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 sm += '\n'.join(f'  <url><loc>{u}</loc></url>' for u in urls) + '\n</urlset>'
 (ROOT/'sitemap.xml').write_text(sm, encoding='utf-8')

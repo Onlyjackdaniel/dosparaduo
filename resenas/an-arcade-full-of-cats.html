@@ -29,7 +29,7 @@
 body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;overflow-x:hidden}
 ::selection{background:var(--p1);color:#fff}
 .atmos{position:fixed;inset:0;pointer-events:none;z-index:0}
-.atmos::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(45,226,201,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(45,226,201,.04) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 75%)}
+.atmos::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(var(--p2-rgb),.04) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--p2-rgb),.04) 1px,transparent 1px);background-size:48px 48px;mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 75%)}
 nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 28px;background:rgba(11,14,26,.78);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
 .logo img{width:36px;height:36px;border-radius:50%;border:2px solid var(--p2)}
@@ -37,7 +37,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
 .nav-links{display:flex;align-items:center;gap:26px}
 .nav-links a{color:var(--muted);text-decoration:none;font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:1.5px;transition:color .2s}
 .nav-links a:hover{color:var(--p2)}
-.btn-yt{display:inline-flex;align-items:center;gap:8px;background:var(--p1);color:#fff !important;padding:9px 18px;border-radius:8px;font-weight:700;letter-spacing:1px;box-shadow:0 0 18px rgba(255,77,141,.45)}
+.btn-yt{display:inline-flex;align-items:center;gap:8px;background:var(--p1);color:#fff !important;padding:9px 18px;border-radius:8px;font-weight:700;letter-spacing:1px;box-shadow:0 0 18px rgba(var(--p1-rgb),.45)}
 main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 24px 80px}
 .crumb{font-family:var(--mono);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
 .crumb a{color:var(--p2);text-decoration:none}
@@ -71,8 +71,8 @@ footer a{color:var(--p2);text-decoration:none}
 .rbody img{max-width:100%}
 .steam-link{display:inline-block;margin-top:18px;font-family:var(--mono);font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--p2);text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:7px 13px}
 .steam-link:hover{border-color:var(--p2)}
-.pending{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:220px;text-align:center;color:var(--muted);border:1.5px dashed rgba(45,226,201,.35);border-radius:12px;padding:30px;font-weight:300}
-.pending .q{font-family:var(--display);font-size:2.2rem;color:rgba(45,226,201,.5);margin-bottom:10px}
+.pending{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:220px;text-align:center;color:var(--muted);border:1.5px dashed rgba(var(--p2-rgb),.35);border-radius:12px;padding:30px;font-weight:300}
+.pending .q{font-family:var(--display);font-size:2.2rem;color:rgba(var(--p2-rgb),.5);margin-bottom:10px}
 .video-sec{margin-top:46px;text-align:center}
 .video-sec h2{font-family:var(--display);font-size:1.3rem;text-transform:uppercase;margin-bottom:18px}
 .video-sec h2 span{color:var(--p1)}
@@ -95,6 +95,7 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="../index.html#inicio">Inicio</a>
     <a href="../index.html#videos">Videos</a>
     <a href="../resenas/">Reseñas</a>
+    <a href="../merch.html">Merch</a>
     <a href="../index.html#nosotros">Nosotros</a>
     <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
   </div>

@@ -3,23 +3,29 @@
    Única fuente de verdad visual del sitio. Cuando llegue el
    kit de marca definitivo, se ajusta ESTE archivo y todas las
    páginas se actualizan solas.
+
+   Paleta v2 (10 jun 2026): naranja calabaza + azul cerúleo
+   (colores favoritos de la marca) sobre noche azul profundo.
    ============================================================ */
 
 :root{
-  /* Fondos */
-  --bg:#0b0e1a;        /* fondo principal (noche) */
-  --bg-2:#11152a;      /* fondo secundario (franjas/footer) */
-  --panel:#161b33;     /* tarjetas y paneles */
-  --line:#252c4f;      /* bordes y líneas */
+  /* Fondos — noche azul profundo (realza naranja y cerúleo) */
+  --bg:#0a111f;        /* fondo principal */
+  --bg-2:#0f1929;      /* fondo secundario (franjas/footer) */
+  --panel:#142440;     /* tarjetas y paneles */
+  --line:#273b5e;      /* bordes y líneas */
 
   /* Identidad dual */
-  --p1:#ff4d8d;        /* Player 1 — magenta */
-  --p2:#2de2c9;        /* Player 2 — cian */
+  --p1:#ff7a29;        /* Player 1 — naranja calabaza */
+  --p1-rgb:255,122,41; /* mismo color en RGB para sombras/transparencias */
+  --p2:#3cb8ec;        /* Player 2 — azul cerúleo */
+  --p2-rgb:60,184,236;
+  --p2-ink:#062536;    /* texto oscuro sobre botones cerúleo */
   --gold:#ffd166;      /* acento arcade (monedas/estrellas) */
 
   /* Texto */
-  --text:#eef0ff;      /* texto principal */
-  --muted:#8b92b8;     /* texto secundario */
+  --text:#f0f4ff;      /* texto principal */
+  --muted:#8da0bf;     /* texto secundario */
 
   /* Tipografías */
   --display:'Bungee',cursive;        /* títulos y logo */

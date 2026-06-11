@@ -88,8 +88,8 @@
   .atmos::before{
     content:"";position:absolute;inset:0;
     background-image:
-      linear-gradient(rgba(45,226,201,.04) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(45,226,201,.04) 1px,transparent 1px);
+      linear-gradient(rgba(var(--p2-rgb),.04) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(var(--p2-rgb),.04) 1px,transparent 1px);
     background-size:48px 48px;
     mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 30%,transparent 75%);
   }
@@ -127,10 +127,10 @@
     background:var(--p1);color:#fff !important;
     padding:9px 18px;border-radius:8px;
     font-weight:700;letter-spacing:1px;
-    box-shadow:0 0 18px rgba(255,77,141,.45);
+    box-shadow:0 0 18px rgba(var(--p1-rgb),.45);
     transition:transform .15s,box-shadow .2s;
   }
-  .btn-yt:hover{transform:translateY(-2px);box-shadow:0 0 28px rgba(255,77,141,.7);color:#fff}
+  .btn-yt:hover{transform:translateY(-2px);box-shadow:0 0 28px rgba(var(--p1-rgb),.7);color:#fff}
 
   /* ── hero ───────────────────────────────────────────────── */
   header{
@@ -154,8 +154,8 @@
   }
   h1 .l1{display:block;color:var(--text)}
   h1 .l2{display:block}
-  h1 .l2 em{font-style:normal;color:var(--p1);text-shadow:0 0 30px rgba(255,77,141,.55)}
-  h1 .l2 b{color:var(--p2);text-shadow:0 0 30px rgba(45,226,201,.55)}
+  h1 .l2 em{font-style:normal;color:var(--p1);text-shadow:0 0 30px rgba(var(--p1-rgb),.55)}
+  h1 .l2 b{color:var(--p2);text-shadow:0 0 30px rgba(var(--p2-rgb),.55)}
   .tagline{
     margin-top:22px;max-width:560px;color:var(--muted);
     font-size:clamp(1rem,2.2vw,1.2rem);font-weight:300;
@@ -164,12 +164,12 @@
   .hero-cta{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
   .btn-start{
     font-family:var(--mono);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;
-    background:var(--p2);color:#06251f;text-decoration:none;font-weight:700;
+    background:var(--p2);color:var(--p2-ink);text-decoration:none;font-weight:700;
     padding:15px 30px;border-radius:8px;
-    box-shadow:0 0 22px rgba(45,226,201,.4);
+    box-shadow:0 0 22px rgba(var(--p2-rgb),.4);
     transition:transform .15s,box-shadow .2s;
   }
-  .btn-start:hover{transform:translateY(-2px);box-shadow:0 0 34px rgba(45,226,201,.65)}
+  .btn-start:hover{transform:translateY(-2px);box-shadow:0 0 34px rgba(var(--p2-rgb),.65)}
   .btn-ghost{
     font-family:var(--mono);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;
     color:var(--text);text-decoration:none;
@@ -198,8 +198,8 @@
     border:1.5px dashed var(--line);
     position:relative;overflow:hidden;
   }
-  .player.p1 .frame{border-color:rgba(255,77,141,.5);color:rgba(255,77,141,.55)}
-  .player.p2 .frame{border-color:rgba(45,226,201,.5);color:rgba(45,226,201,.55)}
+  .player.p1 .frame{border-color:rgba(var(--p1-rgb),.5);color:rgba(var(--p1-rgb),.55)}
+  .player.p2 .frame{border-color:rgba(var(--p2-rgb),.5);color:rgba(var(--p2-rgb),.55)}
   .player .frame::after{
     content:"PRÓXIMAMENTE";
     position:absolute;bottom:10px;
@@ -211,7 +211,7 @@
     padding:4px 10px;border-radius:4px;white-space:nowrap;
   }
   .player.p1 .badge{background:var(--p1);color:#fff}
-  .player.p2 .badge{background:var(--p2);color:#06251f}
+  .player.p2 .badge{background:var(--p2);color:var(--p2-ink)}
   .vs{
     font-family:var(--display);font-size:clamp(1.2rem,3vw,2rem);
     color:var(--gold);align-self:center;
@@ -259,9 +259,9 @@
   }
   .vthumb .play span{
     width:64px;height:64px;border-radius:50%;
-    background:rgba(255,77,141,.92);
+    background:rgba(var(--p1-rgb),.92);
     display:flex;align-items:center;justify-content:center;
-    box-shadow:0 0 30px rgba(255,77,141,.6);
+    box-shadow:0 0 30px rgba(var(--p1-rgb),.6);
     transition:transform .2s;
   }
   .vthumb:hover .play span{transform:scale(1.12)}
@@ -328,7 +328,7 @@
 
   .duo-note{
     grid-column:1/-1;
-    background:linear-gradient(120deg,rgba(255,77,141,.09),rgba(45,226,201,.09));
+    background:linear-gradient(120deg,rgba(var(--p1-rgb),.09),rgba(var(--p2-rgb),.09));
     border:1px solid var(--line);border-radius:16px;
     padding:38px 34px;text-align:center;
   }
@@ -378,6 +378,7 @@
     <a href="#inicio">Inicio</a>
     <a href="#videos">Videos</a>
     <a href="resenas/">Reseñas</a>
+    <a href="merch.html">Merch</a>
     <a href="#nosotros">Nosotros</a>
     <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
   </div>
