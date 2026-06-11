@@ -10,6 +10,16 @@ OUT = ROOT / 'resenas'
 OUT.mkdir(exist_ok=True)
 BASE = 'https://onlyjackdaniel.github.io/dosparaduo'
 
+GTAG = """<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NXJ8PNJZFP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NXJ8PNJZFP');
+</script>"""
+
 SELECCION = ["Radical Rabbit Stew","Split Fiction","Borderlands 2","Blanc","We Were Here Too","We Were Here Expeditions: The FriendShip","SUPER CRAZY RHYTHM CASTLE","Stumble Guys","Screencheat","Sagrada","Pummel Party","Move or Die","Portal 2","Overcooked! All You Can Eat","METAL SLUG 3","METAL SLUG","Keep Talking and Nobody Explodes","Exploding Kittens 2","Disney Epic Mickey 2: The Power of Two","Biped","Bloons TD 6","It Takes Two","Cuphead","The Typing of The Dead: Overkill","VVVVVV","Resident Evil Requiem","The Stanley Parable: Ultra Deluxe","A Game About Digging A Hole","Bongo Cat","FUCK HITLER","Tiny Pasture","A Park Full of Cats","A Shelter Full of Cats","The Room Two","Resident Evil 3","Resident Evil 2","Ori and the Blind Forest: Definitive Edition","The Last Campfire","Ghost of Tsushima DIRECTOR'S CUT","Dofamine","Spirit City: Lofi Sessions","God of War Ragnarok","Florence","A Castle Full of Cats","A Building Full of Cats","Cats in Time","Bendy and the Dark Revival","Resident Evil Village","Sekiro: Shadows Die Twice - GOTY Edition","God of War","Marvel's Spider-Man Remastered","Resident Evil 4"]
 
 EXTRAS = ["OBS Studio","3DMark","Banana","My Name is Mayo","My Name is Mayo 2","My Name is Mayo 3","Achievement Clicker 2018","Cookie Clicker","Duck Simulator 2","A Story About Farting"]
@@ -222,6 +232,7 @@ def render_page(r, solo=False):
     vid = VIDEOS.get(norm(nombre))
     video_html = VIDEO_BLOCK.replace('__VID__', vid).replace('__NOMBRE_ESC__', htmlmod.escape(nombre)) if vid else ''
     page = (PAGE
+        .replace('<head>', '<head>\n' + GTAG, 1)
         .replace('__BREADCRUMB__', breadcrumb)
         .replace('__P2PENDING__', p2txt)
         .replace('__CSS__', CSS)
@@ -343,6 +354,7 @@ document.querySelectorAll('.fbtn').forEach(b=>b.onclick=()=>{
 </html>"""
 
 index_html = (INDEX
+    .replace('<head>', '<head>\n' + GTAG, 1)
     .replace('__CSS__', CSS)
     .replace('__NAV__', NAV.replace('__HOME__','../'))
     .replace('__FOOTER__', FOOTER.replace('__HOME__','../'))
@@ -417,6 +429,7 @@ q.addEventListener('input',()=>{
 
 cards_solo = '\n'.join(card(r) for r in solo)
 solo_html = (SOLO_INDEX
+    .replace('<head>', '<head>\n' + GTAG, 1)
     .replace('__CSS__', CSS)
     .replace('__NAV__', NAV.replace('__HOME__','../'))
     .replace('__FOOTER__', FOOTER.replace('__HOME__','../'))
