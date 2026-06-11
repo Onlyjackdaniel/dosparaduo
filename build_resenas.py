@@ -306,6 +306,9 @@ INDEX = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <style>__CSS__
+.guide-band{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(255,209,102,.4);border-radius:10px;padding:14px 18px;margin-bottom:22px;transition:border-color .2s,background .2s}
+.guide-band:hover{border-color:var(--gold);background:rgba(255,209,102,.06)}
+.guide-band b{color:var(--text)}
 .tools{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
 #buscar{flex:1;min-width:220px;padding:12px 16px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);font-family:var(--body);font-size:.95rem}
 #buscar:focus{outline:none;border-color:var(--p2)}
@@ -335,6 +338,7 @@ __NAV__
   <p class="crumb"><a href="../index.html">← Inicio</a> / Reseñas</p>
   <h1 class="sec">Reseñas</h1>
   <p class="sub">Los <b style="color:var(--text)">__NJ__ juegos que hemos jugado juntos</b>, reseñados de verdad en Steam — con la reseña de cada quien y el video del canal cuando lo grabamos. Player 2 está afilando su teclado: sus reseñas vienen en camino.</p>
+  <a class="guide-band" href="../listas/mejores-juegos-cooperativos-para-parejas.html">📜 <b>NUEVA GUÍA:</b> Los mejores juegos cooperativos para parejas — nuestro top 10 probado en pareja ▸</a>
   <div class="tools">
     <input id="buscar" type="text" placeholder="Buscar juego...">
     <button class="fbtn on" data-f="todos" type="button">Todos</button>
@@ -462,7 +466,7 @@ slugs = [render_page(r) for r in juntos + extras]
 slugs += [render_page(r, solo=True) for r in solo]
 
 # ---------- sitemap + robots + nojekyll ----------
-urls = [f'{BASE}/', f'{BASE}/nosotros.html', f'{BASE}/merch.html', f'{BASE}/resenas/', f'{BASE}/resenas/solo.html'] + [f'{BASE}/resenas/{s}.html' for s in slugs]
+urls = [f'{BASE}/', f'{BASE}/nosotros.html', f'{BASE}/merch.html', f'{BASE}/listas/mejores-juegos-cooperativos-para-parejas.html', f'{BASE}/resenas/', f'{BASE}/resenas/solo.html'] + [f'{BASE}/resenas/{s}.html' for s in slugs]
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 sm += '\n'.join(f'  <url><loc>{u}</loc></url>' for u in urls) + '\n</urlset>'
 (ROOT/'sitemap.xml').write_text(sm, encoding='utf-8')
