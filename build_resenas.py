@@ -107,6 +107,7 @@ NAV = """<nav>
     <img src="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s240-c-k-c0x00ffffff-no-rj" alt="Logo Dos para Duo">
     <span>Dos <em style="color:var(--gold);font-style:normal">para</em> <b style="color:var(--p2)">Duo</b></span>
   </a>
+  <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
   <div class="nav-links">
     <a href="__HOME__index.html#inicio">Inicio</a>
     <a href="__HOME__index.html#videos">Videos</a>
@@ -141,6 +142,8 @@ PAGE = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/menu.css">
+<script src="../assets/menu.js" defer></script>
 <style>__CSS__
 .game-head{text-align:center;margin-bottom:46px}
 .game-head img{max-width:min(460px,100%);border-radius:14px;border:1px solid var(--line);box-shadow:0 18px 50px rgba(0,0,0,.5)}
@@ -306,6 +309,8 @@ INDEX = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/menu.css">
+<script src="../assets/menu.js" defer></script>
 <style>__CSS__
 .guide-band{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(255,209,102,.4);border-radius:10px;padding:14px 18px;margin-bottom:22px;transition:border-color .2s,background .2s}
 .guide-band:hover{border-color:var(--gold);background:rgba(255,209,102,.06)}
@@ -405,6 +410,8 @@ SOLO_INDEX = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
+<link rel="stylesheet" href="../assets/menu.css">
+<script src="../assets/menu.js" defer></script>
 <style>__CSS__
 .tools{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
 #buscar{flex:1;min-width:220px;padding:12px 16px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);font-family:var(--body);font-size:.95rem}

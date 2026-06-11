@@ -1,0 +1,18 @@
+/* Menú hamburguesa móvil — compartido por todas las páginas */
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--text);font-size:1.15rem;line-height:1;border-radius:8px;padding:8px 13px;cursor:pointer}
+.burger:hover{border-color:var(--p2);color:var(--p2)}
+@media(max-width:760px){
+  .burger{display:block}
+  nav .nav-links{
+    display:none;
+    position:fixed;top:65px;left:0;right:0;
+    flex-direction:column;align-items:stretch;gap:0;
+    background:rgba(10,17,31,.97);backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+    padding:8px 0 18px;
+  }
+  nav .nav-links.open{display:flex}
+  nav .nav-links a{display:block !important;padding:14px 28px;text-align:left;border-bottom:1px solid rgba(39,59,94,.35)}
+  nav .nav-links a:last-of-type{border-bottom:none}
+  nav .nav-links .btn-yt{display:flex !important;margin:14px 24px 0;justify-content:center;text-align:center}
+}
