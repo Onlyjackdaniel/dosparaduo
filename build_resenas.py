@@ -10,7 +10,18 @@ OUT = ROOT / 'resenas'
 OUT.mkdir(exist_ok=True)
 BASE = 'https://onlyjackdaniel.github.io/dosparaduo'
 
-GTAG = """<!-- Google tag (gtag.js) -->
+CSP = ('<meta http-equiv="Content-Security-Policy" content="default-src \'self\'; '
+       "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; "
+       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+       "font-src 'self' https://fonts.gstatic.com; "
+       "img-src 'self' data: https:; "
+       "frame-src https://www.youtube-nocookie.com https://www.youtube.com; "
+       "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; "
+       "form-action 'self' https://formsubmit.co; "
+       'base-uri \'self\'; object-src \'none\'">')
+
+GTAG = CSP + """
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NXJ8PNJZFP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -49,6 +60,69 @@ def excerpt(h, n=155):
     t = re.sub(r'<[^>]+>',' ', h)
     t = htmlmod.unescape(re.sub(r'\s+',' ', t)).strip()
     return (t[:n].rsplit(' ',1)[0] + '…') if len(t) > n else t
+
+# ---------- saneador de HTML (anti-XSS) ----------
+# El cuerpo de las reseñas viene de Steam (HTML ya renderizado). Aunque la fuente
+# son reseñas propias, NUNCA se inyecta crudo: se pasa por una allowlist de tags
+# y atributos. Sin dependencias externas — solo la stdlib.
+from html.parser import HTMLParser
+
+_ALLOWED_TAGS = {
+    'b','strong','i','em','u','s','strike','del','br','p','hr',
+    'ul','ol','li','blockquote','pre','code','h1','h2','h3','h4',
+    'span','div','a','img','table','thead','tbody','tr','td','th',
+}
+_ALLOWED_ATTRS = {
+    'a':   {'href','title'},
+    'img': {'src','alt','title'},
+    'span':{'class'}, 'div':{'class'},
+    'td':  {'colspan','rowspan'}, 'th':{'colspan','rowspan'},
+}
+_VOID = {'br','hr','img'}
+_SAFE_URL = re.compile(r'^(https?:|/|\.\.?/|#|mailto:)', re.I)
+
+class _Sanitizer(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.out = []
+    def _clean_attrs(self, tag, attrs):
+        allowed = _ALLOWED_ATTRS.get(tag, set())
+        res = []
+        for k, v in attrs:
+            k = (k or '').lower()
+            if k not in allowed:
+                continue
+            v = v or ''
+            # bloquea javascript:, data:text/html, vbscript:, etc.
+            if k in ('href','src') and not _SAFE_URL.match(v.strip()):
+                continue
+            res.append((k, v))
+        return res
+    def handle_starttag(self, tag, attrs):
+        tag = tag.lower()
+        if tag not in _ALLOWED_TAGS:
+            return
+        a = self._clean_attrs(tag, attrs)
+        if tag == 'a':
+            a += [('rel','nofollow noopener noreferrer'), ('target','_blank')]
+        attr_str = ''.join(f' {k}="{htmlmod.escape(v, quote=True)}"' for k, v in a)
+        self.out.append(f'<{tag}{attr_str}>')
+    def handle_startendtag(self, tag, attrs):
+        self.handle_starttag(tag, attrs)
+    def handle_endtag(self, tag):
+        tag = tag.lower()
+        if tag in _ALLOWED_TAGS and tag not in _VOID:
+            self.out.append(f'</{tag}>')
+    def handle_data(self, data):
+        self.out.append(htmlmod.escape(data, quote=False))
+
+def sanitize_html(s):
+    if not s:
+        return ''
+    p = _Sanitizer()
+    p.feed(s)
+    p.close()
+    return ''.join(p.out)
 
 reviews = json.loads((ROOT/'reviews_jack_raw.json').read_text(encoding='utf-8'))
 idx = {norm(r['nombre']): r for r in reviews}
@@ -250,7 +324,7 @@ def render_page(r, solo=False):
         if a2.get('horas'): chips.append(f"{a2['horas']} hrs jugadas")
         if a2.get('fecha'): chips.append(a2['fecha'])
         chips_html = ''.join(f'<span class="chip{" rec" if i==0 and a2.get("voto","up")=="up" else (" norec" if i==0 else "")}">{c}</span>' for i,c in enumerate(chips))
-        p2body = f'<div class="meta-row" style="justify-content:flex-start;margin:0 0 16px">{chips_html}</div><div class="rbody">{a2["html"]}</div>'
+        p2body = f'<div class="meta-row" style="justify-content:flex-start;margin:0 0 16px">{chips_html}</div><div class="rbody">{sanitize_html(a2["html"])}</div>'
     else:
         p2body = f'<div class="pending"><span class="q">?</span>{p2txt}</div>'
     vid = VIDEOS.get(norm(nombre))
@@ -272,7 +346,7 @@ def render_page(r, solo=False):
         .replace('__RECTXT__', '👍 Recomendado' if rec else '👎 No recomendado')
         .replace('__HORAS__', r['horas'] or '?')
         .replace('__FECHA__', fecha_es(r['fecha']))
-        .replace('__CONTENIDO__', r['html'])
+        .replace('__CONTENIDO__', sanitize_html(r['html']))
         .replace('__STEAMURL__', f"https://steamcommunity.com/id/Onlyjackdaniel/recommended/{app}/")
         .replace('__VIDEO__', video_html))
     (OUT / f'{s}.html').write_text(page, encoding='utf-8')

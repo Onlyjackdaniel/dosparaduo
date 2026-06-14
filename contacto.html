@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.youtube-nocookie.com https://www.youtube.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'">
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NXJ8PNJZFP"></script>
 <script>
@@ -89,9 +90,12 @@ footer a{color:var(--p1);text-decoration:none}
 
   <div class="exito" id="exito">✔ <b>¡Mensaje recibido!</b> Gracias por escribirnos — te contestamos pronto.</div>
 
-  <form action="https://formsubmit.co/gear.jackdaniel@gmail.com" method="POST">
+  <!-- ANTI-SPAM / PRIVACIDAD: endpoint con hash de FormSubmit (alias del correo de contacto)
+       para NO exponer ningún email en el código fuente. El captcha viene activo por defecto. -->
+  <form action="https://formsubmit.co/919c86b1cda696b44d3a367040c0d62b" method="POST">
     <input type="hidden" name="_subject" value="📨 Mensaje desde dosparaduo (sitio web)">
     <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="true">
     <input type="hidden" name="_next" value="https://onlyjackdaniel.github.io/dosparaduo/contacto.html?enviado=1">
     <input type="text" name="_honey" style="display:none">
 

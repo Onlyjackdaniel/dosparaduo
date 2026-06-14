@@ -10,7 +10,18 @@ OUT = ROOT / 'listas'
 OUT.mkdir(exist_ok=True)
 BASE = 'https://onlyjackdaniel.github.io/dosparaduo'
 
-GTAG = """<!-- Google tag (gtag.js) -->
+CSP = ('<meta http-equiv="Content-Security-Policy" content="default-src \'self\'; '
+       "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; "
+       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+       "font-src 'self' https://fonts.gstatic.com; "
+       "img-src 'self' data: https:; "
+       "frame-src https://www.youtube-nocookie.com https://www.youtube.com; "
+       "connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; "
+       "form-action 'self' https://formsubmit.co; "
+       'base-uri \'self\'; object-src \'none\'">')
+
+GTAG = CSP + """
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NXJ8PNJZFP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
