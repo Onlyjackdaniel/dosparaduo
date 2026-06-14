@@ -76,7 +76,7 @@ def main():
         t = hm.escape(v['titulo'])
         return f'''    <article class="vcard reveal">
       <div class="vthumb" data-video="{v['id']}">
-        <img src="https://i.ytimg.com/vi/{v['id']}/maxresdefault.jpg" alt="{t}" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/{v['id']}/hqdefault.jpg'">
+        <img src="https://i.ytimg.com/vi/{v['id']}/maxresdefault.jpg" width="1280" height="720" alt="{t}" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/{v['id']}/hqdefault.jpg'">
         <div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
       </div>
       <div class="vinfo">
@@ -88,7 +88,7 @@ def main():
     def card_short(v):
         t = hm.escape(v['titulo'])
         return f'''    <a class="scard reveal" href="https://www.youtube.com/shorts/{v['id']}" target="_blank" rel="noopener">
-      <img src="https://i.ytimg.com/vi/{v['id']}/oar2.jpg" alt="{t}" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/{v['id']}/hqdefault.jpg'">
+      <img src="https://i.ytimg.com/vi/{v['id']}/oar2.jpg" width="720" height="1280" alt="{t}" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/{v['id']}/hqdefault.jpg'">
       <span class="s-ico">SHORT</span>
       <p>{t}</p>
     </a>'''

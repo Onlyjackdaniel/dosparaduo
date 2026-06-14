@@ -21,15 +21,17 @@ CSP = ('<meta http-equiv="Content-Security-Policy" content="default-src \'self\'
        'base-uri \'self\'; object-src \'none\'">')
 
 GTAG = CSP + """
-<!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) + Consent Mode v2 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NXJ8PNJZFP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied','wait_for_update':500});
   gtag('js', new Date());
-
-  gtag('config', 'G-NXJ8PNJZFP');
-</script>"""
+  gtag('config','G-NXJ8PNJZFP',{'anonymize_ip':true});
+</script>
+<script src="../assets/consent.js" defer></script>
+<script src="../assets/analytics-events.js" defer></script>"""
 
 def norm(s):
     s = s.replace('™','').replace('®','').replace('’',"'")
@@ -89,7 +91,7 @@ for i, (nombre, tag, blurb) in enumerate(RANKING, 1):
     items_html.append(f'''    <article class="rank-card reveal" id="{s}">
       <div class="rank-num">{i:02d}</div>
       <div class="rank-img">
-        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{app}/header.jpg" alt="Carátula de {hm.escape(r['nombre'])}" loading="lazy" onerror="this.style.display='none'">
+        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{app}/header.jpg" width="460" height="215" alt="Carátula de {hm.escape(r['nombre'])}" loading="lazy" onerror="this.style.display='none'">
       </div>
       <div class="rank-body">
         <span class="rank-tag">{hm.escape(tag)}</span>
@@ -141,7 +143,13 @@ PAGE = f'''<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Los mejores juegos cooperativos para parejas (2026) — probados en pareja | Dos para Duo</title>
 <meta name="description" content="10 juegos co-op para jugar en pareja, probados por una pareja real: It Takes Two, Split Fiction, Overcooked, Portal 2 y más. Con horas jugadas reales, para quién es cada uno y qué esperar.">
-<link rel="icon" href="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s48-c-k-c0x00ffffff-no-rj">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/icon-512.png">
+<link rel="apple-touch-icon" href="../assets/icon-512.png">
+<link rel="manifest" href="../site.webmanifest">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
+<link rel="preconnect" href="https://i.ytimg.com" crossorigin>
 <meta property="og:title" content="Los mejores juegos cooperativos para parejas — probados en pareja">
 <meta property="og:description" content="Ranking honesto de una pareja gamer real: del imprescindible It Takes Two al sufrimiento compartido de Cuphead.">
 <meta property="og:type" content="article">
@@ -157,6 +165,7 @@ PAGE = f'''<!DOCTYPE html>
 <link rel="stylesheet" href="../assets/menu.css">
 <script src="../assets/menu.js" defer></script>
 <style>
+@media (prefers-reduced-motion: reduce){{*,*::before,*::after{{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}}}
 *{{margin:0;padding:0;box-sizing:border-box}}
 html{{scroll-behavior:smooth}}
 body{{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;overflow-x:hidden}}
@@ -221,7 +230,7 @@ footer a{{color:var(--p1);text-decoration:none}}
 <div class="atmos"></div>
 <nav>
   <a class="logo" href="../index.html">
-    <img src="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s240-c-k-c0x00ffffff-no-rj" alt="Logo Dos para Duo">
+    <img src="../assets/icon-512.png" width="36" height="36" alt="Logo Dos para Duo">
     <span>Dos <em style="color:var(--gold);font-style:normal">para</em> <b style="color:var(--p2)">Duo</b></span>
   </a>
   <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>

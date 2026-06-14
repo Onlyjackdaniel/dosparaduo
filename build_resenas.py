@@ -21,15 +21,17 @@ CSP = ('<meta http-equiv="Content-Security-Policy" content="default-src \'self\'
        'base-uri \'self\'; object-src \'none\'">')
 
 GTAG = CSP + """
-<!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) + Consent Mode v2 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NXJ8PNJZFP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied','wait_for_update':500});
   gtag('js', new Date());
-
-  gtag('config', 'G-NXJ8PNJZFP');
-</script>"""
+  gtag('config','G-NXJ8PNJZFP',{'anonymize_ip':true});
+</script>
+<script src="../assets/consent.js" defer></script>
+<script src="../assets/analytics-events.js" defer></script>"""
 
 SELECCION = ["Radical Rabbit Stew","Split Fiction","Borderlands 2","Blanc","We Were Here Too","We Were Here Expeditions: The FriendShip","SUPER CRAZY RHYTHM CASTLE","Stumble Guys","Screencheat","Sagrada","Pummel Party","Move or Die","Portal 2","Overcooked! All You Can Eat","METAL SLUG 3","METAL SLUG","Keep Talking and Nobody Explodes","Exploding Kittens 2","Disney Epic Mickey 2: The Power of Two","Biped","Bloons TD 6","It Takes Two","Cuphead","The Typing of The Dead: Overkill","VVVVVV","Resident Evil Requiem","The Stanley Parable: Ultra Deluxe","A Game About Digging A Hole","Bongo Cat","FUCK HITLER","Tiny Pasture","A Park Full of Cats","A Shelter Full of Cats","The Room Two","Resident Evil 3","Resident Evil 2","Ori and the Blind Forest: Definitive Edition","The Last Campfire","Ghost of Tsushima DIRECTOR'S CUT","Dofamine","Spirit City: Lofi Sessions","God of War Ragnarok","Florence","A Castle Full of Cats","A Building Full of Cats","Cats in Time","Bendy and the Dark Revival","Resident Evil Village","Sekiro: Shadows Die Twice - GOTY Edition","God of War","Marvel's Spider-Man Remastered","Resident Evil 4"]
 
@@ -151,6 +153,7 @@ if _anahi_path.exists():
 print(f'Reseñas de Anahí cargadas: {len(ANAHI)}')
 
 CSS = """
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;overflow-x:hidden}
 ::selection{background:var(--p1);color:#fff}
@@ -178,7 +181,7 @@ footer a{color:var(--p2);text-decoration:none}
 
 NAV = """<nav>
   <a class="logo" href="__HOME__index.html">
-    <img src="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s240-c-k-c0x00ffffff-no-rj" alt="Logo Dos para Duo">
+    <img src="../assets/icon-512.png" width="36" height="36" alt="Logo Dos para Duo">
     <span>Dos <em style="color:var(--gold);font-style:normal">para</em> <b style="color:var(--p2)">Duo</b></span>
   </a>
   <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
@@ -205,7 +208,13 @@ PAGE = """<!DOCTYPE html>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>__NOMBRE__ — Reseña en español | Dos para Duo</title>
 <meta name="description" content="__DESC__">
-<link rel="icon" href="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s48-c-k-c0x00ffffff-no-rj">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/icon-512.png">
+<link rel="apple-touch-icon" href="../assets/icon-512.png">
+<link rel="manifest" href="../site.webmanifest">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
+<link rel="preconnect" href="https://i.ytimg.com" crossorigin>
 <meta property="og:title" content="Reseña: __NOMBRE__ — Dos para Duo">
 <meta property="og:description" content="__DESC__">
 <meta property="og:type" content="article">
@@ -261,7 +270,7 @@ __NAV__
   <p class="crumb"><a href="./">← Reseñas</a> / __NOMBRE_ESC__</p>
   <div class="game-head">
     <h1 class="sec">__NOMBRE_ESC__</h1>
-    <img src="__CAPSULE__" alt="Carátula de __NOMBRE_ESC__" onerror="this.style.display='none'">
+    <img src="__CAPSULE__" width="460" height="215" alt="Carátula de __NOMBRE_ESC__" onerror="this.style.display='none'">
     <div class="meta-row">
       <span class="chip __RECCLASS__">__RECTXT__</span>
       <span class="chip">__HORAS__ hrs jugadas</span>
@@ -360,7 +369,7 @@ def card(r, mini=False):
     badge = '<span class="vbadge">▶ EN EL CANAL</span>' if VIDEOS.get(norm(nombre)) else ''
     cls = 'gcard mini' if mini else 'gcard'
     return f"""<a class="{cls}" href="{s}.html" data-nombre="{htmlmod.escape(norm(nombre))}"{vid}>
-      <div class="gimg"><img src="{cap}" alt="Carátula de {htmlmod.escape(nombre)}" loading="lazy" onerror="this.parentElement.classList.add('noimg')">{badge}</div>
+      <div class="gimg"><img src="{cap}" width="460" height="215" alt="Carátula de {htmlmod.escape(nombre)}" loading="lazy" onerror="this.parentElement.classList.add('noimg')">{badge}</div>
       <div class="ginfo"><h3>{htmlmod.escape(nombre)}</h3>
       <p>{'👍' if r['voto']=='up' else '👎'} · {r['horas']} hrs · {fecha_es(r['fecha'])}</p></div>
     </a>"""
@@ -374,7 +383,13 @@ INDEX = """<!DOCTYPE html>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reseñas de juegos en español — Dos para Duo</title>
 <meta name="description" content="__NJ__ juegos que jugamos juntos, reseñados de verdad: co-op, terror, plataformas y joyitas raras. Las reseñas de Steam del dúo, con video del canal cuando existe.">
-<link rel="icon" href="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s48-c-k-c0x00ffffff-no-rj">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/icon-512.png">
+<link rel="apple-touch-icon" href="../assets/icon-512.png">
+<link rel="manifest" href="../site.webmanifest">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
+<link rel="preconnect" href="https://i.ytimg.com" crossorigin>
 <meta property="og:title" content="Reseñas — Dos para Duo">
 <meta property="og:description" content="Los juegos que jugamos juntos, reseñados de verdad.">
 <meta property="og:type" content="website">
@@ -475,7 +490,13 @@ SOLO_INDEX = """<!DOCTYPE html>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Solo runs — reseñas de Player 1 | Dos para Duo</title>
 <meta name="description" content="__NS__ juegos que Player 1 jugó en solitario, reseñados en Steam: souls, terror, indies y más. La otra mitad de la biblioteca de Dos para Duo.">
-<link rel="icon" href="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s48-c-k-c0x00ffffff-no-rj">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/icon-512.png">
+<link rel="apple-touch-icon" href="../assets/icon-512.png">
+<link rel="manifest" href="../site.webmanifest">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
+<link rel="preconnect" href="https://i.ytimg.com" crossorigin>
 <meta property="og:title" content="Solo runs — Dos para Duo">
 <meta property="og:description" content="Los juegos que Player 1 jugó en solitario, reseñados de verdad.">
 <meta property="og:type" content="website">

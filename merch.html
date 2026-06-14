@@ -2,20 +2,27 @@
 <html lang="es">
 <head>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.youtube-nocookie.com https://www.youtube.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'">
-<!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) + Consent Mode v2 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NXJ8PNJZFP"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  gtag('consent','default',{'ad_storage':'denied','ad_user_data':'denied','ad_personalization':'denied','analytics_storage':'denied','wait_for_update':500});
   gtag('js', new Date());
-
-  gtag('config', 'G-NXJ8PNJZFP');
+  gtag('config','G-NXJ8PNJZFP',{'anonymize_ip':true});
 </script>
+<script src="assets/consent.js" defer></script>
+<script src="assets/analytics-events.js" defer></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Merch — Nivel bloqueado | Dos para Duo</title>
 <meta name="description" content="El merch oficial de Dos para Duo está en desarrollo. Playeras, stickers y cosas que gritarán Player 1 y Player 2. Suscríbete al canal para enterarte cuando se desbloquee.">
-<link rel="icon" href="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s48-c-k-c0x00ffffff-no-rj">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/icon-512.png">
+<link rel="apple-touch-icon" href="assets/icon-512.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
 <meta property="og:title" content="Merch — Dos para Duo">
 <meta property="og:description" content="Nivel bloqueado: el merch del dúo está en desarrollo.">
 <meta property="og:type" content="website">
@@ -116,7 +123,7 @@ footer a{color:var(--p2);text-decoration:none}
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
-  <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="resenas/">Reseñas</a> · <a href="apoyo.html">Apóyanos</a> · <a href="contacto.html">Contacto</a></p>
+  <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="resenas/">Reseñas</a> · <a href="apoyo.html">Apóyanos</a> · <a href="contacto.html">Contacto</a> · <a href="privacidad.html">Privacidad</a></p>
 </footer>
 </body>
 </html>

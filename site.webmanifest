@@ -1,0 +1,14 @@
+{
+  "name": "Dos para Duo",
+  "short_name": "Dos para Duo",
+  "description": "Canal de gaming cooperativo en pareja — reseñas y videos.",
+  "start_url": "/dosparaduo/",
+  "scope": "/dosparaduo/",
+  "display": "standalone",
+  "background_color": "#0a111f",
+  "theme_color": "#0b0e1a",
+  "icons": [
+    { "src": "/dosparaduo/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/dosparaduo/assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
