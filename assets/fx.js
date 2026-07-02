@@ -87,45 +87,6 @@ document.querySelectorAll('[data-scramble]').forEach(function(el){
   if(!el.closest('[data-reveal], .reveal')) scrambleOne(el);
 });
 
-/* ── trail del cursor (canvas 3KB, adaptado del pack Animmaster ME/14) ──
-   Solo desktop con hover real y sin reduced-motion. Colores de marca. */
-if(HOVER && !RM){
-  var tcv = document.createElement('canvas');
-  tcv.style.cssText = 'position:fixed;inset:0;z-index:45;pointer-events:none;mix-blend-mode:screen';
-  tcv.setAttribute('aria-hidden','true');
-  document.body.appendChild(tcv);
-  var tctx = tcv.getContext('2d');
-  var tp = {x: innerWidth/2, y: innerHeight/2}, movido = false;
-  var N = 34, TRAIL = [];
-  for(var ti = 0; ti < N; ti++) TRAIL.push({x: tp.x, y: tp.y, dx: 0, dy: 0});
-  function tsize(){ tcv.width = innerWidth; tcv.height = innerHeight; }
-  tsize(); addEventListener('resize', tsize);
-  addEventListener('pointermove', function(e){ movido = true; tp.x = e.clientX; tp.y = e.clientY; }, {passive:true});
-  (function tframe(){
-    requestAnimationFrame(tframe);
-    if(!movido) return;
-    tctx.clearRect(0, 0, tcv.width, tcv.height);
-    TRAIL.forEach(function(p, i){
-      var prev = i === 0 ? tp : TRAIL[i - 1];
-      var spring = i === 0 ? .28 : .42;
-      p.dx += (prev.x - p.x) * spring; p.dy += (prev.y - p.y) * spring;
-      p.dx *= .48; p.dy *= .48;
-      p.x += p.dx; p.y += p.dy;
-    });
-    var g = tctx.createLinearGradient(TRAIL[0].x, TRAIL[0].y, TRAIL[N-1].x, TRAIL[N-1].y);
-    g.addColorStop(0, 'rgba(255,122,41,.55)');   /* naranja P2 en la punta */
-    g.addColorStop(1, 'rgba(60,184,236,.05)');   /* cerúleo P1 desvanecido */
-    tctx.strokeStyle = g; tctx.lineCap = 'round';
-    tctx.beginPath(); tctx.moveTo(TRAIL[0].x, TRAIL[0].y);
-    for(var j = 1; j < N - 1; j++){
-      var xc = .5 * (TRAIL[j].x + TRAIL[j+1].x), yc = .5 * (TRAIL[j].y + TRAIL[j+1].y);
-      tctx.lineWidth = .18 * (N - j);
-      tctx.quadraticCurveTo(TRAIL[j].x, TRAIL[j].y, xc, yc);
-      tctx.stroke();
-    }
-  })();
-}
-
 /* ── spotlight + tilt: delegacion global de pointermove ── */
 if(HOVER && !RM){
   document.addEventListener('pointermove', function(ev){
