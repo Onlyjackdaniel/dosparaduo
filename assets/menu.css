@@ -3,9 +3,13 @@
    Adaptado del pack Animmaster (Navigation Menus/21) a la marca.
    ============================================================ */
 
-/* disparador (el viejo burger, ahora control) */
+/* nav minimalista: logo + Suscribete + boton del wheel (el wheel ES el menu) */
+nav{justify-content:flex-start;gap:14px}
+nav .logo{margin-right:auto}
+nav .nav-links a:not(.btn-yt){display:none !important}
 .burger{
-  display:block;background:none;border:1px solid var(--line);color:var(--muted);
+  order:3;display:flex;align-items:center;justify-content:center;
+  background:none;border:1px solid var(--line);color:var(--muted);
   line-height:1;border-radius:10px;padding:9px 12px;cursor:pointer;
   transition:color .2s,border-color .2s,transform .2s;
 }
@@ -95,9 +99,8 @@ body.rm-lock{overflow:hidden}
 @keyframes rmIn{0%{opacity:0}25%{opacity:1}45%{opacity:0}70%{opacity:1}85%{opacity:.3}100%{opacity:1}}
 @keyframes rmOut{0%{opacity:1}25%{opacity:0}45%{opacity:.8}70%{opacity:0}85%{opacity:.4}100%{opacity:0}}
 
-/* en movil los links inline del nav siguen ocultos: el wheel ES el menu */
 @media(max-width:760px){
-  nav .nav-links{display:none}
+  nav .nav-links .btn-yt{display:none !important} /* en movil solo logo + wheel */
   .rm-seg-c .rm-sico{width:22px;height:22px}
   .rm-seg-c b{font-size:.56rem;letter-spacing:1px}
   .rm-joystick{width:72px;height:72px}
