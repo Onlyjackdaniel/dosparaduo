@@ -189,6 +189,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
 main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 24px 80px}
 .crumb{font-family:var(--mono);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
 .crumb a{color:var(--p2);text-decoration:none}
+.ascii-wrap{position:relative;margin:10px 0 8px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 h1.sec{font-family:var(--display);font-size:clamp(1.8rem,5vw,3rem);text-transform:uppercase;margin:10px 0 8px}
 .sub{color:var(--muted);max-width:640px;font-weight:300;margin-bottom:40px}
 footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:40px 24px;text-align:center;background:var(--bg-2)}
@@ -253,6 +255,7 @@ PAGE = """<!DOCTYPE html>
 <link rel="stylesheet" href="../assets/fx.css?v=3">
 <script src="../assets/menu.js?v=5" defer></script>
 <script src="../assets/fx.js?v=3" defer data-fx-base="../"></script>
+<script src="../assets/ascii-title.js?v=1" defer></script>
 <style>__CSS__
 .game-head{text-align:center;margin-bottom:46px}
 .game-head img{max-width:min(460px,100%);border-radius:14px;border:1px solid var(--line);box-shadow:0 18px 50px rgba(0,0,0,.5)}
@@ -428,6 +431,7 @@ INDEX = """<!DOCTYPE html>
 <link rel="stylesheet" href="../assets/fx.css?v=3">
 <script src="../assets/menu.js?v=5" defer></script>
 <script src="../assets/fx.js?v=3" defer data-fx-base="../"></script>
+<script src="../assets/ascii-title.js?v=1" defer></script>
 <style>__CSS__
 .guide-band{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(255,209,102,.4);border-radius:10px;padding:14px 18px;margin-bottom:22px;transition:border-color .2s,background .2s}
 .guide-band:hover{border-color:var(--gold);background:rgba(255,209,102,.06)}
@@ -459,7 +463,7 @@ INDEX = """<!DOCTYPE html>
 __NAV__
 <main>
   <p class="crumb"><a href="../index.html">← Inicio</a> / Reseñas</p>
-  <h1 class="sec" data-scramble>Reseñas</h1>
+  <div class="ascii-wrap"><canvas class="ascii-title" data-texto="RESEÑAS"></canvas><h1 class="sec vh">Reseñas</h1></div>
   <p class="sub">Los <b style="color:var(--text)">__NJ__ juegos que hemos jugado juntos</b>, reseñados de verdad en Steam, con la reseña de cada quien y el video del canal cuando lo grabamos. Player 2 está afilando su teclado: sus reseñas vienen en camino.</p>
   <a class="guide-band" href="../listas/mejores-juegos-cooperativos-para-parejas.html">📜 <b>NUEVA GUÍA:</b> Los mejores juegos cooperativos para parejas: nuestro top 10 probado en pareja ▸</a>
   <div class="tools">
@@ -537,6 +541,7 @@ SOLO_INDEX = """<!DOCTYPE html>
 <link rel="stylesheet" href="../assets/fx.css?v=3">
 <script src="../assets/menu.js?v=5" defer></script>
 <script src="../assets/fx.js?v=3" defer data-fx-base="../"></script>
+<script src="../assets/ascii-title.js?v=1" defer></script>
 <style>__CSS__
 .tools{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
 #buscar{flex:1;min-width:220px;padding:12px 16px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);font-family:var(--body);font-size:.95rem}
@@ -561,7 +566,7 @@ SOLO_INDEX = """<!DOCTYPE html>
 __NAV__
 <main>
   <p class="crumb"><a href="./">← Reseñas</a> / Solo runs</p>
-  <h1 class="sec" data-scramble>Solo runs</h1>
+  <div class="ascii-wrap"><canvas class="ascii-title" data-texto="SOLO RUNS"></canvas><h1 class="sec vh">Solo runs</h1></div>
   <p class="sub">Los <b style="color:var(--text)">__NS__ juegos que Player 1 jugó en solitario</b>: souls, terror, indies y experimentos. La otra mitad de la biblioteca, reseñada con el mismo rigor (y el mismo drama).</p>
   <div class="tools">
     <input id="buscar" type="text" placeholder="Buscar juego...">
