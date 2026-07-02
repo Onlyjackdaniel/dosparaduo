@@ -1,4 +1,4 @@
-/* Menú hamburguesa móvil — compartido por todas las páginas */
+/* Menú hamburguesa móvil · compartido por todas las páginas */
 .burger{display:none;background:none;border:1px solid var(--line);color:var(--text);font-size:1.15rem;line-height:1;border-radius:8px;padding:8px 13px;cursor:pointer}
 .burger:hover{border-color:var(--p2);color:var(--p2)}
 @media(max-width:760px){

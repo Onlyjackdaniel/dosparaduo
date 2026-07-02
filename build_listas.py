@@ -51,21 +51,21 @@ RANKING = [
  ("It Takes Two", "El imprescindible",
   "Si solo van a jugar UN juego en pareja en su vida, que sea este. Hazelight lo diseñó literalmente para dos personas: cada nivel cambia las mecánicas y obliga a cooperar de verdad. Nosotros lo terminamos en ~16 horas entre risas y uno que otro reclamo. Bonus: con el Friend's Pass solo necesitan una copia."),
  ("Split Fiction", "El sucesor",
-  "Del mismo estudio que It Takes Two, y se nota. Dos escritoras atrapadas entre mundos de fantasía y ciencia ficción — cada capítulo es una idea nueva. Le metimos casi 24 horas y el final nos dejó hablando del juego varios días. Si It Takes Two les gustó, este es el siguiente paso obligado."),
+  "Del mismo estudio que It Takes Two, y se nota. Dos escritoras atrapadas entre mundos de fantasía y ciencia ficción: cada capítulo es una idea nueva. Le metimos casi 24 horas y el final nos dejó hablando del juego varios días. Si It Takes Two les gustó, este es el siguiente paso obligado."),
  ("Overcooked! All You Can Eat", "La prueba de fuego",
   "Hay parejas que sobreviven Overcooked y parejas que descubren cosas de sí mismas. Cocinar contra el reloj mientras la cocina se incendia, se mueve o se parte en dos es la prueba de comunicación definitiva. Llevamos casi 60 horas y seguimos gritando '¡PLATOS!'. Con una copia juegan los dos en el sillón."),
  ("Portal 2", "El de los puzzles",
-  "El modo cooperativo de Portal 2 es una clase magistral: puzzles diseñados para que NINGUNO pueda resolverlos solo. Aquí no hay caos ni prisa — hay pensar juntos, señalar paredes y ese momento glorioso de '¡AHHH, YA ENTENDÍ!' al mismo tiempo. Más de 20 horas de pura química mental."),
+  "El modo cooperativo de Portal 2 es una clase magistral: puzzles diseñados para que NINGUNO pueda resolverlos solo. Aquí no hay caos ni prisa: hay pensar juntos, señalar paredes y ese momento glorioso de '¡AHHH, YA ENTENDÍ!' al mismo tiempo. Más de 20 horas de pura química mental."),
  ("We Were Here Too", "El de comunicar o morir",
-  "Cada quien en un cuarto distinto, comunicados solo por walkie-talkie. Uno ve símbolos, el otro ve palancas, y describir 'una cosa como tridente pero curveada' se vuelve un arte. Perfecto para parejas que creen que se comunican bien — este juego se los va a confirmar… o no. La saga completa vale la pena."),
+  "Cada quien en un cuarto distinto, comunicados solo por walkie-talkie. Uno ve símbolos, el otro ve palancas, y describir 'una cosa como tridente pero curveada' se vuelve un arte. Perfecto para parejas que creen que se comunican bien: este juego se los va a confirmar… o no. La saga completa vale la pena."),
  ("Keep Talking and Nobody Explodes", "El de la bomba",
   "Uno tiene una bomba frente a la pantalla; el otro, un manual incomprensible y prohibido ver la pantalla. Resultado: la conversación más estresante y divertida de su relación. Sesiones cortas, risas garantizadas y un nivel de tensión que ningún juego de terror logra. 10+ horas y seguimos explotando."),
  ("Move or Die", "El del caos en 20 segundos",
   "Rondas de 20 segundos donde las reglas cambian cada vez: muévete o muere, literal. Es competitivo, es injusto, es perfecto para descubrir quién de los dos es más rabioso. Lo jugamos en el canal y el veredicto fue claro: cuando todo es azar, gana quien grita menos. Ideal para cerrar la noche."),
  ("Pummel Party", "El destruye-relaciones",
-  "Mario Party sin contrato de paz: tablero, minijuegos y traiciones con armas. Es el juego que sacas cuando la relación está sólida y quieres ponerla a prueba con risas. Cada partida termina con un '¿por qué me hiciste eso?' — y con ganas de la revancha inmediata."),
+  "Mario Party sin contrato de paz: tablero, minijuegos y traiciones con armas. Es el juego que sacas cuando la relación está sólida y quieres ponerla a prueba con risas. Cada partida termina con un '¿por qué me hiciste eso?' y con ganas de la revancha inmediata."),
  ("Biped", "El más tierno",
-  "Dos robotitos que caminan con dos patas cada uno, y cada pata es un stick. Suena simple hasta que hay que coordinarse para cruzar un puente y los dos terminan en el suelo, de risa. Corto, precioso y accesible — de los mejores para una pareja donde uno apenas empieza a jugar."),
+  "Dos robotitos que caminan con dos patas cada uno, y cada pata es un stick. Suena simple hasta que hay que coordinarse para cruzar un puente y los dos terminan en el suelo, de risa. Corto, precioso y accesible. De los mejores para una pareja donde uno apenas empieza a jugar."),
  ("Cuphead", "El de sufrir juntos",
   "Para parejas que ya pasaron las pruebas anteriores y quieren el modo difícil de la relación. Jefes brutales estilo caricatura de los años 30 donde morir es parte del ritmo. 43 horas en nuestro contador lo confirman: pocas cosas unen más que por fin tumbar juntos al jefe que los humilló veinte veces."),
 ]
@@ -117,7 +117,7 @@ FAQ = [
  ("¿Cuál es el mejor juego cooperativo para parejas?",
   "It Takes Two. Está diseñado específicamente para dos jugadores, las mecánicas cambian en cada nivel y con el Friend's Pass solo se necesita una copia. Es nuestra recomendación número uno para cualquier pareja, jueguen o no videojuegos normalmente."),
  ("¿Y si mi pareja nunca ha jugado videojuegos?",
-  "Empiecen con Biped, Overcooked o It Takes Two: controles simples y la curva perfecta para alguien nuevo. En nuestro caso, Anahí (Player 2) empezó casi desde cero y hoy no le huye a ningún combate — la clave es elegir juegos donde cooperar importe más que el skill individual."),
+  "Empiecen con Biped, Overcooked o It Takes Two: controles simples y la curva perfecta para alguien nuevo. En nuestro caso, Anahí (Player 2) empezó casi desde cero y hoy no le huye a ningún combate. La clave es elegir juegos donde cooperar importe más que el skill individual."),
  ("¿Cuáles son para reírse y cuáles para sufrir?",
   "Para reír: Biped, Move or Die, Pummel Party y Overcooked (al principio). Para sufrir bonito: Cuphead y los niveles finales de Overcooked. Para pensar juntos: Portal 2, We Were Here Too y Keep Talking and Nobody Explodes."),
  ("¿Necesitamos dos copias del juego?",
@@ -141,7 +141,7 @@ PAGE = f'''<!DOCTYPE html>
 {GTAG}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Los mejores juegos cooperativos para parejas (2026) — probados en pareja | Dos para Duo</title>
+<title>Los mejores juegos cooperativos para parejas (2026), probados en pareja | Dos para Duo</title>
 <meta name="description" content="10 juegos co-op para jugar en pareja, probados por una pareja real: It Takes Two, Split Fiction, Overcooked, Portal 2 y más. Con horas jugadas reales, para quién es cada uno y qué esperar.">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="../assets/icon-512.png">
@@ -150,7 +150,7 @@ PAGE = f'''<!DOCTYPE html>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-<meta property="og:title" content="Los mejores juegos cooperativos para parejas — probados en pareja">
+<meta property="og:title" content="Los mejores juegos cooperativos para parejas, probados en pareja">
 <meta property="og:description" content="Ranking honesto de una pareja gamer real: del imprescindible It Takes Two al sufrimiento compartido de Cuphead.">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{idx[norm('It Takes Two')]['appid']}/header.jpg">
@@ -211,7 +211,7 @@ h2.sec span{{color:var(--p2)}}
 .faq{{background:var(--panel);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden}}
 .faq summary{{cursor:pointer;padding:18px 20px;font-weight:600;list-style:none;position:relative}}
 .faq summary::after{{content:"+";position:absolute;right:20px;color:var(--gold);font-family:var(--display)}}
-.faq[open] summary::after{{content:"–"}}
+.faq[open] summary::after{{content:"−"}}
 .faq p{{padding:0 20px 18px;color:#c9d2ea;font-weight:300;font-size:.95rem}}
 .outro{{background:linear-gradient(120deg,rgba(var(--p1-rgb),.08),rgba(var(--p2-rgb),.08));border:1px solid var(--line);border-radius:16px;padding:36px 30px;text-align:center;margin-top:60px}}
 .outro h2{{font-family:var(--display);font-size:1.4rem;text-transform:uppercase;margin-bottom:10px}}
@@ -247,13 +247,13 @@ footer a{{color:var(--p1);text-decoration:none}}
 <main>
   <p class="crumb"><a href="../index.html">← Inicio</a> / Guías / Co-op para parejas</p>
   <h1>Los mejores juegos <span>cooperativos para parejas</span></h1>
-  <p class="intro">Somos <b>Jack y Anahí</b>, una pareja que juega junta (casi) todas las noches — uno gamer de toda la vida, la otra empezando casi de cero. Esta lista no salió de notas de prensa: <b>cada juego lo jugamos en pareja de verdad</b>, con las horas para probarlo. Aquí está lo que funcionó, para quién es cada uno, y en cuál casi nos peleamos.</p>
-  <p class="cred">★ PROBADO EN PAREJA — <b>+250 HRS</b> ACUMULADAS SOLO EN ESTA LISTA · ACTUALIZADA JUN 2026</p>
+  <p class="intro">Somos <b>Jack y Anahí</b>, una pareja que juega junta (casi) todas las noches: uno gamer de toda la vida, la otra empezando casi de cero. Esta lista no salió de notas de prensa: <b>cada juego lo jugamos en pareja de verdad</b>, con las horas para probarlo. Aquí está lo que funcionó, para quién es cada uno, y en cuál casi nos peleamos.</p>
+  <p class="cred">★ PROBADO EN PAREJA · <b>+250 HRS</b> ACUMULADAS SOLO EN ESTA LISTA · ACTUALIZADA JUN 2026</p>
 
 {chr(10).join(items_html)}
 
   <h2 class="sec">Menciones <span>honoríficas</span></h2>
-  <p class="sec-sub">También los jugamos juntos y también valen la pena — clic para leer la reseña de cada uno.</p>
+  <p class="sec-sub">También los jugamos juntos y también valen la pena. Clic para leer la reseña de cada uno.</p>
   <div class="chips">
     {''.join(menciones_html)}
   </div>
@@ -263,7 +263,7 @@ footer a{{color:var(--p1);text-decoration:none}}
 
   <div class="outro reveal">
     <h2>¿Quieren vernos sufrir en vivo?</h2>
-    <p>Jugamos estos (y los que vienen) en el canal — con la reacción real de quién grita primero.</p>
+    <p>Jugamos estos (y los que vienen) en el canal, con la reacción real de quién grita primero.</p>
     <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener" style="text-decoration:none">▶ Súmate al party</a>
   </div>
 </main>

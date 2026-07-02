@@ -1,5 +1,5 @@
 /* ============================================================
-   DOS PARA DÚO — TOKENS DE MARCA
+   DOS PARA DÚO · TOKENS DE MARCA
    Única fuente de verdad visual del sitio. Cuando llegue el
    kit de marca definitivo, se ajusta ESTE archivo y todas las
    páginas se actualizan solas.
@@ -9,16 +9,16 @@
    ============================================================ */
 
 :root{
-  /* Fondos — noche azul profundo (realza naranja y cerúleo) */
+  /* Fondos · noche azul profundo (realza naranja y cerúleo) */
   --bg:#0a111f;        /* fondo principal */
   --bg-2:#0f1929;      /* fondo secundario (franjas/footer) */
   --panel:#142440;     /* tarjetas y paneles */
   --line:#273b5e;      /* bordes y líneas */
 
   /* Identidad dual */
-  --p1:#3cb8ec;        /* Player 1 (Jack) — azul cerúleo */
+  --p1:#3cb8ec;        /* Player 1 (Jack) · azul cerúleo */
   --p1-rgb:60,184,236;
-  --p2:#ff7a29;        /* Player 2 (Anahí) — naranja calabaza */
+  --p2:#ff7a29;        /* Player 2 (Anahí) · naranja calabaza */
   --p2-rgb:255,122,41;
   --p2-ink:#2a1606;    /* texto oscuro sobre botones naranja */
   --gold:#ffd166;      /* acento arcade (monedas/estrellas) */

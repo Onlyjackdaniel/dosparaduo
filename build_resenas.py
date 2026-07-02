@@ -61,12 +61,13 @@ def fecha_es(f):
 def excerpt(h, n=155):
     t = re.sub(r'<[^>]+>',' ', h)
     t = htmlmod.unescape(re.sub(r'\s+',' ', t)).strip()
+    t = des_guionar(t)
     return (t[:n].rsplit(' ',1)[0] + '…') if len(t) > n else t
 
 # ---------- saneador de HTML (anti-XSS) ----------
 # El cuerpo de las reseñas viene de Steam (HTML ya renderizado). Aunque la fuente
 # son reseñas propias, NUNCA se inyecta crudo: se pasa por una allowlist de tags
-# y atributos. Sin dependencias externas — solo la stdlib.
+# y atributos. Sin dependencias externas, solo la stdlib.
 from html.parser import HTMLParser
 
 _ALLOWED_TAGS = {
@@ -118,15 +119,33 @@ class _Sanitizer(HTMLParser):
     def handle_data(self, data):
         self.out.append(htmlmod.escape(data, quote=False))
 
+
+# ---------- limpiador de guiones largos (regla de estilo del sitio) ----------
+# El contenido crudo de Steam puede traer em/en dashes; aqui se convierten a
+# puntuacion natural para que cada rebuild salga limpio sin tocar el JSON crudo.
+def des_guionar(t):
+    if not t:
+        return t
+    t = re.sub(r'(\d)\s?[\u2014\u2013]\s?(\d)', r'\1-\2', t)              # rangos: 6-7 horas
+    t = re.sub(r'\s[\u2014\u2013]\s?([^\u2014\u2013<>]{2,120}?)\s?[\u2014\u2013](?=[\s,.;:!?)])',
+               r' (\1)', t)                                                   # pares -> parentesis
+    t = re.sub(r'(<br\s*/?>|^)\s*[\u2014\u2013]\s*', r'\1&#8226; ', t)     # dialogo/vinetas
+    t = t.replace(' \u2013 ', ': ')                                           # subtitulo con en dash
+    t = re.sub(r'\s*\u2014\s*', ', ', t)                                     # em dash restante
+    t = t.replace('\u2013', '-')                                              # en dash restante
+    return t
+
 def sanitize_html(s):
     if not s:
         return ''
     p = _Sanitizer()
     p.feed(s)
     p.close()
-    return ''.join(p.out)
+    return des_guionar(''.join(p.out))
 
 reviews = json.loads((ROOT/'reviews_jack_raw.json').read_text(encoding='utf-8'))
+for _r in reviews:
+    _r['nombre'] = _r['nombre'].replace('\u2014','-').replace('\u2013','-')
 idx = {norm(r['nombre']): r for r in reviews}
 
 def buscar(nombres):
@@ -206,7 +225,7 @@ PAGE = """<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>__NOMBRE__ — Reseña en español | Dos para Duo</title>
+<title>__NOMBRE__: Reseña en español | Dos para Duo</title>
 <meta name="description" content="__DESC__">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="../assets/icon-512.png">
@@ -215,7 +234,7 @@ PAGE = """<!DOCTYPE html>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-<meta property="og:title" content="Reseña: __NOMBRE__ — Dos para Duo">
+<meta property="og:title" content="Reseña: __NOMBRE__ | Dos para Duo">
 <meta property="og:description" content="__DESC__">
 <meta property="og:type" content="article">
 <meta property="og:image" content="__CAPSULE__">
@@ -279,13 +298,13 @@ __NAV__
   </div>
   <div class="duo-cols">
     <article class="rcard p1">
-      <span class="ptag">▮ PLAYER 1 — ÉL</span>
+      <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody">__CONTENIDO__</div>
       <a class="steam-link" href="__STEAMURL__" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
     <aside class="rcard p2">
-      <span class="ptag">▮ PLAYER 2 — ELLA</span>
+      <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
       __P2BODY__
     </aside>
@@ -311,7 +330,7 @@ def render_page(r, solo=False):
     schema = json.dumps({
         "@context":"https://schema.org","@type":"Review",
         "itemReviewed":{"@type":"VideoGame","name":nombre},
-        "author":{"@type":"Person","name":"Jack — Dos para Duo"},
+        "author":{"@type":"Person","name":"Jack de Dos para Duo"},
         "publisher":{"@type":"Organization","name":"Dos para Duo","sameAs":"https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw"},
         "inLanguage":"es","reviewBody":desc,
         "positiveNotes" if rec else "negativeNotes":{"@type":"ItemList","itemListElement":[]}
@@ -381,7 +400,7 @@ INDEX = """<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reseñas de juegos en español — Dos para Duo</title>
+<title>Reseñas de juegos en español | Dos para Duo</title>
 <meta name="description" content="__NJ__ juegos que jugamos juntos, reseñados de verdad: co-op, terror, plataformas y joyitas raras. Las reseñas de Steam del dúo, con video del canal cuando existe.">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="../assets/icon-512.png">
@@ -390,11 +409,11 @@ INDEX = """<!DOCTYPE html>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-<meta property="og:title" content="Reseñas — Dos para Duo">
+<meta property="og:title" content="Reseñas | Dos para Duo">
 <meta property="og:description" content="Los juegos que jugamos juntos, reseñados de verdad.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="__BASE__/resenas/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Reseñas — Dos para Duo","description":"Reseñas en español de los juegos que jugamos juntos.","isPartOf":{"@type":"WebSite","name":"Dos para Duo","url":"__BASE__/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Reseñas | Dos para Duo","description":"Reseñas en español de los juegos que jugamos juntos.","isPartOf":{"@type":"WebSite","name":"Dos para Duo","url":"__BASE__/"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
@@ -432,8 +451,8 @@ __NAV__
 <main>
   <p class="crumb"><a href="../index.html">← Inicio</a> / Reseñas</p>
   <h1 class="sec">Reseñas</h1>
-  <p class="sub">Los <b style="color:var(--text)">__NJ__ juegos que hemos jugado juntos</b>, reseñados de verdad en Steam — con la reseña de cada quien y el video del canal cuando lo grabamos. Player 2 está afilando su teclado: sus reseñas vienen en camino.</p>
-  <a class="guide-band" href="../listas/mejores-juegos-cooperativos-para-parejas.html">📜 <b>NUEVA GUÍA:</b> Los mejores juegos cooperativos para parejas — nuestro top 10 probado en pareja ▸</a>
+  <p class="sub">Los <b style="color:var(--text)">__NJ__ juegos que hemos jugado juntos</b>, reseñados de verdad en Steam, con la reseña de cada quien y el video del canal cuando lo grabamos. Player 2 está afilando su teclado: sus reseñas vienen en camino.</p>
+  <a class="guide-band" href="../listas/mejores-juegos-cooperativos-para-parejas.html">📜 <b>NUEVA GUÍA:</b> Los mejores juegos cooperativos para parejas: nuestro top 10 probado en pareja ▸</a>
   <div class="tools">
     <input id="buscar" type="text" placeholder="Buscar juego...">
     <button class="fbtn on" data-f="todos" type="button">Todos</button>
@@ -443,7 +462,7 @@ __NAV__
   <div class="ggrid" id="grid">
 __CARDS__
   </div>
-  <p class="empty" id="empty">— NADA POR AQUÍ. PRUEBA OTRA BÚSQUEDA —</p>
+  <p class="empty" id="empty">▮ NADA POR AQUÍ. PRUEBA OTRA BÚSQUEDA ▮</p>
   <h2 class="extras-head">Cosas que <span>también</span> reseñamos</h2>
   <p class="extras-sub">Porque también le escribimos reseñas a un plátano, a la mayonesa y al programa con el que grabamos. Sin filtro.</p>
   <div class="ggrid minis">
@@ -488,7 +507,7 @@ SOLO_INDEX = """<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Solo runs — reseñas de Player 1 | Dos para Duo</title>
+<title>Solo runs: reseñas de Player 1 | Dos para Duo</title>
 <meta name="description" content="__NS__ juegos que Player 1 jugó en solitario, reseñados en Steam: souls, terror, indies y más. La otra mitad de la biblioteca de Dos para Duo.">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="../assets/icon-512.png">
@@ -497,11 +516,11 @@ SOLO_INDEX = """<!DOCTYPE html>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-<meta property="og:title" content="Solo runs — Dos para Duo">
+<meta property="og:title" content="Solo runs | Dos para Duo">
 <meta property="og:description" content="Los juegos que Player 1 jugó en solitario, reseñados de verdad.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="__BASE__/resenas/solo.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Solo runs — Dos para Duo","description":"Reseñas en español de los juegos que Player 1 jugó en solitario.","isPartOf":{"@type":"WebSite","name":"Dos para Duo","url":"__BASE__/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Solo runs | Dos para Duo","description":"Reseñas en español de los juegos que Player 1 jugó en solitario.","isPartOf":{"@type":"WebSite","name":"Dos para Duo","url":"__BASE__/"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
@@ -532,7 +551,7 @@ __NAV__
 <main>
   <p class="crumb"><a href="./">← Reseñas</a> / Solo runs</p>
   <h1 class="sec">Solo runs</h1>
-  <p class="sub">Los <b style="color:var(--text)">__NS__ juegos que Player 1 jugó en solitario</b> — souls, terror, indies y experimentos. La otra mitad de la biblioteca, reseñada con el mismo rigor (y el mismo drama).</p>
+  <p class="sub">Los <b style="color:var(--text)">__NS__ juegos que Player 1 jugó en solitario</b>: souls, terror, indies y experimentos. La otra mitad de la biblioteca, reseñada con el mismo rigor (y el mismo drama).</p>
   <div class="tools">
     <input id="buscar" type="text" placeholder="Buscar juego...">
     <a class="fbtn" href="./">◂ Jugados juntos</a>
@@ -540,7 +559,7 @@ __NAV__
   <div class="ggrid" id="grid">
 __CARDS__
   </div>
-  <p class="empty" id="empty">— NADA POR AQUÍ. PRUEBA OTRA BÚSQUEDA —</p>
+  <p class="empty" id="empty">▮ NADA POR AQUÍ. PRUEBA OTRA BÚSQUEDA ▮</p>
 </main>
 __FOOTER__
 <script>

@@ -1,7 +1,7 @@
 {
   "name": "Dos para Duo",
   "short_name": "Dos para Duo",
-  "description": "Canal de gaming cooperativo en pareja — reseñas y videos.",
+  "description": "Canal de gaming cooperativo en pareja · reseñas y videos.",
   "start_url": "/dosparaduo/",
   "scope": "/dosparaduo/",
   "display": "standalone",

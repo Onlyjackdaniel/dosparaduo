@@ -1,4 +1,4 @@
-// Menú hamburguesa móvil — compartido por todas las páginas
+// Menú hamburguesa móvil · compartido por todas las páginas
 document.addEventListener('DOMContentLoaded', function () {
   var b = document.querySelector('.burger');
   var n = document.querySelector('.nav-links');
