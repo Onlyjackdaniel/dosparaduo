@@ -15,8 +15,8 @@ var HOVER = matchMedia('(hover: hover)').matches;
    Solo la primera visita de la sesion; se salta con hash, con
    reduced-motion o si ya se entro antes. */
 (function(){
-  var YA = 'dpd-entrada';
-  try { if (sessionStorage.getItem(YA)) return; } catch(e) { return; }
+  /* decision de Jack: la entrada aparece SIEMPRE (es parte del juego);
+     solo se salta con deep link a una seccion o con reduced-motion */
   if (location.hash || RM) return;
   document.body.classList.add('gate');
   var ent = document.createElement('div');
@@ -42,7 +42,6 @@ var HOVER = matchMedia('(hover: hover)').matches;
   btn.addEventListener('mouseleave', function(){ ent.classList.remove('turbo'); });
   function entrar(){
     if (ent.classList.contains('fuera')) return;
-    try { sessionStorage.setItem(YA, '1'); } catch(e) {}
     try { var a = new Audio('assets/snd/menu-open.mp3'); a.volume = .35; a.play().catch(function(){}); } catch(e) {}
     ent.classList.add('fuera');
     document.body.classList.remove('gate');
