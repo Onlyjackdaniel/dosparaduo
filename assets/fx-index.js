@@ -10,6 +10,48 @@
 var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 var HOVER = matchMedia('(hover: hover)').matches;
 
+/* ── 0. entrada del sitio: anillos de texto circular + PRESS START ──
+   Adaptado del pack Animmaster (Hero Animations/16) a vanilla.
+   Solo la primera visita de la sesion; se salta con hash, con
+   reduced-motion o si ya se entro antes. */
+(function(){
+  var YA = 'dpd-entrada';
+  try { if (sessionStorage.getItem(YA)) return; } catch(e) { return; }
+  if (location.hash || RM) return;
+  document.body.classList.add('gate');
+  var ent = document.createElement('div');
+  ent.id = 'entrada';
+  ent.innerHTML =
+    '<svg viewBox="0 0 1400 1400" aria-hidden="true">' +
+    '<defs>' +
+    '<path id="ac1" d="M250,700.5A450.5,450.5 0 1 11151,700.5A450.5,450.5 0 1 1250,700.5"/>' +
+    '<path id="ac2" d="M382,700.5A318.5,318.5 0 1 11019,700.5A318.5,318.5 0 1 1382,700.5"/>' +
+    '<path id="ac3" d="M487,700.5A213.5,213.5 0 1 1914,700.5A213.5,213.5 0 1 1487,700.5"/>' +
+    '<path id="ac4" d="M567.5,700.5A133,133 0 1 1833.5,700.5A133,133 0 1 1567.5,700.5"/>' +
+    '</defs>' +
+    '<text class="t1" style="--vel:70s"><textPath href="#ac1" textLength="2830">Dos para Duo ★ una pareja ★ dos controles ★ cero mercy ★ co-op ★</textPath></text>' +
+    '<text class="t2" style="--vel:55s"><textPath href="#ac2" textLength="2001">gaming cooperativo en español ★ retos ★ reseñas ★</textPath></text>' +
+    '<text class="t3" style="--vel:45s"><textPath href="#ac3" textLength="1341">Player 1 &amp; Player 2 ★ ¿quién es el peor?</textPath></text>' +
+    '<text class="t4" style="--vel:35s"><textPath href="#ac4" textLength="836">insert coin ★ insert coin ★</textPath></text>' +
+    '</svg>' +
+    '<button id="press-start" type="button">▸ Press Start</button>' +
+    '<div class="pista">O PRESIONA ENTER · EL CANAL DE A DOS</div>';
+  document.body.appendChild(ent);
+  var btn = ent.querySelector('#press-start');
+  btn.addEventListener('mouseenter', function(){ ent.classList.add('turbo'); });
+  btn.addEventListener('mouseleave', function(){ ent.classList.remove('turbo'); });
+  function entrar(){
+    if (ent.classList.contains('fuera')) return;
+    try { sessionStorage.setItem(YA, '1'); } catch(e) {}
+    try { var a = new Audio('assets/snd/menu-open.mp3'); a.volume = .35; a.play().catch(function(){}); } catch(e) {}
+    ent.classList.add('fuera');
+    document.body.classList.remove('gate');
+    setTimeout(function(){ ent.remove(); }, 1700);
+  }
+  btn.addEventListener('click', entrar);
+  addEventListener('keydown', function(e){ if (e.key === 'Enter') entrar(); });
+})();
+
 /* ── 1. dot grid del hero ── */
 var hero = document.querySelector('header#inicio');
 if(hero && HOVER && !RM){

@@ -88,7 +88,7 @@
 <link rel="stylesheet" href="assets/fx.css?v=3">
 <script src="assets/menu.js?v=3" defer></script>
 <script src="assets/fx.js?v=3" defer></script>
-<script src="assets/fx-index.js?v=3" defer></script>
+<script src="assets/fx-index.js?v=4" defer></script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -440,6 +440,51 @@
   #coin-slot .ico{width:18px;height:18px}
   #coin-slot.coin-pop .ico{animation:coinpop .5s cubic-bezier(.2,.9,.3,1.4)}
   @keyframes coinpop{30%{transform:translateY(-9px) rotate(200deg)}100%{transform:none}}
+
+  /* ── entrada del sitio: anillos de texto circular + PRESS START ── */
+  body.gate .hi{animation-play-state:paused}
+  #entrada{
+    position:fixed;inset:0;z-index:400;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--bg);
+    transition:opacity .9s ease .35s,visibility .9s step-end .35s;
+  }
+  #entrada.fuera{opacity:0;visibility:hidden;pointer-events:none}
+  #entrada svg{position:absolute;width:min(150vmin,1400px);height:min(150vmin,1400px)}
+  #entrada text{
+    font-family:var(--mono);font-size:26px;letter-spacing:6px;text-transform:uppercase;
+    transform-origin:700px 700px;
+    animation:giro var(--vel,60s) linear infinite;
+    transition:opacity 1s ease,transform 1.1s cubic-bezier(.7,0,.3,1);
+  }
+  #entrada text.t1{fill:rgba(var(--p1-rgb),.75)}
+  #entrada text.t2{fill:rgba(var(--p2-rgb),.75)}
+  #entrada text.t3{fill:rgba(255,209,102,.7)}
+  #entrada text.t4{fill:var(--muted)}
+  #entrada text:nth-of-type(even){animation-direction:reverse}
+  #entrada.turbo text{animation-duration:calc(var(--vel,60s)/7)}
+  @keyframes giro{to{transform:rotate(360deg)}}
+  #entrada.fuera text{opacity:0}
+  #entrada.fuera text.t1{transform:scale(2.4)}
+  #entrada.fuera text.t2{transform:scale(2.1)}
+  #entrada.fuera text.t3{transform:scale(1.8)}
+  #entrada.fuera text.t4{transform:scale(1.5)}
+  #press-start{
+    position:relative;z-index:2;
+    font-family:var(--display);font-size:clamp(1.1rem,3.4vw,1.8rem);letter-spacing:2px;
+    color:var(--p2-ink);background:var(--p2);
+    border:0;border-radius:14px;padding:20px 38px;cursor:pointer;
+    box-shadow:0 0 34px rgba(var(--p2-rgb),.5);
+    animation:blink 2.2s steps(2) infinite;
+    transition:transform .9s cubic-bezier(.7,0,.3,1),opacity .7s ease;
+  }
+  #press-start:hover{animation:none;box-shadow:0 0 50px rgba(var(--p2-rgb),.75)}
+  #entrada.fuera #press-start{transform:scale(.55);opacity:0}
+  #entrada .pista{
+    position:absolute;bottom:26px;left:0;right:0;text-align:center;
+    font-family:var(--mono);font-size:.6rem;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;
+  }
+  @media (prefers-reduced-motion:reduce){#entrada text{animation:none}}
 
   @media (max-width:760px){
     .nav-links a:not(.btn-yt){display:none}
