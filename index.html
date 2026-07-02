@@ -84,6 +84,7 @@
 <link rel="stylesheet" href="assets/fx.css">
 <script src="assets/menu.js" defer></script>
 <script src="assets/fx.js" defer></script>
+<script src="assets/fx-index.js" defer></script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -318,11 +319,18 @@
   .vinfo .vtag{font-family:var(--mono);font-size:.62rem;letter-spacing:2px;color:var(--p2);text-transform:uppercase}
   .vinfo h3{font-size:1.02rem;font-weight:600;margin-top:8px;line-height:1.4}
 
-  /* shorts */
+  /* shorts: carrusel horizontal con snap (drag en fx-index.js) */
   .shorts-head{margin-top:80px}
   .shorts-row{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;
+    display:flex;gap:16px;overflow-x:auto;padding-bottom:14px;
+    scroll-snap-type:x proximity;
+    scrollbar-width:none;cursor:grab;
+    mask-image:linear-gradient(90deg,#000 92%,transparent);
   }
+  .shorts-row::-webkit-scrollbar{display:none}
+  .shorts-row.dragging{cursor:grabbing;scroll-snap-type:none}
+  .shorts-row.dragging .scard{pointer-events:none}
+  .shorts-row .scard{flex:0 0 clamp(150px,18vw,190px);scroll-snap-align:start}
   .scard{
     position:relative;aspect-ratio:9/16;border-radius:12px;overflow:hidden;
     border:1px solid var(--line);text-decoration:none;display:block;
@@ -482,7 +490,7 @@
 
 <header id="inicio">
   <div class="pix a"></div><div class="pix b"></div><div class="pix c"></div><div class="pix d"></div><div class="pix e"></div>
-  <div class="hud-tag hi d1">● REC · JUGANDO EN COOPERATIVO</div>
+  <div class="hud-tag hi d1" data-scramble>● REC · JUGANDO EN COOPERATIVO</div>
   <h1>
     <span class="l1 hi d2">Una pareja.</span>
     <span class="l2 hi d3"><em>Dos</em> controles. <b>Cero</b> mercy.</span>
@@ -519,7 +527,7 @@
 </div>
 
 <section id="videos">
-  <div class="sec-head reveal"><span class="num">[ 01 ]</span><h2>Últimos videos</h2></div>
+  <div class="sec-head reveal"><span class="num">[ 01 ]</span><h2 data-scramble>Últimos videos</h2></div>
   <p class="sec-sub reveal">Lo más reciente del canal. Dale play aquí mismo o míralo en YouTube.</p>
 
   <div class="video-grid">
@@ -547,7 +555,7 @@
 <!-- AUTO:LARGOS:END -->
   </div>
 
-  <div class="sec-head shorts-head reveal"><span class="num">[ 01.5 ]</span><h2>Shorts</h2></div>
+  <div class="sec-head shorts-head reveal"><span class="num">[ 01.5 ]</span><h2 data-scramble>Shorts</h2></div>
   <p class="sec-sub reveal">Dosis rápidas de caos cooperativo.</p>
 
   <div class="shorts-row">
@@ -587,7 +595,7 @@
 </section>
 
 <section id="nosotros">
-  <div class="sec-head reveal"><span class="num">[ 02 ]</span><h2>Nosotros</h2></div>
+  <div class="sec-head reveal"><span class="num">[ 02 ]</span><h2 data-scramble>Nosotros</h2></div>
   <p class="sec-sub reveal">Dos personas, un sillón, demasiadas muertes evitables.</p>
 
   <div class="about-grid">
@@ -655,7 +663,7 @@
 </section>
 
 <section id="explora">
-  <div class="sec-head reveal"><span class="num">[ 03 ]</span><h2>Selecciona tu nivel</h2></div>
+  <div class="sec-head reveal"><span class="num">[ 03 ]</span><h2 data-scramble>Selecciona tu nivel</h2></div>
   <p class="sec-sub reveal">Todo el mundo de Dos para Duo, a un clic. Elige pantalla y sigue jugando.</p>
 
   <div class="lvl-grid">

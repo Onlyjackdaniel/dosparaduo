@@ -295,7 +295,7 @@ __NAV__
 <main>
   <p class="crumb"><a href="./">← Reseñas</a> / __NOMBRE_ESC__</p>
   <div class="game-head">
-    <h1 class="sec">__NOMBRE_ESC__</h1>
+    <h1 class="sec" data-scramble>__NOMBRE_ESC__</h1>
     <img src="__CAPSULE__" width="460" height="215" alt="Carátula de __NOMBRE_ESC__" onerror="this.style.display='none'">
     <div class="meta-row">
       <span class="chip __RECCLASS__">__RECTXT__</span>
@@ -459,7 +459,7 @@ INDEX = """<!DOCTYPE html>
 __NAV__
 <main>
   <p class="crumb"><a href="../index.html">← Inicio</a> / Reseñas</p>
-  <h1 class="sec">Reseñas</h1>
+  <h1 class="sec" data-scramble>Reseñas</h1>
   <p class="sub">Los <b style="color:var(--text)">__NJ__ juegos que hemos jugado juntos</b>, reseñados de verdad en Steam, con la reseña de cada quien y el video del canal cuando lo grabamos. Player 2 está afilando su teclado: sus reseñas vienen en camino.</p>
   <a class="guide-band" href="../listas/mejores-juegos-cooperativos-para-parejas.html">📜 <b>NUEVA GUÍA:</b> Los mejores juegos cooperativos para parejas: nuestro top 10 probado en pareja ▸</a>
   <div class="tools">
@@ -561,7 +561,7 @@ SOLO_INDEX = """<!DOCTYPE html>
 __NAV__
 <main>
   <p class="crumb"><a href="./">← Reseñas</a> / Solo runs</p>
-  <h1 class="sec">Solo runs</h1>
+  <h1 class="sec" data-scramble>Solo runs</h1>
   <p class="sub">Los <b style="color:var(--text)">__NS__ juegos que Player 1 jugó en solitario</b>: souls, terror, indies y experimentos. La otra mitad de la biblioteca, reseñada con el mismo rigor (y el mismo drama).</p>
   <div class="tools">
     <input id="buscar" type="text" placeholder="Buscar juego...">
