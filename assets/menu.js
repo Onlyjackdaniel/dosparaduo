@@ -10,7 +10,7 @@ var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* base relativa (las paginas de /resenas/ y /listas/ cargan ../assets/menu.js) */
 var src = document.querySelector('script[src*="menu.js"]');
-var BASE = src ? src.getAttribute('src').replace('assets/menu.js', '') : '';
+var BASE = src ? src.getAttribute('src').split('?')[0].replace('assets/menu.js', '') : '';
 
 var burger = document.querySelector('.burger');
 var links = Array.prototype.slice.call(document.querySelectorAll('nav .nav-links a'));
@@ -99,6 +99,11 @@ var abierto = false, animando = false;
 function flicker(el, entra, delay) {
   el.style.animation = 'none'; void el.offsetWidth;
   el.style.animation = (entra ? 'rmIn' : 'rmOut') + ' .3s steps(1) ' + delay + 'ms both';
+  /* al terminar, soltar el estilo inline para que el flicker de hover (CSS) recupere el control */
+  el.addEventListener('animationend', function limpia() {
+    el.removeEventListener('animationend', limpia);
+    if (entra) { el.style.animation = ''; el.style.opacity = 1; }
+  });
 }
 function abrir() {
   if (animando || abierto) return;
@@ -111,7 +116,10 @@ function abrir() {
   if (RM) { segs.forEach(function (s) { s.style.animation = 'none'; s.style.opacity = 1; }); animando = false; }
   else {
     orden.forEach(function (idx, pos) { flicker(segs[idx], true, 120 + pos * 70); });
-    setTimeout(function () { animando = false; }, 120 + orden.length * 70 + 350);
+    setTimeout(function () {
+      animando = false;
+      segs.forEach(function (s) { s.style.animation = ''; s.style.opacity = 1; });
+    }, 120 + orden.length * 70 + 350);
   }
   ov.querySelector('.rm-close').focus();
 }
