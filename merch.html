@@ -84,6 +84,22 @@ footer .f-logo{font-family:var(--display);font-size:1rem;text-transform:uppercas
 footer p{color:var(--muted);font-size:.78rem;margin-top:8px;font-family:var(--mono)}
 footer a{color:var(--p2);text-decoration:none}
 @media(max-width:760px){.nav-links a:not(.btn-yt){display:none}}
+
+  /* marquee hover del titulo (Animmaster Hover/4 a vanilla) */
+  .mq-hover{position:relative;overflow:hidden;cursor:default}
+  .mq{position:absolute;inset:0;overflow:hidden;background:var(--p2);transform:translateY(101%);transition:transform .5s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+  .mq-inner{width:100%;height:100%;transform:translateY(-101%);transition:transform .5s cubic-bezier(.2,.8,.2,1);display:flex;align-items:center;overflow:hidden}
+  .mq-hover.on .mq,.mq-hover.on .mq-inner{transform:translateY(0)}
+  .mq-hover.desde-abajo .mq{transform:translateY(101%)}
+  .mq-hover.desde-arriba .mq{transform:translateY(-101%)}
+  .mq-hover.desde-abajo .mq-inner{transform:translateY(-101%)}
+  .mq-hover.desde-arriba .mq-inner{transform:translateY(101%)}
+  .mq-hover.on.desde-abajo .mq,.mq-hover.on.desde-arriba .mq,
+  .mq-hover.on.desde-abajo .mq-inner,.mq-hover.on.desde-arriba .mq-inner{transform:translateY(0)}
+  .mq-track{display:flex;align-items:center;gap:26px;white-space:nowrap;font-family:var(--display);font-size:1.15rem;color:var(--p2-ink);text-transform:uppercase;animation:mqscroll 16s linear infinite;will-change:transform}
+  .mq-track .ico{width:20px;height:20px;fill:var(--p2-ink);flex:none}
+  @keyframes mqscroll{to{transform:translateX(-25%)}}
+  @media (prefers-reduced-motion:reduce){.mq,.mq-inner{transition:none}.mq-track{animation:none}}
 </style>
 </head>
 <body>
@@ -107,7 +123,10 @@ footer a{color:var(--p2);text-decoration:none}
 <main>
   <div class="hud-tag">⚠ NIVEL BLOQUEADO</div>
   <div class="lock">🔒</div>
+  <div class="mq-hover" id="mqh">
   <h1>El <span>merch</span> se está forjando</h1>
+  <div class="mq" aria-hidden="true"><div class="mq-inner"><div class="mq-track"><span>SE ESTÁ FORJANDO</span><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#sparkle"/></svg><span>PLAYERAS P1 / P2</span><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#t-shirt"/></svg><span>STICKERS</span><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#coffee"/></svg><span>TAZAS CO-OP</span><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#gift"/></svg><span>??? SECRETO</span><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#sword"/></svg><span>SE ESTÁ FORJANDO</span><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#sparkle"/></svg><span>PLAYERAS P1 / P2</span><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#t-shirt"/></svg><span>STICKERS</span><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#coffee"/></svg><span>TAZAS CO-OP</span><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#gift"/></svg><span>??? SECRETO</span><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#sword"/></svg><span>SE ESTÁ FORJANDO</span><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#sparkle"/></svg><span>PLAYERAS P1 / P2</span><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#t-shirt"/></svg><span>STICKERS</span><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#coffee"/></svg><span>TAZAS CO-OP</span><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#gift"/></svg><span>??? SECRETO</span><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#sword"/></svg><span>SE ESTÁ FORJANDO</span><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#sparkle"/></svg><span>PLAYERAS P1 / P2</span><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#t-shirt"/></svg><span>STICKERS</span><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#coffee"/></svg><span>TAZAS CO-OP</span><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#gift"/></svg><span>??? SECRETO</span><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#sword"/></svg></div></div></div>
+</div>
   <p class="sub">Estamos craftendo el merch oficial del dúo: cosas que vas a querer ponerte aunque tu main sea el sillón. <b>Todavía no hay nada a la venta</b>, pero el horno ya está encendido.</p>
   <div class="forge reveal fx-spot">
     <div class="lbl"><span>Forjando…</span><b>37%</b></div>
@@ -133,5 +152,24 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#reddit-logo"/></svg></a>
   </div>
 </footer>
+<script>
+(function(){
+  var el = document.getElementById('mqh');
+  if(!el || !matchMedia('(hover: hover)').matches) return;
+  function borde(e){
+    var r = el.getBoundingClientRect();
+    return (e.clientY - r.top) < r.height / 2 ? 'desde-arriba' : 'desde-abajo';
+  }
+  el.addEventListener('mouseenter', function(e){
+    el.classList.remove('desde-arriba','desde-abajo');
+    el.classList.add(borde(e)); void el.offsetWidth;
+    el.classList.add('on');
+  });
+  el.addEventListener('mouseleave', function(e){
+    el.classList.remove('on','desde-arriba','desde-abajo');
+    el.classList.add(borde(e));
+  });
+})();
+</script>
 </body>
 </html>
