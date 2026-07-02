@@ -34,7 +34,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css">
+<link rel="stylesheet" href="../assets/fx.css">
 <script src="../assets/menu.js" defer></script>
+<script src="../assets/fx.js" defer data-fx-base="../"></script>
 <style>
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -111,7 +113,7 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="../merch.html">Merch</a>
     <a href="../apoyo.html">Apóyanos</a>
     <a href="../nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
@@ -120,30 +122,35 @@ footer a{color:var(--p2);text-decoration:none}
     <h1 class="sec">The Typing of The Dead: Overkill</h1>
     <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/246580/header.jpg" width="460" height="215" alt="Carátula de The Typing of The Dead: Overkill" onerror="this.style.display='none'">
     <div class="meta-row">
-      <span class="chip rec">👍 Recomendado</span>
+      <span class="chip rec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado</span>
       <span class="chip">20.7 hrs jugadas</span>
       <span class="chip">10 jun 2026</span>
     </div>
   </div>
   <div class="duo-cols">
-    <article class="rcard p1">
+    <article class="rcard p1 fx-spot" style="--spot-rgb:var(--p1-rgb)">
       <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody"><div class="bb_h2">Aprender mecanografía a balazos y zombis</div><br>The Typing of the Dead: Overkill es una de esas ideas que suenan absurdas sobre el papel, pero que funcionan muchísimo mejor de lo que deberían. Toma la base de los clásicos arcades de The House of the Dead y le añade un giro bastante atractivo: en lugar de disparar con una pistola, disparas escribiendo palabras con tu teclado.<br><br>Mi principal inconveniente fue que no cuenta con español. Como no estoy tan acostumbrado a escribir rápido en inglés, hubo momentos donde el juego me complicó bastante más de lo que seguramente debería. Aun así, nunca se vuelve injugable. De hecho, termina convirtiéndose en un reto adicional bastante satisfactorio cuando empiezas a mejorar tu velocidad y precisión.<br><br>La historia es exactamente lo que esperaría de un juego de este estilo: entretenida, exagerada y bastante básica. No tiene demasiada profundidad, pero tampoco la necesita. Está ahí para conectar los niveles y darte una excusa para seguir avanzando entre hordas de zombis y situaciones absurdas.<br><br>Algo que agradecí mucho es que incluye la Director's Cut, que añade algunos giros y elementos extra de complejidad. También hay variedad de armas que puedes mejorar conforme juegas, lo cual aporta una sensación de progreso agradable. Y para quienes disfrutan completar juegos, los logros están bastante bien planteados y dan motivos para dedicarle unas cuantas horas adicionales.<br><br><b>Lo que hace a The Typing of the Dead: Overkill especial:</b><br><br><u>Concepto brillante:</u> Convierte la mecanografía en una mecánica de combate.<br><u>Basado en un clásico arcade:</u> Conserva la esencia de House of the Dead.<br><u>Aprendizaje accidental:</u> Terminas escribiendo más rápido sin darte cuenta.<br><br><b>Aspectos destacados:</b><br><u>Director's Cut incluida:</u> Más contenido y desafíos para los jugadores.<br><u>Progresión de armas:</u> Añade variedad y sensación de avance.<br><u>Logros atractivos:</u> Invitan a seguir jugando después de terminar la campaña.<br><br><b>La cereza del pastel:</b><br><u>Minijuegos adicionales:</u> Son bastante accesibles al inicio, pero en dificultades elevadas se convierten en auténticas pruebas de mecanografía. Más te vale ser experto escribiendo, porque si no, probablemente no sobrevivas mucho más allá de las primeras rondas.<br><br><b>¿Lo recomiendo?</b> ✔️ Sí<br>Una mezcla extrañamente divertida entre juego arcade, mecanografía y zombis. Puede ser un reto adicional si tu inglés escrito no es muy rápido, pero justamente eso hace que cada mejora se sienta gratificante. Una propuesta rara, creativa y sorprendentemente adictiva.</div>
-      <a class="steam-link" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/246580/" target="_blank" rel="noopener">Ver en Steam ↗</a>
+      <a class="steam-link fx-btn" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/246580/" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
-    <aside class="rcard p2">
+    <aside class="rcard p2 fx-spot" style="--spot-rgb:var(--p2-rgb)">
       <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
       <div class="pending"><span class="q">?</span>La reseña de Player 2 está en camino.<br>Mientras tanto, ya saben quién escribe más rápido.</div>
     </aside>
   </div>
   
-  <div class="backrow"><a class="back" href="./">◂ Todas las reseñas</a></div>
+  <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a> · <a href="../apoyo.html">Apóyanos</a> · <a href="../contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>

@@ -34,7 +34,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css">
+<link rel="stylesheet" href="../assets/fx.css">
 <script src="../assets/menu.js" defer></script>
+<script src="../assets/fx.js" defer data-fx-base="../"></script>
 <style>
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -111,7 +113,7 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="../merch.html">Merch</a>
     <a href="../apoyo.html">Apóyanos</a>
     <a href="../nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
@@ -120,30 +122,35 @@ footer a{color:var(--p2);text-decoration:none}
     <h1 class="sec">Portal 2</h1>
     <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/620/header.jpg" width="460" height="215" alt="Carátula de Portal 2" onerror="this.style.display='none'">
     <div class="meta-row">
-      <span class="chip rec">👍 Recomendado</span>
+      <span class="chip rec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado</span>
       <span class="chip">23.1 hrs jugadas</span>
       <span class="chip">22 ago 2025</span>
     </div>
   </div>
   <div class="duo-cols">
-    <article class="rcard p1">
+    <article class="rcard p1 fx-spot" style="--spot-rgb:var(--p1-rgb)">
       <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody"><div class="bb_h2">Ingenio, humor y cooperación en su máxima expresión</div><br>Portal 2 es la evolución perfecta de lo que ya era brillante en el primer juego, pero aquí potenciado con más mecánicas, más humor y, sobre todo, la posibilidad de jugar en cooperativo.<br><br><b>Lo que hace a Portal 2 un juego especial:</b><br><br><u>Modo cooperativo inolvidable:</u> La inclusión de un modo para dos jugadores es quizá lo más destacable. Resolver puzzles junto a alguien más no solo es divertido, sino que se convierte en un verdadero reto de coordinación y lógica compartida.<br><u>Puzzles variados y creativos:</u> Cada nivel está diseñado con una naturalidad sorprendente; avanzar y descubrir la solución se siente fluido y gratificante.<br><u>Mecánicas nuevas:</u> Los distintos líquidos que alteran la física añaden frescura y multiplican las posibilidades de resolución.<br><u>Humor característico:</u> El guion, los diálogos y las situaciones mantienen ese tono sarcástico y divertido que ya hacía único al primer Portal.<br><br><b>Aspectos destacados:</b><br><br><u>Rejugabilidad alta:</u> Tanto en solitario como en cooperativo, siempre hay espacio para redescubrir detalles y nuevas formas de superar los puzzles.<br><u>Easter eggs y secretos:</u> Un juego lleno de pequeños guiños que valen la pena descubrir y que enriquecen aún más la experiencia.<br><u>Un género único:</u> A pesar del paso de los años, sigue siendo inigualable dentro del mundo de los puzzles en primera persona.<br><br><b>¿Lo recomiendo?</b> ✔️ Absolutamente.<br>Portal 2 no solo es un excelente juego de puzzles, es también una experiencia cooperativa brillante que combina ingenio, humor y diseño impecable.<br><br><b>Un clásico moderno que sigue siendo tan único como el día que salió.</b> 🌀🔫</div>
-      <a class="steam-link" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/620/" target="_blank" rel="noopener">Ver en Steam ↗</a>
+      <a class="steam-link fx-btn" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/620/" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
-    <aside class="rcard p2">
+    <aside class="rcard p2 fx-spot" style="--spot-rgb:var(--p2-rgb)">
       <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
       <div class="pending"><span class="q">?</span>La reseña de Player 2 está en camino.<br>Mientras tanto, ya saben quién escribe más rápido.</div>
     </aside>
   </div>
   
-  <div class="backrow"><a class="back" href="./">◂ Todas las reseñas</a></div>
+  <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a> · <a href="../apoyo.html">Apóyanos</a> · <a href="../contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>

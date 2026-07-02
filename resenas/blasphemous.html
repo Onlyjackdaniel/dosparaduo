@@ -34,7 +34,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css">
+<link rel="stylesheet" href="../assets/fx.css">
 <script src="../assets/menu.js" defer></script>
+<script src="../assets/fx.js" defer data-fx-base="../"></script>
 <style>
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -111,7 +113,7 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="../merch.html">Merch</a>
     <a href="../apoyo.html">Apóyanos</a>
     <a href="../nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
@@ -120,30 +122,35 @@ footer a{color:var(--p2);text-decoration:none}
     <h1 class="sec">Blasphemous</h1>
     <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/774361/header.jpg" width="460" height="215" alt="Carátula de Blasphemous" onerror="this.style.display='none'">
     <div class="meta-row">
-      <span class="chip rec">👍 Recomendado</span>
+      <span class="chip rec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado</span>
       <span class="chip">33.0 hrs jugadas</span>
       <span class="chip">31 oct 2025</span>
     </div>
   </div>
   <div class="duo-cols">
-    <article class="rcard p1">
+    <article class="rcard p1 fx-spot" style="--spot-rgb:var(--p1-rgb)">
       <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody"><div class="bb_h2">Un metroidvania desafiante y con alma propia</div><br>Tardé en animarme a jugar Blasphemous porque pensé que sería o muy “x” o excesivamente frustrante… pero lo que encontré fue un metroidvania excelente, con un arte impresionante y un mundo que se siente denso, retador y con identidad. Cada zona del mapa está cuidadosamente diseñada, y moverse entre ellas se siente fluido y satisfactorio.<br><br>Los jefes son desafiantes, pero nunca injustos. Cada uno tiene su ritmo y patrones que te obligan a mejorar, pero sin caer en el castigo gratuito. Y aunque en algunos momentos no sabía exactamente a dónde ir, perderse en su mundo es parte de su encanto: el ambiente, la ambientación religiosa tétrica y los secretos por descubrir te empujan a seguir explorando. Hay coleccionables, habilidades, mejoras y pequeños detalles que hacen que cada exploración valga la pena sin sentirse repetitiva.<br><br>El DLC agrega un contenido adicional muy sólido y amplía bastante la experiencia, sin romper la base del juego. En cuanto a dificultad, lo considero un metroidvania de nivel medio, ideal para quienes buscan un reto justo sin caer en la frustración. No es difícil de platinar, pero sí requiere 2 o 3 partidas completas para lograr todo, aunque una vez que dominas las mecánicas, el tiempo vuela.<br><br><b>Lo que hace a Blasphemous especial:</b><br><br><u>Arte y ambientación excepcionales:</u> Oscuro, místico y visualmente imponente.<br><u>Jefes bien diseñados:</u> Duros, pero equilibrados y memorables.<br><u>Exploración gratificante:</u> Mapa interconectado lleno de secretos.<br><br><b>Aspectos destacados:</b><br><br><u>Buena progresión:</u> Las mejoras y habilidades mantienen el interés.<br><u>DLC valioso:</u> Amplía la experiencia sin sentirse forzado.<br><u>Rejugabilidad media:</u> Dos o tres runs para completarlo al 100%.<br><br><b>¿Lo recomiendo?</b> ✔️ Sí<br>Un metroidvania sólido, desafiante y bellamente construido, con una atmósfera única y un diseño que premia la paciencia y la exploración. Perfecto para quienes quieren un reto equilibrado sin sufrirlo.</div>
-      <a class="steam-link" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/774361/" target="_blank" rel="noopener">Ver en Steam ↗</a>
+      <a class="steam-link fx-btn" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/774361/" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
-    <aside class="rcard p2">
+    <aside class="rcard p2 fx-spot" style="--spot-rgb:var(--p2-rgb)">
       <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
       <div class="pending"><span class="q">?</span>Run en solitario de Player 1.<br>Si Player 2 lo juega algún día, su reseña aparecerá aquí.</div>
     </aside>
   </div>
   
-  <div class="backrow"><a class="back" href="./">◂ Todas las reseñas</a></div>
+  <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a> · <a href="../apoyo.html">Apóyanos</a> · <a href="../contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>

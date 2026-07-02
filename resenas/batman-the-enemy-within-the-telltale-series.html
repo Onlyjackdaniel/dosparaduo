@@ -34,7 +34,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css">
+<link rel="stylesheet" href="../assets/fx.css">
 <script src="../assets/menu.js" defer></script>
+<script src="../assets/fx.js" defer data-fx-base="../"></script>
 <style>
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -111,7 +113,7 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="../merch.html">Merch</a>
     <a href="../apoyo.html">Apóyanos</a>
     <a href="../nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
@@ -120,30 +122,35 @@ footer a{color:var(--p2);text-decoration:none}
     <h1 class="sec">Batman: The Enemy Within - The Telltale Series</h1>
     <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/675260/header.jpg" width="460" height="215" alt="Carátula de Batman: The Enemy Within - The Telltale Series" onerror="this.style.display='none'">
     <div class="meta-row">
-      <span class="chip rec">👍 Recomendado</span>
+      <span class="chip rec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado</span>
       <span class="chip">11.1 hrs jugadas</span>
       <span class="chip">9 oct 2024</span>
     </div>
   </div>
   <div class="duo-cols">
-    <article class="rcard p1">
+    <article class="rcard p1 fx-spot" style="--spot-rgb:var(--p1-rgb)">
       <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody"><div class="bb_h2">Una secuela que te pone a prueba como el Caballero de la Noche</div><br>Batman: The Enemy Within ofrece una gran historia para el icónico Caballero de la Noche. Si bien se puede disfrutar por sí sola, recomiendo encarecidamente jugar primero la primera parte de la serie de Telltale, ya que esta entrega es la continuación directa de aquella historia.<br><br><b>Lo que destaca:</b><br><u>Personajes bien desarrollados:</u> Los personajes son agradables y están bien escritos, y te envuelven en sus historias. Cada interacción se siente significativa, lo que te hace realmente pensar en cada decisión que tomas.<br><u>Decisiones morales y sus consecuencias:</u> Aunque algunas de las decisiones no tienen un gran impacto en el desenlace, el hecho de que el juego te haga reflexionar y analizar tus elecciones lo hace interesante. Además, poder comparar tus decisiones con las de otros jugadores añade una dimensión adicional al juego.<br><u>Un final espectacular:</u> Para mí y para mi novia, lo mejor fue el cierre del juego. La secuencia final es una perfecta coreografía entre diálogos, visuales y acciones en el control, creando una experiencia inmersiva que te deja diciendo "Wow".<br><br><b>Lo que lo hace especial:</b><br><u>Facilidad de juego:</u> Es un título accesible y sencillo de jugar, lo que lo convierte en una experiencia ideal para jugadores que disfrutan más de las historias que de los desafíos mecánicos. Su estructura narrativa es su mayor fortaleza.<br><u>Impacto visual y emocional:</u> Aunque no todas las decisiones tienen consecuencias profundas, el viaje emocional del juego y la calidad de sus visuales hacen que cada momento sea memorable. La forma en que se desarrollan los diálogos y las acciones te sumerge completamente en la piel de Batman.<br><br>Recomendado: ✔️ Sí<br>¡Una historia cautivadora con un final espectacular!</div>
-      <a class="steam-link" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/675260/" target="_blank" rel="noopener">Ver en Steam ↗</a>
+      <a class="steam-link fx-btn" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/675260/" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
-    <aside class="rcard p2">
+    <aside class="rcard p2 fx-spot" style="--spot-rgb:var(--p2-rgb)">
       <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
       <div class="pending"><span class="q">?</span>Run en solitario de Player 1.<br>Si Player 2 lo juega algún día, su reseña aparecerá aquí.</div>
     </aside>
   </div>
   
-  <div class="backrow"><a class="back" href="./">◂ Todas las reseñas</a></div>
+  <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a> · <a href="../apoyo.html">Apóyanos</a> · <a href="../contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>

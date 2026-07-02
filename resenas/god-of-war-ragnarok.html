@@ -34,7 +34,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css">
+<link rel="stylesheet" href="../assets/fx.css">
 <script src="../assets/menu.js" defer></script>
+<script src="../assets/fx.js" defer data-fx-base="../"></script>
 <style>
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -111,7 +113,7 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="../merch.html">Merch</a>
     <a href="../apoyo.html">Apóyanos</a>
     <a href="../nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
@@ -120,19 +122,19 @@ footer a{color:var(--p2);text-decoration:none}
     <h1 class="sec">God of War Ragnarök</h1>
     <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2322010/header.jpg" width="460" height="215" alt="Carátula de God of War Ragnarök" onerror="this.style.display='none'">
     <div class="meta-row">
-      <span class="chip rec">👍 Recomendado</span>
+      <span class="chip rec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado</span>
       <span class="chip">88.1 hrs jugadas</span>
       <span class="chip">19 abr 2025</span>
     </div>
   </div>
   <div class="duo-cols">
-    <article class="rcard p1">
+    <article class="rcard p1 fx-spot" style="--spot-rgb:var(--p1-rgb)">
       <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody"><div class="bb_h2">Una secuela que supera todas las expectativas</div><br>God of War: Ragnarök toma todo lo que el primer juego hizo bien… y le mete esteroides. Es una obra donde absolutamente todo (la violencia, los mapas, los gráficos, la narrativa, el desarrollo de personajes, las armas y hasta los puzzles) está llevado a su máxima expresión.<br><br>Este es el estándar de lo que un juego triple A debería ser siempre.<br><br><b>Lo que hace a God of War: Ragnarök un juego especial:</b><br><br><u>Narrativa profundamente humana:</u> Esta no es solo una historia sobre dioses, sino sobre padres e hijos, sobre crecer, soltar, sanar y seguir adelante. Kratos y Atreus ya no solo pelean juntos, ahora caminan como iguales, y eso se siente.<br><u>Combate brutal y satisfactorio:</u> Las batallas son pesadas, precisas, espectaculares. Las nuevas armas, habilidades y enemigos traen una variedad increíble sin sacrificar lo esencial: el peso de cada golpe.<br><u>Un DLC que no parece DLC:</u> Valhalla no solo es gratuito, sino que añade fácilmente 10-15 horas de contenido profundo y significativo. No es relleno, es expansión real del alma del juego.<br><br><b>Aspectos destacados:</b><br><br><u>Un mundo visualmente impresionante:</u> Cada reino tiene identidad, alma y detalle. Los entornos están diseñados para asombrarte sin importar en qué dirección mires.<br><u>Personajes con alma propia:</u> Mimir, Freya, Brok, Sindri, Thor, Odin... Cada uno aporta algo más allá de la acción. Sus diálogos, conflictos y evolución hacen que este universo respire.<br><u>Una experiencia que se queda contigo:</u> Cuando terminé el juego, me vi postergando el final, sabiendo que algo especial estaba por terminar. Este título no solo deja huella en tu memoria: se suma a la narrativa de tu propia vida.<br><br><b>¿Lo recomiendo?</b> ✔️ Más allá del sí.<br>God of War: Ragnarök no solo es una joya. Es un juego que te habla. Que te acompaña. Que te empuja a mirar hacia atrás con gratitud y hacia adelante con coraje.<br><br><b>“Si me ven en la cima, es únicamente porque estoy parado sobre los cuerpos muertos del hombre que alguna vez fui.”</b><br><br>Les dejo el link del video que hice con mi novia donde ahondamos mas en el juego: <a href="http://store.steampowered.com" rel="nofollow noopener noreferrer" target="_blank">http://store.steampowered.com</a></div>
-      <a class="steam-link" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/2322010/" target="_blank" rel="noopener">Ver en Steam ↗</a>
+      <a class="steam-link fx-btn" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/2322010/" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
-    <aside class="rcard p2">
+    <aside class="rcard p2 fx-spot" style="--spot-rgb:var(--p2-rgb)">
       <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
       <div class="pending"><span class="q">?</span>La reseña de Player 2 está en camino.<br>Mientras tanto, ya saben quién escribe más rápido.</div>
@@ -142,11 +144,16 @@ footer a{color:var(--p2);text-decoration:none}
     <h2>Lo jugamos <span>en el canal</span></h2>
     <div class="vframe"><iframe loading="lazy" src="https://www.youtube-nocookie.com/embed/PnrH_GSsT8k?rel=0" allow="encrypted-media; picture-in-picture" allowfullscreen title="Video de God of War Ragnarök en Dos para Duo"></iframe></div>
   </section>
-  <div class="backrow"><a class="back" href="./">◂ Todas las reseñas</a></div>
+  <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a> · <a href="../apoyo.html">Apóyanos</a> · <a href="../contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>

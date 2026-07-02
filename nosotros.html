@@ -50,6 +50,9 @@
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/menu.css">
 <script src="assets/menu.js" defer></script>
+<link rel="stylesheet" href="assets/fx.css">
+<script src="assets/fx.js" defer></script>
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -141,7 +144,7 @@ footer a{color:var(--p1);text-decoration:none}
     <a href="merch.html">Merch</a>
     <a href="apoyo.html">Apóyanos</a>
     <a href="nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
@@ -151,7 +154,7 @@ footer a{color:var(--p1);text-decoration:none}
 
   <div class="profile">
 
-    <section class="pj reveal">
+    <section class="pj reveal fx-spot fx-tilt">
       <div class="pheader">
         <span class="ptag">▮ PLAYER 1</span>
         <h2>Jack</h2>
@@ -159,12 +162,12 @@ footer a{color:var(--p1);text-decoration:none}
       <p class="bio">Fan de los videojuegos <b>desde niño</b>: del Game Boy Advance y el PlayStation 1 hasta lo que salga mañana, pasando por todas las consolas del camino. De profesión <b>ingeniero industrial</b>: le gusta la ingeniería, entender cómo funcionan las cosas y optimizarlas (sí, también optimiza los picnics). Cuando suelta el control, lo encuentras viajando, entrenando o rodando en la longboard.</p>
       <p class="inv-label">[ INVENTARIO EQUIPADO ]</p>
       <div class="inventory">
-        <div class="item"><span class="rare">★ MAIN</span><span class="ico">🎮</span><h3>Videojuegos</h3><p>Desde niño · GBA → hoy</p></div>
-        <div class="item"><span class="ico">⚙️</span><h3>Ingeniería</h3><p>Ing. Industrial titulado</p></div>
-        <div class="item"><span class="ico">✈️</span><h3>Viajar</h3><p>Explorar el mapa real</p></div>
-        <div class="item"><span class="ico">🏋️</span><h3>Ejercicio</h3><p>Grind de stats físicos</p></div>
-        <div class="item"><span class="ico">🛹</span><h3>Longboard</h3><p>Movilidad +15</p></div>
-        <div class="item"><span class="ico">🎸</span><h3>Guitarra</h3><p>Nivel fogata · pero le da</p></div>
+        <div class="item reveal"><span class="rare">★ MAIN</span><span class="ico">🎮</span><h3>Videojuegos</h3><p>Desde niño · GBA → hoy</p></div>
+        <div class="item reveal"><span class="ico">⚙️</span><h3>Ingeniería</h3><p>Ing. Industrial titulado</p></div>
+        <div class="item reveal"><span class="ico">✈️</span><h3>Viajar</h3><p>Explorar el mapa real</p></div>
+        <div class="item reveal"><span class="ico">🏋️</span><h3>Ejercicio</h3><p>Grind de stats físicos</p></div>
+        <div class="item reveal"><span class="ico">🛹</span><h3>Longboard</h3><p>Movilidad +15</p></div>
+        <div class="item reveal"><span class="ico">🎸</span><h3>Guitarra</h3><p>Nivel fogata · pero le da</p></div>
       </div>
     </section>
 
@@ -176,12 +179,12 @@ footer a{color:var(--p1);text-decoration:none}
       <p class="bio">Fan de jugar videojuegos y <b>artista de corazón</b>: pintar y el arte en general son su zona segura. Su Pinterest es un museo curado con años de dedicación, las flores son su debilidad confesa, y si hay pista de hielo cerca, ahí está patinando. Todo lo anterior sucede <b>con música puesta</b>, siempre.</p>
       <p class="inv-label">[ INVENTARIO EQUIPADO ]</p>
       <div class="inventory">
-        <div class="item"><span class="rare">★ MAIN</span><span class="ico">🎨</span><h3>Pintar y arte</h3><p>Zona segura</p></div>
-        <div class="item"><span class="ico">🎮</span><h3>Videojuegos</h3><p>Gamer en formación</p></div>
-        <div class="item"><span class="ico">📌</span><h3>Pinterest</h3><p>Museo curado personal</p></div>
-        <div class="item"><span class="ico">🌸</span><h3>Flores</h3><p>Debilidad confesa</p></div>
-        <div class="item"><span class="ico">⛸️</span><h3>Patinar en hielo</h3><p>Elegancia +20</p></div>
-        <div class="item"><span class="ico">🎧</span><h3>Música</h3><p>Pasiva siempre activa</p></div>
+        <div class="item reveal"><span class="rare">★ MAIN</span><span class="ico">🎨</span><h3>Pintar y arte</h3><p>Zona segura</p></div>
+        <div class="item reveal"><span class="ico">🎮</span><h3>Videojuegos</h3><p>Gamer en formación</p></div>
+        <div class="item reveal"><span class="ico">📌</span><h3>Pinterest</h3><p>Museo curado personal</p></div>
+        <div class="item reveal"><span class="ico">🌸</span><h3>Flores</h3><p>Debilidad confesa</p></div>
+        <div class="item reveal"><span class="ico">⛸️</span><h3>Patinar en hielo</h3><p>Elegancia +20</p></div>
+        <div class="item reveal"><span class="ico">🎧</span><h3>Música</h3><p>Pasiva siempre activa</p></div>
       </div>
     </section>
 
@@ -199,6 +202,11 @@ footer a{color:var(--p1);text-decoration:none}
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="resenas/">Reseñas</a> · <a href="merch.html">Merch</a> · <a href="apoyo.html">Apóyanos</a> · <a href="contacto.html">Contacto</a> · <a href="privacidad.html">Privacidad</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 <script>
 const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});

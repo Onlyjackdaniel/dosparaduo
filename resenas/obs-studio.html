@@ -34,7 +34,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css">
+<link rel="stylesheet" href="../assets/fx.css">
 <script src="../assets/menu.js" defer></script>
+<script src="../assets/fx.js" defer data-fx-base="../"></script>
 <style>
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -111,7 +113,7 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="../merch.html">Merch</a>
     <a href="../apoyo.html">Apóyanos</a>
     <a href="../nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
@@ -120,30 +122,35 @@ footer a{color:var(--p2);text-decoration:none}
     <h1 class="sec">OBS Studio</h1>
     <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1905180/header.jpg" width="460" height="215" alt="Carátula de OBS Studio" onerror="this.style.display='none'">
     <div class="meta-row">
-      <span class="chip rec">👍 Recomendado</span>
+      <span class="chip rec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado</span>
       <span class="chip">97.5 hrs jugadas</span>
       <span class="chip">5 feb 2026</span>
     </div>
   </div>
   <div class="duo-cols">
-    <article class="rcard p1">
+    <article class="rcard p1 fx-spot" style="--spot-rgb:var(--p1-rgb)">
       <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody"><div class="bb_h2">La herramienta gratuita que parece no tener techo</div><br>OBS Studio me tomó completamente por sorpresa. Lo he estado usando por más de 55 horas y, honestamente, no he tenido ni un solo problema. Al contrario: mientras más lo uso, más beneficios le encuentro. Es una herramienta absurdamente versátil que se adapta a muchísimos flujos de trabajo distintos sin sentirse limitada.<br><br>Algo que me encantó es la cantidad de add-ons y plugins disponibles. Puedes empezar con algo muy básico y, poco a poco, irlo transformando en una bestia totalmente personalizada. Además, al ser un software gratuito y tan popular, prácticamente todo el mundo lo usa: encontrar tutoriales, guías, soluciones o ideas es facilísimo. Siempre hay alguien que ya pasó por lo mismo que tú.<br><br>Se siente como una herramienta con muchísimo potencial todavía por explotar. No es de esas que usas dos semanas y ya viste todo lo que ofrece; al contrario, da la sensación de que mientras más tiempo le dediques, más cosas puedes sacarle. Es estable, poderosa y sorprendentemente profesional para no costar absolutamente nada.<br><br><b>Lo que hace a OBS Studio especial:</b><br><br><u>Versatilidad enorme:</u> Sirve para streaming, grabación y flujos complejos.<br><u>Estabilidad comprobada:</u> Más de 55 horas sin fallos ni dolores de cabeza.<br><u>Ecosistema de plugins:</u> Add-ons que amplían muchísimo sus capacidades.<br><br><b>Aspectos destacados:</b><br><br><u>Comunidad gigante:</u> Tutoriales y recursos por todos lados.<br><u>Software gratuito:</u> Potencia profesional sin pagar un peso.<br><u>Escalable:</u> Funciona igual de bien para principiantes y usuarios avanzados.<br><br><b>¿Lo recomiendo?</b> ✔️ Sí<br>Una herramienta increíblemente completa, estable y poderosa. OBS Studio no solo cumple: abre la puerta a experimentar, crecer y exprimir al máximo tus ideas. Gratis, popular y con un potencial enorme.</div>
-      <a class="steam-link" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/1905180/" target="_blank" rel="noopener">Ver en Steam ↗</a>
+      <a class="steam-link fx-btn" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/1905180/" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
-    <aside class="rcard p2">
+    <aside class="rcard p2 fx-spot" style="--spot-rgb:var(--p2-rgb)">
       <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
       <div class="pending"><span class="q">?</span>La reseña de Player 2 está en camino.<br>Mientras tanto, ya saben quién escribe más rápido.</div>
     </aside>
   </div>
   
-  <div class="backrow"><a class="back" href="./">◂ Todas las reseñas</a></div>
+  <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a> · <a href="../apoyo.html">Apóyanos</a> · <a href="../contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>

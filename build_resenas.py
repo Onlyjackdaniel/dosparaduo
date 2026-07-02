@@ -211,13 +211,18 @@ NAV = """<nav>
     <a href="__HOME__merch.html">Merch</a>
     <a href="__HOME__apoyo.html">Apóyanos</a>
     <a href="__HOME__nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>"""
 
 FOOTER = """<footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="__HOME__resenas/">Reseñas</a> · <a href="__HOME__apoyo.html">Apóyanos</a> · <a href="__HOME__contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>"""
 
 # ---------- página individual ----------
@@ -245,7 +250,9 @@ PAGE = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css">
+<link rel="stylesheet" href="../assets/fx.css">
 <script src="../assets/menu.js" defer></script>
+<script src="../assets/fx.js" defer data-fx-base="../"></script>
 <style>__CSS__
 .game-head{text-align:center;margin-bottom:46px}
 .game-head img{max-width:min(460px,100%);border-radius:14px;border:1px solid var(--line);box-shadow:0 18px 50px rgba(0,0,0,.5)}
@@ -297,20 +304,20 @@ __NAV__
     </div>
   </div>
   <div class="duo-cols">
-    <article class="rcard p1">
+    <article class="rcard p1 fx-spot" style="--spot-rgb:var(--p1-rgb)">
       <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody">__CONTENIDO__</div>
-      <a class="steam-link" href="__STEAMURL__" target="_blank" rel="noopener">Ver en Steam ↗</a>
+      <a class="steam-link fx-btn" href="__STEAMURL__" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
-    <aside class="rcard p2">
+    <aside class="rcard p2 fx-spot" style="--spot-rgb:var(--p2-rgb)">
       <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
       __P2BODY__
     </aside>
   </div>
   __VIDEO__
-  <div class="backrow"><a class="back" href="./">◂ Todas las reseñas</a></div>
+  <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 __FOOTER__
 </body>
@@ -348,7 +355,7 @@ def render_page(r, solo=False):
              'La reseña de Player 2 está en camino.<br>Mientras tanto, ya saben quién escribe más rápido.')
     a2 = ANAHI.get(norm(nombre))
     if a2:
-        chips = [('👍 Recomendado' if a2.get('voto','up')=='up' else '👎 No recomendado')]
+        chips = [('<svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado' if a2.get('voto','up')=='up' else '<svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-down"/></svg> No recomendado')]
         if a2.get('horas'): chips.append(f"{a2['horas']} hrs jugadas")
         if a2.get('fecha'): chips.append(a2['fecha'])
         chips_html = ''.join(f'<span class="chip{" rec" if i==0 and a2.get("voto","up")=="up" else (" norec" if i==0 else "")}">{c}</span>' for i,c in enumerate(chips))
@@ -371,7 +378,7 @@ def render_page(r, solo=False):
         .replace('__URL__', url)
         .replace('__SCHEMA__', schema)
         .replace('__RECCLASS__', 'rec' if rec else 'norec')
-        .replace('__RECTXT__', '👍 Recomendado' if rec else '👎 No recomendado')
+        .replace('__RECTXT__', '<svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado' if rec else '<svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-down"/></svg> No recomendado')
         .replace('__HORAS__', r['horas'] or '?')
         .replace('__FECHA__', fecha_es(r['fecha']))
         .replace('__CONTENIDO__', sanitize_html(r['html']))
@@ -385,12 +392,12 @@ def card(r, mini=False):
     nombre = r['nombre']; s = slug(nombre); app = r['appid']
     cap = f"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{app}/header.jpg"
     vid = ' data-video="1"' if VIDEOS.get(norm(nombre)) else ''
-    badge = '<span class="vbadge">▶ EN EL CANAL</span>' if VIDEOS.get(norm(nombre)) else ''
-    cls = 'gcard mini' if mini else 'gcard'
+    badge = '<span class="vbadge"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#play"/></svg> EN EL CANAL</span>' if VIDEOS.get(norm(nombre)) else ''
+    cls = 'gcard mini reveal fx-spot' if mini else 'gcard reveal fx-spot'
     return f"""<a class="{cls}" href="{s}.html" data-nombre="{htmlmod.escape(norm(nombre))}"{vid}>
       <div class="gimg"><img src="{cap}" width="460" height="215" alt="Carátula de {htmlmod.escape(nombre)}" loading="lazy" onerror="this.parentElement.classList.add('noimg')">{badge}</div>
       <div class="ginfo"><h3>{htmlmod.escape(nombre)}</h3>
-      <p>{'👍' if r['voto']=='up' else '👎'} · {r['horas']} hrs · {fecha_es(r['fecha'])}</p></div>
+      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#{'thumbs-up' if r['voto']=='up' else 'thumbs-down'}"/></svg> · {r['horas']} hrs · {fecha_es(r['fecha'])}</p></div>
     </a>"""
 
 cards_juntos = '\n'.join(card(r) for r in juntos)
@@ -418,7 +425,9 @@ INDEX = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css">
+<link rel="stylesheet" href="../assets/fx.css">
 <script src="../assets/menu.js" defer></script>
+<script src="../assets/fx.js" defer data-fx-base="../"></script>
 <style>__CSS__
 .guide-band{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(255,209,102,.4);border-radius:10px;padding:14px 18px;margin-bottom:22px;transition:border-color .2s,background .2s}
 .guide-band:hover{border-color:var(--gold);background:rgba(255,209,102,.06)}
@@ -525,7 +534,9 @@ SOLO_INDEX = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css">
+<link rel="stylesheet" href="../assets/fx.css">
 <script src="../assets/menu.js" defer></script>
+<script src="../assets/fx.js" defer data-fx-base="../"></script>
 <style>__CSS__
 .tools{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
 #buscar{flex:1;min-width:220px;padding:12px 16px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);font-family:var(--body);font-size:.95rem}

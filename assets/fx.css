@@ -1,0 +1,70 @@
+/* ============================================================
+   DOS PARA DUO · FX: capa de interaccion compartida
+   Micro-interacciones, reveals, spotlight, HUD. Vanilla CSS.
+   Se carga en TODAS las paginas junto a tokens.css.
+   ============================================================ */
+
+/* ── iconos (sprite assets/icons.svg); solo svg para no chocar con .ico de emojis ── */
+svg.ico{width:1.15em;height:1.15em;fill:currentColor;vertical-align:-.18em;flex:none}
+
+/* ── reveals con stagger ──
+   El estado oculto SOLO aplica si fx.js marco html.fx (progressive
+   enhancement: sin JS todo el contenido queda visible). */
+html.fx [data-reveal]:not(.in),html.fx .reveal:not(.in){opacity:0;transform:translateY(26px)}
+[data-reveal],.reveal{transition:opacity .65s cubic-bezier(.2,.8,.2,1),transform .65s cubic-bezier(.2,.8,.2,1);transition-delay:var(--rd,0ms)}
+
+/* ── boton con "juego": hundimiento al presionar + brillo que recorre ── */
+.fx-btn{position:relative;overflow:hidden;transition:transform .16s cubic-bezier(.2,.8,.2,1),box-shadow .22s}
+.fx-btn:active{transform:scale(.96) translateY(1px)}
+.fx-btn::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-20deg);transition:left .5s ease}
+.fx-btn:hover::after{left:130%}
+
+/* ── spotlight: halo que sigue el cursor dentro de la tarjeta ── */
+.fx-spot{position:relative}
+.fx-spot::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:1;opacity:0;transition:opacity .3s;background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),rgba(var(--spot-rgb,var(--p1-rgb)),.14),transparent 65%)}
+.fx-spot:hover::before{opacity:1}
+
+/* ── tilt 3D sutil (lo maneja fx.js con --rx/--ry) ── */
+@media (hover:hover){
+  .fx-tilt{transform:perspective(800px) rotateX(var(--rx,0)) rotateY(var(--ry,0)) translateY(var(--ty,0));will-change:transform}
+}
+
+/* ── barra de XP: progreso de scroll gamificado ── */
+.fx-xp{position:fixed;top:0;left:0;right:0;height:3px;z-index:200;pointer-events:none}
+.fx-xp .fx-xp-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--p1),var(--gold),var(--p2));box-shadow:0 0 12px rgba(var(--p2-rgb),.55)}
+.fx-lvl{position:fixed;right:14px;bottom:14px;z-index:200;font-family:var(--mono);font-size:.6rem;letter-spacing:1.5px;color:var(--gold);background:rgba(10,17,31,.85);border:1px solid var(--line);border-radius:6px;padding:5px 9px;pointer-events:none;opacity:0;transform:translateY(8px);transition:opacity .4s,transform .4s}
+.fx-lvl.on{opacity:1;transform:none}
+
+/* ── toast de logro ── */
+.fx-toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,140%);z-index:300;display:flex;align-items:center;gap:12px;background:linear-gradient(160deg,var(--panel),var(--bg-2));border:1px solid var(--gold);border-radius:12px;padding:13px 20px;box-shadow:0 12px 40px rgba(0,0,0,.55),0 0 24px rgba(255,209,102,.18);transition:transform .45s cubic-bezier(.2,.9,.25,1.2);max-width:min(92vw,420px)}
+.fx-toast.on{transform:translate(-50%,0)}
+.fx-toast .ico{width:1.6em;height:1.6em;color:var(--gold);filter:drop-shadow(0 0 8px rgba(255,209,102,.6))}
+.fx-toast b{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:2px;color:var(--gold);text-transform:uppercase}
+.fx-toast span{font-size:.86rem;color:var(--text)}
+
+/* ── confetti pixel (canvas de fx.js) ── */
+.fx-confetti{position:fixed;inset:0;z-index:290;pointer-events:none}
+
+/* ── efecto CRT para el codigo Konami ── */
+@keyframes fx-crt{0%{transform:scale(1,1)}18%{transform:scale(1,.004)}30%{transform:scale(.004,.004)}55%{transform:scale(.004,.004)}70%{transform:scale(1,.004)}100%{transform:scale(1,1)}}
+body.fx-crt{animation:fx-crt .9s ease both;transform-origin:center}
+
+/* ── fila de redes del footer (compartida por todas las paginas) ── */
+.f-social{display:flex;justify-content:center;gap:14px;margin-top:18px}
+.f-social a{width:42px;height:42px;border-radius:10px;border:1px solid var(--line);display:inline-flex;align-items:center;justify-content:center;color:var(--muted);transition:color .2s,border-color .2s,transform .2s,box-shadow .25s}
+.f-social a:hover{color:var(--p2);border-color:var(--p2);transform:translateY(-3px);box-shadow:0 0 18px rgba(var(--p2-rgb),.35)}
+.f-social .ico{width:20px;height:20px}
+
+/* ── accesibilidad: foco visible consistente ── */
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--p1);outline-offset:3px;border-radius:6px}
+
+/* ── cursor apuntador en todo lo clickeable ── */
+a,button,summary,[data-video]{cursor:pointer}
+
+/* ── movimiento reducido: quieto y legible ── */
+@media (prefers-reduced-motion:reduce){
+  [data-reveal],.reveal{opacity:1;transform:none;transition:none}
+  .fx-btn::after{display:none}
+  .fx-tilt{transform:none !important}
+  body.fx-crt{animation:none}
+}

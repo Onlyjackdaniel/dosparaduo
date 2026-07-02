@@ -34,7 +34,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css">
+<link rel="stylesheet" href="../assets/fx.css">
 <script src="../assets/menu.js" defer></script>
+<script src="../assets/fx.js" defer data-fx-base="../"></script>
 <style>
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -111,7 +113,7 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="../merch.html">Merch</a>
     <a href="../apoyo.html">Apóyanos</a>
     <a href="../nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
@@ -120,30 +122,35 @@ footer a{color:var(--p2);text-decoration:none}
     <h1 class="sec">Marvel&#x27;s Midnight Suns</h1>
     <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/368260/header.jpg" width="460" height="215" alt="Carátula de Marvel&#x27;s Midnight Suns" onerror="this.style.display='none'">
     <div class="meta-row">
-      <span class="chip rec">👍 Recomendado</span>
+      <span class="chip rec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado</span>
       <span class="chip">62.8 hrs jugadas</span>
       <span class="chip">1 may 2025</span>
     </div>
   </div>
   <div class="duo-cols">
-    <article class="rcard p1">
+    <article class="rcard p1 fx-spot" style="--spot-rgb:var(--p1-rgb)">
       <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody"><div class="bb_h2">Una joyita táctica que nadie vio venir</div><br>Marvel's Midnight Suns me agarró completamente por sorpresa. Entré esperando una experiencia más simple y corta, pero terminé con más de 60 horas llenas de estrategia, decisiones, desarrollo de personajes y un elenco increíblemente carismático. No es el típico juego de superhéroes, y eso es justo lo que lo hace especial.<br><br><b>Lo que hace a Marvel's Midnight Suns un juego especial:</b><br><u>Crea y desarrolla tu propio héroe:</u> Puedes personalizar completamente a tu personaje, desde su estética hasta su personalidad. Y no es superficial: decidir si sigues un camino “luminoso” o “oscuro” desbloquea habilidades, diálogos y dinámicas diferentes.<br><u>Combate por turnos con cartas y cabeza:</u> Aquí no se gana solo por fuerza bruta. Tienes que pensar cada movimiento, planificar el orden de ataque, gestionar tus puntos y usar el escenario a tu favor.<br><u>Cada héroe se siente único:</u> Jugar con personajes como Capitán América, Iron Man o los del DLC es un placer. Cada uno tiene un estilo y personalidad diferentes, lo que hace cada misión fresca y divertida.<br><br><b>Aspectos destacados:</b><br><br><u>Profundidad fuera del combate:</u> Más allá de las batallas, puedes explorar un mundo abierto reducido, realizar misiones secundarias, subir tu amistad con otros personajes a través de conversaciones, regalos y actividades.<br><u>Gráficamente sólido y visualmente satisfactorio:</u> Las animaciones de las habilidades especiales son espectaculares. Ver a tus héroes en acción nunca deja de ser un deleite.<br><u>DLCs bien integrados:</u> Agregan nuevas misiones, héroes, trajes y variedad que amplían la experiencia aún más.<br><br><b>Lo no tan bueno:</b><br><br><u>Diálogos excesivos:</u> Aunque la historia es buena, está sobrecargada de texto. Hacia el final me encontré saltando muchos diálogos por lo repetitivos que se sienten. Es el único punto que me sacó del ritmo.<br><br><b>¿Lo recomiendo?</b> ✔️ Sí, pero con calma.<br>Si te gustan los juegos de estrategia, construcción de mazos y desarrollo de personajes con una fuerte carga narrativa, este juego es una joyita. Solo tienes que saber que es un juego para tomarse con calma, pensar y disfrutar.<br><br><b>No es el mejor juego de Marvel, pero sí uno de los más completos y únicos dentro de su género. Una grata sorpresa táctica que recordaré con cariño.</b> 🃏🦸‍♂️🧠</div>
-      <a class="steam-link" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/368260/" target="_blank" rel="noopener">Ver en Steam ↗</a>
+      <a class="steam-link fx-btn" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/368260/" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
-    <aside class="rcard p2">
+    <aside class="rcard p2 fx-spot" style="--spot-rgb:var(--p2-rgb)">
       <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
       <div class="pending"><span class="q">?</span>Run en solitario de Player 1.<br>Si Player 2 lo juega algún día, su reseña aparecerá aquí.</div>
     </aside>
   </div>
   
-  <div class="backrow"><a class="back" href="./">◂ Todas las reseñas</a></div>
+  <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a> · <a href="../apoyo.html">Apóyanos</a> · <a href="../contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>

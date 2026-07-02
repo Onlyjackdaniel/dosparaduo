@@ -37,7 +37,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css">
+<link rel="stylesheet" href="../assets/fx.css">
 <script src="../assets/menu.js" defer></script>
+<script src="../assets/fx.js" defer data-fx-base="../"></script>
 <style>
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -115,7 +117,7 @@ footer a{color:var(--p1);text-decoration:none}
     <a href="../merch.html">Merch</a>
     <a href="../apoyo.html">Apóyanos</a>
     <a href="../nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
@@ -124,7 +126,7 @@ footer a{color:var(--p1);text-decoration:none}
   <p class="intro">Somos <b>Jack y Anahí</b>, una pareja que juega junta (casi) todas las noches: uno gamer de toda la vida, la otra empezando casi de cero. Esta lista no salió de notas de prensa: <b>cada juego lo jugamos en pareja de verdad</b>, con las horas para probarlo. Aquí está lo que funcionó, para quién es cada uno, y en cuál casi nos peleamos.</p>
   <p class="cred">★ PROBADO EN PAREJA · <b>+250 HRS</b> ACUMULADAS SOLO EN ESTA LISTA · ACTUALIZADA JUN 2026</p>
 
-    <article class="rank-card reveal" id="it-takes-two">
+    <article class="rank-card reveal fx-spot" id="it-takes-two">
       <div class="rank-num">01</div>
       <div class="rank-img">
         <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/header.jpg" width="460" height="215" alt="Carátula de It Takes Two" loading="lazy" onerror="this.style.display='none'">
@@ -132,15 +134,15 @@ footer a{color:var(--p1);text-decoration:none}
       <div class="rank-body">
         <span class="rank-tag">El imprescindible</span>
         <h3>It Takes Two</h3>
-        <p class="rank-meta">👍 Recomendado · 15.9 hrs jugadas en pareja</p>
+        <p class="rank-meta"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado · 15.9 hrs jugadas en pareja</p>
         <p class="rank-blurb">Si solo van a jugar UN juego en pareja en su vida, que sea este. Hazelight lo diseñó literalmente para dos personas: cada nivel cambia las mecánicas y obliga a cooperar de verdad. Nosotros lo terminamos en ~16 horas entre risas y uno que otro reclamo. Bonus: con el Friend's Pass solo necesitan una copia.</p>
         <div class="rank-links">
-          <a class="mini-btn" href="../resenas/it-takes-two.html">Leer la reseña completa ▸</a>
+          <a class="mini-btn fx-btn" href="../resenas/it-takes-two.html">Leer la reseña completa ▸</a>
           
         </div>
       </div>
     </article>
-    <article class="rank-card reveal" id="split-fiction">
+    <article class="rank-card reveal fx-spot" id="split-fiction">
       <div class="rank-num">02</div>
       <div class="rank-img">
         <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/header.jpg" width="460" height="215" alt="Carátula de Split Fiction" loading="lazy" onerror="this.style.display='none'">
@@ -148,15 +150,15 @@ footer a{color:var(--p1);text-decoration:none}
       <div class="rank-body">
         <span class="rank-tag">El sucesor</span>
         <h3>Split Fiction</h3>
-        <p class="rank-meta">👍 Recomendado · 23.8 hrs jugadas en pareja</p>
+        <p class="rank-meta"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado · 23.8 hrs jugadas en pareja</p>
         <p class="rank-blurb">Del mismo estudio que It Takes Two, y se nota. Dos escritoras atrapadas entre mundos de fantasía y ciencia ficción: cada capítulo es una idea nueva. Le metimos casi 24 horas y el final nos dejó hablando del juego varios días. Si It Takes Two les gustó, este es el siguiente paso obligado.</p>
         <div class="rank-links">
-          <a class="mini-btn" href="../resenas/split-fiction.html">Leer la reseña completa ▸</a>
+          <a class="mini-btn fx-btn" href="../resenas/split-fiction.html">Leer la reseña completa ▸</a>
           
         </div>
       </div>
     </article>
-    <article class="rank-card reveal" id="overcooked-all-you-can-eat">
+    <article class="rank-card reveal fx-spot" id="overcooked-all-you-can-eat">
       <div class="rank-num">03</div>
       <div class="rank-img">
         <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1243830/header.jpg" width="460" height="215" alt="Carátula de Overcooked! All You Can Eat" loading="lazy" onerror="this.style.display='none'">
@@ -164,15 +166,15 @@ footer a{color:var(--p1);text-decoration:none}
       <div class="rank-body">
         <span class="rank-tag">La prueba de fuego</span>
         <h3>Overcooked! All You Can Eat</h3>
-        <p class="rank-meta">👍 Recomendado · 59.5 hrs jugadas en pareja</p>
+        <p class="rank-meta"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado · 59.5 hrs jugadas en pareja</p>
         <p class="rank-blurb">Hay parejas que sobreviven Overcooked y parejas que descubren cosas de sí mismas. Cocinar contra el reloj mientras la cocina se incendia, se mueve o se parte en dos es la prueba de comunicación definitiva. Llevamos casi 60 horas y seguimos gritando '¡PLATOS!'. Con una copia juegan los dos en el sillón.</p>
         <div class="rank-links">
-          <a class="mini-btn" href="../resenas/overcooked-all-you-can-eat.html">Leer la reseña completa ▸</a>
+          <a class="mini-btn fx-btn" href="../resenas/overcooked-all-you-can-eat.html">Leer la reseña completa ▸</a>
           
         </div>
       </div>
     </article>
-    <article class="rank-card reveal" id="portal-2">
+    <article class="rank-card reveal fx-spot" id="portal-2">
       <div class="rank-num">04</div>
       <div class="rank-img">
         <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/620/header.jpg" width="460" height="215" alt="Carátula de Portal 2" loading="lazy" onerror="this.style.display='none'">
@@ -180,15 +182,15 @@ footer a{color:var(--p1);text-decoration:none}
       <div class="rank-body">
         <span class="rank-tag">El de los puzzles</span>
         <h3>Portal 2</h3>
-        <p class="rank-meta">👍 Recomendado · 23.1 hrs jugadas en pareja</p>
+        <p class="rank-meta"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado · 23.1 hrs jugadas en pareja</p>
         <p class="rank-blurb">El modo cooperativo de Portal 2 es una clase magistral: puzzles diseñados para que NINGUNO pueda resolverlos solo. Aquí no hay caos ni prisa: hay pensar juntos, señalar paredes y ese momento glorioso de '¡AHHH, YA ENTENDÍ!' al mismo tiempo. Más de 20 horas de pura química mental.</p>
         <div class="rank-links">
-          <a class="mini-btn" href="../resenas/portal-2.html">Leer la reseña completa ▸</a>
+          <a class="mini-btn fx-btn" href="../resenas/portal-2.html">Leer la reseña completa ▸</a>
           
         </div>
       </div>
     </article>
-    <article class="rank-card reveal" id="we-were-here-too">
+    <article class="rank-card reveal fx-spot" id="we-were-here-too">
       <div class="rank-num">05</div>
       <div class="rank-img">
         <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/677160/header.jpg" width="460" height="215" alt="Carátula de We Were Here Too" loading="lazy" onerror="this.style.display='none'">
@@ -196,15 +198,15 @@ footer a{color:var(--p1);text-decoration:none}
       <div class="rank-body">
         <span class="rank-tag">El de comunicar o morir</span>
         <h3>We Were Here Too</h3>
-        <p class="rank-meta">👍 Recomendado · 8.9 hrs jugadas en pareja</p>
+        <p class="rank-meta"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado · 8.9 hrs jugadas en pareja</p>
         <p class="rank-blurb">Cada quien en un cuarto distinto, comunicados solo por walkie-talkie. Uno ve símbolos, el otro ve palancas, y describir 'una cosa como tridente pero curveada' se vuelve un arte. Perfecto para parejas que creen que se comunican bien: este juego se los va a confirmar… o no. La saga completa vale la pena.</p>
         <div class="rank-links">
-          <a class="mini-btn" href="../resenas/we-were-here-too.html">Leer la reseña completa ▸</a>
+          <a class="mini-btn fx-btn" href="../resenas/we-were-here-too.html">Leer la reseña completa ▸</a>
           
         </div>
       </div>
     </article>
-    <article class="rank-card reveal" id="keep-talking-and-nobody-explodes">
+    <article class="rank-card reveal fx-spot" id="keep-talking-and-nobody-explodes">
       <div class="rank-num">06</div>
       <div class="rank-img">
         <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/341800/header.jpg" width="460" height="215" alt="Carátula de Keep Talking and Nobody Explodes" loading="lazy" onerror="this.style.display='none'">
@@ -212,15 +214,15 @@ footer a{color:var(--p1);text-decoration:none}
       <div class="rank-body">
         <span class="rank-tag">El de la bomba</span>
         <h3>Keep Talking and Nobody Explodes</h3>
-        <p class="rank-meta">👍 Recomendado · 10.8 hrs jugadas en pareja</p>
+        <p class="rank-meta"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado · 10.8 hrs jugadas en pareja</p>
         <p class="rank-blurb">Uno tiene una bomba frente a la pantalla; el otro, un manual incomprensible y prohibido ver la pantalla. Resultado: la conversación más estresante y divertida de su relación. Sesiones cortas, risas garantizadas y un nivel de tensión que ningún juego de terror logra. 10+ horas y seguimos explotando.</p>
         <div class="rank-links">
-          <a class="mini-btn" href="../resenas/keep-talking-and-nobody-explodes.html">Leer la reseña completa ▸</a>
+          <a class="mini-btn fx-btn" href="../resenas/keep-talking-and-nobody-explodes.html">Leer la reseña completa ▸</a>
           
         </div>
       </div>
     </article>
-    <article class="rank-card reveal" id="move-or-die">
+    <article class="rank-card reveal fx-spot" id="move-or-die">
       <div class="rank-num">07</div>
       <div class="rank-img">
         <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/323850/header.jpg" width="460" height="215" alt="Carátula de Move or Die" loading="lazy" onerror="this.style.display='none'">
@@ -228,15 +230,15 @@ footer a{color:var(--p1);text-decoration:none}
       <div class="rank-body">
         <span class="rank-tag">El del caos en 20 segundos</span>
         <h3>Move or Die</h3>
-        <p class="rank-meta">👍 Recomendado · 7.6 hrs jugadas en pareja</p>
+        <p class="rank-meta"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado · 7.6 hrs jugadas en pareja</p>
         <p class="rank-blurb">Rondas de 20 segundos donde las reglas cambian cada vez: muévete o muere, literal. Es competitivo, es injusto, es perfecto para descubrir quién de los dos es más rabioso. Lo jugamos en el canal y el veredicto fue claro: cuando todo es azar, gana quien grita menos. Ideal para cerrar la noche.</p>
         <div class="rank-links">
-          <a class="mini-btn" href="../resenas/move-or-die.html">Leer la reseña completa ▸</a>
-          <a class="mini-btn vid" href="https://www.youtube.com/watch?v=Ra5H1bkkEj4" target="_blank" rel="noopener">▶ Verlo en el canal</a>
+          <a class="mini-btn fx-btn" href="../resenas/move-or-die.html">Leer la reseña completa ▸</a>
+          <a class="mini-btn vid" href="https://www.youtube.com/watch?v=Ra5H1bkkEj4" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#play"/></svg> Verlo en el canal</a>
         </div>
       </div>
     </article>
-    <article class="rank-card reveal" id="pummel-party">
+    <article class="rank-card reveal fx-spot" id="pummel-party">
       <div class="rank-num">08</div>
       <div class="rank-img">
         <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/880940/header.jpg" width="460" height="215" alt="Carátula de Pummel Party" loading="lazy" onerror="this.style.display='none'">
@@ -244,15 +246,15 @@ footer a{color:var(--p1);text-decoration:none}
       <div class="rank-body">
         <span class="rank-tag">El destruye-relaciones</span>
         <h3>Pummel Party</h3>
-        <p class="rank-meta">👍 Recomendado · 7.8 hrs jugadas en pareja</p>
+        <p class="rank-meta"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado · 7.8 hrs jugadas en pareja</p>
         <p class="rank-blurb">Mario Party sin contrato de paz: tablero, minijuegos y traiciones con armas. Es el juego que sacas cuando la relación está sólida y quieres ponerla a prueba con risas. Cada partida termina con un '¿por qué me hiciste eso?' y con ganas de la revancha inmediata.</p>
         <div class="rank-links">
-          <a class="mini-btn" href="../resenas/pummel-party.html">Leer la reseña completa ▸</a>
+          <a class="mini-btn fx-btn" href="../resenas/pummel-party.html">Leer la reseña completa ▸</a>
           
         </div>
       </div>
     </article>
-    <article class="rank-card reveal" id="biped">
+    <article class="rank-card reveal fx-spot" id="biped">
       <div class="rank-num">09</div>
       <div class="rank-img">
         <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1071870/header.jpg" width="460" height="215" alt="Carátula de Biped" loading="lazy" onerror="this.style.display='none'">
@@ -260,15 +262,15 @@ footer a{color:var(--p1);text-decoration:none}
       <div class="rank-body">
         <span class="rank-tag">El más tierno</span>
         <h3>Biped</h3>
-        <p class="rank-meta">👍 Recomendado · 5.7 hrs jugadas en pareja</p>
+        <p class="rank-meta"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado · 5.7 hrs jugadas en pareja</p>
         <p class="rank-blurb">Dos robotitos que caminan con dos patas cada uno, y cada pata es un stick. Suena simple hasta que hay que coordinarse para cruzar un puente y los dos terminan en el suelo, de risa. Corto, precioso y accesible. De los mejores para una pareja donde uno apenas empieza a jugar.</p>
         <div class="rank-links">
-          <a class="mini-btn" href="../resenas/biped.html">Leer la reseña completa ▸</a>
+          <a class="mini-btn fx-btn" href="../resenas/biped.html">Leer la reseña completa ▸</a>
           
         </div>
       </div>
     </article>
-    <article class="rank-card reveal" id="cuphead">
+    <article class="rank-card reveal fx-spot" id="cuphead">
       <div class="rank-num">10</div>
       <div class="rank-img">
         <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/268910/header.jpg" width="460" height="215" alt="Carátula de Cuphead" loading="lazy" onerror="this.style.display='none'">
@@ -276,10 +278,10 @@ footer a{color:var(--p1);text-decoration:none}
       <div class="rank-body">
         <span class="rank-tag">El de sufrir juntos</span>
         <h3>Cuphead</h3>
-        <p class="rank-meta">👍 Recomendado · 43.4 hrs jugadas en pareja</p>
+        <p class="rank-meta"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado · 43.4 hrs jugadas en pareja</p>
         <p class="rank-blurb">Para parejas que ya pasaron las pruebas anteriores y quieren el modo difícil de la relación. Jefes brutales estilo caricatura de los años 30 donde morir es parte del ritmo. 43 horas en nuestro contador lo confirman: pocas cosas unen más que por fin tumbar juntos al jefe que los humilló veinte veces.</p>
         <div class="rank-links">
-          <a class="mini-btn" href="../resenas/cuphead.html">Leer la reseña completa ▸</a>
+          <a class="mini-btn fx-btn" href="../resenas/cuphead.html">Leer la reseña completa ▸</a>
           
         </div>
       </div>
@@ -300,16 +302,17 @@ footer a{color:var(--p1);text-decoration:none}
   <div class="outro reveal">
     <h2>¿Quieren vernos sufrir en vivo?</h2>
     <p>Jugamos estos (y los que vienen) en el canal, con la reacción real de quién grita primero.</p>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener" style="text-decoration:none">▶ Súmate al party</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener" style="text-decoration:none"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Súmate al party</a>
   </div>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a> · <a href="../merch.html">Merch</a> · <a href="../apoyo.html">Apóyanos</a> · <a href="../contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
-<script>
-const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-</script>
 </body>
 </html>

@@ -33,6 +33,9 @@
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/menu.css">
 <script src="assets/menu.js" defer></script>
+<link rel="stylesheet" href="assets/fx.css">
+<script src="assets/fx.js" defer></script>
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -101,7 +104,7 @@ footer a{color:var(--p1);text-decoration:none}
     <a href="merch.html">Merch</a>
     <a href="apoyo.html">Apóyanos</a>
     <a href="nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
@@ -111,32 +114,32 @@ footer a{color:var(--p1);text-decoration:none}
   <p class="promesa">★ TODO REGRESA AL CANAL: MEJOR SETUP · JUEGOS PARA REGALAR EN DINÁMICAS · MERCH PARA LA COMUNIDAD</p>
 
   <div class="grid">
-    <div class="pcard cafe">
+    <div class="pcard cafe reveal fx-spot fx-tilt" style="--spot-rgb:255,209,102">
       <span class="ico">☕</span>
       <h2>Invítanos un café</h2>
       <p>La forma más directa. Cada café se convierte en <b>mejor equipo para grabar</b>, en <b>juegos que regalamos en dinámicas</b> de la comunidad, y cuando el merch exista, en merch que también regalaremos. Sin suscripciones ni compromisos: un café y ya.</p>
       <div class="acciones">
-        <a class="btn-go gold" href="https://buymeacoffee.com/dosparaduo" target="_blank" rel="noopener">☕ Buy Me a Coffee ↗</a>
+        <a class="btn-go gold fx-btn" href="https://buymeacoffee.com/dosparaduo" target="_blank" rel="noopener">☕ Buy Me a Coffee ↗</a>
       </div>
     </div>
 
-    <div class="pcard wl">
+    <div class="pcard wl reveal fx-spot fx-tilt" style="--spot-rgb:var(--p2-rgb)">
       <span class="ico">🎁</span>
       <h2>Wishlists del dúo</h2>
       <p>Si prefieren regalar algo concreto, estas son nuestras listas de Amazon: cosas que de verdad usaríamos para <b>seguir creciendo el canal</b> (y una que otra debilidad personal, no vamos a mentir).</p>
       <div class="acciones">
-        <a class="btn-go azul" href="https://www.amazon.com.mx/hz/wishlist/ls/115LDIO8OBSPF?ref_=wl_share" target="_blank" rel="noopener">🎮 Wishlist de Jack (P1) ↗</a>
-        <a class="btn-go naranja" href="https://www.amazon.com.mx/hz/wishlist/ls/2GUZ0KO4WU2S4?ref_=wl_share" target="_blank" rel="noopener">🎨 Wishlist de Anahí (P2) ↗</a>
+        <a class="btn-go azul fx-btn" href="https://www.amazon.com.mx/hz/wishlist/ls/115LDIO8OBSPF?ref_=wl_share" target="_blank" rel="noopener">🎮 Wishlist de Jack (P1) ↗</a>
+        <a class="btn-go naranja fx-btn" href="https://www.amazon.com.mx/hz/wishlist/ls/2GUZ0KO4WU2S4?ref_=wl_share" target="_blank" rel="noopener">🎨 Wishlist de Anahí (P2) ↗</a>
       </div>
     </div>
 
-    <div class="pcard free">
+    <div class="pcard free reveal fx-spot fx-tilt" style="--spot-rgb:var(--p1-rgb)">
       <span class="ico">🕹️</span>
       <h2>El power-up gratis</h2>
       <p>El apoyo que más mueve la aguja no cuesta nada: <b>ver los videos completos, dejar un like, comentar y compartir</b> con esa pareja que conocen que necesita un juego co-op. El algoritmo hace el resto.</p>
       <div class="acciones">
-        <a class="btn-go linea" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscribirse al canal</a>
-        <a class="btn-go linea" href="listas/mejores-juegos-cooperativos-para-parejas.html">Compartir nuestra guía co-op</a>
+        <a class="btn-go linea fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscribirse al canal</a>
+        <a class="btn-go linea fx-btn" href="listas/mejores-juegos-cooperativos-para-parejas.html">Compartir nuestra guía co-op</a>
       </div>
     </div>
   </div>
@@ -146,6 +149,11 @@ footer a{color:var(--p1);text-decoration:none}
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="resenas/">Reseñas</a> · <a href="contacto.html">Contacto</a> · <a href="privacidad.html">Privacidad</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>

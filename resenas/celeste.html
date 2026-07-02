@@ -34,7 +34,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css">
+<link rel="stylesheet" href="../assets/fx.css">
 <script src="../assets/menu.js" defer></script>
+<script src="../assets/fx.js" defer data-fx-base="../"></script>
 <style>
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -111,7 +113,7 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="../merch.html">Merch</a>
     <a href="../apoyo.html">Apóyanos</a>
     <a href="../nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
@@ -120,30 +122,35 @@ footer a{color:var(--p2);text-decoration:none}
     <h1 class="sec">Celeste</h1>
     <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/504230/header.jpg" width="460" height="215" alt="Carátula de Celeste" onerror="this.style.display='none'">
     <div class="meta-row">
-      <span class="chip rec">👍 Recomendado</span>
+      <span class="chip rec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado</span>
       <span class="chip">39.9 hrs jugadas</span>
       <span class="chip">9 oct 2024</span>
     </div>
   </div>
   <div class="duo-cols">
-    <article class="rcard p1">
+    <article class="rcard p1 fx-spot" style="--spot-rgb:var(--p1-rgb)">
       <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody"><div class="bb_h2">Una hermosa lección de autosuperación disfrazada de plataforma</div><br>Celeste es mucho más que un simple juego de plataformas. Te enseña tanto, de una manera tan indirecta, que su mensaje de autosuperación se siente personal y profundo. Tomar el control de Madeline y acompañarla en su viaje hacia la cima de la montaña se convierte en una metáfora de los desafíos internos que todos enfrentamos.<br><br><b>Lo que destaca en Celeste:</b><br><u>Progresión de dificultad perfecta:</u> Cada nivel aumenta la dificultad de manera gradual, haciendo que cuando llegas al final y miras hacia atrás, te preguntes cómo es que los primeros niveles te parecían tan difíciles. Este sentido de progresión te motiva a seguir mejorando.<br><u>Diseño de niveles impecable:</u> Los niveles están diseñados con tal precisión que cada muerte se siente como una lección, no una frustración. El diseño es tan cuidado que incluso los momentos más difíciles se sienten justos.<br><u>Personajes y narrativa emocional:</u> Madeline y los personajes que encuentras en el camino no solo son entrañables, sino que te conectan con temas como la ansiedad y la autosuperación de una manera sutil y hermosa.<br><br><b>Lo que lo hace especial:</b><br><u>Variedad en la jugabilidad:</u> Lo que hace único a Celeste es que ofrece múltiples maneras de ser jugado. Ya sea que estés buscando coleccionar fresas, mejorar tus tiempos, o simplemente disfrutar de la historia, el juego te invita a volver una y otra vez.<br><u>Desafío final extremo:</u> El último nivel es extremadamente difícil, pero esa sensación de haberlo superado te deja con una gratificación enorme. Cada muerte te enseña algo y te acerca un paso más hacia el objetivo.<br><br>Recomendado: ✔️ Sí<br>¡Un viaje emocional y un reto perfecto!</div>
-      <a class="steam-link" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/504230/" target="_blank" rel="noopener">Ver en Steam ↗</a>
+      <a class="steam-link fx-btn" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/504230/" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
-    <aside class="rcard p2">
+    <aside class="rcard p2 fx-spot" style="--spot-rgb:var(--p2-rgb)">
       <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
       <div class="pending"><span class="q">?</span>Run en solitario de Player 1.<br>Si Player 2 lo juega algún día, su reseña aparecerá aquí.</div>
     </aside>
   </div>
   
-  <div class="backrow"><a class="back" href="./">◂ Todas las reseñas</a></div>
+  <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a> · <a href="../apoyo.html">Apóyanos</a> · <a href="../contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>

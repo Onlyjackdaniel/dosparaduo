@@ -87,8 +87,8 @@ for i, (nombre, tag, blurb) in enumerate(RANKING, 1):
     app = r['appid']
     s = slug(r['nombre'])
     horas = r['horas']
-    video = f'''<a class="mini-btn vid" href="https://www.youtube.com/watch?v={VIDEO_MOVE_OR_DIE}" target="_blank" rel="noopener">▶ Verlo en el canal</a>''' if norm(nombre)=='move or die' else ''
-    items_html.append(f'''    <article class="rank-card reveal" id="{s}">
+    video = f'''<a class="mini-btn vid" href="https://www.youtube.com/watch?v={VIDEO_MOVE_OR_DIE}" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#play"/></svg> Verlo en el canal</a>''' if norm(nombre)=='move or die' else ''
+    items_html.append(f'''    <article class="rank-card reveal fx-spot" id="{s}">
       <div class="rank-num">{i:02d}</div>
       <div class="rank-img">
         <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{app}/header.jpg" width="460" height="215" alt="Carátula de {hm.escape(r['nombre'])}" loading="lazy" onerror="this.style.display='none'">
@@ -96,10 +96,10 @@ for i, (nombre, tag, blurb) in enumerate(RANKING, 1):
       <div class="rank-body">
         <span class="rank-tag">{hm.escape(tag)}</span>
         <h3>{hm.escape(r['nombre'])}</h3>
-        <p class="rank-meta">👍 Recomendado · {horas} hrs jugadas en pareja</p>
+        <p class="rank-meta"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado · {horas} hrs jugadas en pareja</p>
         <p class="rank-blurb">{blurb}</p>
         <div class="rank-links">
-          <a class="mini-btn" href="../resenas/{s}.html">Leer la reseña completa ▸</a>
+          <a class="mini-btn fx-btn" href="../resenas/{s}.html">Leer la reseña completa ▸</a>
           {video}
         </div>
       </div>
@@ -163,7 +163,9 @@ PAGE = f'''<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css">
+<link rel="stylesheet" href="../assets/fx.css">
 <script src="../assets/menu.js" defer></script>
+<script src="../assets/fx.js" defer data-fx-base="../"></script>
 <style>
 @media (prefers-reduced-motion: reduce){{*,*::before,*::after{{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}}}
 *{{margin:0;padding:0;box-sizing:border-box}}
@@ -241,7 +243,7 @@ footer a{{color:var(--p1);text-decoration:none}}
     <a href="../merch.html">Merch</a>
     <a href="../apoyo.html">Apóyanos</a>
     <a href="../nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
@@ -264,17 +266,18 @@ footer a{{color:var(--p1);text-decoration:none}}
   <div class="outro reveal">
     <h2>¿Quieren vernos sufrir en vivo?</h2>
     <p>Jugamos estos (y los que vienen) en el canal, con la reacción real de quién grita primero.</p>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener" style="text-decoration:none">▶ Súmate al party</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener" style="text-decoration:none"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Súmate al party</a>
   </div>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a> · <a href="../merch.html">Merch</a> · <a href="../apoyo.html">Apóyanos</a> · <a href="../contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
-<script>
-const io = new IntersectionObserver((es)=>{{es.forEach(e=>{{if(e.isIntersecting){{e.target.classList.add('in');io.unobserve(e.target);}}}})}},{{threshold:.1}});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-</script>
 </body>
 </html>'''
 

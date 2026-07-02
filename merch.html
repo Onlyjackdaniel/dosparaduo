@@ -33,6 +33,9 @@
 <link rel="stylesheet" href="assets/tokens.css">
 <link rel="stylesheet" href="assets/menu.css">
 <script src="assets/menu.js" defer></script>
+<link rel="stylesheet" href="assets/fx.css">
+<script src="assets/fx.js" defer></script>
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;overflow-x:hidden}
@@ -98,7 +101,7 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="merch.html">Merch</a>
     <a href="apoyo.html">Apóyanos</a>
     <a href="nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
@@ -106,11 +109,11 @@ footer a{color:var(--p2);text-decoration:none}
   <div class="lock">🔒</div>
   <h1>El <span>merch</span> se está forjando</h1>
   <p class="sub">Estamos craftendo el merch oficial del dúo: cosas que vas a querer ponerte aunque tu main sea el sillón. <b>Todavía no hay nada a la venta</b>, pero el horno ya está encendido.</p>
-  <div class="forge">
+  <div class="forge reveal fx-spot">
     <div class="lbl"><span>Forjando…</span><b>37%</b></div>
     <div class="bar"><div class="fill"></div></div>
   </div>
-  <div class="ideas">
+  <div class="ideas reveal">
     <span>Playeras P1 / P2</span>
     <span>Stickers</span>
     <span>Tazas co-op</span>
@@ -124,6 +127,11 @@ footer a{color:var(--p2);text-decoration:none}
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="resenas/">Reseñas</a> · <a href="apoyo.html">Apóyanos</a> · <a href="contacto.html">Contacto</a> · <a href="privacidad.html">Privacidad</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>

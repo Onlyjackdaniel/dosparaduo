@@ -34,7 +34,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css">
+<link rel="stylesheet" href="../assets/fx.css">
 <script src="../assets/menu.js" defer></script>
+<script src="../assets/fx.js" defer data-fx-base="../"></script>
 <style>
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -111,7 +113,7 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="../merch.html">Merch</a>
     <a href="../apoyo.html">Apóyanos</a>
     <a href="../nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
@@ -120,30 +122,35 @@ footer a{color:var(--p2);text-decoration:none}
     <h1 class="sec">We Were Here Too</h1>
     <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/677160/header.jpg" width="460" height="215" alt="Carátula de We Were Here Too" onerror="this.style.display='none'">
     <div class="meta-row">
-      <span class="chip rec">👍 Recomendado</span>
+      <span class="chip rec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado</span>
       <span class="chip">8.9 hrs jugadas</span>
       <span class="chip">19 oct 2025</span>
     </div>
   </div>
   <div class="duo-cols">
-    <article class="rcard p1">
+    <article class="rcard p1 fx-spot" style="--spot-rgb:var(--p1-rgb)">
       <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody"><div class="bb_h2">Hablar bien o morir (de desesperación y risa)</div><br>We Were Here Too me gustó mucho porque lleva el concepto cooperativo a un punto muy real: si no te comunicas bien, no hay manera de avanzar. Los puzzles no son extremadamente difíciles, pero sí exigen una comunicación clara, precisa y constante entre ambos jugadores. Es describir lo que ves, escuchar lo que el otro te dice, y juntos intentar dar con la solución correcta.<br><br>Es un juego de prueba y error, pero con una estructura que no se siente frustrante si hay paciencia. Cada acierto o fallo se convierte en parte de la experiencia, y cuando logras descifrar algo juntos, se siente genuinamente satisfactorio. Además, su duración es perfecta para una tarde tranquila: corto, intenso y con el tiempo justo para no cansar.<br><br>Yo lo jugué con mi novia, y he de decir que fácil no fue. Nos agarramos del chongo un par de veces, y hubo momentos donde casi nos rendimos, pero al final lo terminamos entre risas y satisfacción. Es una experiencia que pone a prueba no solo tus habilidades lógicas, sino también la paciencia y sincronía como pareja o equipo.<br><br><b>Lo que hace a We Were Here Too especial:</b><br><br><u>Comunicación total:</u> Describir bien lo que ves es la clave para sobrevivir.<br><u>Puzzles cooperativos bien diseñados:</u> Requieren atención y coordinación real.<br><u>Duración justa:</u> Corto, conciso y perfecto para una sesión en pareja.<br><br><b>Aspectos destacados:</b><br><br><u>Aprendizaje compartido:</u> Cada error enseña algo nuevo.<br><u>Atmósfera inmersiva:</u> Tensa y misteriosa, ideal para dos jugadores.<br><u>Reto de pareja/amigos:</u> Diversión asegurada… con potencial de discusiones 😂.<br><br><b>¿Lo recomiendo?</b> ✔️ Sí<br>Un cooperativo brillante que pone a prueba la comunicación real. Perfecto para jugar con alguien de confianza, reírse, frustrarse un poco y celebrar cada victoria juntos.</div>
-      <a class="steam-link" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/677160/" target="_blank" rel="noopener">Ver en Steam ↗</a>
+      <a class="steam-link fx-btn" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/677160/" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
-    <aside class="rcard p2">
+    <aside class="rcard p2 fx-spot" style="--spot-rgb:var(--p2-rgb)">
       <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
       <div class="pending"><span class="q">?</span>La reseña de Player 2 está en camino.<br>Mientras tanto, ya saben quién escribe más rápido.</div>
     </aside>
   </div>
   
-  <div class="backrow"><a class="back" href="./">◂ Todas las reseñas</a></div>
+  <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a> · <a href="../apoyo.html">Apóyanos</a> · <a href="../contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>

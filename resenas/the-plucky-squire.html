@@ -34,7 +34,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css">
+<link rel="stylesheet" href="../assets/fx.css">
 <script src="../assets/menu.js" defer></script>
+<script src="../assets/fx.js" defer data-fx-base="../"></script>
 <style>
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -111,7 +113,7 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="../merch.html">Merch</a>
     <a href="../apoyo.html">Apóyanos</a>
     <a href="../nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
@@ -120,13 +122,13 @@ footer a{color:var(--p2);text-decoration:none}
     <h1 class="sec">The Plucky Squire</h1>
     <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1627570/header.jpg" width="460" height="215" alt="Carátula de The Plucky Squire" onerror="this.style.display='none'">
     <div class="meta-row">
-      <span class="chip rec">👍 Recomendado</span>
+      <span class="chip rec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado</span>
       <span class="chip">8.8 hrs jugadas</span>
       <span class="chip">23 abr 2026</span>
     </div>
   </div>
   <div class="duo-cols">
-    <article class="rcard p1">
+    <article class="rcard p1 fx-spot" style="--spot-rgb:var(--p1-rgb)">
       <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody"><div class="bb_h2">Un libro que se deja jugar (y reescribir)</div><br>A este juego ya le tenía fe… pero aún así logró sorprenderme muchísimo. Desde el inicio destaca por su dirección de arte: todo se siente creativo, cuidado y con una identidad muy clara. La historia fluye sin volverse pesada, lo cual hace que la experiencia sea muy disfrutable tanto para un adulto como para un niño. Es de esos juegos que simplemente se sienten bien de jugar.<br><br>La mecánica de entrar y salir del libro, aunque básica en esencia, funciona increíblemente bien. Rompe la rutina visual, le da frescura constante a la experiencia y evita que te estanques en una sola estética. A eso súmale las distintas variantes de ataques: no son necesarias, pero se agradecen porque añaden un poco más de variedad sin complicar el juego.<br><br>Uno de los puntos que más me gustó fueron los coleccionables. No son solo “cosas por juntar”, sino pequeñas obras de arte que realmente elevan el valor del juego para quienes disfrutan observar y apreciar los detalles. Todo el concepto de libro está tan bien integrado que se siente completamente natural dentro de su propio mundo.<br><br>Y la cerecita del pastel: el sistema de palabras. Poder cambiar términos y generar pequeños efectos secundarios abre una capa de experimentación muy divertida. No es obligatorio, pero invita a jugar con las posibilidades y a descubrir qué pasa cuando alteras lo que aparentemente “debería ser”.<br><br><b>Lo que hace a El Escudero Valiente especial:</b><br><br><u>Dirección de arte creativa:</u> Un estilo de libro que se siente vivo y natural.<br><u>Mecánica de cambiar palabras:</u> Experimentación divertida con efectos inesperados.<br><u>Experiencia accesible:</u> Funciona igual de bien para adultos y niños.<br><br><b>Aspectos destacados:</b><br><br><u>Cambio de perspectiva constante:</u> Salir y entrar del libro mantiene la frescura.<br><u>Coleccionables valiosos:</u> Mini obras de arte que enriquecen la experiencia.<br><u>Variedad ligera en combate:</u> Ataques opcionales que suman sin complicar.<br><br><b>¿Lo recomiendo?</b> ✔️ Sí, con reservas<br>Un juego sólido, creativo y muy bien ejecutado para su precio. No es para todos, pero quien conecte con su propuesta lo va a disfrutar muchísimo. Un gran acierto tanto para quienes lo juegan como para el estudio que lo creó.								</div>
@@ -135,20 +137,25 @@ footer a{color:var(--p2);text-decoration:none}
 						<div class="reviewer_hardware_item">Windows 11</div>
 		<div class="reviewer_hardware_item">AMD Ryzen 9 9900X 12-Core Processor             - RAM: 31 GB</div>
 		<div class="reviewer_hardware_item">AMD Radeon RX 7900 XTX - VRAM: 24 GB</div></div>
-      <a class="steam-link" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/1627570/" target="_blank" rel="noopener">Ver en Steam ↗</a>
+      <a class="steam-link fx-btn" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/1627570/" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
-    <aside class="rcard p2">
+    <aside class="rcard p2 fx-spot" style="--spot-rgb:var(--p2-rgb)">
       <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
       <div class="pending"><span class="q">?</span>Run en solitario de Player 1.<br>Si Player 2 lo juega algún día, su reseña aparecerá aquí.</div>
     </aside>
   </div>
   
-  <div class="backrow"><a class="back" href="./">◂ Todas las reseñas</a></div>
+  <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a> · <a href="../apoyo.html">Apóyanos</a> · <a href="../contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>

@@ -34,7 +34,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css">
+<link rel="stylesheet" href="../assets/fx.css">
 <script src="../assets/menu.js" defer></script>
+<script src="../assets/fx.js" defer data-fx-base="../"></script>
 <style>
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -111,7 +113,7 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="../merch.html">Merch</a>
     <a href="../apoyo.html">Apóyanos</a>
     <a href="../nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
@@ -120,30 +122,35 @@ footer a{color:var(--p2);text-decoration:none}
     <h1 class="sec">Resident Evil 3</h1>
     <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/952060/header.jpg" width="460" height="215" alt="Carátula de Resident Evil 3" onerror="this.style.display='none'">
     <div class="meta-row">
-      <span class="chip rec">👍 Recomendado</span>
+      <span class="chip rec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado</span>
       <span class="chip">17.3 hrs jugadas</span>
       <span class="chip">31 ago 2025</span>
     </div>
   </div>
   <div class="duo-cols">
-    <article class="rcard p1">
+    <article class="rcard p1 fx-spot" style="--spot-rgb:var(--p1-rgb)">
       <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody"><div class="bb_h2">Acción y terror en dosis más cortas</div><br>Después de disfrutar Resident Evil 2 (Remake), Resident Evil 3 (Remake) nos gustó también un montón, aunque con un enfoque distinto. Si bien conserva el gran feeling de la saga, se siente menos aterrador y más como una película de acción interactiva con toques de horror.<br><br><b>Lo que hace a Resident Evil 3 un juego especial:</b><br><br><u>Un Nemesis implacable:</u> Aunque asusta menos que Mr. X, en dificultades altas es un verdadero dolor de cabeza: rápido, letal y capaz de ponerte contra las cuerdas en segundos.<br><u>Duración corta pero intensa:</u> Es un juego más breve, lo que hace que todo se sienta más condensado y directo.<br><u>Un enfoque más orientado a la acción:</u> El ritmo de gameplay es más rápido, con menos tensión atmosférica que en RE2, pero con combates más espectaculares.<br><br><b>Aspectos destacados:</b><br><br><u>Dificultad máxima, tensión máxima:</u> Aquí sí se siente el survival horror, porque la velocidad del Némesis y lo preciso de la puntería requerida convierten cada encuentro en puro estrés.<br><u>Un título más accesible:</u> Comparado con RE2, es más sencillo de completar, lo que lo hace atractivo para quienes buscan una experiencia menos demandante.<br><u>Diversión asegurada en pareja:</u> Aunque dio menos sustos que su antecesor, jugarlo juntos lo convirtió en una experiencia igualmente emocionante y memorable.<br><br><b>Experiencia compartida:</b><br>Este juego, junto con Resident Evil 2 (Remake), fue parte de nuestra primera gran aventura en la saga. Mientras RE2 nos atrapó con su tensión y atmósfera, RE3 nos regaló una experiencia más rápida y explosiva, que sentimos como una montaña rusa de acción y sustos puntuales. Fue increíble ver cómo juntos aprendimos a esquivar a Némesis, a sobrevivir con pocas balas y a celebrar cada victoria como un logro de equipo. En pareja, la saga Resident Evil no solo se volvió inolvidable… se volvió nuestra. ❤️<br><br><b>¿Lo recomiendo?</b> ✔️ Sí.<br>Aunque más corto y menos intenso que Resident Evil 2 (Remake), Resident Evil 3 (Remake) sigue siendo un survival horror con mucho que ofrecer.<br><br><b>Un capítulo breve, pero con la acción suficiente para que valga la pena vivirlo (y sobrevivirlo juntos).</b> 🧟‍♀️🔥</div>
-      <a class="steam-link" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/952060/" target="_blank" rel="noopener">Ver en Steam ↗</a>
+      <a class="steam-link fx-btn" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/952060/" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
-    <aside class="rcard p2">
+    <aside class="rcard p2 fx-spot" style="--spot-rgb:var(--p2-rgb)">
       <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
       <div class="pending"><span class="q">?</span>La reseña de Player 2 está en camino.<br>Mientras tanto, ya saben quién escribe más rápido.</div>
     </aside>
   </div>
   
-  <div class="backrow"><a class="back" href="./">◂ Todas las reseñas</a></div>
+  <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a> · <a href="../apoyo.html">Apóyanos</a> · <a href="../contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>

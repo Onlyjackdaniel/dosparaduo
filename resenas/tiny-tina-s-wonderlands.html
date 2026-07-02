@@ -34,7 +34,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css">
+<link rel="stylesheet" href="../assets/fx.css">
 <script src="../assets/menu.js" defer></script>
+<script src="../assets/fx.js" defer data-fx-base="../"></script>
 <style>
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -111,7 +113,7 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="../merch.html">Merch</a>
     <a href="../apoyo.html">Apóyanos</a>
     <a href="../nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
@@ -120,30 +122,35 @@ footer a{color:var(--p2);text-decoration:none}
     <h1 class="sec">Tiny Tina&#x27;s Wonderlands</h1>
     <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1286680/header.jpg" width="460" height="215" alt="Carátula de Tiny Tina&#x27;s Wonderlands" onerror="this.style.display='none'">
     <div class="meta-row">
-      <span class="chip rec">👍 Recomendado</span>
+      <span class="chip rec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado</span>
       <span class="chip">66.1 hrs jugadas</span>
       <span class="chip">9 oct 2024</span>
     </div>
   </div>
   <div class="duo-cols">
-    <article class="rcard p1">
+    <article class="rcard p1 fx-spot" style="--spot-rgb:var(--p1-rgb)">
       <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody"><div class="bb_h2">Un shooter caótico y divertido con el toque de D&amp;D</div><br>Entré a Tiny Tina's Wonderlands sin saber mucho sobre el juego, pero conociendo la saga Borderlands, ya tenía cierta noción de lo que esperar. Sin embargo, el juego superó mis expectativas. La historia, llena de giros inesperados y ese humor tan característico, te mantiene enganchado desde el principio. Además, el constante análisis de armas, habilidades y personalización de personaje me mantuvo entretenido durante horas.<br><br><b>Lo que destaca:</b><br><u>Desarrollo de la historia y humor:</u> La narrativa es impredecible y llena de giros, con ese humor random que es marca registrada de la franquicia Borderlands. Cada diálogo y situación aporta momentos divertidos que hacen que el juego nunca pierda su frescura.<br><u>Personalización profunda:</u> La posibilidad de personalizar tanto a tu personaje como sus habilidades y estilo de juego es excelente. Pasé gran parte del tiempo ajustando las armas y habilidades a mi estilo, lo que hizo que la experiencia de juego fuera mucho más satisfactoria.<br><u>Post-game:</u> El contenido post-game es una de las mejores partes. Después de completar la campaña, el juego te deja con esa sensación de querer seguir explotando al máximo lo que has obtenido, y lo hace de manera impecable.<br><br>Lo que lo hace especial:<br><u>Un shooter mix con D&amp;D:</u> Combina lo mejor de los shooters con elementos de rol al estilo Dungeons &amp; Dragons, y lo hace de una manera brillante. El resultado es una mezcla que se siente fresca y divertida, con todo el caos y creatividad que esperas de un juego de Tiny Tina.<br><u>Un gran homenaje a Borderlands:</u> Si eres fan de Borderlands, este juego es un gran homenaje al mundo que amas, pero con un toque completamente nuevo. Los elementos de rol y fantasía añadidos hacen que se sienta como una extensión natural del universo, pero con un estilo único.<br><br>Recomendado: ✔️ Sí<br> ¡Un shooter explosivo con un toque de rol que no te puedes perder!</div>
-      <a class="steam-link" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/1286680/" target="_blank" rel="noopener">Ver en Steam ↗</a>
+      <a class="steam-link fx-btn" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/1286680/" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
-    <aside class="rcard p2">
+    <aside class="rcard p2 fx-spot" style="--spot-rgb:var(--p2-rgb)">
       <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
       <div class="pending"><span class="q">?</span>Run en solitario de Player 1.<br>Si Player 2 lo juega algún día, su reseña aparecerá aquí.</div>
     </aside>
   </div>
   
-  <div class="backrow"><a class="back" href="./">◂ Todas las reseñas</a></div>
+  <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a> · <a href="../apoyo.html">Apóyanos</a> · <a href="../contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>

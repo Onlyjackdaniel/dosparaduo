@@ -34,7 +34,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css">
+<link rel="stylesheet" href="../assets/fx.css">
 <script src="../assets/menu.js" defer></script>
+<script src="../assets/fx.js" defer data-fx-base="../"></script>
 <style>
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -111,7 +113,7 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="../merch.html">Merch</a>
     <a href="../apoyo.html">Apóyanos</a>
     <a href="../nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
@@ -120,30 +122,35 @@ footer a{color:var(--p2);text-decoration:none}
     <h1 class="sec">The Stanley Parable: Ultra Deluxe</h1>
     <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1703340/header.jpg" width="460" height="215" alt="Carátula de The Stanley Parable: Ultra Deluxe" onerror="this.style.display='none'">
     <div class="meta-row">
-      <span class="chip rec">👍 Recomendado</span>
+      <span class="chip rec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado</span>
       <span class="chip">4.5 hrs jugadas</span>
       <span class="chip">11 ene 2026</span>
     </div>
   </div>
   <div class="duo-cols">
-    <article class="rcard p1">
+    <article class="rcard p1 fx-spot" style="--spot-rgb:var(--p1-rgb)">
       <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody"><div class="bb_h2">¿Me estás hablando a mí… o estás hablando conmigo?</div><br>The Stanley Parable Ultra Deluxe es uno de esos juegos que te hacen dudar constantemente de tu lugar como jugador. Me gustó mucho, pero no solo por lo que hace, sino por cómo te hace sentir mientras lo juegas. A ratos parece tu mejor amigo: te acompaña, te explica, te entiende. En otros momentos es tu enemigo directo: te manipula, se burla de ti o directamente intenta matarte. Nunca estás del todo seguro si el narrador te habla a ti como persona o si está jugando contigo como pieza dentro del sistema.<br><br>Lo más interesante es cómo el juego considera prácticamente cada decisión que tomas. Aunque en el fondo es una experiencia lineal, una mínima desviación (una puerta que no debías abrir, un pasillo que ignoras) puede cambiar por completo el rumbo de tu partida. Esa sensación constante de curiosidad y desconfianza es lo que lo hace tan rico de jugar: nunca sabes qué va a pasar después, y eso es justo lo que te empuja a seguir explorando.<br><br>El contenido adicional de Ultra Deluxe está muy bien integrado. No se siente como un “DLC pegado”, ni como un mundo aparte que rompe la experiencia original. Al contrario, respeta lo que ya era el juego y le añade una capa extra de complejidad a las decisiones, sin hacerlo más pesado ni perder su sencillez. Todo encaja de forma natural, como si siempre hubiera estado ahí, esperando a que lo descubrieras.<br><br><b>Lo que hace a The Stanley Parable Ultra Deluxe especial:</b><br><br><u>Narrador cambiante:</u> A veces guía, a veces manipula, a veces confronta; nunca sabes de qué lado está.<br><u>Decisiones con peso real:</u> Pequeñas desviaciones cambian por completo la experiencia.<br><u>Meta narrativa brillante:</u> Juega constantemente con el concepto de elección, control y libertad.<br><br><b>Aspectos destacados:</b><br><br><u>Contenido adicional bien integrado:</u> El DLC suma sin romper la esencia del juego.<br><u>Creatividad constante:</u> Cada ruta se siente pensada y cuidada.<br><u>Duración justa:</u> En unas 5 horas puedes ver prácticamente todo, sin alargarse innecesariamente.<br><br><b>¿Lo recomiendo?</b> ✔️ Sí<br>Un juego creativo, inteligente y muy bien pensado. Eso sí, si quieres completarlo al 100%, prepárate para hacer uno que otro truquito con tu PC… o tener paciencia y esperar unos 10 años.</div>
-      <a class="steam-link" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/1703340/" target="_blank" rel="noopener">Ver en Steam ↗</a>
+      <a class="steam-link fx-btn" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/1703340/" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
-    <aside class="rcard p2">
+    <aside class="rcard p2 fx-spot" style="--spot-rgb:var(--p2-rgb)">
       <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
       <div class="pending"><span class="q">?</span>La reseña de Player 2 está en camino.<br>Mientras tanto, ya saben quién escribe más rápido.</div>
     </aside>
   </div>
   
-  <div class="backrow"><a class="back" href="./">◂ Todas las reseñas</a></div>
+  <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a> · <a href="../apoyo.html">Apóyanos</a> · <a href="../contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>

@@ -34,7 +34,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css">
+<link rel="stylesheet" href="../assets/fx.css">
 <script src="../assets/menu.js" defer></script>
+<script src="../assets/fx.js" defer data-fx-base="../"></script>
 <style>
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -111,7 +113,7 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="../merch.html">Merch</a>
     <a href="../apoyo.html">Apóyanos</a>
     <a href="../nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
@@ -120,30 +122,35 @@ footer a{color:var(--p2);text-decoration:none}
     <h1 class="sec">Linelight</h1>
     <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/469790/header.jpg" width="460" height="215" alt="Carátula de Linelight" onerror="this.style.display='none'">
     <div class="meta-row">
-      <span class="chip rec">👍 Recomendado</span>
+      <span class="chip rec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado</span>
       <span class="chip">3.8 hrs jugadas</span>
       <span class="chip">8 feb 2026</span>
     </div>
   </div>
   <div class="duo-cols">
-    <article class="rcard p1">
+    <article class="rcard p1 fx-spot" style="--spot-rgb:var(--p1-rgb)">
       <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody"><div class="bb_h2">Una línea, muchas ideas y un ritmo que fluye</div><br>Linelight me agradó bastante. Es de esos juegos que se sienten refrescantes porque hacen mucho con muy poco. Quién diría que una simple línea podría ofrecer tantas variantes, retos y situaciones distintas sin dejar de ser entretenido. Esa simplicidad visual es justo lo que le da identidad y lo vuelve tan agradable de jugar.<br><br>La experiencia, en general, la disfruté mucho, aunque siendo honesto, hacia el final ya empezaba a sentirse un poco cansada. No porque esté mal diseñada, sino porque el loop ya lo tienes muy interiorizado. Aun así, el camino hasta ahí vale completamente la pena. Las animaciones son suaves, todo se mueve con mucha fluidez y la música de fondo está sabrosa, relajante y muy bien acompañada del ritmo del juego.<br><br>Algo que me gustó bastante fue descubrir los niveles escondidos y los mini coleccionables. No son obligatorios, pero añaden una capa extra de complejidad para quien quiere explorar un poco más allá de lo evidente. Es un buen balance entre experiencia accesible y reto opcional.<br><br><b>Lo que hace a Linelight especial:</b><br><br><u>Minimalismo creativo:</u> Una idea simple explotada de muchas formas.<br><u>Variantes constantes:</u> El juego se reinventa sin cambiar su esencia.<br><u>Identidad clara:</u> Visual y conceptualmente muy coherente.<br><br><b>Aspectos destacados:</b><br><br><u>Animaciones fluidas:</u> Todo se siente suave y bien pulido.<br><u>Música agradable:</u> Acompaña perfecto la experiencia.<br><u>Contenido opcional:</u> Niveles ocultos y coleccionables que suman reto.<br><br><b>¿Lo recomiendo?</b> ✔️ Sí<br>Un puzzle minimalista, relajante y creativo. Puede cansar un poco hacia el final, pero el viaje es muy disfrutable y demuestra cómo una idea sencilla bien ejecutada puede sostener toda una experiencia.</div>
-      <a class="steam-link" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/469790/" target="_blank" rel="noopener">Ver en Steam ↗</a>
+      <a class="steam-link fx-btn" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/469790/" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
-    <aside class="rcard p2">
+    <aside class="rcard p2 fx-spot" style="--spot-rgb:var(--p2-rgb)">
       <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
       <div class="pending"><span class="q">?</span>Run en solitario de Player 1.<br>Si Player 2 lo juega algún día, su reseña aparecerá aquí.</div>
     </aside>
   </div>
   
-  <div class="backrow"><a class="back" href="./">◂ Todas las reseñas</a></div>
+  <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a> · <a href="../apoyo.html">Apóyanos</a> · <a href="../contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>
