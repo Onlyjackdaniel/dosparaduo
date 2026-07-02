@@ -13,7 +13,9 @@ var src = document.querySelector('script[src*="menu.js"]');
 var BASE = src ? src.getAttribute('src').split('?')[0].replace('assets/menu.js', '') : '';
 
 var burger = document.querySelector('.burger');
-var links = Array.prototype.slice.call(document.querySelectorAll('nav .nav-links a'));
+var links = Array.prototype.slice.call(document.querySelectorAll('nav .nav-links a'))
+  /* fuera "Videos": es solo un ancla del home y ahi ya estan los videos (decision Jack) */
+  .filter(function (a) { return (a.getAttribute('href') || '').indexOf('#videos') === -1; });
 if (!burger || !links.length) return;
 
 /* icono por destino */
@@ -55,7 +57,7 @@ var joy = ov.querySelector('.rm-joystick');
 
 var TAM = 0, CENTRO = 0, R_IN = 0, R_OUT = 0, R_TXT = 0;
 function medidas() {
-  TAM = Math.min(innerWidth * 0.92, innerHeight * 0.78, 640);
+  TAM = Math.min(innerWidth * 0.96, innerHeight * 0.9, 832);
   CENTRO = TAM / 2; R_IN = TAM * 0.09; R_OUT = TAM * 0.46; R_TXT = TAM * 0.3;
   wheel.style.width = TAM + 'px'; wheel.style.height = TAM + 'px';
 }
@@ -143,7 +145,7 @@ function cerrarSuave() { /* al navegar: cierre inmediato sin animacion larga */
   document.body.classList.remove('rm-lock');
 }
 
-burger.innerHTML = svg('game-controller');
+burger.innerHTML = '<span class="b-bar"></span><span class="b-bar"></span><span class="b-bar"></span>';
 burger.classList.add('rm-trigger');
 burger.setAttribute('aria-label', 'Abrir menú');
 burger.addEventListener('click', function () { abierto ? cerrar() : abrir(); });

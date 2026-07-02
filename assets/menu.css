@@ -14,7 +14,10 @@ nav .nav-links a:not(.btn-yt){display:none !important}
   transition:color .2s,border-color .2s,transform .2s;
 }
 .burger:hover{border-color:var(--p2);color:var(--p2);transform:translateY(-1px)}
-.burger svg{width:20px;height:20px;fill:currentColor;display:block}
+.burger{flex-direction:column;gap:4px}
+.burger .b-bar{display:block;width:19px;height:2px;background:currentColor;border-radius:2px;transition:transform .2s}
+.burger:hover .b-bar:nth-child(1){transform:translateY(-1px)}
+.burger:hover .b-bar:nth-child(3){transform:translateY(1px)}
 
 body.rm-lock{overflow:hidden}
 
