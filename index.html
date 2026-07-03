@@ -88,7 +88,7 @@
 <link rel="stylesheet" href="assets/fx.css?v=5">
 <script src="assets/menu.js?v=5" defer></script>
 <script src="assets/fx.js?v=4" defer></script>
-<script src="assets/fx-index.js?v=7" defer></script>
+<script src="assets/fx-index.js?v=8" defer></script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -263,17 +263,12 @@
   @keyframes vspulse{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
 
   .scroll-hint{
+    text-decoration:none;cursor:pointer;
     margin-top:46px;font-family:var(--mono);font-size:.6rem;letter-spacing:2.5px;
     color:var(--muted);text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:6px;
   }
   .scroll-hint .chev{width:14px;height:14px;border-right:2px solid var(--gold);border-bottom:2px solid var(--gold);transform:rotate(45deg);animation:chev 1.6s ease-in-out infinite}
   @keyframes chev{0%,100%{transform:rotate(45deg) translate(0,0);opacity:.4}50%{transform:rotate(45deg) translate(4px,4px);opacity:1}}
-
-  /* ── transicion de triangulos hero->videos (Animmaster Scroll/43 a vanilla) ── */
-  .tri-zone{position:relative;height:135vh;z-index:1;margin-top:-55svh;pointer-events:none}
-  .tri-sticky{position:sticky;top:0;height:100svh;overflow:hidden}
-  #tri-canvas{width:100%;height:100%;display:block}
-  @media (prefers-reduced-motion:reduce){.tri-zone{display:none}}
 
   /* ── secciones ──────────────────────────────────────────── */
   section{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:100px 24px}
@@ -552,13 +547,13 @@
     </div>
   </div>
 
-  <div class="scroll-hint hi d6" aria-hidden="true">
+  <a class="scroll-hint hi d6" href="#videos">
     <span>Presiona abajo para continuar</span>
     <span class="chev"></span>
-  </div>
+  </a>
 </header>
 
-<div class="tri-zone" aria-hidden="true"><div class="tri-sticky"><canvas id="tri-canvas"></canvas></div></div>
+<!-- TODO(Jack): transicion hero->videos pendiente de elegir; la ola de triangulos (Scroll/43) se retiro el 3 jul 2026 por chocar con el hero. Candidatos: revisar el pack Animmaster de nuevo. -->
 
 
 
@@ -714,21 +709,21 @@
 
   <div class="lvl-grid">
     <a class="lvl-card reveal fx-spot fx-tilt" href="resenas/" style="--i-rgb:var(--p1-rgb);--spot-rgb:var(--p1-rgb)">
-      <span class="world">WORLD 1-1</span>
+      <span class="world">MUNDO 1-1</span>
       <span class="lvl-ico"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#sword"/></svg></span>
       <h3>Reseñas co-op</h3>
       <p>Los <span class="cnt">62</span> juegos que hemos jugado juntos, reseñados de verdad en Steam.</p>
       <span class="go">Entrar <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
     </a>
     <a class="lvl-card reveal fx-spot fx-tilt" href="listas/mejores-juegos-cooperativos-para-parejas.html" style="--i-rgb:255,209,102;--spot-rgb:255,209,102">
-      <span class="world">WORLD 1-2</span>
+      <span class="world">MUNDO 1-2</span>
       <span class="lvl-ico"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#trophy"/></svg></span>
       <h3>Guía co-op para parejas</h3>
       <p>Nuestro top 10 de juegos cooperativos, probado en pareja con más de <span class="cnt">250 hrs</span>.</p>
       <span class="go">Entrar <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
     </a>
     <a class="lvl-card reveal fx-spot fx-tilt" href="blog/" style="--i-rgb:var(--p2-rgb);--spot-rgb:var(--p2-rgb)">
-      <span class="world">WORLD 1-3</span>
+      <span class="world">MUNDO 1-3</span>
       <span class="lvl-ico"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#scroll"/></svg></span>
       <h3>Blog</h3>
       <p>La bitácora del dúo: guías co-op, tops y lo que aprendemos jugando de a dos.</p>

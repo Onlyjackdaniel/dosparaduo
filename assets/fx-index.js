@@ -15,8 +15,11 @@ var HOVER = matchMedia('(hover: hover)').matches;
    Solo la primera visita de la sesion; se salta con hash, con
    reduced-motion o si ya se entro antes. */
 (function(){
-  /* decision de Jack: la entrada aparece SIEMPRE (es parte del juego);
-     solo se salta con deep link a una seccion o con reduced-motion */
+  /* decision de Jack (3 jul): la entrada solo aparece la PRIMERA visita real
+     (localStorage; reaparece si el visitante borra datos del navegador).
+     Tambien se salta con deep link a una seccion o con reduced-motion. */
+  var YA = 'dpd-entrada-v1';
+  try { if (localStorage.getItem(YA)) return; } catch(e) {}
   if (location.hash || RM) return;
   document.body.classList.add('gate');
   var ent = document.createElement('div');
@@ -38,10 +41,32 @@ var HOVER = matchMedia('(hover: hover)').matches;
     '<div class="pista">O PRESIONA ENTER · EL CANAL DE A DOS</div>';
   document.body.appendChild(ent);
   var btn = ent.querySelector('#press-start');
-  btn.addEventListener('mouseenter', function(){ ent.classList.add('turbo'); });
-  btn.addEventListener('mouseleave', function(){ ent.classList.remove('turbo'); });
+  /* giro por rAF con aceleracion/desaceleracion GRADUAL (lerp de velocidad) */
+  var anillos = Array.prototype.map.call(ent.querySelectorAll('text'), function(el, i){
+    el.style.animation = 'none';
+    var dur = parseFloat(el.style.getPropertyValue('--vel')) || 60;
+    var base = 360 / dur * (i % 2 ? -1 : 1);   /* grados por segundo, alternando sentido */
+    return {el: el, ang: 0, vel: base, base: base};
+  });
+  var turbo = false;
+  btn.addEventListener('mouseenter', function(){ turbo = true; });
+  btn.addEventListener('mouseleave', function(){ turbo = false; });
+  var tPrev = performance.now();
+  (function gira(tNow){
+    if (!ent.isConnected) return;
+    requestAnimationFrame(gira);
+    var dt = Math.min(50, tNow - tPrev) / 1000; tPrev = tNow;
+    for (var i = 0; i < anillos.length; i++){
+      var an = anillos[i];
+      var objetivo = an.base * (turbo ? 5 : 1);
+      an.vel += (objetivo - an.vel) * Math.min(1, dt * 2.2);  /* rampa suave */
+      an.ang = (an.ang + an.vel * dt) % 360;
+      an.el.style.transform = 'rotate(' + an.ang + 'deg)';
+    }
+  })(tPrev);
   function entrar(){
     if (ent.classList.contains('fuera')) return;
+    try { localStorage.setItem(YA, '1'); } catch(e) {}
     try { var a = new Audio('assets/snd/menu-open.mp3'); a.volume = .35; a.play().catch(function(){}); } catch(e) {}
     ent.classList.add('fuera');
     document.body.classList.remove('gate');
@@ -126,63 +151,6 @@ if(hero && HOVER && !RM){
       ctx.fill();
     }
   })(last);
-}
-
-/* ── 1.5 ola de triangulos al pasar del hero a los videos (Scroll/43 a vanilla) ── */
-var triCv = document.getElementById('tri-canvas');
-if(triCv && !RM){
-  var triZone = triCv.closest('.tri-zone');
-  var tctx = triCv.getContext('2d');
-  var TDPR = 1, TW = 0, TH = 0, TSIZE = 130, tris = [];
-  function triBuild(){
-    TDPR = Math.min(2, devicePixelRatio || 1);
-    TW = innerWidth; TH = innerHeight;
-    triCv.width = TW * TDPR; triCv.height = TH * TDPR;
-    tctx.setTransform(TDPR, 0, 0, TDPR, 0, 0);
-    tris = [];
-    var half = TSIZE / 2;
-    var cols = Math.ceil(TW / half) + 2, rows = Math.ceil(TH / TSIZE) + 1;
-    for(var r = 0; r < rows; r++) for(var c = 0; c < cols; c++)
-      tris.push({x: c * half, y: r * TSIZE + half, flip: (c + r) % 2 === 1,
-                 nx: c / cols, rnd: Math.random(),
-                 col: Math.random() < .82 ? '#ff7a29' : (Math.random() < .5 ? '#3cb8ec' : '#ffd166')});
-  }
-  triBuild(); addEventListener('resize', triBuild);
-  function triDraw(p){
-    tctx.clearRect(0, 0, TW, TH);
-    /* ola que barre de izquierda a derecha; banda de ancho .3 */
-    var wave = p * 1.6 - .18;  /* arranca casi de inmediato y cierra antes del final */
-    for(var i = 0; i < tris.length; i++){
-      var tr = tris[i];
-      var d = Math.abs(tr.nx + tr.rnd * .18 - wave);
-      var f = Math.max(0, 1 - d / .3);
-      var half = TSIZE / 2;
-      tctx.beginPath();
-      if(!tr.flip){ tctx.moveTo(tr.x, tr.y - half); tctx.lineTo(tr.x + half, tr.y + half); tctx.lineTo(tr.x - half, tr.y + half); }
-      else { tctx.moveTo(tr.x, tr.y + half); tctx.lineTo(tr.x + half, tr.y - half); tctx.lineTo(tr.x - half, tr.y - half); }
-      tctx.closePath();
-      if(f < .02){
-        if(p > .02 && p < .98){ tctx.strokeStyle = 'rgba(240,244,255,.05)'; tctx.lineWidth = 1; tctx.stroke(); }
-        continue;
-      }
-      tctx.save();
-      tctx.translate(tr.x, tr.y); tctx.scale(f, f); tctx.translate(-tr.x, -tr.y);
-      tctx.fillStyle = tr.col; tctx.fill();
-      tctx.restore();
-    }
-  }
-  var triTick = false;
-  function triScroll(){
-    if(triTick) return; triTick = true;
-    requestAnimationFrame(function(){
-      triTick = false;
-      var r = triZone.getBoundingClientRect();
-      var total = r.height - innerHeight;
-      var pr = Math.min(1, Math.max(0, -r.top / total));
-      triDraw(pr);
-    });
-  }
-  addEventListener('scroll', triScroll, {passive:true}); triScroll();
 }
 
 /* ── 2. carrusel de shorts: drag para arrastrar (el scroll nativo ya funciona) ── */
