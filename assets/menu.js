@@ -24,6 +24,7 @@ function icono(a) {
   if (t.indexOf('inicio') > -1) return 'joystick';
   if (t.indexOf('video') > -1) return 'play';
   if (t.indexOf('rese') > -1) return 'sword';
+  if (t.indexOf('blog') > -1) return 'scroll';
   if (t.indexOf('merch') > -1) return 't-shirt';
   if (t.indexOf('ap') === 0 || t.indexOf('apóyanos') > -1) return 'gift';
   if (t.indexOf('nosotros') > -1) return 'users-three';

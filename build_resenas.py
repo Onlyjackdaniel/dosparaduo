@@ -193,6 +193,7 @@ main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 24
 .vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 h1.sec{font-family:var(--display);font-size:clamp(1.8rem,5vw,3rem);text-transform:uppercase;margin:10px 0 8px}
 .sub{color:var(--muted);max-width:640px;font-weight:300;margin-bottom:40px}
+.sub-center{max-width:none;text-align:center}
 footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:40px 24px;text-align:center;background:var(--bg-2)}
 footer .f-logo{font-family:var(--display);font-size:1rem;text-transform:uppercase}
 footer p{color:var(--muted);font-size:.78rem;margin-top:8px;font-family:var(--mono)}
@@ -210,6 +211,7 @@ NAV = """<nav>
     <a href="__HOME__index.html#inicio">Inicio</a>
     <a href="__HOME__index.html#videos">Videos</a>
     <a href="__HOME__resenas/">Reseñas</a>
+    <a href="__HOME__blog/">Blog</a>
     <a href="__HOME__merch.html">Merch</a>
     <a href="__HOME__apoyo.html">Apóyanos</a>
     <a href="__HOME__nosotros.html">Nosotros</a>
@@ -404,6 +406,7 @@ def card(r, mini=False):
     </a>"""
 
 cards_juntos = '\n'.join(card(r) for r in juntos)
+cards_solo = '\n'.join(card(r) for r in solo)
 cards_extras = '\n'.join(card(r, mini=True) for r in extras)
 
 INDEX = """<!DOCTYPE html>
@@ -464,13 +467,12 @@ __NAV__
 <main>
   <p class="crumb"><a href="../index.html">← Inicio</a> / Reseñas</p>
   <div class="ascii-wrap"><canvas class="ascii-title" data-texto="RESEÑAS"></canvas><h1 class="sec vh">Reseñas</h1></div>
-  <p class="sub">Los <b style="color:var(--text)">__NJ__ juegos que hemos jugado juntos</b>, reseñados de verdad en Steam, con la reseña de cada quien y el video del canal cuando lo grabamos. Player 2 está afilando su teclado: sus reseñas vienen en camino.</p>
+  <p class="sub sub-center">Los <b style="color:var(--text)">__NT__ juegos que hemos jugado</b>, reseñados de verdad en Steam, con la reseña de cada quien y el video del canal cuando lo grabamos.</p>
   <a class="guide-band" href="../listas/mejores-juegos-cooperativos-para-parejas.html">📜 <b>NUEVA GUÍA:</b> Los mejores juegos cooperativos para parejas: nuestro top 10 probado en pareja ▸</a>
   <div class="tools">
     <input id="buscar" type="text" placeholder="Buscar juego...">
     <button class="fbtn on" data-f="todos" type="button">Todos</button>
     <button class="fbtn" data-f="video" type="button">▶ Con video</button>
-    <a class="fbtn" href="solo.html" style="text-decoration:none;display:inline-flex;align-items:center">◆ Solo runs</a>
   </div>
   <div class="ggrid" id="grid">
 __CARDS__
@@ -509,106 +511,23 @@ index_html = (INDEX
     .replace('__CSS__', CSS)
     .replace('__NAV__', NAV.replace('__HOME__','../'))
     .replace('__FOOTER__', FOOTER.replace('__HOME__','../'))
-    .replace('__CARDS__', cards_juntos)
+    .replace('__CARDS__', cards_juntos + chr(10) + cards_solo)
     .replace('__EXTRAS__', cards_extras)
-    .replace('__NJ__', str(len(juntos)))
+    .replace('__NT__', str(len(juntos) + len(solo)))
     .replace('__BASE__', BASE))
 (OUT/'index.html').write_text(index_html, encoding='utf-8')
 
-# ---------- galería Solo runs ----------
-SOLO_INDEX = """<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Solo runs: reseñas de Player 1 | Dos para Duo</title>
-<meta name="description" content="__NS__ juegos que Player 1 jugó en solitario, reseñados en Steam: souls, terror, indies y más. La otra mitad de la biblioteca de Dos para Duo.">
-<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-<link rel="alternate icon" href="../assets/icon-512.png">
-<link rel="apple-touch-icon" href="../assets/icon-512.png">
-<link rel="manifest" href="../site.webmanifest">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
-<link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-<meta property="og:title" content="Solo runs | Dos para Duo">
-<meta property="og:description" content="Los juegos que Player 1 jugó en solitario, reseñados de verdad.">
-<meta property="og:type" content="website">
-<link rel="canonical" href="__BASE__/resenas/solo.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Solo runs | Dos para Duo","description":"Reseñas en español de los juegos que Player 1 jugó en solitario.","isPartOf":{"@type":"WebSite","name":"Dos para Duo","url":"__BASE__/"}}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/tokens.css">
-<link rel="stylesheet" href="../assets/menu.css?v=5">
-<link rel="stylesheet" href="../assets/fx.css?v=3">
-<script src="../assets/menu.js?v=5" defer></script>
-<script src="../assets/fx.js?v=3" defer data-fx-base="../"></script>
-<script src="../assets/ascii-title.js?v=1" defer></script>
-<style>__CSS__
-.tools{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
-#buscar{flex:1;min-width:220px;padding:12px 16px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);font-family:var(--body);font-size:.95rem}
-#buscar:focus{outline:none;border-color:var(--p1)}
-.fbtn{font-family:var(--mono);font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:10px 16px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
-.fbtn:hover{border-color:var(--p2);color:var(--p2)}
-.ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
-.gcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;transition:transform .22s,border-color .22s}
-.gcard:hover{transform:translateY(-5px);border-color:var(--p1)}
-.gimg{position:relative;aspect-ratio:460/215;background:var(--bg-2)}
-.gimg img{width:100%;height:100%;object-fit:cover;display:block}
-.gimg.noimg img{display:none}
-.vbadge{position:absolute;top:8px;left:8px;font-family:var(--mono);font-size:.55rem;letter-spacing:1px;background:rgba(var(--p1-rgb),.92);color:#fff;padding:4px 8px;border-radius:4px}
-.ginfo{padding:14px 16px 16px}
-.ginfo h3{font-size:.95rem;font-weight:600;color:var(--text);line-height:1.35}
-.ginfo p{font-family:var(--mono);font-size:.66rem;letter-spacing:1px;color:var(--muted);margin-top:6px}
-.empty{display:none;text-align:center;color:var(--muted);padding:50px 0;font-family:var(--mono);font-size:.8rem;letter-spacing:1px}
-</style>
-</head>
-<body>
-<div class="atmos"></div>
-__NAV__
-<main>
-  <p class="crumb"><a href="./">← Reseñas</a> / Solo runs</p>
-  <div class="ascii-wrap"><canvas class="ascii-title" data-texto="SOLO RUNS"></canvas><h1 class="sec vh">Solo runs</h1></div>
-  <p class="sub">Los <b style="color:var(--text)">__NS__ juegos que Player 1 jugó en solitario</b>: souls, terror, indies y experimentos. La otra mitad de la biblioteca, reseñada con el mismo rigor (y el mismo drama).</p>
-  <div class="tools">
-    <input id="buscar" type="text" placeholder="Buscar juego...">
-    <a class="fbtn" href="./">◂ Jugados juntos</a>
-  </div>
-  <div class="ggrid" id="grid">
-__CARDS__
-  </div>
-  <p class="empty" id="empty">▮ NADA POR AQUÍ. PRUEBA OTRA BÚSQUEDA ▮</p>
-</main>
-__FOOTER__
-<script>
-const q=document.getElementById('buscar'),cards=[...document.querySelectorAll('#grid .gcard')];
-q.addEventListener('input',()=>{
-  const t=q.value.toLowerCase().trim();let vis=0;
-  cards.forEach(c=>{const ok=!t||c.dataset.nombre.includes(t);c.style.display=ok?'':'none';if(ok)vis++;});
-  document.getElementById('empty').style.display=vis?'none':'block';
-});
-</script>
-</body>
-</html>"""
 
-cards_solo = '\n'.join(card(r) for r in solo)
-solo_html = (SOLO_INDEX
-    .replace('<head>', '<head>\n' + GTAG, 1)
-    .replace('__CSS__', CSS)
-    .replace('__NAV__', NAV.replace('__HOME__','../'))
-    .replace('__FOOTER__', FOOTER.replace('__HOME__','../'))
-    .replace('__CARDS__', cards_solo)
-    .replace('__NS__', str(len(solo)))
-    .replace('__BASE__', BASE))
-(OUT/'solo.html').write_text(solo_html, encoding='utf-8')
 
 slugs = [render_page(r) for r in juntos + extras]
 slugs += [render_page(r, solo=True) for r in solo]
 
 # ---------- sitemap + robots + nojekyll ----------
-urls = [f'{BASE}/', f'{BASE}/nosotros.html', f'{BASE}/merch.html', f'{BASE}/apoyo.html', f'{BASE}/contacto.html', f'{BASE}/listas/mejores-juegos-cooperativos-para-parejas.html', f'{BASE}/resenas/', f'{BASE}/resenas/solo.html'] + [f'{BASE}/resenas/{s}.html' for s in slugs]
+urls = [f'{BASE}/', f'{BASE}/nosotros.html', f'{BASE}/merch.html', f'{BASE}/apoyo.html', f'{BASE}/contacto.html', f'{BASE}/listas/mejores-juegos-cooperativos-para-parejas.html', f'{BASE}/blog/', f'{BASE}/resenas/'] + [f'{BASE}/resenas/{s}.html' for s in slugs]
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 sm += '\n'.join(f'  <url><loc>{u}</loc></url>' for u in urls) + '\n</urlset>'
 (ROOT/'sitemap.xml').write_text(sm, encoding='utf-8')
 (ROOT/'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n', encoding='utf-8')
 (ROOT/'.nojekyll').write_text('', encoding='utf-8')
 
-print(f'OK: {len(juntos)} juntos + {len(extras)} extras + {len(solo)} solo runs = {len(slugs)} paginas, sitemap con {len(urls)} URLs')
+print(f'OK: galeria unica {len(juntos)+len(solo)} juegos + {len(extras)} extras = {len(slugs)} paginas, sitemap con {len(urls)} URLs')
