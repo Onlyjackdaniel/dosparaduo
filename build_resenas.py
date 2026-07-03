@@ -435,7 +435,10 @@ INDEX = """<!DOCTYPE html>
 <script src="../assets/menu.js?v=5" defer></script>
 <script src="../assets/fx.js?v=3" defer data-fx-base="../"></script>
 <script src="../assets/ascii-title.js?v=1" defer></script>
+<script src="../assets/particles-bg.js?v=1" defer></script>
 <style>__CSS__
+.particles-container{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
+.particles-container canvas{width:100%;height:100%;display:block}
 .guide-band{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(255,209,102,.4);border-radius:10px;padding:14px 18px;margin-bottom:22px;transition:border-color .2s,background .2s}
 .guide-band:hover{border-color:var(--gold);background:rgba(255,209,102,.06)}
 .guide-band b{color:var(--text)}
@@ -463,6 +466,7 @@ INDEX = """<!DOCTYPE html>
 </head>
 <body>
 <div class="atmos"></div>
+<div class="particles-container" aria-hidden="true" data-particles data-colors="#3cb8ec,#ff7a29,#ffd166" data-count="150" data-spread="10" data-speed="0.08" data-base-size="90" data-size-randomness="1" data-camera-distance="20" data-hover="true" data-hover-factor="0.6" data-alpha="true" data-rotation="true" data-dpr="1"></div>
 __NAV__
 <main>
   <p class="crumb"><a href="../index.html">← Inicio</a> / Reseñas</p>
