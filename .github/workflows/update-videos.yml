@@ -2,7 +2,7 @@ name: Actualizar videos del canal
 
 on:
   schedule:
-    - cron: '0 15 * * *'   # diario 15:00 UTC = 9:00 AM CDMX
+    - cron: '45 0 * * *'   # diario 00:45 UTC = 6:45 PM CDMX (los videos suben ~6:15 PM)
   workflow_dispatch:        # permite correrlo manual desde la pestaña Actions
 
 permissions:

@@ -63,7 +63,7 @@ def main():
             break
         if es_short(v['id']):
             shorts.append(v)
-        elif len(largos) < N_LARGOS and not es_en_vivo(v['id']):
+        elif len(largos) < N_LARGOS and 'en vivo' not in v['titulo'].lower() and not es_en_vivo(v['id']):
             largos.append(v)
 
     largos = largos[:N_LARGOS]

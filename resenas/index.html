@@ -15,7 +15,7 @@
 <script src="../assets/analytics-events.js" defer></script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reseñas de juegos en español | Dos para Duo</title>
-<meta name="description" content="__NJ__ juegos que jugamos juntos, reseñados de verdad: co-op, terror, plataformas y joyitas raras. Las reseñas de Steam del dúo, con video del canal cuando existe.">
+<meta name="description" content="Los juegos que jugamos juntos, reseñados de verdad: co-op, terror, plataformas y joyitas raras. Las reseñas de Steam del dúo, con video del canal cuando existe.">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="../assets/icon-512.png">
 <link rel="apple-touch-icon" href="../assets/icon-512.png">
@@ -72,6 +72,14 @@ footer a{color:var(--p2);text-decoration:none}
 .guide-band:hover{border-color:var(--gold);background:rgba(255,209,102,.06)}
 .guide-band b{color:var(--text)}
 .tools{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+.wave-list{display:none;flex-direction:column;gap:4px;margin:-12px 0 26px;padding:18px 20px;background:rgba(20,36,64,.5);border:1px solid var(--line);border-radius:12px;backdrop-filter:blur(8px)}
+.wave-list.on{display:flex}
+.wave-list a{font-family:var(--display);font-size:clamp(1rem,2.6vw,1.5rem);text-transform:uppercase;color:var(--text);text-decoration:none;opacity:0;transform:translateX(var(--wx,-40px));transition:opacity .4s ease var(--wd,0ms),transform .5s cubic-bezier(.2,.8,.2,1) var(--wd,0ms),color .2s}
+.wave-list.on a{opacity:1;transform:none}
+.wave-list a:hover{color:var(--p2)}
+.wave-list a b{font-weight:400;color:var(--gold)}
+.wave-list a small{font-family:var(--mono);font-size:.6rem;letter-spacing:2px;color:var(--muted);margin-left:12px}
+.wave-list .nada{font-family:var(--mono);font-size:.7rem;letter-spacing:2px;color:var(--muted)}
 #buscar{flex:1;min-width:220px;padding:12px 16px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);font-family:var(--body);font-size:.95rem}
 #buscar:focus{outline:none;border-color:var(--p2)}
 .fbtn{font-family:var(--mono);font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:10px 16px;cursor:pointer}
@@ -116,23 +124,43 @@ footer a{color:var(--p2);text-decoration:none}
 <main>
   <p class="crumb"><a href="../index.html">← Inicio</a> / Reseñas</p>
   <div class="ascii-wrap"><canvas class="ascii-title" data-texto="RESEÑAS"></canvas><h1 class="sec vh">Reseñas</h1></div>
-  <p class="sub sub-center">Los <b style="color:var(--text)">136 juegos que hemos jugado</b>, reseñados de verdad en Steam, con la reseña de cada quien y el video del canal cuando lo grabamos.</p>
-  <a class="guide-band" href="../listas/mejores-juegos-cooperativos-para-parejas.html">📜 <b>NUEVA GUÍA:</b> Los mejores juegos cooperativos para parejas: nuestro top 10 probado en pareja ▸</a>
+  <p class="sub sub-center">Los <b style="color:var(--text)">32 juegos que hemos jugado juntos</b>, reseñados de verdad en Steam, con la reseña de cada quien y el video del canal cuando lo grabamos.</p>
   <div class="tools">
     <input id="buscar" type="text" placeholder="Buscar juego...">
     <button class="fbtn on" data-f="todos" type="button">Todos</button>
     <button class="fbtn" data-f="video" type="button">▶ Con video</button>
   </div>
+  <div class="wave-list" id="wave-list" aria-live="polite"></div>
   <div class="ggrid" id="grid">
-<a class="gcard reveal fx-spot" href="radical-rabbit-stew.html" data-nombre="radical rabbit stew">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1232010/header.jpg" width="460" height="215" alt="Carátula de Radical Rabbit Stew" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Radical Rabbit Stew</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 4.2 hrs · 8 feb 2026</p></div>
+<a class="gcard reveal fx-spot" href="the-typing-of-the-dead-overkill.html" data-nombre="the typing of the dead: overkill">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/246580/header.jpg" width="460" height="215" alt="Carátula de The Typing of The Dead: Overkill" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>The Typing of The Dead: Overkill</h3>
+      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 20.7 hrs · 10 jun 2026</p></div>
+    </a>
+<a class="gcard reveal fx-spot" href="resident-evil-requiem.html" data-nombre="resident evil requiem">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3764200/header.jpg" width="460" height="215" alt="Carátula de Resident Evil Requiem" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Resident Evil Requiem</h3>
+      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 41.3 hrs · 23 abr 2026</p></div>
+    </a>
+<a class="gcard reveal fx-spot" href="a-game-about-digging-a-hole.html" data-nombre="a game about digging a hole">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3244220/header.jpg" width="460" height="215" alt="Carátula de A Game About Digging A Hole™" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>A Game About Digging A Hole™</h3>
+      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 4.6 hrs · 22 ene 2026</p></div>
+    </a>
+<a class="gcard reveal fx-spot" href="the-stanley-parable-ultra-deluxe.html" data-nombre="the stanley parable: ultra deluxe">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1703340/header.jpg" width="460" height="215" alt="Carátula de The Stanley Parable: Ultra Deluxe" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>The Stanley Parable: Ultra Deluxe</h3>
+      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 4.5 hrs · 11 ene 2026</p></div>
     </a>
 <a class="gcard reveal fx-spot" href="split-fiction.html" data-nombre="split fiction">
       <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/header.jpg" width="460" height="215" alt="Carátula de Split Fiction" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
       <div class="ginfo"><h3>Split Fiction</h3>
       <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 23.8 hrs · 27 dic 2025</p></div>
+    </a>
+<a class="gcard reveal fx-spot" href="bongo-cat.html" data-nombre="bongo cat">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3419430/header.jpg" width="460" height="215" alt="Carátula de Bongo Cat" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Bongo Cat</h3>
+      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 962.0 hrs · 31 oct 2025</p></div>
     </a>
 <a class="gcard reveal fx-spot" href="borderlands-2.html" data-nombre="borderlands 2">
       <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/49520/header.jpg" width="460" height="215" alt="Carátula de Borderlands 2" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
@@ -144,35 +172,40 @@ footer a{color:var(--p2);text-decoration:none}
       <div class="ginfo"><h3>Blanc</h3>
       <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 4.6 hrs · 31 oct 2025</p></div>
     </a>
-<a class="gcard reveal fx-spot" href="we-were-here-too.html" data-nombre="we were here too">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/677160/header.jpg" width="460" height="215" alt="Carátula de We Were Here Too" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>We Were Here Too</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 8.9 hrs · 19 oct 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="we-were-here-expeditions-the-friendship.html" data-nombre="we were here expeditions: the friendship">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2296990/header.jpg" width="460" height="215" alt="Carátula de We Were Here Expeditions: The FriendShip" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>We Were Here Expeditions: The FriendShip</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 7.9 hrs · 28 sep 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="super-crazy-rhythm-castle.html" data-nombre="super crazy rhythm castle">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1812560/header.jpg" width="460" height="215" alt="Carátula de SUPER CRAZY RHYTHM CASTLE" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>SUPER CRAZY RHYTHM CASTLE</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 13.5 hrs · 2 sep 2025</p></div>
-    </a>
 <a class="gcard reveal fx-spot" href="stumble-guys.html" data-nombre="stumble guys">
       <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1677740/header.jpg" width="460" height="215" alt="Carátula de Stumble Guys" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
       <div class="ginfo"><h3>Stumble Guys</h3>
       <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 10.5 hrs · 2 sep 2025</p></div>
+    </a>
+<a class="gcard reveal fx-spot" href="a-shelter-full-of-cats.html" data-nombre="a shelter full of cats">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3087650/header.jpg" width="460" height="215" alt="Carátula de A Shelter Full of Cats" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>A Shelter Full of Cats</h3>
+      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 3.8 hrs · 2 sep 2025</p></div>
     </a>
 <a class="gcard reveal fx-spot" href="screencheat.html" data-nombre="screencheat">
       <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/301970/header.jpg" width="460" height="215" alt="Carátula de Screencheat" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
       <div class="ginfo"><h3>Screencheat</h3>
       <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 1.2 hrs · 2 sep 2025</p></div>
     </a>
-<a class="gcard reveal fx-spot" href="sagrada.html" data-nombre="sagrada">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/965590/header.jpg" width="460" height="215" alt="Carátula de Sagrada" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Sagrada</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 7.2 hrs · 31 ago 2025</p></div>
+<a class="gcard reveal fx-spot" href="a-park-full-of-cats.html" data-nombre="a park full of cats">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2610090/header.jpg" width="460" height="215" alt="Carátula de A Park Full of Cats" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>A Park Full of Cats</h3>
+      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 1.9 hrs · 1 sep 2025</p></div>
+    </a>
+<a class="gcard reveal fx-spot" href="the-room-two.html" data-nombre="the room two">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/425580/header.jpg" width="460" height="215" alt="Carátula de The Room Two" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>The Room Two</h3>
+      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 3.2 hrs · 31 ago 2025</p></div>
+    </a>
+<a class="gcard reveal fx-spot" href="resident-evil-3.html" data-nombre="resident evil 3">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/952060/header.jpg" width="460" height="215" alt="Carátula de Resident Evil 3" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Resident Evil 3</h3>
+      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 17.3 hrs · 31 ago 2025</p></div>
+    </a>
+<a class="gcard reveal fx-spot" href="resident-evil-2.html" data-nombre="resident evil 2">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/883710/header.jpg" width="460" height="215" alt="Carátula de Resident Evil 2" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Resident Evil 2</h3>
+      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 28.2 hrs · 31 ago 2025</p></div>
     </a>
 <a class="gcard reveal fx-spot" href="pummel-party.html" data-nombre="pummel party">
       <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/880940/header.jpg" width="460" height="215" alt="Carátula de Pummel Party" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
@@ -194,615 +227,70 @@ footer a{color:var(--p2);text-decoration:none}
       <div class="ginfo"><h3>Overcooked! All You Can Eat</h3>
       <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 59.5 hrs · 22 ago 2025</p></div>
     </a>
-<a class="gcard reveal fx-spot" href="metal-slug-3.html" data-nombre="metal slug 3">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/250180/header.jpg" width="460" height="215" alt="Carátula de METAL SLUG 3" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>METAL SLUG 3</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 2.8 hrs · 22 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="metal-slug.html" data-nombre="metal slug">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/366250/header.jpg" width="460" height="215" alt="Carátula de METAL SLUG" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>METAL SLUG</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 1.5 hrs · 22 ago 2025</p></div>
-    </a>
 <a class="gcard reveal fx-spot" href="keep-talking-and-nobody-explodes.html" data-nombre="keep talking and nobody explodes">
       <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/341800/header.jpg" width="460" height="215" alt="Carátula de Keep Talking and Nobody Explodes" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
       <div class="ginfo"><h3>Keep Talking and Nobody Explodes</h3>
       <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 10.8 hrs · 22 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="exploding-kittens-2.html" data-nombre="exploding kittens 2">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2999030/header.jpg" width="460" height="215" alt="Carátula de Exploding Kittens® 2" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Exploding Kittens® 2</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 2.6 hrs · 22 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="disney-epic-mickey-2-the-power-of-two.html" data-nombre="disney epic mickey 2: the power of two">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/245300/header.jpg" width="460" height="215" alt="Carátula de Disney Epic Mickey 2:  The Power of Two" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Disney Epic Mickey 2:  The Power of Two</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 27.0 hrs · 11 feb 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="biped.html" data-nombre="biped">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1071870/header.jpg" width="460" height="215" alt="Carátula de Biped" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Biped</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 5.7 hrs · 11 feb 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="bloons-td-6.html" data-nombre="bloons td 6">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/960090/header.jpg" width="460" height="215" alt="Carátula de Bloons TD 6" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Bloons TD 6</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 114.6 hrs · 11 feb 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="it-takes-two.html" data-nombre="it takes two">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/header.jpg" width="460" height="215" alt="Carátula de It Takes Two" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>It Takes Two</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 15.9 hrs · 9 ene 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="cuphead.html" data-nombre="cuphead">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/268910/header.jpg" width="460" height="215" alt="Carátula de Cuphead" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Cuphead</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 43.4 hrs · 26 abr 2020</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="the-typing-of-the-dead-overkill.html" data-nombre="the typing of the dead: overkill">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/246580/header.jpg" width="460" height="215" alt="Carátula de The Typing of The Dead: Overkill" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>The Typing of The Dead: Overkill</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 20.7 hrs · 10 jun 2026</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="vvvvvv.html" data-nombre="vvvvvv">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/70300/header.jpg" width="460" height="215" alt="Carátula de VVVVVV" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>VVVVVV</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 5.0 hrs · 10 jun 2026</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="resident-evil-requiem.html" data-nombre="resident evil requiem">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3764200/header.jpg" width="460" height="215" alt="Carátula de Resident Evil Requiem" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Resident Evil Requiem</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 41.3 hrs · 23 abr 2026</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="the-stanley-parable-ultra-deluxe.html" data-nombre="the stanley parable: ultra deluxe">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1703340/header.jpg" width="460" height="215" alt="Carátula de The Stanley Parable: Ultra Deluxe" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>The Stanley Parable: Ultra Deluxe</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 4.5 hrs · 11 ene 2026</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="a-game-about-digging-a-hole.html" data-nombre="a game about digging a hole">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3244220/header.jpg" width="460" height="215" alt="Carátula de A Game About Digging A Hole™" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>A Game About Digging A Hole™</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 4.6 hrs · 22 ene 2026</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="bongo-cat.html" data-nombre="bongo cat">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3419430/header.jpg" width="460" height="215" alt="Carátula de Bongo Cat" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Bongo Cat</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 962.0 hrs · 31 oct 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="fuck-hitler.html" data-nombre="fuck hitler">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2157110/header.jpg" width="460" height="215" alt="Carátula de FUCK HITLER" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>FUCK HITLER</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 1.3 hrs · 7 oct 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="tiny-pasture.html" data-nombre="tiny pasture">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3167550/header.jpg" width="460" height="215" alt="Carátula de Tiny Pasture" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Tiny Pasture</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 47.4 hrs · 28 sep 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="a-park-full-of-cats.html" data-nombre="a park full of cats">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2610090/header.jpg" width="460" height="215" alt="Carátula de A Park Full of Cats" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>A Park Full of Cats</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 1.9 hrs · 1 sep 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="a-shelter-full-of-cats.html" data-nombre="a shelter full of cats">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3087650/header.jpg" width="460" height="215" alt="Carátula de A Shelter Full of Cats" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>A Shelter Full of Cats</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 3.8 hrs · 2 sep 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="the-room-two.html" data-nombre="the room two">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/425580/header.jpg" width="460" height="215" alt="Carátula de The Room Two" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>The Room Two</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 3.2 hrs · 31 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="resident-evil-3.html" data-nombre="resident evil 3">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/952060/header.jpg" width="460" height="215" alt="Carátula de Resident Evil 3" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Resident Evil 3</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 17.3 hrs · 31 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="resident-evil-2.html" data-nombre="resident evil 2">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/883710/header.jpg" width="460" height="215" alt="Carátula de Resident Evil 2" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Resident Evil 2</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 28.2 hrs · 31 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="ori-and-the-blind-forest-definitive-edition.html" data-nombre="ori and the blind forest: definitive edition">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/387290/header.jpg" width="460" height="215" alt="Carátula de Ori and the Blind Forest: Definitive Edition" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Ori and the Blind Forest: Definitive Edition</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 17.1 hrs · 22 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="the-last-campfire.html" data-nombre="the last campfire">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/990630/header.jpg" width="460" height="215" alt="Carátula de The Last Campfire" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>The Last Campfire</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 8.8 hrs · 22 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="ghost-of-tsushima-director-s-cut.html" data-nombre="ghost of tsushima directors cut">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2215430/header.jpg" width="460" height="215" alt="Carátula de Ghost of Tsushima DIRECTOR&#x27;S CUT" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Ghost of Tsushima DIRECTOR&#x27;S CUT</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 114.3 hrs · 21 ago 2025</p></div>
     </a>
 <a class="gcard reveal fx-spot" href="dofamine.html" data-nombre="dofamine">
       <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1441180/header.jpg" width="460" height="215" alt="Carátula de Dofamine" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
       <div class="ginfo"><h3>Dofamine</h3>
       <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 4.8 hrs · 22 ago 2025</p></div>
     </a>
+<a class="gcard reveal fx-spot" href="ghost-of-tsushima-director-s-cut.html" data-nombre="ghost of tsushima directors cut">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2215430/header.jpg" width="460" height="215" alt="Carátula de Ghost of Tsushima DIRECTOR&#x27;S CUT" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Ghost of Tsushima DIRECTOR&#x27;S CUT</h3>
+      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 114.3 hrs · 21 ago 2025</p></div>
+    </a>
 <a class="gcard reveal fx-spot" href="spirit-city-lofi-sessions.html" data-nombre="spirit city: lofi sessions">
       <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2113850/header.jpg" width="460" height="215" alt="Carátula de Spirit City: Lofi Sessions" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
       <div class="ginfo"><h3>Spirit City: Lofi Sessions</h3>
       <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 241.7 hrs · 21 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="god-of-war-ragnarok.html" data-nombre="god of war ragnarok" data-video="1">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2322010/header.jpg" width="460" height="215" alt="Carátula de God of War Ragnarök" loading="lazy" onerror="this.parentElement.classList.add('noimg')"><span class="vbadge"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#play"/></svg> EN EL CANAL</span></div>
-      <div class="ginfo"><h3>God of War Ragnarök</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 88.1 hrs · 19 abr 2025</p></div>
     </a>
 <a class="gcard reveal fx-spot" href="florence.html" data-nombre="florence">
       <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1102130/header.jpg" width="460" height="215" alt="Carátula de Florence" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
       <div class="ginfo"><h3>Florence</h3>
       <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 0.7 hrs · 17 ago 2025</p></div>
     </a>
+<a class="gcard reveal fx-spot" href="god-of-war-ragnarok.html" data-nombre="god of war ragnarok" data-video="1">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2322010/header.jpg" width="460" height="215" alt="Carátula de God of War Ragnarök" loading="lazy" onerror="this.parentElement.classList.add('noimg')"><span class="vbadge"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#play"/></svg> EN EL CANAL</span></div>
+      <div class="ginfo"><h3>God of War Ragnarök</h3>
+      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 88.1 hrs · 19 abr 2025</p></div>
+    </a>
 <a class="gcard reveal fx-spot" href="a-castle-full-of-cats.html" data-nombre="a castle full of cats">
       <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2070550/header.jpg" width="460" height="215" alt="Carátula de A Castle Full of Cats" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
       <div class="ginfo"><h3>A Castle Full of Cats</h3>
       <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 1.8 hrs · 11 feb 2025</p></div>
     </a>
-<a class="gcard reveal fx-spot" href="a-building-full-of-cats.html" data-nombre="a building full of cats">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1969080/header.jpg" width="460" height="215" alt="Carátula de A Building Full of Cats" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>A Building Full of Cats</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 0.8 hrs · 11 feb 2025</p></div>
+<a class="gcard reveal fx-spot" href="biped.html" data-nombre="biped">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1071870/header.jpg" width="460" height="215" alt="Carátula de Biped" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Biped</h3>
+      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 5.7 hrs · 11 feb 2025</p></div>
     </a>
-<a class="gcard reveal fx-spot" href="cats-in-time.html" data-nombre="cats in time">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1599880/header.jpg" width="460" height="215" alt="Carátula de Cats in Time" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Cats in Time</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 5.2 hrs · 11 feb 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="bendy-and-the-dark-revival.html" data-nombre="bendy and the dark revival">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1063660/header.jpg" width="460" height="215" alt="Carátula de Bendy and the Dark Revival" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Bendy and the Dark Revival</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 13.2 hrs · 11 feb 2025</p></div>
+<a class="gcard reveal fx-spot" href="it-takes-two.html" data-nombre="it takes two">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1426210/header.jpg" width="460" height="215" alt="Carátula de It Takes Two" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>It Takes Two</h3>
+      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 15.9 hrs · 9 ene 2025</p></div>
     </a>
 <a class="gcard reveal fx-spot" href="resident-evil-village.html" data-nombre="resident evil village">
       <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1196590/header.jpg" width="460" height="215" alt="Carátula de Resident Evil Village" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
       <div class="ginfo"><h3>Resident Evil Village</h3>
       <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 47.9 hrs · 9 oct 2024</p></div>
     </a>
-<a class="gcard reveal fx-spot" href="sekiro-shadows-die-twice-goty-edition.html" data-nombre="sekiro: shadows die twice - goty edition">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/814380/header.jpg" width="460" height="215" alt="Carátula de Sekiro™: Shadows Die Twice - GOTY Edition" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Sekiro™: Shadows Die Twice - GOTY Edition</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 78.0 hrs · 9 oct 2024</p></div>
-    </a>
 <a class="gcard reveal fx-spot" href="god-of-war.html" data-nombre="god of war">
       <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1593500/header.jpg" width="460" height="215" alt="Carátula de God of War" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
       <div class="ginfo"><h3>God of War</h3>
       <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 52.0 hrs · 9 oct 2024</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="marvel-s-spider-man-remastered.html" data-nombre="marvels spider-man remastered">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1817070/header.jpg" width="460" height="215" alt="Carátula de Marvel’s Spider-Man Remastered" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Marvel’s Spider-Man Remastered</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 73.1 hrs · 9 oct 2024</p></div>
     </a>
 <a class="gcard reveal fx-spot" href="resident-evil-4.html" data-nombre="resident evil 4" data-video="1">
       <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2050650/header.jpg" width="460" height="215" alt="Carátula de Resident Evil 4" loading="lazy" onerror="this.parentElement.classList.add('noimg')"><span class="vbadge"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#play"/></svg> EN EL CANAL</span></div>
       <div class="ginfo"><h3>Resident Evil 4</h3>
       <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 140.2 hrs · 21 nov 2023</p></div>
     </a>
-<a class="gcard reveal fx-spot" href="call-of-duty-modern-warfare.html" data-nombre="call of duty: modern warfare">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2000950/header.jpg" width="460" height="215" alt="Carátula de Call of Duty®: Modern Warfare®" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Call of Duty®: Modern Warfare®</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 7.2 hrs · 29 may 2026</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="the-plucky-squire.html" data-nombre="the plucky squire">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1627570/header.jpg" width="460" height="215" alt="Carátula de The Plucky Squire" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>The Plucky Squire</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 8.8 hrs · 23 abr 2026</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="linelight.html" data-nombre="linelight">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/469790/header.jpg" width="460" height="215" alt="Carátula de Linelight" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Linelight</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 3.8 hrs · 8 feb 2026</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="the-dark-queen-of-mortholme.html" data-nombre="the dark queen of mortholme">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3587610/header.jpg" width="460" height="215" alt="Carátula de The Dark Queen of Mortholme" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>The Dark Queen of Mortholme</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 0.5 hrs · 8 feb 2026</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="please-touch-the-artwork-2.html" data-nombre="please, touch the artwork 2">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2600140/header.jpg" width="460" height="215" alt="Carátula de Please, Touch The Artwork 2" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Please, Touch The Artwork 2</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 3.4 hrs · 5 feb 2026</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="the-uncertain-last-quiet-day.html" data-nombre="the uncertain: last quiet day">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/406970/header.jpg" width="460" height="215" alt="Carátula de The Uncertain: Last Quiet Day" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>The Uncertain: Last Quiet Day</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-down"/></svg> · 2.9 hrs · 22 ene 2026</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="digseum.html" data-nombre="digseum">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3361470/header.jpg" width="460" height="215" alt="Carátula de Digseum" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Digseum</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 4.1 hrs · 21 ene 2026</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="poco.html" data-nombre="poco">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3454610/header.jpg" width="460" height="215" alt="Carátula de Poco" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Poco</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 1.6 hrs · 20 ene 2026</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="when-the-past-was-around.html" data-nombre="when the past was around">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1164050/header.jpg" width="460" height="215" alt="Carátula de When The Past Was Around" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>When The Past Was Around</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 4.1 hrs · 20 ene 2026</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="clair-obscur-expedition-33.html" data-nombre="clair obscur: expedition 33">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1903340/header.jpg" width="460" height="215" alt="Carátula de Clair Obscur: Expedition 33" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Clair Obscur: Expedition 33</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 75.2 hrs · 27 dic 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="hogwarts-legacy.html" data-nombre="hogwarts legacy">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/990080/header.jpg" width="460" height="215" alt="Carátula de Hogwarts Legacy" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Hogwarts Legacy</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 64.7 hrs · 27 dic 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="castle-of-illusion.html" data-nombre="castle of illusion">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/227600/header.jpg" width="460" height="215" alt="Carátula de Castle of Illusion" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Castle of Illusion</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-down"/></svg> · 0.2 hrs · 31 oct 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="hasbro-s-battleship.html" data-nombre="hasbros battleship">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/893050/header.jpg" width="460" height="215" alt="Carátula de Hasbro&#x27;s BATTLESHIP" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Hasbro&#x27;s BATTLESHIP</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 4.5 hrs · 31 oct 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="blasphemous.html" data-nombre="blasphemous">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/774361/header.jpg" width="460" height="215" alt="Carátula de Blasphemous" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Blasphemous</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 33.0 hrs · 31 oct 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="escape-from-mystwood-mansion.html" data-nombre="escape from mystwood mansion">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2292650/header.jpg" width="460" height="215" alt="Carátula de Escape From Mystwood Mansion" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Escape From Mystwood Mansion</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 3.9 hrs · 31 oct 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="the-forest-quartet.html" data-nombre="the forest quartet">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1620720/header.jpg" width="460" height="215" alt="Carátula de The Forest Quartet" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>The Forest Quartet</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 1.2 hrs · 15 oct 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="portal-with-rtx.html" data-nombre="portal with rtx">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2012840/header.jpg" width="460" height="215" alt="Carátula de Portal with RTX" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Portal with RTX</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-down"/></svg> · 0.6 hrs · 7 oct 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="pumpkin-jack.html" data-nombre="pumpkin jack">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1186640/header.jpg" width="460" height="215" alt="Carátula de Pumpkin Jack" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Pumpkin Jack</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 9.2 hrs · 7 oct 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="dimensions.html" data-nombre="dimensions">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2559050/header.jpg" width="460" height="215" alt="Carátula de DIMENSIONS" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>DIMENSIONS</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-down"/></svg> · 1.3 hrs · 6 oct 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="keep-on-mining.html" data-nombre="keep on mining!">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3769130/header.jpg" width="460" height="215" alt="Carátula de Keep on Mining!" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Keep on Mining!</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 6.7 hrs · 5 oct 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="viewfinder.html" data-nombre="viewfinder">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1382070/header.jpg" width="460" height="215" alt="Carátula de Viewfinder" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Viewfinder</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 7.6 hrs · 5 oct 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="arrow-a-row.html" data-nombre="arrow a row">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2495980/header.jpg" width="460" height="215" alt="Carátula de Arrow a Row" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Arrow a Row</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 5.0 hrs · 28 sep 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="wonderputt-forever.html" data-nombre="wonderputt forever">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1766540/header.jpg" width="460" height="215" alt="Carátula de Wonderputt Forever" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Wonderputt Forever</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 3.7 hrs · 28 sep 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="the-wolf-among-us.html" data-nombre="the wolf among us">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/250320/header.jpg" width="460" height="215" alt="Carátula de The Wolf Among Us" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>The Wolf Among Us</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 12.0 hrs · 28 sep 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="a-tower-full-of-cats.html" data-nombre="a tower full of cats">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2179170/header.jpg" width="460" height="215" alt="Carátula de A Tower Full of Cats" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>A Tower Full of Cats</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 4.0 hrs · 28 sep 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="titanfall-2.html" data-nombre="titanfall 2">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1237970/header.jpg" width="460" height="215" alt="Carátula de Titanfall® 2" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Titanfall® 2</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 13.0 hrs · 28 sep 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="thunder-ray.html" data-nombre="thunder ray">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1944910/header.jpg" width="460" height="215" alt="Carátula de Thunder Ray" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Thunder Ray</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 2.4 hrs · 28 sep 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="a-building-full-of-cats-2.html" data-nombre="a building full of cats 2">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2810730/header.jpg" width="460" height="215" alt="Carátula de A Building Full of Cats 2" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>A Building Full of Cats 2</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 4.4 hrs · 17 sep 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="the-textorcist-the-story-of-ray-bibbia.html" data-nombre="the textorcist: the story of ray bibbia">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/940680/header.jpg" width="460" height="215" alt="Carátula de The Textorcist: The Story of Ray Bibbia" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>The Textorcist: The Story of Ray Bibbia</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 11.4 hrs · 2 sep 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="super-chicken-jumper.html" data-nombre="super chicken jumper">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/584640/header.jpg" width="460" height="215" alt="Carátula de SUPER CHICKEN JUMPER" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>SUPER CHICKEN JUMPER</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 0.8 hrs · 2 sep 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="stray-cats-in-cozy-town.html" data-nombre="stray cats in cozy town">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2901140/header.jpg" width="460" height="215" alt="Carátula de Stray Cats in Cozy Town" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Stray Cats in Cozy Town</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 0.3 hrs · 2 sep 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="sonic-generations-collection.html" data-nombre="sonic generations collection">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/71340/header.jpg" width="460" height="215" alt="Carátula de Sonic Generations Collection" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Sonic Generations Collection</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 8.4 hrs · 2 sep 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="silver-chains.html" data-nombre="silver chains">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/975470/header.jpg" width="460" height="215" alt="Carátula de Silver Chains" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Silver Chains</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 3.2 hrs · 2 sep 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="shotgun-king-the-final-checkmate.html" data-nombre="shotgun king: the final checkmate">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1972440/header.jpg" width="460" height="215" alt="Carátula de Shotgun King: The Final Checkmate" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Shotgun King: The Final Checkmate</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 5.8 hrs · 2 sep 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="selene-apoptosis.html" data-nombre="selene ~apoptosis~">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1398210/header.jpg" width="460" height="215" alt="Carátula de Selene ~Apoptosis~" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Selene ~Apoptosis~</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-down"/></svg> · 2.3 hrs · 2 sep 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="stray.html" data-nombre="stray">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1332010/header.jpg" width="460" height="215" alt="Carátula de Stray" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Stray</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 12.3 hrs · 1 sep 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="say-no-more.html" data-nombre="say no! more">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1191900/header.jpg" width="460" height="215" alt="Carátula de Say No! More" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Say No! More</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 2.2 hrs · 31 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="please-don-t-touch-anything.html" data-nombre="please, dont touch anything">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/354240/header.jpg" width="460" height="215" alt="Carátula de Please, Don’t Touch Anything" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Please, Don’t Touch Anything</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 1.8 hrs · 22 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="old-man-s-journey.html" data-nombre="old mans journey">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/581270/header.jpg" width="460" height="215" alt="Carátula de Old Man&#x27;s Journey" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Old Man&#x27;s Journey</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 0.1 hrs · 22 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="nadir-a-grimdark-deckbuilder.html" data-nombre="nadir: a grimdark deckbuilder">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1535100/header.jpg" width="460" height="215" alt="Carátula de Nadir: A Grimdark Deckbuilder" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Nadir: A Grimdark Deckbuilder</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 0.7 hrs · 22 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="my-dream-setup.html" data-nombre="my dream setup">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2200780/header.jpg" width="460" height="215" alt="Carátula de My Dream Setup" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>My Dream Setup</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 10.2 hrs · 22 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="monument-valley-2.html" data-nombre="monument valley 2">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1927740/header.jpg" width="460" height="215" alt="Carátula de Monument Valley 2" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Monument Valley 2</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 0.2 hrs · 22 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="midnight-witch.html" data-nombre="midnight witch">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2336180/header.jpg" width="460" height="215" alt="Carátula de Midnight Witch" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Midnight Witch</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-down"/></svg> · 0.1 hrs · 22 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="knights.html" data-nombre="knights">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/476240/header.jpg" width="460" height="215" alt="Carátula de KNIGHTS" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>KNIGHTS</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 4.6 hrs · 22 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="into-the-dangerous-world-i-leapt.html" data-nombre="into the dangerous world i leapt">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1674810/header.jpg" width="460" height="215" alt="Carátula de Into the Dangerous World I Leapt" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Into the Dangerous World I Leapt</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 0.3 hrs · 22 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="the-house-of-the-dead-remake.html" data-nombre="the house of the dead: remake">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1694600/header.jpg" width="460" height="215" alt="Carátula de THE HOUSE OF THE DEAD: Remake" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>THE HOUSE OF THE DEAD: Remake</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 5.3 hrs · 22 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="chess-survivors.html" data-nombre="chess survivors">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2065000/header.jpg" width="460" height="215" alt="Carátula de Chess Survivors" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Chess Survivors</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 2.1 hrs · 22 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="cube-escape-paradox.html" data-nombre="cube escape: paradox">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/909080/header.jpg" width="460" height="215" alt="Carátula de Cube Escape: Paradox" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Cube Escape: Paradox</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 5.0 hrs · 22 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="batman-the-telltale-series.html" data-nombre="batman - the telltale series">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/498240/header.jpg" width="460" height="215" alt="Carátula de Batman - The Telltale Series" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Batman - The Telltale Series</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 10.6 hrs · 21 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="amanda-the-adventurer.html" data-nombre="amanda the adventurer">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2166060/header.jpg" width="460" height="215" alt="Carátula de Amanda the Adventurer" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Amanda the Adventurer</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 3.3 hrs · 21 ago 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="mafia-definitive-edition.html" data-nombre="mafia: definitive edition">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1030840/header.jpg" width="460" height="215" alt="Carátula de Mafia: Definitive Edition" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Mafia: Definitive Edition</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 16.9 hrs · 18 may 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="marvel-s-midnight-suns.html" data-nombre="marvels midnight suns">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/368260/header.jpg" width="460" height="215" alt="Carátula de Marvel&#x27;s Midnight Suns" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Marvel&#x27;s Midnight Suns</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 62.8 hrs · 1 may 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="helltaker.html" data-nombre="helltaker">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1289310/header.jpg" width="460" height="215" alt="Carátula de Helltaker" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Helltaker</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 0.8 hrs · 12 feb 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="ghostrunner-2.html" data-nombre="ghostrunner 2">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2144740/header.jpg" width="460" height="215" alt="Carátula de Ghostrunner 2" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Ghostrunner 2</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 16.0 hrs · 12 feb 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="down-in-bermuda.html" data-nombre="down in bermuda">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1107300/header.jpg" width="460" height="215" alt="Carátula de Down in Bermuda" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Down in Bermuda</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 4.2 hrs · 11 feb 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="cursed-to-golf.html" data-nombre="cursed to golf">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1726120/header.jpg" width="460" height="215" alt="Carátula de Cursed to Golf" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Cursed to Golf</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 30.4 hrs · 11 feb 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="curse-of-the-dead-gods.html" data-nombre="curse of the dead gods">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1123770/header.jpg" width="460" height="215" alt="Carátula de Curse of the Dead Gods" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Curse of the Dead Gods</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 21.5 hrs · 11 feb 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="behind-the-frame-the-finest-scenery.html" data-nombre="behind the frame: the finest scenery">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1634150/header.jpg" width="460" height="215" alt="Carátula de Behind the Frame: The Finest Scenery" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Behind the Frame: The Finest Scenery</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 2.2 hrs · 11 feb 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="an-arcade-full-of-cats.html" data-nombre="an arcade full of cats">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2368470/header.jpg" width="460" height="215" alt="Carátula de An Arcade Full of Cats" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>An Arcade Full of Cats</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 2.9 hrs · 11 feb 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="brotato.html" data-nombre="brotato">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1942280/header.jpg" width="460" height="215" alt="Carátula de Brotato" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Brotato</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 13.2 hrs · 11 feb 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="bright-memory-infinite.html" data-nombre="bright memory: infinite">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1178830/header.jpg" width="460" height="215" alt="Carátula de Bright Memory: Infinite" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Bright Memory: Infinite</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 6.7 hrs · 11 feb 2025</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="summer-clover.html" data-nombre="summer clover">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2458860/header.jpg" width="460" height="215" alt="Carátula de Summer Clover" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Summer Clover</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 12.3 hrs · 14 dic 2024</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="100-istanbul-cats.html" data-nombre="100 istanbul cats">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2845250/header.jpg" width="460" height="215" alt="Carátula de 100 Istanbul Cats" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>100 Istanbul Cats</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 0.1 hrs · 9 oct 2024</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="100-christmas-cats.html" data-nombre="100 christmas cats">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2687190/header.jpg" width="460" height="215" alt="Carátula de 100 Christmas Cats" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>100 Christmas Cats</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 0.2 hrs · 9 oct 2024</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="100-capitalist-cats.html" data-nombre="100 capitalist cats">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2743080/header.jpg" width="460" height="215" alt="Carátula de 100 Capitalist Cats" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>100 Capitalist Cats</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 0.1 hrs · 9 oct 2024</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="100-asian-cats.html" data-nombre="100 asian cats">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2667970/header.jpg" width="460" height="215" alt="Carátula de 100 Asian Cats" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>100 Asian Cats</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 0.2 hrs · 9 oct 2024</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="100-aliens-cats.html" data-nombre="100 aliens cats">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2845270/header.jpg" width="460" height="215" alt="Carátula de 100 Aliens Cats" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>100 Aliens Cats</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 0.1 hrs · 9 oct 2024</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="batman-the-enemy-within-the-telltale-series.html" data-nombre="batman: the enemy within - the telltale series">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/675260/header.jpg" width="460" height="215" alt="Carátula de Batman: The Enemy Within - The Telltale Series" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Batman: The Enemy Within - The Telltale Series</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 11.1 hrs · 9 oct 2024</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="tiny-tina-s-wonderlands.html" data-nombre="tiny tinas wonderlands">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1286680/header.jpg" width="460" height="215" alt="Carátula de Tiny Tina&#x27;s Wonderlands" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Tiny Tina&#x27;s Wonderlands</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 66.1 hrs · 9 oct 2024</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="shadow-of-the-tomb-raider-definitive-edition.html" data-nombre="shadow of the tomb raider: definitive edition">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/750920/header.jpg" width="460" height="215" alt="Carátula de Shadow of the Tomb Raider: Definitive Edition" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Shadow of the Tomb Raider: Definitive Edition</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 44.9 hrs · 9 oct 2024</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="kena-bridge-of-spirits.html" data-nombre="kena: bridge of spirits">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1954200/header.jpg" width="460" height="215" alt="Carátula de Kena: Bridge of Spirits" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Kena: Bridge of Spirits</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 28.6 hrs · 9 oct 2024</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="celeste.html" data-nombre="celeste">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/504230/header.jpg" width="460" height="215" alt="Carátula de Celeste" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Celeste</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 39.9 hrs · 9 oct 2024</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="dark-souls-ii-scholar-of-the-first-sin.html" data-nombre="dark souls ii: scholar of the first sin">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/335300/header.jpg" width="460" height="215" alt="Carátula de DARK SOULS™ II: Scholar of the First Sin" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>DARK SOULS™ II: Scholar of the First Sin</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 73.2 hrs · 9 oct 2024</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="batman-arkham-knight.html" data-nombre="batman: arkham knight">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/208650/header.jpg" width="460" height="215" alt="Carátula de Batman™: Arkham Knight" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Batman™: Arkham Knight</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 63.0 hrs · 9 oct 2024</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="forgive-me-father-2.html" data-nombre="forgive me father 2">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2272250/header.jpg" width="460" height="215" alt="Carátula de Forgive Me Father 2" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Forgive Me Father 2</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 9.0 hrs · 9 oct 2024</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="finding-paradise.html" data-nombre="finding paradise">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/337340/header.jpg" width="460" height="215" alt="Carátula de Finding Paradise" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Finding Paradise</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 6.1 hrs · 13 jun 2023</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="dragon-ball-fighterz.html" data-nombre="dragon ball fighterz">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/678950/header.jpg" width="460" height="215" alt="Carátula de DRAGON BALL FighterZ" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>DRAGON BALL FighterZ</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 14.0 hrs · 17 ago 2022</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="elden-ring.html" data-nombre="elden ring">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1245620/header.jpg" width="460" height="215" alt="Carátula de ELDEN RING" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>ELDEN RING</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 207.4 hrs · 17 ago 2022</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="splitgate.html" data-nombre="splitgate">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/677620/header.jpg" width="460" height="215" alt="Carátula de Splitgate" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Splitgate</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 129.0 hrs · 17 ago 2022</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="dark-souls-iii.html" data-nombre="dark souls iii">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/374320/header.jpg" width="460" height="215" alt="Carátula de DARK SOULS™ III" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>DARK SOULS™ III</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 97.1 hrs · 14 jul 2020</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="spec-ops-the-line.html" data-nombre="spec ops: the line">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/50300/header.jpg" width="460" height="215" alt="Carátula de Spec Ops: The Line" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Spec Ops: The Line</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 11.4 hrs · 4 may 2020</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="deus-ex-mankind-divided.html" data-nombre="deus ex: mankind divided">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/337000/header.jpg" width="460" height="215" alt="Carátula de Deus Ex: Mankind Divided" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>Deus Ex: Mankind Divided</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 56.9 hrs · 1 may 2020</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="the-search.html" data-nombre="the search">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/566190/header.jpg" width="460" height="215" alt="Carátula de The Search" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>The Search</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 1.3 hrs · 1 may 2020</p></div>
-    </a>
-<a class="gcard reveal fx-spot" href="doom.html" data-nombre="doom">
-      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/379720/header.jpg" width="460" height="215" alt="Carátula de DOOM" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
-      <div class="ginfo"><h3>DOOM</h3>
-      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 35.6 hrs · 10 abr 2020</p></div>
+<a class="gcard reveal fx-spot" href="cuphead.html" data-nombre="cuphead">
+      <div class="gimg"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/268910/header.jpg" width="460" height="215" alt="Carátula de Cuphead" loading="lazy" onerror="this.parentElement.classList.add('noimg')"></div>
+      <div class="ginfo"><h3>Cuphead</h3>
+      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> · 43.4 hrs · 26 abr 2020</p></div>
     </a>
   </div>
   <p class="empty" id="empty">▮ NADA POR AQUÍ. PRUEBA OTRA BÚSQUEDA ▮</p>
@@ -900,7 +388,23 @@ function aplicar(conFlip){
     requestAnimationFrame(()=>{c.style.transition='transform .55s cubic-bezier(.2,.8,.2,1)';c.style.transform='';});
   });
 }
-q.addEventListener('input',()=>aplicar(true));
+q.addEventListener('input',()=>{aplicar(true);waveList();});
+/* Scroll/31 adaptado: lista "select your game" en oleada al buscar */
+const wl=document.getElementById('wave-list');
+function waveList(){
+  const txt=q.value.toLowerCase().trim();
+  if(!txt){wl.classList.remove('on');wl.innerHTML='';return;}
+  const hits=cards.filter(c=>c.dataset.nombre.includes(txt)).slice(0,8);
+  wl.innerHTML=hits.length
+    ? hits.map((c,i)=>{
+        const n=c.querySelector('h3').textContent;
+        const ix=n.toLowerCase().indexOf(txt);
+        const rot=ix>-1?n.slice(0,ix)+'<b>'+n.slice(ix,ix+txt.length)+'</b>'+n.slice(ix+txt.length):n;
+        return `<a href="${c.getAttribute('href')}" style="--wd:${i*70}ms;--wx:${i%2?'40px':'-40px'}">▸ ${rot}<small>${c.dataset.video==='1'?'EN EL CANAL':'STEAM'}</small></a>`;
+      }).join('')
+    : '<span class="nada">▮ SIN RESULTADOS EN ESTA MAQUINA ▮</span>';
+  wl.classList.remove('on');void wl.offsetWidth;wl.classList.add('on');
+}
 document.querySelectorAll('.fbtn').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('on'));
   b.classList.add('on');filtro=b.dataset.f;aplicar(true);
@@ -920,7 +424,7 @@ if(!RM_G) document.querySelectorAll('.gcard').forEach(card=>{
     const velo=document.createElement('div');
     velo.style.cssText='position:fixed;inset:0;background:rgba(10,17,31,0);transition:background .5s ease;z-index:180;pointer-events:none';
     document.body.appendChild(velo);
-    requestAnimationFrame(()=>{velo.style.background='rgba(10,17,31,.72)'});
+    requestAnimationFrame(()=>{velo.style.background='rgba(10,17,31,.78)'});
     const HOPS=6;
     for(let i=0;i<HOPS;i++){
       const f=i/(HOPS-1);
@@ -929,9 +433,12 @@ if(!RM_G) document.querySelectorAll('.gcard').forEach(card=>{
       const W=r.width+(fin.width-r.width)*f, H=r.height+(fin.height-r.height)*f;
       cl.style.cssText=`position:fixed;left:${L}px;top:${T}px;width:${W}px;height:${H}px;background:url('${img.currentSrc}') center/cover;border-radius:10px;z-index:181;opacity:0;box-shadow:0 18px 50px rgba(0,0,0,.5)`;
       document.body.appendChild(cl);
-      setTimeout(()=>{cl.style.opacity='1';},60+i*70);
+      cl.style.transition='opacity .1s ease';
+      setTimeout(()=>{cl.style.opacity='1';},40+i*48);
     }
-    setTimeout(()=>{location.href=card.href;},60+HOPS*70+240);
+    /* handoff opaco: el velo cubre todo justo antes de navegar (sin congelon) */
+    setTimeout(()=>{velo.style.transition='background .22s ease';velo.style.background='var(--bg)';},40+HOPS*48+60);
+    setTimeout(()=>{location.href=card.href;},40+HOPS*48+300);
   });
 });
 </script>

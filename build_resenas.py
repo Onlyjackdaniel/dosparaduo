@@ -405,8 +405,8 @@ def card(r, mini=False):
       <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#{'thumbs-up' if r['voto']=='up' else 'thumbs-down'}"/></svg> · {r['horas']} hrs · {fecha_es(r['fecha'])}</p></div>
     </a>"""
 
-cards_juntos = '\n'.join(card(r) for r in juntos)
-cards_solo = '\n'.join(card(r) for r in solo)
+oficiales = [r for r in reviews if norm(r['nombre']) in ANAHI]
+cards_juntos = '\n'.join(card(r) for r in oficiales)
 cards_extras = '\n'.join(card(r, mini=True) for r in extras)
 
 INDEX = """<!DOCTYPE html>
@@ -414,7 +414,7 @@ INDEX = """<!DOCTYPE html>
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reseñas de juegos en español | Dos para Duo</title>
-<meta name="description" content="__NJ__ juegos que jugamos juntos, reseñados de verdad: co-op, terror, plataformas y joyitas raras. Las reseñas de Steam del dúo, con video del canal cuando existe.">
+<meta name="description" content="Los juegos que jugamos juntos, reseñados de verdad: co-op, terror, plataformas y joyitas raras. Las reseñas de Steam del dúo, con video del canal cuando existe.">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="../assets/icon-512.png">
 <link rel="apple-touch-icon" href="../assets/icon-512.png">
@@ -443,6 +443,14 @@ INDEX = """<!DOCTYPE html>
 .guide-band:hover{border-color:var(--gold);background:rgba(255,209,102,.06)}
 .guide-band b{color:var(--text)}
 .tools{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+.wave-list{display:none;flex-direction:column;gap:4px;margin:-12px 0 26px;padding:18px 20px;background:rgba(20,36,64,.5);border:1px solid var(--line);border-radius:12px;backdrop-filter:blur(8px)}
+.wave-list.on{display:flex}
+.wave-list a{font-family:var(--display);font-size:clamp(1rem,2.6vw,1.5rem);text-transform:uppercase;color:var(--text);text-decoration:none;opacity:0;transform:translateX(var(--wx,-40px));transition:opacity .4s ease var(--wd,0ms),transform .5s cubic-bezier(.2,.8,.2,1) var(--wd,0ms),color .2s}
+.wave-list.on a{opacity:1;transform:none}
+.wave-list a:hover{color:var(--p2)}
+.wave-list a b{font-weight:400;color:var(--gold)}
+.wave-list a small{font-family:var(--mono);font-size:.6rem;letter-spacing:2px;color:var(--muted);margin-left:12px}
+.wave-list .nada{font-family:var(--mono);font-size:.7rem;letter-spacing:2px;color:var(--muted)}
 #buscar{flex:1;min-width:220px;padding:12px 16px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);font-family:var(--body);font-size:.95rem}
 #buscar:focus{outline:none;border-color:var(--p2)}
 .fbtn{font-family:var(--mono);font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:10px 16px;cursor:pointer}
@@ -471,13 +479,13 @@ __NAV__
 <main>
   <p class="crumb"><a href="../index.html">← Inicio</a> / Reseñas</p>
   <div class="ascii-wrap"><canvas class="ascii-title" data-texto="RESEÑAS"></canvas><h1 class="sec vh">Reseñas</h1></div>
-  <p class="sub sub-center">Los <b style="color:var(--text)">__NT__ juegos que hemos jugado</b>, reseñados de verdad en Steam, con la reseña de cada quien y el video del canal cuando lo grabamos.</p>
-  <a class="guide-band" href="../listas/mejores-juegos-cooperativos-para-parejas.html">📜 <b>NUEVA GUÍA:</b> Los mejores juegos cooperativos para parejas: nuestro top 10 probado en pareja ▸</a>
+  <p class="sub sub-center">Los <b style="color:var(--text)">__NT__ juegos que hemos jugado juntos</b>, reseñados de verdad en Steam, con la reseña de cada quien y el video del canal cuando lo grabamos.</p>
   <div class="tools">
     <input id="buscar" type="text" placeholder="Buscar juego...">
     <button class="fbtn on" data-f="todos" type="button">Todos</button>
     <button class="fbtn" data-f="video" type="button">▶ Con video</button>
   </div>
+  <div class="wave-list" id="wave-list" aria-live="polite"></div>
   <div class="ggrid" id="grid">
 __CARDS__
   </div>
@@ -519,7 +527,23 @@ function aplicar(conFlip){
     requestAnimationFrame(()=>{c.style.transition='transform .55s cubic-bezier(.2,.8,.2,1)';c.style.transform='';});
   });
 }
-q.addEventListener('input',()=>aplicar(true));
+q.addEventListener('input',()=>{aplicar(true);waveList();});
+/* Scroll/31 adaptado: lista "select your game" en oleada al buscar */
+const wl=document.getElementById('wave-list');
+function waveList(){
+  const txt=q.value.toLowerCase().trim();
+  if(!txt){wl.classList.remove('on');wl.innerHTML='';return;}
+  const hits=cards.filter(c=>c.dataset.nombre.includes(txt)).slice(0,8);
+  wl.innerHTML=hits.length
+    ? hits.map((c,i)=>{
+        const n=c.querySelector('h3').textContent;
+        const ix=n.toLowerCase().indexOf(txt);
+        const rot=ix>-1?n.slice(0,ix)+'<b>'+n.slice(ix,ix+txt.length)+'</b>'+n.slice(ix+txt.length):n;
+        return `<a href="${c.getAttribute('href')}" style="--wd:${i*70}ms;--wx:${i%2?'40px':'-40px'}">▸ ${rot}<small>${c.dataset.video==='1'?'EN EL CANAL':'STEAM'}</small></a>`;
+      }).join('')
+    : '<span class="nada">▮ SIN RESULTADOS EN ESTA MAQUINA ▮</span>';
+  wl.classList.remove('on');void wl.offsetWidth;wl.classList.add('on');
+}
 document.querySelectorAll('.fbtn').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('on'));
   b.classList.add('on');filtro=b.dataset.f;aplicar(true);
@@ -539,7 +563,7 @@ if(!RM_G) document.querySelectorAll('.gcard').forEach(card=>{
     const velo=document.createElement('div');
     velo.style.cssText='position:fixed;inset:0;background:rgba(10,17,31,0);transition:background .5s ease;z-index:180;pointer-events:none';
     document.body.appendChild(velo);
-    requestAnimationFrame(()=>{velo.style.background='rgba(10,17,31,.72)'});
+    requestAnimationFrame(()=>{velo.style.background='rgba(10,17,31,.78)'});
     const HOPS=6;
     for(let i=0;i<HOPS;i++){
       const f=i/(HOPS-1);
@@ -548,9 +572,12 @@ if(!RM_G) document.querySelectorAll('.gcard').forEach(card=>{
       const W=r.width+(fin.width-r.width)*f, H=r.height+(fin.height-r.height)*f;
       cl.style.cssText=`position:fixed;left:${L}px;top:${T}px;width:${W}px;height:${H}px;background:url('${img.currentSrc}') center/cover;border-radius:10px;z-index:181;opacity:0;box-shadow:0 18px 50px rgba(0,0,0,.5)`;
       document.body.appendChild(cl);
-      setTimeout(()=>{cl.style.opacity='1';},60+i*70);
+      cl.style.transition='opacity .1s ease';
+      setTimeout(()=>{cl.style.opacity='1';},40+i*48);
     }
-    setTimeout(()=>{location.href=card.href;},60+HOPS*70+240);
+    /* handoff opaco: el velo cubre todo justo antes de navegar (sin congelon) */
+    setTimeout(()=>{velo.style.transition='background .22s ease';velo.style.background='var(--bg)';},40+HOPS*48+60);
+    setTimeout(()=>{location.href=card.href;},40+HOPS*48+300);
   });
 });
 </script>
@@ -562,9 +589,9 @@ index_html = (INDEX
     .replace('__CSS__', CSS)
     .replace('__NAV__', NAV.replace('__HOME__','../'))
     .replace('__FOOTER__', FOOTER.replace('__HOME__','../'))
-    .replace('__CARDS__', cards_juntos + chr(10) + cards_solo)
+    .replace('__CARDS__', cards_juntos)
     .replace('__EXTRAS__', cards_extras)
-    .replace('__NT__', str(len(juntos) + len(solo)))
+    .replace('__NT__', str(len(oficiales)))
     .replace('__BASE__', BASE))
 (OUT/'index.html').write_text(index_html, encoding='utf-8')
 
