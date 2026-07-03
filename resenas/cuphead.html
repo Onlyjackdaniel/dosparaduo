@@ -14,7 +14,7 @@
 <script src="../assets/consent.js" defer></script>
 <script src="../assets/analytics-events.js" defer></script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cuphead — Reseña en español | Dos para Duo</title>
+<title>Cuphead: Reseña en español | Dos para Duo</title>
 <meta name="description" content="Una lección de humildad con estilo de los años 30 Cuphead es un increíble juego de acción lineal que te atrapa desde el primer momento con su estilo…">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="../assets/icon-512.png">
@@ -23,18 +23,21 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-<meta property="og:title" content="Reseña: Cuphead — Dos para Duo">
+<meta property="og:title" content="Reseña: Cuphead | Dos para Duo">
 <meta property="og:description" content="Una lección de humildad con estilo de los años 30 Cuphead es un increíble juego de acción lineal que te atrapa desde el primer momento con su estilo…">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/268910/header.jpg">
 <link rel="canonical" href="https://onlyjackdaniel.github.io/dosparaduo/resenas/cuphead.html">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Review", "itemReviewed": {"@type": "VideoGame", "name": "Cuphead"}, "author": {"@type": "Person", "name": "Jack — Dos para Duo"}, "publisher": {"@type": "Organization", "name": "Dos para Duo", "sameAs": "https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw"}, "inLanguage": "es", "reviewBody": "Una lección de humildad con estilo de los años 30 Cuphead es un increíble juego de acción lineal que te atrapa desde el primer momento con su estilo…", "positiveNotes": {"@type": "ItemList", "itemListElement": []}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Review", "itemReviewed": {"@type": "VideoGame", "name": "Cuphead"}, "author": {"@type": "Person", "name": "Jack de Dos para Duo"}, "publisher": {"@type": "Organization", "name": "Dos para Duo", "sameAs": "https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw"}, "inLanguage": "es", "reviewBody": "Una lección de humildad con estilo de los años 30 Cuphead es un increíble juego de acción lineal que te atrapa desde el primer momento con su estilo…", "positiveNotes": {"@type": "ItemList", "itemListElement": []}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://onlyjackdaniel.github.io/dosparaduo/"}, {"@type": "ListItem", "position": 2, "name": "Reseñas", "item": "https://onlyjackdaniel.github.io/dosparaduo/resenas/"}, {"@type": "ListItem", "position": 3, "name": "Cuphead"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
-<link rel="stylesheet" href="../assets/menu.css">
-<script src="../assets/menu.js" defer></script>
+<link rel="stylesheet" href="../assets/menu.css?v=5">
+<link rel="stylesheet" href="../assets/fx.css?v=5">
+<script src="../assets/menu.js?v=5" defer></script>
+<script src="../assets/fx.js?v=4" defer data-fx-base="../"></script>
+<script src="../assets/ascii-title.js?v=1" defer></script>
 <style>
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -53,8 +56,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
 main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 24px 80px}
 .crumb{font-family:var(--mono);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
 .crumb a{color:var(--p2);text-decoration:none}
+.ascii-wrap{position:relative;margin:10px 0 8px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 h1.sec{font-family:var(--display);font-size:clamp(1.8rem,5vw,3rem);text-transform:uppercase;margin:10px 0 8px}
 .sub{color:var(--muted);max-width:640px;font-weight:300;margin-bottom:40px}
+.sub-center{max-width:none;text-align:center}
 footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:40px 24px;text-align:center;background:var(--bg-2)}
 footer .f-logo{font-family:var(--display);font-size:1rem;text-transform:uppercase}
 footer p{color:var(--muted);font-size:.78rem;margin-top:8px;font-family:var(--mono)}
@@ -108,42 +114,48 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="../index.html#inicio">Inicio</a>
     <a href="../index.html#videos">Videos</a>
     <a href="../resenas/">Reseñas</a>
+    <a href="../blog/">Blog</a>
     <a href="../merch.html">Merch</a>
     <a href="../apoyo.html">Apóyanos</a>
     <a href="../nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
   <p class="crumb"><a href="./">← Reseñas</a> / Cuphead</p>
   <div class="game-head">
-    <h1 class="sec">Cuphead</h1>
+    <h1 class="sec" data-scramble>Cuphead</h1>
     <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/268910/header.jpg" width="460" height="215" alt="Carátula de Cuphead" onerror="this.style.display='none'">
     <div class="meta-row">
-      <span class="chip rec">👍 Recomendado</span>
+      <span class="chip rec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado</span>
       <span class="chip">43.4 hrs jugadas</span>
       <span class="chip">26 abr 2020</span>
     </div>
   </div>
   <div class="duo-cols">
-    <article class="rcard p1">
-      <span class="ptag">▮ PLAYER 1 — ÉL</span>
+    <article class="rcard p1 fx-spot" style="--spot-rgb:var(--p1-rgb)">
+      <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody"><div class="bb_h2">Una lección de humildad con estilo de los años 30</div><br>Cuphead es un increíble juego de acción lineal que te atrapa desde el primer momento con su estilo visual de los años 30. Escuché por ahí que es el 'Dark Souls de los juegos shooter 2D', y no podría estar más de acuerdo. Morir es parte del proceso para aprender cómo superar cada nivel, y una vez que aceptas eso, el juego se convierte en una mezcla perfecta de frustración y satisfacción.<br><br><b>Lo que destaca en Cuphead:</b><br><u>Estilo visual único:</u> El juego parece una caricatura de los años 30, con animaciones hechas a mano que son una auténtica obra de arte. Cada nivel y jefe es una experiencia visualmente deslumbrante.<br><u>Desafío constante:</u> Al igual que en los juegos de la saga Souls, en Cuphead morir es inevitable, pero necesario. Cada nivel es un rompecabezas que debes descifrar a través de la prueba y error, y esa sensación de superación es lo que lo hace tan adictivo.<br><u>Cooperativo desafiante:</u> Aunque es increíblemente difícil, el modo cooperativo es una excelente opción para jugar en pareja o con amigos. Pero prepárense para momentos de frustración y para celebrar juntos las victorias.<br><br><b>Lo que lo hace especial:</b><br><u>Satisfacción incomparable:</u> Pocos juegos logran combinar tanta dificultad con una sensación tan gratificante al completar cada nivel. Superar un jefe en Cuphead se siente como una auténtica victoria, una lección de humildad y perseverancia.<br><u>Estética única en su género:</u> Los gráficos y la música retro son algo que ningún otro juego de acción tiene. Te sentirás como si estuvieras jugando en una caricatura de los años 30, lo que le da un encanto especial que lo diferencia de cualquier otro título.<br><br>Recomendado: ✔️ Sí<br>¡Frustración y satisfacción en perfecta armonía!</div>
-      <a class="steam-link" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/268910/" target="_blank" rel="noopener">Ver en Steam ↗</a>
+      <a class="steam-link fx-btn" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/268910/" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
-    <aside class="rcard p2">
-      <span class="ptag">▮ PLAYER 2 — ELLA</span>
+    <aside class="rcard p2 fx-spot" style="--spot-rgb:var(--p2-rgb)">
+      <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
-      <div class="pending"><span class="q">?</span>La reseña de Player 2 está en camino.<br>Mientras tanto, ya saben quién escribe más rápido.</div>
+      <div class="meta-row" style="justify-content:flex-start;margin:0 0 16px"><span class="chip rec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado</span></div><div class="rbody"><div class="bb_h2">BELLÍSIMO, PERO NO ES PARA PRINCIPIANTES</div><p>Aunque la mecánica es relativamente sencilla, el juego en sí es bastante complejo. Lo jugué con mi novio y de verdad es un reto: vas de lo más tranquila y de repente no sabes ni de dónde te cayó el madrazo, jaja. Pero eso no le quita lo bellísimo: está lleno de arte, con buenos personajes, buenos jefes, buenos niveles y un gran gameplay.</p><p>NO ES UN JUEGO PARA PRINCIPIANTES. Si lo vas a jugar con tu novia que no suele jugar videojuegos, te recomiendo empezar por títulos más sencillos y, con un poco más de práctica, llegar a este; puede ser frustrante cuando hay tanto pasando en pantalla que aún no distingues entre el fondo y una bala. Al inicio cuesta, pero con el tiempo uno mejora.</p><p><b>Un clásico que todos deberían jugar. Ojalá se den la oportunidad... y tengan mucha paciencia, para que la experiencia sea grata para todos.</b></p></div>
     </aside>
   </div>
   
-  <div class="backrow"><a class="back" href="./">◂ Todas las reseñas</a></div>
+  <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a> · <a href="../apoyo.html">Apóyanos</a> · <a href="../contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>

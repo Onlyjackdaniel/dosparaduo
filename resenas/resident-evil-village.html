@@ -14,7 +14,7 @@
 <script src="../assets/consent.js" defer></script>
 <script src="../assets/analytics-events.js" defer></script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Resident Evil Village — Reseña en español | Dos para Duo</title>
+<title>Resident Evil Village: Reseña en español | Dos para Duo</title>
 <meta name="description" content="Un Resident Evil más narrativo que aterrador Entré a Resident Evil Village con sentimientos encontrados, después de ver tantas reseñas excelentes. Es un…">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="../assets/icon-512.png">
@@ -23,18 +23,21 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-<meta property="og:title" content="Reseña: Resident Evil Village — Dos para Duo">
+<meta property="og:title" content="Reseña: Resident Evil Village | Dos para Duo">
 <meta property="og:description" content="Un Resident Evil más narrativo que aterrador Entré a Resident Evil Village con sentimientos encontrados, después de ver tantas reseñas excelentes. Es un…">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1196590/header.jpg">
 <link rel="canonical" href="https://onlyjackdaniel.github.io/dosparaduo/resenas/resident-evil-village.html">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Review", "itemReviewed": {"@type": "VideoGame", "name": "Resident Evil Village"}, "author": {"@type": "Person", "name": "Jack — Dos para Duo"}, "publisher": {"@type": "Organization", "name": "Dos para Duo", "sameAs": "https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw"}, "inLanguage": "es", "reviewBody": "Un Resident Evil más narrativo que aterrador Entré a Resident Evil Village con sentimientos encontrados, después de ver tantas reseñas excelentes. Es un…", "positiveNotes": {"@type": "ItemList", "itemListElement": []}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Review", "itemReviewed": {"@type": "VideoGame", "name": "Resident Evil Village"}, "author": {"@type": "Person", "name": "Jack de Dos para Duo"}, "publisher": {"@type": "Organization", "name": "Dos para Duo", "sameAs": "https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw"}, "inLanguage": "es", "reviewBody": "Un Resident Evil más narrativo que aterrador Entré a Resident Evil Village con sentimientos encontrados, después de ver tantas reseñas excelentes. Es un…", "positiveNotes": {"@type": "ItemList", "itemListElement": []}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://onlyjackdaniel.github.io/dosparaduo/"}, {"@type": "ListItem", "position": 2, "name": "Reseñas", "item": "https://onlyjackdaniel.github.io/dosparaduo/resenas/"}, {"@type": "ListItem", "position": 3, "name": "Resident Evil Village"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
-<link rel="stylesheet" href="../assets/menu.css">
-<script src="../assets/menu.js" defer></script>
+<link rel="stylesheet" href="../assets/menu.css?v=5">
+<link rel="stylesheet" href="../assets/fx.css?v=5">
+<script src="../assets/menu.js?v=5" defer></script>
+<script src="../assets/fx.js?v=4" defer data-fx-base="../"></script>
+<script src="../assets/ascii-title.js?v=1" defer></script>
 <style>
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -53,8 +56,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
 main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 24px 80px}
 .crumb{font-family:var(--mono);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
 .crumb a{color:var(--p2);text-decoration:none}
+.ascii-wrap{position:relative;margin:10px 0 8px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 h1.sec{font-family:var(--display);font-size:clamp(1.8rem,5vw,3rem);text-transform:uppercase;margin:10px 0 8px}
 .sub{color:var(--muted);max-width:640px;font-weight:300;margin-bottom:40px}
+.sub-center{max-width:none;text-align:center}
 footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:40px 24px;text-align:center;background:var(--bg-2)}
 footer .f-logo{font-family:var(--display);font-size:1rem;text-transform:uppercase}
 footer p{color:var(--muted);font-size:.78rem;margin-top:8px;font-family:var(--mono)}
@@ -108,42 +114,48 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="../index.html#inicio">Inicio</a>
     <a href="../index.html#videos">Videos</a>
     <a href="../resenas/">Reseñas</a>
+    <a href="../blog/">Blog</a>
     <a href="../merch.html">Merch</a>
     <a href="../apoyo.html">Apóyanos</a>
     <a href="../nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
   <p class="crumb"><a href="./">← Reseñas</a> / Resident Evil Village</p>
   <div class="game-head">
-    <h1 class="sec">Resident Evil Village</h1>
+    <h1 class="sec" data-scramble>Resident Evil Village</h1>
     <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1196590/header.jpg" width="460" height="215" alt="Carátula de Resident Evil Village" onerror="this.style.display='none'">
     <div class="meta-row">
-      <span class="chip rec">👍 Recomendado</span>
+      <span class="chip rec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado</span>
       <span class="chip">47.9 hrs jugadas</span>
       <span class="chip">9 oct 2024</span>
     </div>
   </div>
   <div class="duo-cols">
-    <article class="rcard p1">
-      <span class="ptag">▮ PLAYER 1 — ÉL</span>
+    <article class="rcard p1 fx-spot" style="--spot-rgb:var(--p1-rgb)">
+      <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody"><div class="bb_h2">Un Resident Evil más narrativo que aterrador</div><br>Entré a Resident Evil Village con sentimientos encontrados, después de ver tantas reseñas excelentes. Es un juego bastante bueno y variado en términos de ambientación y desarrollo, pero personalmente, el sentimiento de terror que caracteriza a la saga se perdió para mí desde los primeros minutos.<br><br><b>Lo que destaca:</b><br><u>Ambientaciones impresionantes:</u> El diseño de los escenarios es uno de los puntos fuertes del juego. Cada área tiene un estilo único, que te envuelve en la atmósfera y te invita a seguir explorando a medida que avanzas en la historia.<br><u>Desarrollo de personaje:</u> A medida que avanzas, sientes un claro progreso en el crecimiento de tu personaje. Las mejoras en las armas y habilidades añaden un buen toque de progresión, lo que te mantiene enganchado a nivel de gameplay.<br><u>Narrativa interesante:</u> A diferencia de Resident Evil 7, este juego se enfoca más en la narrativa que en el terror. Los sucesos son interesantes y, a veces, incluso cómicos, lo que añade un tono diferente al juego.<br><br><b>Lo que lo hace especial:</b><br>Variedad en la jugabilidad: Aunque el terror no está tan presente como en entregas anteriores, Resident Evil Village ofrece una buena variedad de escenarios y desafíos que mantienen la experiencia fresca.<br><u>Menos terror, más acción:</u> A diferencia de Resident Evil 7, que te sumergía en una sensación de claustrofobia y horror, Village es más una aventura con toques de acción y una narrativa intrigante. Esto puede ser un punto a favor o en contra, dependiendo de lo que busques en la saga.<br><br>Recomendado: ✔️ Sí<br>¡Una experiencia interesante, pero con menos terror del esperado!</div>
-      <a class="steam-link" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/1196590/" target="_blank" rel="noopener">Ver en Steam ↗</a>
+      <a class="steam-link fx-btn" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/1196590/" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
-    <aside class="rcard p2">
-      <span class="ptag">▮ PLAYER 2 — ELLA</span>
+    <aside class="rcard p2 fx-spot" style="--spot-rgb:var(--p2-rgb)">
+      <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
-      <div class="pending"><span class="q">?</span>La reseña de Player 2 está en camino.<br>Mientras tanto, ya saben quién escribe más rápido.</div>
+      <div class="meta-row" style="justify-content:flex-start;margin:0 0 16px"><span class="chip rec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado</span></div><div class="rbody"><div class="bb_h2">TERROR CON EL SELLO DE CAPCOM</div><p>Desde Resident Evil 7 tenemos esta nueva fórmula de Resident Evil que, aunque no es como la clásica, me ha gustado bastante. Aquí el terror se vive en escenarios muy distintos, con jefes grandiosos y una jugabilidad bastante interesante. La historia, en mi opinión, está algo floja, pero en los demás aspectos sigue cumpliendo con la calidad que esperas de Capcom. Sí lo recomiendo, aunque creo que hay títulos mejores. Lo jugué con mi novio; me encanta todo lo que tenga que ver con Resident Evil porque ya se volvió parte de nuestra relación. Me fascinan los gráficos y los secretos, y la dificultad es normal.</p></div>
     </aside>
   </div>
   
-  <div class="backrow"><a class="back" href="./">◂ Todas las reseñas</a></div>
+  <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a> · <a href="../apoyo.html">Apóyanos</a> · <a href="../contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>

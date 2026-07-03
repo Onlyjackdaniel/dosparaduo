@@ -15,7 +15,7 @@
 <script src="assets/analytics-events.js" defer></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apóyanos — Power-ups para el canal | Dos para Duo</title>
+<title>Apóyanos: Power-ups para el canal | Dos para Duo</title>
 <meta name="description" content="Formas de apoyar a Dos para Duo: invítanos un café en Buy Me a Coffee o échanos la mano con nuestras wishlists. Todo va de regreso al canal: mejor setup, juegos para regalar en dinámicas y más.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="assets/icon-512.png">
@@ -23,7 +23,7 @@
 <link rel="manifest" href="site.webmanifest">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
-<meta property="og:title" content="Apóyanos — Dos para Duo">
+<meta property="og:title" content="Apóyanos | Dos para Duo">
 <meta property="og:description" content="Power-ups para el canal: café, wishlists, o simplemente ver los videos.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://onlyjackdaniel.github.io/dosparaduo/apoyo.html">
@@ -31,9 +31,15 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/tokens.css">
-<link rel="stylesheet" href="assets/menu.css">
-<script src="assets/menu.js" defer></script>
+<link rel="stylesheet" href="assets/menu.css?v=5">
+<script src="assets/menu.js?v=5" defer></script>
+<link rel="stylesheet" href="assets/fx.css?v=5">
+<script src="assets/fx.js?v=4" defer></script>
+<script src="assets/particles-bg.js?v=1" defer></script>
+
 <style>
+  .particles-container{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
+  .particles-container canvas{width:100%;height:100%;display:block}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--body);line-height:1.6;overflow-x:hidden}
@@ -88,6 +94,7 @@ footer a{color:var(--p1);text-decoration:none}
 </head>
 <body>
 <div class="atmos"></div>
+<div class="particles-container" aria-hidden="true" data-particles data-colors="#3cb8ec,#ff7a29,#ffd166" data-count="315" data-spread="10" data-speed="0.08" data-base-size="90" data-size-randomness="1" data-camera-distance="20" data-hover="true" data-hover-factor="0.6" data-alpha="true" data-rotation="true" data-dpr="1"></div>
 <nav>
   <a class="logo" href="index.html">
     <img src="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s240-c-k-c0x00ffffff-no-rj" alt="Logo Dos para Duo">
@@ -98,54 +105,60 @@ footer a{color:var(--p1);text-decoration:none}
     <a href="index.html#inicio">Inicio</a>
     <a href="index.html#videos">Videos</a>
     <a href="resenas/">Reseñas</a>
+    <a href="blog/">Blog</a>
     <a href="merch.html">Merch</a>
     <a href="apoyo.html">Apóyanos</a>
     <a href="nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
   <p class="crumb"><a href="index.html">← Inicio</a> / Apóyanos</p>
   <h1>Power-<span>ups</span></h1>
-  <p class="sub">El canal es gratis y lo seguirá siendo. Pero si quieren darle un <b>power-up al proyecto</b>, estas son las maneras — todas opcionales, todas apreciadas de más.</p>
+  <p class="sub">El canal es gratis y lo seguirá siendo. Pero si quieren darle un <b>power-up al proyecto</b>, estas son las maneras: todas opcionales, todas apreciadas de más.</p>
   <p class="promesa">★ TODO REGRESA AL CANAL: MEJOR SETUP · JUEGOS PARA REGALAR EN DINÁMICAS · MERCH PARA LA COMUNIDAD</p>
 
   <div class="grid">
-    <div class="pcard cafe">
+    <div class="pcard cafe reveal fx-spot fx-tilt" style="--spot-rgb:255,209,102">
       <span class="ico">☕</span>
       <h2>Invítanos un café</h2>
       <p>La forma más directa. Cada café se convierte en <b>mejor equipo para grabar</b>, en <b>juegos que regalamos en dinámicas</b> de la comunidad, y cuando el merch exista, en merch que también regalaremos. Sin suscripciones ni compromisos: un café y ya.</p>
       <div class="acciones">
-        <a class="btn-go gold" href="https://buymeacoffee.com/dosparaduo" target="_blank" rel="noopener">☕ Buy Me a Coffee ↗</a>
+        <a class="btn-go gold fx-btn" href="https://buymeacoffee.com/dosparaduo" target="_blank" rel="noopener">☕ Buy Me a Coffee ↗</a>
       </div>
     </div>
 
-    <div class="pcard wl">
+    <div class="pcard wl reveal fx-spot fx-tilt" style="--spot-rgb:var(--p2-rgb)">
       <span class="ico">🎁</span>
       <h2>Wishlists del dúo</h2>
-      <p>Si prefieren regalar algo concreto, estas son nuestras listas de Amazon — cosas que de verdad usaríamos para <b>seguir creciendo el canal</b> (y una que otra debilidad personal, no vamos a mentir).</p>
+      <p>Si prefieren regalar algo concreto, estas son nuestras listas de Amazon: cosas que de verdad usaríamos para <b>seguir creciendo el canal</b> (y una que otra debilidad personal, no vamos a mentir).</p>
       <div class="acciones">
-        <a class="btn-go azul" href="https://www.amazon.com.mx/hz/wishlist/ls/115LDIO8OBSPF?ref_=wl_share" target="_blank" rel="noopener">🎮 Wishlist de Jack (P1) ↗</a>
-        <a class="btn-go naranja" href="https://www.amazon.com.mx/hz/wishlist/ls/2GUZ0KO4WU2S4?ref_=wl_share" target="_blank" rel="noopener">🎨 Wishlist de Anahí (P2) ↗</a>
+        <a class="btn-go azul fx-btn" href="https://www.amazon.com.mx/hz/wishlist/ls/115LDIO8OBSPF?ref_=wl_share" target="_blank" rel="noopener">🎮 Wishlist de Jack (P1) ↗</a>
+        <a class="btn-go naranja fx-btn" href="https://www.amazon.com.mx/hz/wishlist/ls/2GUZ0KO4WU2S4?ref_=wl_share" target="_blank" rel="noopener">🎨 Wishlist de Anahí (P2) ↗</a>
       </div>
     </div>
 
-    <div class="pcard free">
+    <div class="pcard free reveal fx-spot fx-tilt" style="--spot-rgb:var(--p1-rgb)">
       <span class="ico">🕹️</span>
       <h2>El power-up gratis</h2>
       <p>El apoyo que más mueve la aguja no cuesta nada: <b>ver los videos completos, dejar un like, comentar y compartir</b> con esa pareja que conocen que necesita un juego co-op. El algoritmo hace el resto.</p>
       <div class="acciones">
-        <a class="btn-go linea" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscribirse al canal</a>
-        <a class="btn-go linea" href="listas/mejores-juegos-cooperativos-para-parejas.html">Compartir nuestra guía co-op</a>
+        <a class="btn-go linea fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscribirse al canal</a>
+        <a class="btn-go linea fx-btn" href="listas/mejores-juegos-cooperativos-para-parejas.html">Compartir nuestra guía co-op</a>
       </div>
     </div>
   </div>
 
-  <p class="nota">Gracias por estar aquí — en serio. Cada vista, café o regalo nos acerca a hacer de esto algo más grande. <b style="color:var(--text)">— Jack & Anahí</b></p>
+  <p class="nota">Gracias por estar aquí, en serio. Cada vista, café o regalo nos acerca a hacer de esto algo más grande. <b style="color:var(--text)">Jack & Anahí</b></p>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="resenas/">Reseñas</a> · <a href="contacto.html">Contacto</a> · <a href="privacidad.html">Privacidad</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>

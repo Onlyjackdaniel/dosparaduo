@@ -14,7 +14,7 @@
 <script src="../assets/consent.js" defer></script>
 <script src="../assets/analytics-events.js" defer></script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DIMENSIONS — Reseña en español | Dos para Duo</title>
+<title>DIMENSIONS: Reseña en español | Dos para Duo</title>
 <meta name="description" content="Un ejemplo de lo que no debe hacerse Yo soy fiel creyente de que en México se pueden hacer cosas chingonas… pero este juego es un recordatorio de lo que…">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="../assets/icon-512.png">
@@ -23,18 +23,21 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-<meta property="og:title" content="Reseña: DIMENSIONS — Dos para Duo">
+<meta property="og:title" content="Reseña: DIMENSIONS | Dos para Duo">
 <meta property="og:description" content="Un ejemplo de lo que no debe hacerse Yo soy fiel creyente de que en México se pueden hacer cosas chingonas… pero este juego es un recordatorio de lo que…">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2559050/header.jpg">
 <link rel="canonical" href="https://onlyjackdaniel.github.io/dosparaduo/resenas/dimensions.html">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Review", "itemReviewed": {"@type": "VideoGame", "name": "DIMENSIONS"}, "author": {"@type": "Person", "name": "Jack — Dos para Duo"}, "publisher": {"@type": "Organization", "name": "Dos para Duo", "sameAs": "https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw"}, "inLanguage": "es", "reviewBody": "Un ejemplo de lo que no debe hacerse Yo soy fiel creyente de que en México se pueden hacer cosas chingonas… pero este juego es un recordatorio de lo que…", "negativeNotes": {"@type": "ItemList", "itemListElement": []}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Review", "itemReviewed": {"@type": "VideoGame", "name": "DIMENSIONS"}, "author": {"@type": "Person", "name": "Jack de Dos para Duo"}, "publisher": {"@type": "Organization", "name": "Dos para Duo", "sameAs": "https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw"}, "inLanguage": "es", "reviewBody": "Un ejemplo de lo que no debe hacerse Yo soy fiel creyente de que en México se pueden hacer cosas chingonas… pero este juego es un recordatorio de lo que…", "negativeNotes": {"@type": "ItemList", "itemListElement": []}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://onlyjackdaniel.github.io/dosparaduo/"}, {"@type": "ListItem", "position": 2, "name": "Reseñas", "item": "https://onlyjackdaniel.github.io/dosparaduo/resenas/"}, {"@type": "ListItem", "position": 3, "name": "DIMENSIONS"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
-<link rel="stylesheet" href="../assets/menu.css">
-<script src="../assets/menu.js" defer></script>
+<link rel="stylesheet" href="../assets/menu.css?v=5">
+<link rel="stylesheet" href="../assets/fx.css?v=5">
+<script src="../assets/menu.js?v=5" defer></script>
+<script src="../assets/fx.js?v=4" defer data-fx-base="../"></script>
+<script src="../assets/ascii-title.js?v=1" defer></script>
 <style>
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -53,8 +56,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
 main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 24px 80px}
 .crumb{font-family:var(--mono);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
 .crumb a{color:var(--p2);text-decoration:none}
+.ascii-wrap{position:relative;margin:10px 0 8px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 h1.sec{font-family:var(--display);font-size:clamp(1.8rem,5vw,3rem);text-transform:uppercase;margin:10px 0 8px}
 .sub{color:var(--muted);max-width:640px;font-weight:300;margin-bottom:40px}
+.sub-center{max-width:none;text-align:center}
 footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:40px 24px;text-align:center;background:var(--bg-2)}
 footer .f-logo{font-family:var(--display);font-size:1rem;text-transform:uppercase}
 footer p{color:var(--muted);font-size:.78rem;margin-top:8px;font-family:var(--mono)}
@@ -108,42 +114,48 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="../index.html#inicio">Inicio</a>
     <a href="../index.html#videos">Videos</a>
     <a href="../resenas/">Reseñas</a>
+    <a href="../blog/">Blog</a>
     <a href="../merch.html">Merch</a>
     <a href="../apoyo.html">Apóyanos</a>
     <a href="../nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
   <p class="crumb"><a href="./">← Reseñas</a> / DIMENSIONS</p>
   <div class="game-head">
-    <h1 class="sec">DIMENSIONS</h1>
+    <h1 class="sec" data-scramble>DIMENSIONS</h1>
     <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2559050/header.jpg" width="460" height="215" alt="Carátula de DIMENSIONS" onerror="this.style.display='none'">
     <div class="meta-row">
-      <span class="chip norec">👎 No recomendado</span>
+      <span class="chip norec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-down"/></svg> No recomendado</span>
       <span class="chip">1.3 hrs jugadas</span>
       <span class="chip">6 oct 2025</span>
     </div>
   </div>
   <div class="duo-cols">
-    <article class="rcard p1">
-      <span class="ptag">▮ PLAYER 1 — ÉL</span>
+    <article class="rcard p1 fx-spot" style="--spot-rgb:var(--p1-rgb)">
+      <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody"><div class="bb_h2">Un ejemplo de lo que no debe hacerse</div><br>Yo soy fiel creyente de que en México se pueden hacer cosas chingonas… pero este juego es un recordatorio de lo que no hay que hacer. Lo jugué hace un año cuando todavía estaba en desarrollo, y en ese momento entendí los errores: era una beta, había margen para mejorar. Sin embargo, cuando anunciaron que ya no habría más parches y que esa era la versión definitiva, decidí darle una segunda oportunidad.<br>Desafortunadamente, sigue siendo igual de malo.<br><br>Las texturas no cargan, los diálogos aparecen de la nada, hay enemigos mal colocados solo para “asustarte” sin razón, y lo peor: no puedes configurar la calidad gráfica ni opciones básicas para PC. Solo puedes cambiar el tamaño de pantalla.<br>Pero eso no es lo más grave: no puedes continuar tu campaña. Si pausas tu progreso para volver al día siguiente, tienes que empezar todo desde cero. Y si quieres cerrar el juego, tampoco hay opción: debes forzar el cierre.<br>A eso súmale subtítulos en spanglish, errores de optimización, shutter, animaciones toscas y un rendimiento que ni el mejor procesador salva.<br><br>Y es triste, porque el concepto pudo tener potencial. Pero no se trata de ser indie o de tener pocos recursos; se trata de lanzar algo funcional. Esto no está terminado, ni cerca.<br><br><b>Lo que hace a DIMENSIONS un caso negativo:</b><br><br><u>Errores críticos sin corregir:</u> Texturas, diálogos, animaciones y progresión rotas.<br><u>Mala gestión del desarrollo:</u> Versión final publicada sin soporte ni parches.<br><u>Experiencia frustrante:</u> No puedes guardar, continuar ni salir correctamente.<br><br><b>Aspectos negativos adicionales:</b><br><br><u>Fallas visuales graves:</u> Polígonos, render tardío y shutter constante.<br><u>Traducción confusa:</u> Subtítulos mezclados en inglés y español.<br><u>Optimización inexistente:</u> Mal rendimiento pese a requerir poco.<br><br><b>¿Lo recomiendo?</b> ❌ No<br>De verdad me duele escribir esto, pero no hay forma de recomendarlo. No es un tema de presupuesto o de ser indie: es un tema de respeto al jugador. Publicar un juego así es decepcionante, y es triste verlo en la tienda.</div>
-      <a class="steam-link" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/2559050/" target="_blank" rel="noopener">Ver en Steam ↗</a>
+      <a class="steam-link fx-btn" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/2559050/" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
-    <aside class="rcard p2">
-      <span class="ptag">▮ PLAYER 2 — ELLA</span>
+    <aside class="rcard p2 fx-spot" style="--spot-rgb:var(--p2-rgb)">
+      <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
       <div class="pending"><span class="q">?</span>Run en solitario de Player 1.<br>Si Player 2 lo juega algún día, su reseña aparecerá aquí.</div>
     </aside>
   </div>
   
-  <div class="backrow"><a class="back" href="./">◂ Todas las reseñas</a></div>
+  <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a> · <a href="../apoyo.html">Apóyanos</a> · <a href="../contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>

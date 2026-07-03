@@ -15,7 +15,7 @@
 <script src="assets/analytics-events.js" defer></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dos para Duo — Canal de gaming cooperativo en pareja</title>
+<title>Dos para Duo | Canal de gaming cooperativo en pareja</title>
 <meta name="description" content="Dos para Duo es un canal de gaming en español donde una pareja juega, sufre y se ríe en cooperativo. Resident Evil, Elden Ring, God of War y todo lo que se pueda jugar de a dos.">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="assets/icon-512.png">
@@ -24,7 +24,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-<meta property="og:title" content="Dos para Duo — Gaming cooperativo en pareja">
+<meta property="og:title" content="Dos para Duo | Gaming cooperativo en pareja">
 <meta property="og:description" content="Una pareja, dos controles, cero mercy rules. Canal de gaming en español: co-op, retos y reseñas.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
@@ -36,9 +36,13 @@
   "name": "Dos para Duo",
   "alternateName": "Dos para Dúo",
   "description": "Canal de gaming en español donde una pareja juega en cooperativo: Resident Evil, Elden Ring, God of War y más.",
-  "logo": "https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s480-c-k-c0x00ffffff-no-rj",
+  "logo": "https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png",
   "sameAs": [
-    "https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw"
+    "https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw",
+    "https://www.youtube.com/@DosparaDuo",
+    "https://www.tiktok.com/@dosparaduo",
+    "https://www.reddit.com/user/Dosparaduo/",
+    "https://linktr.ee/DosparaDuo"
   ]
 }
 </script>
@@ -80,8 +84,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/tokens.css">
-<link rel="stylesheet" href="assets/menu.css">
-<script src="assets/menu.js" defer></script>
+<link rel="stylesheet" href="assets/menu.css?v=5">
+<link rel="stylesheet" href="assets/fx.css?v=5">
+<script src="assets/menu.js?v=5" defer></script>
+<script src="assets/fx.js?v=4" defer></script>
+<script src="assets/fx-index.js?v=8" defer></script>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -113,6 +120,15 @@
   .glow.g1{background:var(--p1);top:-25vw;left:-15vw}
   .glow.g2{background:var(--p2);bottom:-30vw;right:-15vw}
 
+  /* pixeles flotantes del hero */
+  .pix{position:absolute;width:7px;height:7px;opacity:.5;animation:pixfloat 9s ease-in-out infinite;pointer-events:none}
+  .pix.a{background:var(--p1);top:22%;left:12%;animation-delay:0s}
+  .pix.b{background:var(--p2);top:34%;right:14%;animation-delay:-3s;width:5px;height:5px}
+  .pix.c{background:var(--gold);bottom:30%;left:20%;animation-delay:-5.5s}
+  .pix.d{background:var(--p1);bottom:24%;right:22%;animation-delay:-7s;width:4px;height:4px}
+  .pix.e{background:var(--p2);top:16%;left:46%;animation-delay:-1.8s;width:5px;height:5px}
+  @keyframes pixfloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-32px) rotate(45deg)}}
+
   /* ── nav ────────────────────────────────────────────────── */
   nav{
     position:fixed;top:0;left:0;right:0;z-index:50;
@@ -123,15 +139,21 @@
     border-bottom:1px solid var(--line);
   }
   .logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-  .logo img{width:36px;height:36px;border-radius:50%;border:2px solid var(--p2)}
+  .logo img{width:36px;height:36px;border-radius:50%;border:2px solid var(--p2);transition:transform .3s cubic-bezier(.2,.9,.3,1.4)}
+  .logo:hover img{transform:rotate(-12deg) scale(1.08)}
   .logo span{font-family:var(--display);font-size:.95rem;color:var(--text);letter-spacing:.5px}
   .logo b{color:var(--p1)}
   .nav-links{display:flex;align-items:center;gap:26px}
   .nav-links a{
     color:var(--muted);text-decoration:none;font-family:var(--mono);
     font-size:.78rem;text-transform:uppercase;letter-spacing:1.5px;
-    transition:color .2s;
+    transition:color .2s;position:relative;
   }
+  .nav-links a:not(.btn-yt)::after{
+    content:"";position:absolute;left:0;right:100%;bottom:-5px;height:2px;
+    background:var(--p2);transition:right .25s cubic-bezier(.2,.8,.2,1);
+  }
+  .nav-links a:not(.btn-yt):hover::after{right:0}
   .nav-links a:hover{color:var(--p2)}
   .btn-yt{
     display:inline-flex;align-items:center;gap:8px;
@@ -167,6 +189,13 @@
   h1 .l2{display:block}
   h1 .l2 em{font-style:normal;color:var(--p1);text-shadow:0 0 30px rgba(var(--p1-rgb),.55)}
   h1 .l2 b{color:var(--p2);text-shadow:0 0 30px rgba(var(--p2-rgb),.55)}
+
+  /* entrada cinética del hero */
+  .hi{opacity:0;transform:translateY(30px);animation:hi .7s cubic-bezier(.2,.8,.2,1) forwards}
+  .hi.d1{animation-delay:.05s}.hi.d2{animation-delay:.18s}.hi.d3{animation-delay:.32s}
+  .hi.d4{animation-delay:.5s}.hi.d5{animation-delay:.65s}.hi.d6{animation-delay:.8s}
+  @keyframes hi{to{opacity:1;transform:none}}
+
   .tagline{
     margin-top:22px;max-width:560px;color:var(--muted);
     font-size:clamp(1rem,2.2vw,1.2rem);font-weight:300;
@@ -174,14 +203,15 @@
   .tagline strong{color:var(--text);font-weight:600}
   .hero-cta{margin-top:36px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
   .btn-start{
+    display:inline-flex;align-items:center;gap:10px;
     font-family:var(--mono);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;
     background:var(--p2);color:var(--p2-ink);text-decoration:none;font-weight:700;
     padding:15px 30px;border-radius:8px;
     box-shadow:0 0 22px rgba(var(--p2-rgb),.4);
-    transition:transform .15s,box-shadow .2s;
   }
-  .btn-start:hover{transform:translateY(-2px);box-shadow:0 0 34px rgba(var(--p2-rgb),.65)}
+  .btn-start:hover{box-shadow:0 0 34px rgba(var(--p2-rgb),.65)}
   .btn-ghost{
+    display:inline-flex;align-items:center;gap:10px;
     font-family:var(--mono);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;
     color:var(--text);text-decoration:none;
     padding:15px 30px;border-radius:8px;border:1px solid var(--line);
@@ -228,23 +258,17 @@
     font-family:var(--display);font-size:clamp(1.2rem,3vw,2rem);
     color:var(--gold);align-self:center;
     text-shadow:0 0 20px rgba(255,209,102,.5);
+    animation:vspulse 2.6s ease-in-out infinite;
   }
+  @keyframes vspulse{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
 
-  /* ── marquee de juegos ──────────────────────────────────── */
-  .marquee{
-    position:relative;z-index:1;
-    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-    background:var(--bg-2);
-    overflow:hidden;white-space:nowrap;
-    padding:14px 0;
+  .scroll-hint{
+    text-decoration:none;cursor:pointer;
+    margin-top:46px;font-family:var(--mono);font-size:.6rem;letter-spacing:2.5px;
+    color:var(--muted);text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:6px;
   }
-  .marquee-track{display:inline-block;animation:scroll 28s linear infinite}
-  .marquee span{
-    font-family:var(--mono);font-size:.8rem;letter-spacing:2px;text-transform:uppercase;
-    color:var(--muted);margin:0 28px;
-  }
-  .marquee span b{color:var(--gold);font-weight:400}
-  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .scroll-hint .chev{width:14px;height:14px;border-right:2px solid var(--gold);border-bottom:2px solid var(--gold);transform:rotate(45deg);animation:chev 1.6s ease-in-out infinite}
+  @keyframes chev{0%,100%{transform:rotate(45deg) translate(0,0);opacity:.4}50%{transform:rotate(45deg) translate(4px,4px);opacity:1}}
 
   /* ── secciones ──────────────────────────────────────────── */
   section{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:100px 24px}
@@ -261,9 +285,9 @@
   .vcard{
     background:var(--panel);border:1px solid var(--line);border-radius:14px;
     overflow:hidden;
-    transition:transform .25s,border-color .25s,box-shadow .25s;
+    transition:border-color .25s,box-shadow .25s;
   }
-  .vcard:hover{transform:translateY(-6px);border-color:var(--p2);box-shadow:0 14px 40px rgba(0,0,0,.45)}
+  .vcard:hover{border-color:var(--p2);box-shadow:0 14px 40px rgba(0,0,0,.45)}
   .vthumb{position:relative;aspect-ratio:16/9;cursor:pointer;background:#000}
   .vthumb img{width:100%;height:100%;object-fit:cover;display:block;opacity:.92}
   .vthumb .play{
@@ -274,20 +298,27 @@
     background:rgba(var(--p1-rgb),.92);
     display:flex;align-items:center;justify-content:center;
     box-shadow:0 0 30px rgba(var(--p1-rgb),.6);
-    transition:transform .2s;
+    transition:transform .25s cubic-bezier(.2,.9,.3,1.5);
   }
-  .vthumb:hover .play span{transform:scale(1.12)}
+  .vthumb:hover .play span{transform:scale(1.16)}
   .vthumb .play svg{width:22px;height:22px;fill:#fff;margin-left:4px}
   .vthumb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   .vinfo{padding:18px 20px 22px}
   .vinfo .vtag{font-family:var(--mono);font-size:.62rem;letter-spacing:2px;color:var(--p2);text-transform:uppercase}
   .vinfo h3{font-size:1.02rem;font-weight:600;margin-top:8px;line-height:1.4}
 
-  /* shorts */
+  /* shorts: carrusel horizontal con snap (drag en fx-index.js) */
   .shorts-head{margin-top:80px}
   .shorts-row{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;
+    display:flex;gap:16px;overflow-x:auto;padding-bottom:14px;
+    scroll-snap-type:x proximity;
+    scrollbar-width:none;cursor:grab;
+    mask-image:linear-gradient(90deg,#000 92%,transparent);
   }
+  .shorts-row::-webkit-scrollbar{display:none}
+  .shorts-row.dragging{cursor:grabbing;scroll-snap-type:none}
+  .shorts-row.dragging .scard{pointer-events:none}
+  .shorts-row .scard{flex:0 0 clamp(150px,18vw,190px);scroll-snap-align:start}
   .scard{
     position:relative;aspect-ratio:9/16;border-radius:12px;overflow:hidden;
     border:1px solid var(--line);text-decoration:none;display:block;
@@ -316,9 +347,8 @@
   .pcard{
     background:var(--panel);border:1px solid var(--line);border-radius:16px;
     padding:34px 30px;position:relative;overflow:hidden;
-    transition:transform .25s,border-color .25s;
+    transition:border-color .25s;
   }
-  .pcard:hover{transform:translateY(-5px)}
   .pcard.p1c:hover{border-color:var(--p1)}
   .pcard.p2c:hover{border-color:var(--p2)}
   .pcard::before{
@@ -326,7 +356,7 @@
   }
   .pcard.p1c::before{background:linear-gradient(90deg,var(--p1),transparent)}
   .pcard.p2c::before{background:linear-gradient(90deg,var(--p2),transparent)}
-  .pcard .ptag{font-family:var(--mono);font-size:.65rem;letter-spacing:2.5px}
+  .pcard .ptag{font-family:var(--mono);font-size:.65rem;letter-spacing:2.5px;display:inline-flex;align-items:center;gap:7px}
   .pcard.p1c .ptag{color:var(--p1)}
   .pcard.p2c .ptag{color:var(--p2)}
   .pcard h3{font-family:var(--display);font-size:1.5rem;margin:10px 0 12px;text-transform:uppercase}
@@ -348,6 +378,38 @@
   .duo-note h3 span{color:var(--gold)}
   .duo-note p{color:var(--muted);max-width:640px;margin:0 auto;font-weight:300}
 
+  /* ── selector de niveles (explora el sitio) ─────────────── */
+  .lvl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .lvl-card{
+    position:relative;display:flex;flex-direction:column;gap:10px;
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    padding:26px 24px;text-decoration:none;color:var(--text);
+    overflow:hidden;
+    transition:border-color .25s,box-shadow .25s;
+  }
+  .lvl-card:hover{box-shadow:0 14px 40px rgba(0,0,0,.45)}
+  .lvl-card .world{font-family:var(--mono);font-size:.58rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
+  .lvl-card .lvl-ico{
+    width:46px;height:46px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(var(--i-rgb,var(--p1-rgb)),.14);
+    color:rgb(var(--i-rgb,var(--p1-rgb)));
+    transition:transform .3s cubic-bezier(.2,.9,.3,1.5);
+  }
+  .lvl-card:hover .lvl-ico{transform:scale(1.12) rotate(-6deg)}
+  .lvl-card .lvl-ico .ico{width:24px;height:24px}
+  .lvl-card h3{font-family:var(--display);font-size:1.05rem;text-transform:uppercase;letter-spacing:.5px}
+  .lvl-card p{color:var(--muted);font-size:.85rem;font-weight:300;line-height:1.5}
+  .lvl-card .go{
+    margin-top:auto;display:inline-flex;align-items:center;gap:6px;
+    font-family:var(--mono);font-size:.62rem;letter-spacing:2px;text-transform:uppercase;
+    color:rgb(var(--i-rgb,var(--p1-rgb)));
+  }
+  .lvl-card .go .ico{transition:transform .22s}
+  .lvl-card:hover .go .ico{transform:translateX(5px)}
+  .lvl-card:hover{border-color:rgb(var(--i-rgb,var(--p1-rgb)))}
+  .lvl-card .cnt{font-family:var(--mono);color:var(--gold)}
+
   /* footer */
   footer{
     position:relative;z-index:1;
@@ -360,10 +422,70 @@
   footer .f-logo b{color:var(--p2)}
   footer p{color:var(--muted);font-size:.8rem;margin-top:10px;font-family:var(--mono)}
   footer a{color:var(--p2);text-decoration:none}
+  .f-social{display:flex;justify-content:center;gap:14px;margin-top:18px}
+  .f-social a{
+    width:42px;height:42px;border-radius:10px;border:1px solid var(--line);
+    display:inline-flex;align-items:center;justify-content:center;color:var(--muted);
+    transition:color .2s,border-color .2s,transform .2s,box-shadow .25s;
+  }
+  .f-social a:hover{color:var(--p2);border-color:var(--p2);transform:translateY(-3px);box-shadow:0 0 18px rgba(var(--p2-rgb),.35)}
+  .f-social .ico{width:20px;height:20px}
+  #coin-slot{
+    margin-top:26px;display:inline-flex;align-items:center;gap:10px;
+    background:none;border:1px dashed var(--line);border-radius:10px;
+    padding:13px 18px;color:var(--gold);
+    font-family:var(--mono);font-size:.68rem;letter-spacing:2px;text-transform:uppercase;
+    transition:border-color .2s,box-shadow .25s;
+  }
+  #coin-slot:hover{border-color:var(--gold);box-shadow:0 0 16px rgba(255,209,102,.25)}
+  #coin-slot .ico{width:18px;height:18px}
+  #coin-slot.coin-pop .ico{animation:coinpop .5s cubic-bezier(.2,.9,.3,1.4)}
+  @keyframes coinpop{30%{transform:translateY(-9px) rotate(200deg)}100%{transform:none}}
 
-  /* reveals */
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
-  .reveal.in{opacity:1;transform:none}
+  /* ── entrada del sitio: anillos de texto circular + PRESS START ── */
+  body.gate .hi{animation-play-state:paused}
+  #entrada{
+    position:fixed;inset:0;z-index:400;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--bg);
+    transition:opacity .9s ease .35s,visibility .9s step-end .35s;
+  }
+  #entrada.fuera{opacity:0;visibility:hidden;pointer-events:none}
+  #entrada svg{position:absolute;width:min(150vmin,1400px);height:min(150vmin,1400px)}
+  #entrada text{
+    font-family:var(--mono);font-size:26px;letter-spacing:6px;text-transform:uppercase;
+    transform-origin:700px 700px;
+    animation:giro var(--vel,60s) linear infinite;
+    transition:opacity 1s ease,transform 1.1s cubic-bezier(.7,0,.3,1);
+  }
+  #entrada text.t1{fill:rgba(var(--p1-rgb),.75)}
+  #entrada text.t2{fill:rgba(var(--p2-rgb),.75)}
+  #entrada text.t3{fill:rgba(255,209,102,.7)}
+  #entrada text.t4{fill:var(--muted)}
+  #entrada text:nth-of-type(even){animation-direction:reverse}
+  #entrada.turbo text{animation-duration:calc(var(--vel,60s)/4)}
+  @keyframes giro{to{transform:rotate(360deg)}}
+  #entrada.fuera text{opacity:0}
+  #entrada.fuera text.t1{transform:scale(2.4)}
+  #entrada.fuera text.t2{transform:scale(2.1)}
+  #entrada.fuera text.t3{transform:scale(1.8)}
+  #entrada.fuera text.t4{transform:scale(1.5)}
+  #press-start{
+    position:relative;z-index:2;
+    font-family:var(--display);font-size:clamp(1.1rem,3.4vw,1.8rem);letter-spacing:2px;
+    color:var(--p2-ink);background:var(--p2);
+    border:0;border-radius:14px;padding:20px 38px;cursor:pointer;
+    box-shadow:0 0 34px rgba(var(--p2-rgb),.5);
+    animation:blink 2.2s steps(2) infinite;
+    transition:transform .9s cubic-bezier(.7,0,.3,1),opacity .7s ease;
+  }
+  #press-start:hover{animation:none;box-shadow:0 0 50px rgba(var(--p2-rgb),.75)}
+  #entrada.fuera #press-start{transform:scale(.55);opacity:0}
+  #entrada .pista{
+    position:absolute;bottom:26px;left:0;right:0;text-align:center;
+    font-family:var(--mono);font-size:.6rem;letter-spacing:2.5px;color:var(--muted);text-transform:uppercase;
+  }
+  @media (prefers-reduced-motion:reduce){#entrada text{animation:none}}
 
   @media (max-width:760px){
     .nav-links a:not(.btn-yt){display:none}
@@ -372,6 +494,7 @@
   }
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+    .hi{opacity:1;transform:none}
   }
 </style>
 </head>
@@ -383,7 +506,7 @@
 
 <nav>
   <a class="logo" href="#inicio">
-    <img src="https://yt3.ggpht.com/5ZvpmoiRGOjO8xV4iCysllyVN7UyuwViWoX-GqpDu1fV_AJwaefwpCAEebQNt_00283GCpovPoA=s240-c-k-c0x00ffffff-no-rj" alt="Logo Dos para Duo">
+    <img src="assets/icon-512.png" alt="Logo Dos para Duo">
     <span>Dos <em style="color:var(--gold);font-style:normal">para</em> <b>Duo</b></span>
   </a>
   <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
@@ -391,64 +514,58 @@
     <a href="#inicio">Inicio</a>
     <a href="#videos">Videos</a>
     <a href="resenas/">Reseñas</a>
+    <a href="blog/">Blog</a>
     <a href="merch.html">Merch</a>
     <a href="apoyo.html">Apóyanos</a>
     <a href="nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 
 <header id="inicio">
-  <div class="hud-tag">● REC — JUGANDO EN COOPERATIVO</div>
+  <div class="pix a"></div><div class="pix b"></div><div class="pix c"></div><div class="pix d"></div><div class="pix e"></div>
+  <div class="hud-tag hi d1" data-scramble>● REC · JUGANDO EN COOPERATIVO</div>
   <h1>
-    <span class="l1">Una pareja.</span>
-    <span class="l2"><em>Dos</em> controles. <b>Cero</b> mercy.</span>
+    <span class="l1 hi d2">Una pareja.</span>
+    <span class="l2 hi d3"><em>Dos</em> controles. <b>Cero</b> mercy.</span>
   </h1>
-  <p class="tagline"><strong>Dos para Duo</strong> es un canal de gaming en español donde jugamos, sufrimos y nos reímos de a dos. Co-op, retos, reseñas y la eterna pregunta: <strong>¿quién es el peor del equipo?</strong></p>
-  <div class="hero-cta">
-    <a class="btn-start" href="#videos">▸ Press Start</a>
-    <a class="btn-ghost" href="nosotros.html">Conócenos</a>
+  <p class="tagline hi d4"><strong>Dos para Duo</strong> es un canal de gaming en español donde jugamos, sufrimos y nos reímos de a dos. Co-op, retos, reseñas y la eterna pregunta: <strong>¿quién es el peor del equipo?</strong></p>
+  <div class="hero-cta hi d5">
+    <a class="btn-start fx-btn" href="#videos"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#play"/></svg> Press Start</a>
+    <a class="btn-ghost fx-btn" href="nosotros.html"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#users-three"/></svg> Conócenos</a>
   </div>
 
-  <div class="players">
+  <div class="players hi d6">
     <div class="player p1">
       <span class="badge">PLAYER 1</span>
-      <div class="frame">?</div>
+      <div class="frame fx-tilt">?</div>
     </div>
     <div class="vs">VS</div>
     <div class="player p2">
       <span class="badge">PLAYER 2</span>
-      <div class="frame">?</div>
+      <div class="frame fx-tilt">?</div>
     </div>
   </div>
+
+  <a class="scroll-hint hi d6" href="#videos">
+    <span>Presiona abajo para continuar</span>
+    <span class="chev"></span>
+  </a>
 </header>
 
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>Resident Evil <b>★</b></span><span>Elden Ring <b>★</b></span><span>God of War <b>★</b></span><span>Move or Die <b>★</b></span><span>Clone Hero <b>★</b></span><span>Co-op gaming <b>★</b></span><span>Pareja gamer <b>★</b></span><span>Gaming en español <b>★</b></span>
-    <span>Resident Evil <b>★</b></span><span>Elden Ring <b>★</b></span><span>God of War <b>★</b></span><span>Move or Die <b>★</b></span><span>Clone Hero <b>★</b></span><span>Co-op gaming <b>★</b></span><span>Pareja gamer <b>★</b></span><span>Gaming en español <b>★</b></span>
-  </div>
-</div>
+<!-- TODO(Jack): transicion hero->videos pendiente de elegir; la ola de triangulos (Scroll/43) se retiro el 3 jul 2026 por chocar con el hero. Candidatos: revisar el pack Animmaster de nuevo. -->
+
+
 
 <section id="videos">
-  <div class="sec-head reveal"><span class="num">[ 01 ]</span><h2>Últimos videos</h2></div>
+  <div class="sec-head reveal"><span class="num">[ 01 ]</span><h2 data-scramble>Últimos videos</h2></div>
   <p class="sec-sub reveal">Lo más reciente del canal. Dale play aquí mismo o míralo en YouTube.</p>
 
   <div class="video-grid">
 <!-- AUTO:LARGOS:START -->
     <article class="vcard reveal">
-      <div class="vthumb" data-video="PWU2UfjCi8E">
-        <img src="https://i.ytimg.com/vi/PWU2UfjCi8E/maxresdefault.jpg" alt="Resident Evil Requiem | En vivo" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/PWU2UfjCi8E/hqdefault.jpg'">
-        <div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
-      </div>
-      <div class="vinfo">
-        <span class="vtag">1 mar 2026</span>
-        <h3>Resident Evil Requiem | En vivo</h3>
-      </div>
-    </article>
-    <article class="vcard reveal">
       <div class="vthumb" data-video="Ra5H1bkkEj4">
-        <img src="https://i.ytimg.com/vi/Ra5H1bkkEj4/maxresdefault.jpg" alt="Move or Die con mi pareja: ¿Quién gana cuando todo es azar?" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/Ra5H1bkkEj4/hqdefault.jpg'">
+        <img src="https://i.ytimg.com/vi/Ra5H1bkkEj4/maxresdefault.jpg" width="1280" height="720" alt="Move or Die con mi pareja: ¿Quién gana cuando todo es azar?" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/Ra5H1bkkEj4/hqdefault.jpg'">
         <div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
       </div>
       <div class="vinfo">
@@ -456,10 +573,30 @@
         <h3>Move or Die con mi pareja: ¿Quién gana cuando todo es azar?</h3>
       </div>
     </article>
+    <article class="vcard reveal">
+      <div class="vthumb" data-video="PnrH_GSsT8k">
+        <img src="https://i.ytimg.com/vi/PnrH_GSsT8k/maxresdefault.jpg" width="1280" height="720" alt="¿Juego o película? God of War Ragnarok desde la perspectiva correcta" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/PnrH_GSsT8k/hqdefault.jpg'">
+        <div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      </div>
+      <div class="vinfo">
+        <span class="vtag">18 ene 2026</span>
+        <h3>¿Juego o película? God of War Ragnarok desde la perspectiva correcta</h3>
+      </div>
+    </article>
+    <article class="vcard reveal">
+      <div class="vthumb" data-video="EU0jZirCx6k">
+        <img src="https://i.ytimg.com/vi/EU0jZirCx6k/maxresdefault.jpg" width="1280" height="720" alt="Mi pareja jugó Resident Evil 4 Remake sin experiencia: esto pasó" loading="lazy" onerror="this.src='https://i.ytimg.com/vi/EU0jZirCx6k/hqdefault.jpg'">
+        <div class="play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></div>
+      </div>
+      <div class="vinfo">
+        <span class="vtag">11 ene 2026</span>
+        <h3>Mi pareja jugó Resident Evil 4 Remake sin experiencia: esto pasó</h3>
+      </div>
+    </article>
 <!-- AUTO:LARGOS:END -->
   </div>
 
-  <div class="sec-head shorts-head reveal"><span class="num">[ 01.5 ]</span><h2>Shorts</h2></div>
+  <div class="sec-head shorts-head reveal"><span class="num">[ 01.5 ]</span><h2 data-scramble>Shorts</h2></div>
   <p class="sec-sub reveal">Dosis rápidas de caos cooperativo.</p>
 
   <div class="shorts-row">
@@ -499,20 +636,20 @@
 </section>
 
 <section id="nosotros">
-  <div class="sec-head reveal"><span class="num">[ 02 ]</span><h2>Nosotros</h2></div>
+  <div class="sec-head reveal"><span class="num">[ 02 ]</span><h2 data-scramble>Nosotros</h2></div>
   <p class="sec-sub reveal">Dos personas, un sillón, demasiadas muertes evitables.</p>
 
   <div class="about-grid">
-    <div class="pcard p1c reveal">
-      <span class="ptag">▮ PLAYER 1</span>
+    <div class="pcard p1c reveal fx-spot fx-tilt" style="--spot-rgb:var(--p1-rgb)">
+      <span class="ptag"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#game-controller"/></svg> PLAYER 1</span>
       <h3>Jack</h3>
-      <p>Veterano desde el GBA y el PlayStation 1 — ha pasado por todas las consolas desde entonces. Disfruta casi cualquier género, es bastante obstinado, y su combo perfecto: la buena compañía de su novia y un juego con reto o creatividad.</p>
+      <p>Veterano desde el GBA y el PlayStation 1: ha pasado por todas las consolas desde entonces. Disfruta casi cualquier género, es bastante obstinado, y su combo perfecto: la buena compañía de su novia y un juego con reto o creatividad.</p>
       <div class="stat-bar">
         <div class="lbl"><span>Skill</span><span>87/100</span></div>
         <div class="bar"><div class="fill" data-w="87%"></div></div>
       </div>
       <div class="stat-bar">
-        <div class="lbl"><span>Tiempo de juego</span><span>5,300+ hrs</span></div>
+        <div class="lbl"><span>Tiempo de juego</span><span><span data-count="5300" data-suffix="+ hrs">0</span></span></div>
         <div class="bar"><div class="fill" data-w="93%"></div></div>
       </div>
       <div class="stat-bar">
@@ -529,10 +666,10 @@
       </div>
     </div>
 
-    <div class="pcard p2c reveal">
-      <span class="ptag">▮ PLAYER 2</span>
+    <div class="pcard p2c reveal fx-spot fx-tilt" style="--spot-rgb:var(--p2-rgb)">
+      <span class="ptag"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#heart"/></svg> PLAYER 2</span>
       <h3>Anahí</h3>
-      <p>No será la más habilidosa del party, pero no le huye a ningún combate. Siempre abierta a vivir nuevas experiencias — y cuando toca soltar el control, disfruta igual (o más) el backseat gaming.</p>
+      <p>No será la más habilidosa del party, pero no le huye a ningún combate. Siempre abierta a vivir nuevas experiencias, y cuando toca soltar el control, disfruta igual (o más) el backseat gaming.</p>
       <div class="stat-bar">
         <div class="lbl"><span>Skill</span><span>36/100</span></div>
         <div class="bar"><div class="fill" data-w="36%"></div></div>
@@ -555,37 +692,84 @@
       </div>
     </div>
 
-    <div class="duo-note reveal">
+    <div class="duo-note reveal fx-spot">
       <h3>¿Por qué <span>"Dos para Duo"</span>?</h3>
       <p>Porque los mejores juegos no se juegan solos. Este canal nació de las noches de co-op en pareja: las victorias compartidas, las derrotas culpa del otro, y la certeza de que jugar de a dos siempre es mejor historia. Súmate al party.</p>
       <div class="hero-cta" style="margin-top:26px">
-        <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener" style="text-decoration:none">▶ Únete al dúo en YouTube</a>
-        <a class="btn-ghost" href="nosotros.html">Conócenos a fondo ▸</a>
+        <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener" style="text-decoration:none"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#youtube-logo"/></svg> Únete al dúo en YouTube</a>
+        <a class="btn-ghost fx-btn" href="nosotros.html">Conócenos a fondo <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#caret-right"/></svg></a>
       </div>
     </div>
   </div>
 </section>
 
+<section id="explora">
+  <div class="sec-head reveal"><span class="num">[ 03 ]</span><h2 data-scramble>Selecciona tu nivel</h2></div>
+  <p class="sec-sub reveal">Todo el mundo de Dos para Duo, a un clic. Elige pantalla y sigue jugando.</p>
+
+  <div class="lvl-grid">
+    <a class="lvl-card reveal fx-spot fx-tilt" href="resenas/" style="--i-rgb:var(--p1-rgb);--spot-rgb:var(--p1-rgb)">
+      <span class="world">MUNDO 1-1</span>
+      <span class="lvl-ico"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#sword"/></svg></span>
+      <h3>Reseñas co-op</h3>
+      <p>Los <span class="cnt">62</span> juegos que hemos jugado juntos, reseñados de verdad en Steam.</p>
+      <span class="go">Entrar <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+    </a>
+    <a class="lvl-card reveal fx-spot fx-tilt" href="listas/mejores-juegos-cooperativos-para-parejas.html" style="--i-rgb:255,209,102;--spot-rgb:255,209,102">
+      <span class="world">MUNDO 1-2</span>
+      <span class="lvl-ico"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#trophy"/></svg></span>
+      <h3>Guía co-op para parejas</h3>
+      <p>Nuestro top 10 de juegos cooperativos, probado en pareja con más de <span class="cnt">250 hrs</span>.</p>
+      <span class="go">Entrar <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+    </a>
+    <a class="lvl-card reveal fx-spot fx-tilt" href="blog/" style="--i-rgb:var(--p2-rgb);--spot-rgb:var(--p2-rgb)">
+      <span class="world">MUNDO 1-3</span>
+      <span class="lvl-ico"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#scroll"/></svg></span>
+      <h3>Blog</h3>
+      <p>La bitácora del dúo: guías co-op, tops y lo que aprendemos jugando de a dos.</p>
+      <span class="go">Leer <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+    </a>
+    <a class="lvl-card reveal fx-spot fx-tilt" href="apoyo.html" style="--i-rgb:255,209,102;--spot-rgb:255,209,102">
+      <span class="world">BONUS STAGE</span>
+      <span class="lvl-ico"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#gift"/></svg></span>
+      <h3>Power-ups</h3>
+      <p>Cafés, wishlists y el power-up gratis: maneras de apoyar al dúo.</p>
+      <span class="go">Entrar <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+    </a>
+    <a class="lvl-card reveal fx-spot fx-tilt" href="merch.html" style="--i-rgb:var(--p2-rgb);--spot-rgb:var(--p2-rgb)">
+      <span class="world">LOCKED ???</span>
+      <span class="lvl-ico"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#t-shirt"/></svg></span>
+      <h3>Merch</h3>
+      <p>Nivel bloqueado. El horno ya está encendido: suscríbete para el anuncio.</p>
+      <span class="go">Espiar <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+    </a>
+    <a class="lvl-card reveal fx-spot fx-tilt" href="contacto.html" style="--i-rgb:var(--p1-rgb);--spot-rgb:var(--p1-rgb)">
+      <span class="world">NPC AMISTOSO</span>
+      <span class="lvl-ico"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#envelope"/></svg></span>
+      <h3>Contacto</h3>
+      <p>Colaboraciones, propuestas o solo saludar. Leemos todo.</p>
+      <span class="go">Hablar <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#arrow-right"/></svg></span>
+    </a>
+  </div>
+</section>
+
 <footer>
   <div class="f-logo">Dos <em>para</em> <b>Duo</b></div>
-  <p>© <span id="year"></span> Dos para Duo — Canal de gaming cooperativo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="resenas/">Reseñas</a> · <a href="listas/mejores-juegos-cooperativos-para-parejas.html">Guía co-op para parejas</a> · <a href="apoyo.html">Apóyanos</a> · <a href="contacto.html">Contacto</a> · <a href="privacidad.html">Privacidad</a></p>
-  <p style="opacity:.55;margin-top:6px">GAME OVER? INSERT COIN TO CONTINUE ●</p>
+  <p>© <span id="year"></span> Dos para Duo · Canal de gaming cooperativo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="resenas/">Reseñas</a> · <a href="listas/mejores-juegos-cooperativos-para-parejas.html">Guía co-op para parejas</a> · <a href="apoyo.html">Apóyanos</a> · <a href="contacto.html">Contacto</a> · <a href="privacidad.html">Privacidad</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
+  <button id="coin-slot" type="button" aria-label="Insertar una moneda (solo por diversión)">
+    <svg class="ico" aria-hidden="true"><use href="assets/icons.svg#coin"/></svg>
+    Insert coin · <span data-coins>0</span>
+  </button>
+  <p style="opacity:.55;margin-top:14px">GAME OVER? INSERT COIN TO CONTINUE ● ↑↑↓↓←→←→BA</p>
 </footer>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-
-  // reveals al hacer scroll
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        e.target.classList.add('in');
-        e.target.querySelectorAll('.fill').forEach(f=>{ f.style.width = f.dataset.w; });
-        io.unobserve(e.target);
-      }
-    });
-  },{threshold:.15});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
   // click-to-load de videos (no carga iframes hasta que el visitante da play)
   document.querySelectorAll('.vthumb').forEach(t=>{

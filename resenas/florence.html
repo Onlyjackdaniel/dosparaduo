@@ -14,7 +14,7 @@
 <script src="../assets/consent.js" defer></script>
 <script src="../assets/analytics-events.js" defer></script>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Florence — Reseña en español | Dos para Duo</title>
+<title>Florence: Reseña en español | Dos para Duo</title>
 <meta name="description" content="Una historia breve, íntima y conmovedora Florence es un juego corto, sí, pero también una de esas experiencias que se quedan contigo. En apenas 40 minutos…">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="../assets/icon-512.png">
@@ -23,18 +23,21 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-<meta property="og:title" content="Reseña: Florence — Dos para Duo">
+<meta property="og:title" content="Reseña: Florence | Dos para Duo">
 <meta property="og:description" content="Una historia breve, íntima y conmovedora Florence es un juego corto, sí, pero también una de esas experiencias que se quedan contigo. En apenas 40 minutos…">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1102130/header.jpg">
 <link rel="canonical" href="https://onlyjackdaniel.github.io/dosparaduo/resenas/florence.html">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Review", "itemReviewed": {"@type": "VideoGame", "name": "Florence"}, "author": {"@type": "Person", "name": "Jack — Dos para Duo"}, "publisher": {"@type": "Organization", "name": "Dos para Duo", "sameAs": "https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw"}, "inLanguage": "es", "reviewBody": "Una historia breve, íntima y conmovedora Florence es un juego corto, sí, pero también una de esas experiencias que se quedan contigo. En apenas 40 minutos…", "positiveNotes": {"@type": "ItemList", "itemListElement": []}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Review", "itemReviewed": {"@type": "VideoGame", "name": "Florence"}, "author": {"@type": "Person", "name": "Jack de Dos para Duo"}, "publisher": {"@type": "Organization", "name": "Dos para Duo", "sameAs": "https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw"}, "inLanguage": "es", "reviewBody": "Una historia breve, íntima y conmovedora Florence es un juego corto, sí, pero también una de esas experiencias que se quedan contigo. En apenas 40 minutos…", "positiveNotes": {"@type": "ItemList", "itemListElement": []}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://onlyjackdaniel.github.io/dosparaduo/"}, {"@type": "ListItem", "position": 2, "name": "Reseñas", "item": "https://onlyjackdaniel.github.io/dosparaduo/resenas/"}, {"@type": "ListItem", "position": 3, "name": "Florence"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
-<link rel="stylesheet" href="../assets/menu.css">
-<script src="../assets/menu.js" defer></script>
+<link rel="stylesheet" href="../assets/menu.css?v=5">
+<link rel="stylesheet" href="../assets/fx.css?v=5">
+<script src="../assets/menu.js?v=5" defer></script>
+<script src="../assets/fx.js?v=4" defer data-fx-base="../"></script>
+<script src="../assets/ascii-title.js?v=1" defer></script>
 <style>
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -53,8 +56,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
 main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 24px 80px}
 .crumb{font-family:var(--mono);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
 .crumb a{color:var(--p2);text-decoration:none}
+.ascii-wrap{position:relative;margin:10px 0 8px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 h1.sec{font-family:var(--display);font-size:clamp(1.8rem,5vw,3rem);text-transform:uppercase;margin:10px 0 8px}
 .sub{color:var(--muted);max-width:640px;font-weight:300;margin-bottom:40px}
+.sub-center{max-width:none;text-align:center}
 footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:40px 24px;text-align:center;background:var(--bg-2)}
 footer .f-logo{font-family:var(--display);font-size:1rem;text-transform:uppercase}
 footer p{color:var(--muted);font-size:.78rem;margin-top:8px;font-family:var(--mono)}
@@ -108,42 +114,48 @@ footer a{color:var(--p2);text-decoration:none}
     <a href="../index.html#inicio">Inicio</a>
     <a href="../index.html#videos">Videos</a>
     <a href="../resenas/">Reseñas</a>
+    <a href="../blog/">Blog</a>
     <a href="../merch.html">Merch</a>
     <a href="../apoyo.html">Apóyanos</a>
     <a href="../nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
 <main>
   <p class="crumb"><a href="./">← Reseñas</a> / Florence</p>
   <div class="game-head">
-    <h1 class="sec">Florence</h1>
+    <h1 class="sec" data-scramble>Florence</h1>
     <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1102130/header.jpg" width="460" height="215" alt="Carátula de Florence" onerror="this.style.display='none'">
     <div class="meta-row">
-      <span class="chip rec">👍 Recomendado</span>
+      <span class="chip rec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado</span>
       <span class="chip">0.7 hrs jugadas</span>
       <span class="chip">17 ago 2025</span>
     </div>
   </div>
   <div class="duo-cols">
-    <article class="rcard p1">
-      <span class="ptag">▮ PLAYER 1 — ÉL</span>
+    <article class="rcard p1 fx-spot" style="--spot-rgb:var(--p1-rgb)">
+      <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody"><div class="bb_h2">Una historia breve, íntima y conmovedora</div><br>Florence es un juego corto, sí, pero también una de esas experiencias que se quedan contigo. En apenas 40 minutos logra transmitir más que muchos juegos de decenas de horas, usando su propia jugabilidad como vehículo narrativo.<br><br><b>Lo que hace a Florence un juego especial:</b><br><br><u>Narrativa a través de la jugabilidad:</u> No hay diálogos largos ni cinemáticas, todo se cuenta mediante colores, minijuegos y mecánicas simples que reflejan los momentos de la historia.<br><u>Historia universal y cercana:</u> Amor, crecimiento personal, nostalgia. Aunque la trama es básica, es fácil conectar porque refleja experiencias que todos hemos vivido en algún punto.<br><u>Belleza en la simplicidad:</u> Su estética minimalista y su música delicada refuerzan la carga emocional de cada escena.<br><br><b>Aspectos destacados:</b><br><br><u>Una experiencia perfecta para compartir:</u> Es ideal para quienes normalmente no juegan videojuegos. En mi caso lo jugué con mi novia y fue hermoso, porque permite conectar de una manera diferente y alejarse de los típicos shooters o títulos complejos.<br><u>Impacto emocional en poco tiempo:</u> Su brevedad no es un defecto, es su fuerza. Cada minuto está diseñado para transmitir un sentimiento claro y genuino.<br><br><b>¿Lo recomiendo?</b> ✔️ Sí<br>Florence es una joya corta, tranquila y bonita. Perfecta para desconectar, reflexionar y, sobre todo, sentir.<br><br><b>Un recordatorio de que los videojuegos también pueden ser poesía interactiva.</b> 🎨💛</div>
-      <a class="steam-link" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/1102130/" target="_blank" rel="noopener">Ver en Steam ↗</a>
+      <a class="steam-link fx-btn" href="https://steamcommunity.com/id/Onlyjackdaniel/recommended/1102130/" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
-    <aside class="rcard p2">
-      <span class="ptag">▮ PLAYER 2 — ELLA</span>
+    <aside class="rcard p2 fx-spot" style="--spot-rgb:var(--p2-rgb)">
+      <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
-      <div class="pending"><span class="q">?</span>La reseña de Player 2 está en camino.<br>Mientras tanto, ya saben quién escribe más rápido.</div>
+      <div class="meta-row" style="justify-content:flex-start;margin:0 0 16px"><span class="chip rec"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado</span></div><div class="rbody"><div class="bb_h2">UNA METÁFORA PRECIOSA DE LOS SENTIMIENTOS</div><p>Un juego súper artístico y metafórico; la última parte es mi favorita. Jugarlo es también entender qué significa lo que juegas: analizar a la par por qué a veces es más y a veces es menos, por qué arriba o por qué abajo. Hace un gran trabajo con las metáforas de los sentimientos: muchas veces no sabemos explicar cómo nos sentimos, y este juego logra ponerlo en pantalla de una forma que te hace decir “sí, claro, así mismo se siente”. Es increíble lo mucho que puede lograr el cerebro humano cuando nos dedicamos a observar un poco mejor.</p><p>Es un juego corto, de un solo día, que también sirve como transición cuando vienes de algo muy fuerte o de historia densa y quieres jugar algo pero aún no estás listo para meterte de lleno en un mundo nuevo. Su historia es muy sencilla de comprender y de empatizar. Les recomiendo platinarlo, porque vale la pena volver a jugarlo. Eso sí, en este caso no recomiendo jugarlo acompañado: es una experiencia muy grata, pero también una actividad muy introspectiva y linda.</p></div>
     </aside>
   </div>
   
-  <div class="backrow"><a class="back" href="./">◂ Todas las reseñas</a></div>
+  <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="../resenas/">Reseñas</a> · <a href="../apoyo.html">Apóyanos</a> · <a href="../contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>
 </body>
 </html>

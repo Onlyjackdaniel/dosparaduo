@@ -63,11 +63,29 @@ def main():
             break
         if es_short(v['id']):
             shorts.append(v)
-        elif len(largos) < N_LARGOS and not es_en_vivo(v['id']):
+        elif len(largos) < N_LARGOS and 'en vivo' not in v['titulo'].lower() and not es_en_vivo(v['id']):
             largos.append(v)
 
     largos = largos[:N_LARGOS]
     shorts = shorts[:N_SHORTS]
+
+    # El feed RSS solo trae ~15 videos recientes; si no alcanzan N_LARGOS,
+    # se conservan los que ya estaban en la portada (siempre 3 largos).
+    if len(largos) < N_LARGOS:
+        html_prev = INDEX.read_text(encoding='utf-8')
+        m_prev = re.search(r'<!-- AUTO:LARGOS:START -->(.*?)<!-- AUTO:LARGOS:END -->', html_prev, re.S)
+        if m_prev:
+            ya = {v['id'] for v in largos}
+            previos = re.findall(
+                r'data-video="([^"]+)"[\s\S]*?<span class="vtag">([^<]*)</span>\s*<h3>([^<]*)</h3>',
+                m_prev.group(1))
+            for pid, pfecha, ptit in previos:
+                if len(largos) >= N_LARGOS:
+                    break
+                if pid in ya:
+                    continue
+                largos.append({'id': pid, 'titulo': hm.unescape(ptit), 'fecha': pfecha})
+                ya.add(pid)
     if not largos and not shorts:
         print('Feed vacio; no se toca nada.')
         return

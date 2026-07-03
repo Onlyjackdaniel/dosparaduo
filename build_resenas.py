@@ -61,12 +61,13 @@ def fecha_es(f):
 def excerpt(h, n=155):
     t = re.sub(r'<[^>]+>',' ', h)
     t = htmlmod.unescape(re.sub(r'\s+',' ', t)).strip()
+    t = des_guionar(t)
     return (t[:n].rsplit(' ',1)[0] + '…') if len(t) > n else t
 
 # ---------- saneador de HTML (anti-XSS) ----------
 # El cuerpo de las reseñas viene de Steam (HTML ya renderizado). Aunque la fuente
 # son reseñas propias, NUNCA se inyecta crudo: se pasa por una allowlist de tags
-# y atributos. Sin dependencias externas — solo la stdlib.
+# y atributos. Sin dependencias externas, solo la stdlib.
 from html.parser import HTMLParser
 
 _ALLOWED_TAGS = {
@@ -118,15 +119,33 @@ class _Sanitizer(HTMLParser):
     def handle_data(self, data):
         self.out.append(htmlmod.escape(data, quote=False))
 
+
+# ---------- limpiador de guiones largos (regla de estilo del sitio) ----------
+# El contenido crudo de Steam puede traer em/en dashes; aqui se convierten a
+# puntuacion natural para que cada rebuild salga limpio sin tocar el JSON crudo.
+def des_guionar(t):
+    if not t:
+        return t
+    t = re.sub(r'(\d)\s?[\u2014\u2013]\s?(\d)', r'\1-\2', t)              # rangos: 6-7 horas
+    t = re.sub(r'\s[\u2014\u2013]\s?([^\u2014\u2013<>]{2,120}?)\s?[\u2014\u2013](?=[\s,.;:!?)])',
+               r' (\1)', t)                                                   # pares -> parentesis
+    t = re.sub(r'(<br\s*/?>|^)\s*[\u2014\u2013]\s*', r'\1&#8226; ', t)     # dialogo/vinetas
+    t = t.replace(' \u2013 ', ': ')                                           # subtitulo con en dash
+    t = re.sub(r'\s*\u2014\s*', ', ', t)                                     # em dash restante
+    t = t.replace('\u2013', '-')                                              # en dash restante
+    return t
+
 def sanitize_html(s):
     if not s:
         return ''
     p = _Sanitizer()
     p.feed(s)
     p.close()
-    return ''.join(p.out)
+    return des_guionar(''.join(p.out))
 
 reviews = json.loads((ROOT/'reviews_jack_raw.json').read_text(encoding='utf-8'))
+for _r in reviews:
+    _r['nombre'] = _r['nombre'].replace('\u2014','-').replace('\u2013','-')
 idx = {norm(r['nombre']): r for r in reviews}
 
 def buscar(nombres):
@@ -170,8 +189,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:cent
 main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 24px 80px}
 .crumb{font-family:var(--mono);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
 .crumb a{color:var(--p2);text-decoration:none}
+.ascii-wrap{position:relative;margin:10px 0 8px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 h1.sec{font-family:var(--display);font-size:clamp(1.8rem,5vw,3rem);text-transform:uppercase;margin:10px 0 8px}
 .sub{color:var(--muted);max-width:640px;font-weight:300;margin-bottom:40px}
+.sub-center{max-width:none;text-align:center}
 footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:40px 24px;text-align:center;background:var(--bg-2)}
 footer .f-logo{font-family:var(--display);font-size:1rem;text-transform:uppercase}
 footer p{color:var(--muted);font-size:.78rem;margin-top:8px;font-family:var(--mono)}
@@ -189,16 +211,22 @@ NAV = """<nav>
     <a href="__HOME__index.html#inicio">Inicio</a>
     <a href="__HOME__index.html#videos">Videos</a>
     <a href="__HOME__resenas/">Reseñas</a>
+    <a href="__HOME__blog/">Blog</a>
     <a href="__HOME__merch.html">Merch</a>
     <a href="__HOME__apoyo.html">Apóyanos</a>
     <a href="__HOME__nosotros.html">Nosotros</a>
-    <a class="btn-yt" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener">▶ Suscríbete</a>
+    <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>"""
 
 FOOTER = """<footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
   <p>© 2026 Dos para Duo · <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">YouTube</a> · <a href="__HOME__resenas/">Reseñas</a> · <a href="__HOME__apoyo.html">Apóyanos</a> · <a href="__HOME__contacto.html">Contacto</a></p>
+  <div class="f-social">
+    <a href="https://www.youtube.com/@DosparaDuo" target="_blank" rel="noopener" aria-label="YouTube de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg></a>
+    <a href="https://www.tiktok.com/@dosparaduo" target="_blank" rel="noopener" aria-label="TikTok de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#tiktok-logo"/></svg></a>
+    <a href="https://www.reddit.com/user/Dosparaduo/" target="_blank" rel="noopener" aria-label="Reddit de Dos para Duo"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#reddit-logo"/></svg></a>
+  </div>
 </footer>"""
 
 # ---------- página individual ----------
@@ -206,7 +234,7 @@ PAGE = """<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>__NOMBRE__ — Reseña en español | Dos para Duo</title>
+<title>__NOMBRE__: Reseña en español | Dos para Duo</title>
 <meta name="description" content="__DESC__">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="../assets/icon-512.png">
@@ -215,7 +243,7 @@ PAGE = """<!DOCTYPE html>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-<meta property="og:title" content="Reseña: __NOMBRE__ — Dos para Duo">
+<meta property="og:title" content="Reseña: __NOMBRE__ | Dos para Duo">
 <meta property="og:description" content="__DESC__">
 <meta property="og:type" content="article">
 <meta property="og:image" content="__CAPSULE__">
@@ -225,8 +253,11 @@ PAGE = """<!DOCTYPE html>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
-<link rel="stylesheet" href="../assets/menu.css">
-<script src="../assets/menu.js" defer></script>
+<link rel="stylesheet" href="../assets/menu.css?v=5">
+<link rel="stylesheet" href="../assets/fx.css?v=5">
+<script src="../assets/menu.js?v=5" defer></script>
+<script src="../assets/fx.js?v=4" defer data-fx-base="../"></script>
+<script src="../assets/ascii-title.js?v=1" defer></script>
 <style>__CSS__
 .game-head{text-align:center;margin-bottom:46px}
 .game-head img{max-width:min(460px,100%);border-radius:14px;border:1px solid var(--line);box-shadow:0 18px 50px rgba(0,0,0,.5)}
@@ -269,7 +300,7 @@ __NAV__
 <main>
   <p class="crumb"><a href="./">← Reseñas</a> / __NOMBRE_ESC__</p>
   <div class="game-head">
-    <h1 class="sec">__NOMBRE_ESC__</h1>
+    <h1 class="sec" data-scramble>__NOMBRE_ESC__</h1>
     <img src="__CAPSULE__" width="460" height="215" alt="Carátula de __NOMBRE_ESC__" onerror="this.style.display='none'">
     <div class="meta-row">
       <span class="chip __RECCLASS__">__RECTXT__</span>
@@ -278,20 +309,20 @@ __NAV__
     </div>
   </div>
   <div class="duo-cols">
-    <article class="rcard p1">
-      <span class="ptag">▮ PLAYER 1 — ÉL</span>
+    <article class="rcard p1 fx-spot" style="--spot-rgb:var(--p1-rgb)">
+      <span class="ptag">▮ PLAYER 1 · ÉL</span>
       <h2>Su reseña</h2>
       <div class="rbody">__CONTENIDO__</div>
-      <a class="steam-link" href="__STEAMURL__" target="_blank" rel="noopener">Ver en Steam ↗</a>
+      <a class="steam-link fx-btn" href="__STEAMURL__" target="_blank" rel="noopener">Ver en Steam ↗</a>
     </article>
-    <aside class="rcard p2">
-      <span class="ptag">▮ PLAYER 2 — ELLA</span>
+    <aside class="rcard p2 fx-spot" style="--spot-rgb:var(--p2-rgb)">
+      <span class="ptag">▮ PLAYER 2 · ELLA</span>
       <h2>Su reseña</h2>
       __P2BODY__
     </aside>
   </div>
   __VIDEO__
-  <div class="backrow"><a class="back" href="./">◂ Todas las reseñas</a></div>
+  <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 __FOOTER__
 </body>
@@ -311,7 +342,7 @@ def render_page(r, solo=False):
     schema = json.dumps({
         "@context":"https://schema.org","@type":"Review",
         "itemReviewed":{"@type":"VideoGame","name":nombre},
-        "author":{"@type":"Person","name":"Jack — Dos para Duo"},
+        "author":{"@type":"Person","name":"Jack de Dos para Duo"},
         "publisher":{"@type":"Organization","name":"Dos para Duo","sameAs":"https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw"},
         "inLanguage":"es","reviewBody":desc,
         "positiveNotes" if rec else "negativeNotes":{"@type":"ItemList","itemListElement":[]}
@@ -329,7 +360,7 @@ def render_page(r, solo=False):
              'La reseña de Player 2 está en camino.<br>Mientras tanto, ya saben quién escribe más rápido.')
     a2 = ANAHI.get(norm(nombre))
     if a2:
-        chips = [('👍 Recomendado' if a2.get('voto','up')=='up' else '👎 No recomendado')]
+        chips = [('<svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado' if a2.get('voto','up')=='up' else '<svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-down"/></svg> No recomendado')]
         if a2.get('horas'): chips.append(f"{a2['horas']} hrs jugadas")
         if a2.get('fecha'): chips.append(a2['fecha'])
         chips_html = ''.join(f'<span class="chip{" rec" if i==0 and a2.get("voto","up")=="up" else (" norec" if i==0 else "")}">{c}</span>' for i,c in enumerate(chips))
@@ -352,7 +383,7 @@ def render_page(r, solo=False):
         .replace('__URL__', url)
         .replace('__SCHEMA__', schema)
         .replace('__RECCLASS__', 'rec' if rec else 'norec')
-        .replace('__RECTXT__', '👍 Recomendado' if rec else '👎 No recomendado')
+        .replace('__RECTXT__', '<svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg> Recomendado' if rec else '<svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#thumbs-down"/></svg> No recomendado')
         .replace('__HORAS__', r['horas'] or '?')
         .replace('__FECHA__', fecha_es(r['fecha']))
         .replace('__CONTENIDO__', sanitize_html(r['html']))
@@ -366,23 +397,24 @@ def card(r, mini=False):
     nombre = r['nombre']; s = slug(nombre); app = r['appid']
     cap = f"https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{app}/header.jpg"
     vid = ' data-video="1"' if VIDEOS.get(norm(nombre)) else ''
-    badge = '<span class="vbadge">▶ EN EL CANAL</span>' if VIDEOS.get(norm(nombre)) else ''
-    cls = 'gcard mini' if mini else 'gcard'
+    badge = '<span class="vbadge"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#play"/></svg> EN EL CANAL</span>' if VIDEOS.get(norm(nombre)) else ''
+    cls = 'gcard mini reveal fx-spot' if mini else 'gcard reveal fx-spot'
     return f"""<a class="{cls}" href="{s}.html" data-nombre="{htmlmod.escape(norm(nombre))}"{vid}>
       <div class="gimg"><img src="{cap}" width="460" height="215" alt="Carátula de {htmlmod.escape(nombre)}" loading="lazy" onerror="this.parentElement.classList.add('noimg')">{badge}</div>
       <div class="ginfo"><h3>{htmlmod.escape(nombre)}</h3>
-      <p>{'👍' if r['voto']=='up' else '👎'} · {r['horas']} hrs · {fecha_es(r['fecha'])}</p></div>
+      <p><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#{'thumbs-up' if r['voto']=='up' else 'thumbs-down'}"/></svg> · {r['horas']} hrs · {fecha_es(r['fecha'])}</p></div>
     </a>"""
 
-cards_juntos = '\n'.join(card(r) for r in juntos)
+oficiales = [r for r in reviews if norm(r['nombre']) in ANAHI]
+cards_juntos = '\n'.join(card(r) for r in oficiales)
 cards_extras = '\n'.join(card(r, mini=True) for r in extras)
 
 INDEX = """<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reseñas de juegos en español — Dos para Duo</title>
-<meta name="description" content="__NJ__ juegos que jugamos juntos, reseñados de verdad: co-op, terror, plataformas y joyitas raras. Las reseñas de Steam del dúo, con video del canal cuando existe.">
+<title>Reseñas de juegos en español | Dos para Duo</title>
+<meta name="description" content="Los juegos que jugamos juntos, reseñados de verdad: co-op, terror, plataformas y joyitas raras. Las reseñas de Steam del dúo, con video del canal cuando existe.">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="../assets/icon-512.png">
 <link rel="apple-touch-icon" href="../assets/icon-512.png">
@@ -390,21 +422,35 @@ INDEX = """<!DOCTYPE html>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-<meta property="og:title" content="Reseñas — Dos para Duo">
+<meta property="og:title" content="Reseñas | Dos para Duo">
 <meta property="og:description" content="Los juegos que jugamos juntos, reseñados de verdad.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="__BASE__/resenas/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Reseñas — Dos para Duo","description":"Reseñas en español de los juegos que jugamos juntos.","isPartOf":{"@type":"WebSite","name":"Dos para Duo","url":"__BASE__/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Reseñas | Dos para Duo","description":"Reseñas en español de los juegos que jugamos juntos.","isPartOf":{"@type":"WebSite","name":"Dos para Duo","url":"__BASE__/"}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
-<link rel="stylesheet" href="../assets/menu.css">
-<script src="../assets/menu.js" defer></script>
+<link rel="stylesheet" href="../assets/menu.css?v=5">
+<link rel="stylesheet" href="../assets/fx.css?v=5">
+<script src="../assets/menu.js?v=5" defer></script>
+<script src="../assets/fx.js?v=4" defer data-fx-base="../"></script>
+<script src="../assets/ascii-title.js?v=1" defer></script>
+<script src="../assets/particles-bg.js?v=1" defer></script>
 <style>__CSS__
+.particles-container{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
+.particles-container canvas{width:100%;height:100%;display:block}
 .guide-band{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);text-decoration:none;border:1px solid rgba(255,209,102,.4);border-radius:10px;padding:14px 18px;margin-bottom:22px;transition:border-color .2s,background .2s}
 .guide-band:hover{border-color:var(--gold);background:rgba(255,209,102,.06)}
 .guide-band b{color:var(--text)}
 .tools{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+.wave-list{display:none;flex-direction:column;gap:4px;margin:-12px 0 26px;padding:18px 20px;background:rgba(20,36,64,.5);border:1px solid var(--line);border-radius:12px;backdrop-filter:blur(8px)}
+.wave-list.on{display:flex}
+.wave-list a{font-family:var(--display);font-size:clamp(1rem,2.6vw,1.5rem);text-transform:uppercase;color:var(--text);text-decoration:none;opacity:0;transform:translateX(var(--wx,-40px));transition:opacity .4s ease var(--wd,0ms),transform .5s cubic-bezier(.2,.8,.2,1) var(--wd,0ms),color .2s}
+.wave-list.on a{opacity:1;transform:none}
+.wave-list a:hover{color:var(--p2)}
+.wave-list a b{font-weight:400;color:var(--gold)}
+.wave-list a small{font-family:var(--mono);font-size:.6rem;letter-spacing:2px;color:var(--muted);margin-left:12px}
+.wave-list .nada{font-family:var(--mono);font-size:.7rem;letter-spacing:2px;color:var(--muted)}
 #buscar{flex:1;min-width:220px;padding:12px 16px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);font-family:var(--body);font-size:.95rem}
 #buscar:focus{outline:none;border-color:var(--p2)}
 .fbtn{font-family:var(--mono);font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:10px 16px;cursor:pointer}
@@ -428,22 +474,22 @@ INDEX = """<!DOCTYPE html>
 </head>
 <body>
 <div class="atmos"></div>
+<div class="particles-container" aria-hidden="true" data-particles data-colors="#3cb8ec,#ff7a29,#ffd166" data-count="315" data-spread="10" data-speed="0.08" data-base-size="90" data-size-randomness="1" data-camera-distance="20" data-hover="true" data-hover-factor="0.6" data-alpha="true" data-rotation="true" data-dpr="1"></div>
 __NAV__
 <main>
   <p class="crumb"><a href="../index.html">← Inicio</a> / Reseñas</p>
-  <h1 class="sec">Reseñas</h1>
-  <p class="sub">Los <b style="color:var(--text)">__NJ__ juegos que hemos jugado juntos</b>, reseñados de verdad en Steam — con la reseña de cada quien y el video del canal cuando lo grabamos. Player 2 está afilando su teclado: sus reseñas vienen en camino.</p>
-  <a class="guide-band" href="../listas/mejores-juegos-cooperativos-para-parejas.html">📜 <b>NUEVA GUÍA:</b> Los mejores juegos cooperativos para parejas — nuestro top 10 probado en pareja ▸</a>
+  <div class="ascii-wrap"><canvas class="ascii-title" data-texto="RESEÑAS"></canvas><h1 class="sec vh">Reseñas</h1></div>
+  <p class="sub sub-center">Los <b style="color:var(--text)">__NT__ juegos que hemos jugado juntos</b>, reseñados de verdad en Steam, con la reseña de cada quien y el video del canal cuando lo grabamos.</p>
   <div class="tools">
     <input id="buscar" type="text" placeholder="Buscar juego...">
     <button class="fbtn on" data-f="todos" type="button">Todos</button>
     <button class="fbtn" data-f="video" type="button">▶ Con video</button>
-    <a class="fbtn" href="solo.html" style="text-decoration:none;display:inline-flex;align-items:center">◆ Solo runs</a>
   </div>
+  <div class="wave-list" id="wave-list" aria-live="polite"></div>
   <div class="ggrid" id="grid">
 __CARDS__
   </div>
-  <p class="empty" id="empty">— NADA POR AQUÍ. PRUEBA OTRA BÚSQUEDA —</p>
+  <p class="empty" id="empty">▮ NADA POR AQUÍ. PRUEBA OTRA BÚSQUEDA ▮</p>
   <h2 class="extras-head">Cosas que <span>también</span> reseñamos</h2>
   <p class="extras-sub">Porque también le escribimos reseñas a un plátano, a la mayonesa y al programa con el que grabamos. Sin filtro.</p>
   <div class="ggrid minis">
@@ -453,20 +499,86 @@ __EXTRAS__
 __FOOTER__
 <script>
 const q=document.getElementById('buscar'),cards=[...document.querySelectorAll('#grid .gcard')];
+const RM_G=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let filtro='todos';
-function aplicar(){
+function aplicar(conFlip){
   const t=q.value.toLowerCase().trim();let vis=0;
+  /* FLIP (Animmaster Grid/1): fotografiar posiciones antes del cambio */
+  const antes=new Map();
+  if(conFlip&&!RM_G) cards.forEach(c=>{ if(c.style.display!=='none') antes.set(c,c.getBoundingClientRect()); });
   cards.forEach(c=>{
     const okT=!t||c.dataset.nombre.includes(t);
     const okF=filtro==='todos'||c.dataset.video==='1';
     c.style.display=(okT&&okF)?'':'none';if(okT&&okF)vis++;
   });
   document.getElementById('empty').style.display=vis?'none':'block';
+  if(conFlip&&!RM_G) cards.forEach(c=>{
+    if(c.style.display==='none') return;
+    const a=antes.get(c);
+    if(!a){ /* recien aparecida: fade + pop */
+      c.style.transition='none';c.style.opacity='0';c.style.transform='scale(.92)';
+      requestAnimationFrame(()=>{c.style.transition='opacity .45s ease,transform .45s cubic-bezier(.2,.8,.2,1)';c.style.opacity='';c.style.transform='';});
+      return;
+    }
+    const b=c.getBoundingClientRect();
+    const dx=a.left-b.left, dy=a.top-b.top;
+    if(!dx&&!dy) return;
+    c.style.transition='none';c.style.transform=`translate(${dx}px,${dy}px)`;
+    requestAnimationFrame(()=>{c.style.transition='transform .55s cubic-bezier(.2,.8,.2,1)';c.style.transform='';});
+  });
 }
-q.addEventListener('input',aplicar);
+q.addEventListener('input',()=>{aplicar(true);waveList();});
+/* Scroll/31 adaptado: lista "select your game" en oleada al buscar */
+const wl=document.getElementById('wave-list');
+function waveList(){
+  const txt=q.value.toLowerCase().trim();
+  if(!txt){wl.classList.remove('on');wl.innerHTML='';return;}
+  const hits=cards.filter(c=>c.dataset.nombre.includes(txt)).slice(0,8);
+  wl.innerHTML=hits.length
+    ? hits.map((c,i)=>{
+        const n=c.querySelector('h3').textContent;
+        const ix=n.toLowerCase().indexOf(txt);
+        const rot=ix>-1?n.slice(0,ix)+'<b>'+n.slice(ix,ix+txt.length)+'</b>'+n.slice(ix+txt.length):n;
+        return `<a href="${c.getAttribute('href')}" style="--wd:${i*70}ms;--wx:${i%2?'40px':'-40px'}">▸ ${rot}<small>${c.dataset.video==='1'?'EN EL CANAL':'STEAM'}</small></a>`;
+      }).join('')
+    : '<span class="nada">▮ SIN RESULTADOS EN ESTA MAQUINA ▮</span>';
+  wl.classList.remove('on');void wl.offsetWidth;wl.classList.add('on');
+}
 document.querySelectorAll('.fbtn').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('on'));
-  b.classList.add('on');filtro=b.dataset.f;aplicar();
+  b.classList.add('on');filtro=b.dataset.f;aplicar(true);
+});
+
+/* apertura con saltos repetidos (Animmaster Grid/5): la caratula brinca
+   en pasos hacia el centro y entra a la resena */
+if(!RM_G) document.querySelectorAll('.gcard').forEach(card=>{
+  card.addEventListener('click',ev=>{
+    const img=card.querySelector('.gimg img');
+    if(!img||!img.currentSrc||document.body.dataset.saliendo) return;
+    ev.preventDefault();
+    document.body.dataset.saliendo='1';
+    const r=img.getBoundingClientRect();
+    const fw=Math.min(520,innerWidth*.82), fh=fw*(215/460);
+    const fin={left:innerWidth/2-fw/2, top:innerHeight/2-fh/2, width:fw, height:fh};
+    const velo=document.createElement('div');
+    velo.style.cssText='position:fixed;inset:0;background:rgba(10,17,31,0);transition:background .5s ease;z-index:180;pointer-events:none';
+    document.body.appendChild(velo);
+    requestAnimationFrame(()=>{velo.style.background='rgba(10,17,31,.78)'});
+    const HOPS=6;
+    for(let i=0;i<HOPS;i++){
+      const f=i/(HOPS-1);
+      const cl=document.createElement('div');
+      const L=r.left+(fin.left-r.left)*f, T=r.top+(fin.top-r.top)*f;
+      const W=r.width+(fin.width-r.width)*f, H=r.height+(fin.height-r.height)*f;
+      cl.style.cssText=`position:fixed;left:${L}px;top:${T}px;width:${W}px;height:${H}px;background:url('${img.currentSrc}') center/cover;border-radius:10px;z-index:181;opacity:0;box-shadow:0 18px 50px rgba(0,0,0,.5)`;
+      document.body.appendChild(cl);
+      cl.style.transition='opacity .1s ease';
+      setTimeout(()=>{cl.style.opacity='1';},40+i*48);
+    }
+    /* handoff opaco: el velo cubre todo justo antes de navegar (sin congelon) */
+    setTimeout(()=>{velo.style.transition='background .22s ease';velo.style.background='var(--bg)';},40+HOPS*48+60);
+    setTimeout(()=>{location.href=card.href;},40+HOPS*48+300);
+  });
 });
 </script>
 </body>
@@ -479,101 +591,21 @@ index_html = (INDEX
     .replace('__FOOTER__', FOOTER.replace('__HOME__','../'))
     .replace('__CARDS__', cards_juntos)
     .replace('__EXTRAS__', cards_extras)
-    .replace('__NJ__', str(len(juntos)))
+    .replace('__NT__', str(len(oficiales)))
     .replace('__BASE__', BASE))
 (OUT/'index.html').write_text(index_html, encoding='utf-8')
 
-# ---------- galería Solo runs ----------
-SOLO_INDEX = """<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Solo runs — reseñas de Player 1 | Dos para Duo</title>
-<meta name="description" content="__NS__ juegos que Player 1 jugó en solitario, reseñados en Steam: souls, terror, indies y más. La otra mitad de la biblioteca de Dos para Duo.">
-<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-<link rel="alternate icon" href="../assets/icon-512.png">
-<link rel="apple-touch-icon" href="../assets/icon-512.png">
-<link rel="manifest" href="../site.webmanifest">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
-<link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-<meta property="og:title" content="Solo runs — Dos para Duo">
-<meta property="og:description" content="Los juegos que Player 1 jugó en solitario, reseñados de verdad.">
-<meta property="og:type" content="website">
-<link rel="canonical" href="__BASE__/resenas/solo.html">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Solo runs — Dos para Duo","description":"Reseñas en español de los juegos que Player 1 jugó en solitario.","isPartOf":{"@type":"WebSite","name":"Dos para Duo","url":"__BASE__/"}}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/tokens.css">
-<link rel="stylesheet" href="../assets/menu.css">
-<script src="../assets/menu.js" defer></script>
-<style>__CSS__
-.tools{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
-#buscar{flex:1;min-width:220px;padding:12px 16px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--text);font-family:var(--body);font-size:.95rem}
-#buscar:focus{outline:none;border-color:var(--p1)}
-.fbtn{font-family:var(--mono);font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:10px 16px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center}
-.fbtn:hover{border-color:var(--p2);color:var(--p2)}
-.ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
-.gcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;text-decoration:none;transition:transform .22s,border-color .22s}
-.gcard:hover{transform:translateY(-5px);border-color:var(--p1)}
-.gimg{position:relative;aspect-ratio:460/215;background:var(--bg-2)}
-.gimg img{width:100%;height:100%;object-fit:cover;display:block}
-.gimg.noimg img{display:none}
-.vbadge{position:absolute;top:8px;left:8px;font-family:var(--mono);font-size:.55rem;letter-spacing:1px;background:rgba(var(--p1-rgb),.92);color:#fff;padding:4px 8px;border-radius:4px}
-.ginfo{padding:14px 16px 16px}
-.ginfo h3{font-size:.95rem;font-weight:600;color:var(--text);line-height:1.35}
-.ginfo p{font-family:var(--mono);font-size:.66rem;letter-spacing:1px;color:var(--muted);margin-top:6px}
-.empty{display:none;text-align:center;color:var(--muted);padding:50px 0;font-family:var(--mono);font-size:.8rem;letter-spacing:1px}
-</style>
-</head>
-<body>
-<div class="atmos"></div>
-__NAV__
-<main>
-  <p class="crumb"><a href="./">← Reseñas</a> / Solo runs</p>
-  <h1 class="sec">Solo runs</h1>
-  <p class="sub">Los <b style="color:var(--text)">__NS__ juegos que Player 1 jugó en solitario</b> — souls, terror, indies y experimentos. La otra mitad de la biblioteca, reseñada con el mismo rigor (y el mismo drama).</p>
-  <div class="tools">
-    <input id="buscar" type="text" placeholder="Buscar juego...">
-    <a class="fbtn" href="./">◂ Jugados juntos</a>
-  </div>
-  <div class="ggrid" id="grid">
-__CARDS__
-  </div>
-  <p class="empty" id="empty">— NADA POR AQUÍ. PRUEBA OTRA BÚSQUEDA —</p>
-</main>
-__FOOTER__
-<script>
-const q=document.getElementById('buscar'),cards=[...document.querySelectorAll('#grid .gcard')];
-q.addEventListener('input',()=>{
-  const t=q.value.toLowerCase().trim();let vis=0;
-  cards.forEach(c=>{const ok=!t||c.dataset.nombre.includes(t);c.style.display=ok?'':'none';if(ok)vis++;});
-  document.getElementById('empty').style.display=vis?'none':'block';
-});
-</script>
-</body>
-</html>"""
 
-cards_solo = '\n'.join(card(r) for r in solo)
-solo_html = (SOLO_INDEX
-    .replace('<head>', '<head>\n' + GTAG, 1)
-    .replace('__CSS__', CSS)
-    .replace('__NAV__', NAV.replace('__HOME__','../'))
-    .replace('__FOOTER__', FOOTER.replace('__HOME__','../'))
-    .replace('__CARDS__', cards_solo)
-    .replace('__NS__', str(len(solo)))
-    .replace('__BASE__', BASE))
-(OUT/'solo.html').write_text(solo_html, encoding='utf-8')
 
 slugs = [render_page(r) for r in juntos + extras]
 slugs += [render_page(r, solo=True) for r in solo]
 
 # ---------- sitemap + robots + nojekyll ----------
-urls = [f'{BASE}/', f'{BASE}/nosotros.html', f'{BASE}/merch.html', f'{BASE}/apoyo.html', f'{BASE}/contacto.html', f'{BASE}/listas/mejores-juegos-cooperativos-para-parejas.html', f'{BASE}/resenas/', f'{BASE}/resenas/solo.html'] + [f'{BASE}/resenas/{s}.html' for s in slugs]
+urls = [f'{BASE}/', f'{BASE}/nosotros.html', f'{BASE}/merch.html', f'{BASE}/apoyo.html', f'{BASE}/contacto.html', f'{BASE}/listas/mejores-juegos-cooperativos-para-parejas.html', f'{BASE}/blog/', f'{BASE}/blog/it-takes-two-o-split-fiction.html', f'{BASE}/resenas/'] + [f'{BASE}/resenas/{s}.html' for s in slugs]
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 sm += '\n'.join(f'  <url><loc>{u}</loc></url>' for u in urls) + '\n</urlset>'
 (ROOT/'sitemap.xml').write_text(sm, encoding='utf-8')
 (ROOT/'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n', encoding='utf-8')
 (ROOT/'.nojekyll').write_text('', encoding='utf-8')
 
-print(f'OK: {len(juntos)} juntos + {len(extras)} extras + {len(solo)} solo runs = {len(slugs)} paginas, sitemap con {len(urls)} URLs')
+print(f'OK: galeria unica {len(juntos)+len(solo)} juegos + {len(extras)} extras = {len(slugs)} paginas, sitemap con {len(urls)} URLs')

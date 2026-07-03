@@ -1,4 +1,4 @@
-// Eventos GA4 de interacción — lo que de verdad importa para un creador:
+// Eventos GA4 de interacción · lo que de verdad importa para un creador:
 // clics a "Suscríbete", a redes, a merch y cualquier enlace saliente.
 // Los eventos pasan por gtag → con Consent Mode, si el usuario no aceptó cookies,
 // Google los maneja en modo sin-cookies (no se pierde la medición agregada).
