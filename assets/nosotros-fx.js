@@ -54,7 +54,7 @@ if (HOVER && !RM){
   tam(); addEventListener('resize', tam);
 
   var COLORES = ['rgba(60,184,236,', 'rgba(255,122,41,', 'rgba(255,209,102,'];
-  var N = Math.min(170, (innerWidth / 9) | 0);
+  var N = Math.min(240, (innerWidth / 6.4) | 0);
   var parts = [];
   for (var i = 0; i < N; i++) parts.push({
     x: Math.random() * innerWidth, y: Math.random() * innerHeight,
