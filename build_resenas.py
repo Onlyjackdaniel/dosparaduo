@@ -254,9 +254,9 @@ PAGE = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css?v=5">
-<link rel="stylesheet" href="../assets/fx.css?v=3">
+<link rel="stylesheet" href="../assets/fx.css?v=4">
 <script src="../assets/menu.js?v=5" defer></script>
-<script src="../assets/fx.js?v=3" defer data-fx-base="../"></script>
+<script src="../assets/fx.js?v=4" defer data-fx-base="../"></script>
 <script src="../assets/ascii-title.js?v=1" defer></script>
 <style>__CSS__
 .game-head{text-align:center;margin-bottom:46px}
@@ -431,9 +431,9 @@ INDEX = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css?v=5">
-<link rel="stylesheet" href="../assets/fx.css?v=3">
+<link rel="stylesheet" href="../assets/fx.css?v=4">
 <script src="../assets/menu.js?v=5" defer></script>
-<script src="../assets/fx.js?v=3" defer data-fx-base="../"></script>
+<script src="../assets/fx.js?v=4" defer data-fx-base="../"></script>
 <script src="../assets/ascii-title.js?v=1" defer></script>
 <script src="../assets/particles-bg.js?v=1" defer></script>
 <style>__CSS__
@@ -491,20 +491,67 @@ __EXTRAS__
 __FOOTER__
 <script>
 const q=document.getElementById('buscar'),cards=[...document.querySelectorAll('#grid .gcard')];
+const RM_G=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let filtro='todos';
-function aplicar(){
+function aplicar(conFlip){
   const t=q.value.toLowerCase().trim();let vis=0;
+  /* FLIP (Animmaster Grid/1): fotografiar posiciones antes del cambio */
+  const antes=new Map();
+  if(conFlip&&!RM_G) cards.forEach(c=>{ if(c.style.display!=='none') antes.set(c,c.getBoundingClientRect()); });
   cards.forEach(c=>{
     const okT=!t||c.dataset.nombre.includes(t);
     const okF=filtro==='todos'||c.dataset.video==='1';
     c.style.display=(okT&&okF)?'':'none';if(okT&&okF)vis++;
   });
   document.getElementById('empty').style.display=vis?'none':'block';
+  if(conFlip&&!RM_G) cards.forEach(c=>{
+    if(c.style.display==='none') return;
+    const a=antes.get(c);
+    if(!a){ /* recien aparecida: fade + pop */
+      c.style.transition='none';c.style.opacity='0';c.style.transform='scale(.92)';
+      requestAnimationFrame(()=>{c.style.transition='opacity .45s ease,transform .45s cubic-bezier(.2,.8,.2,1)';c.style.opacity='';c.style.transform='';});
+      return;
+    }
+    const b=c.getBoundingClientRect();
+    const dx=a.left-b.left, dy=a.top-b.top;
+    if(!dx&&!dy) return;
+    c.style.transition='none';c.style.transform=`translate(${dx}px,${dy}px)`;
+    requestAnimationFrame(()=>{c.style.transition='transform .55s cubic-bezier(.2,.8,.2,1)';c.style.transform='';});
+  });
 }
-q.addEventListener('input',aplicar);
+q.addEventListener('input',()=>aplicar(true));
 document.querySelectorAll('.fbtn').forEach(b=>b.onclick=()=>{
   document.querySelectorAll('.fbtn').forEach(x=>x.classList.remove('on'));
-  b.classList.add('on');filtro=b.dataset.f;aplicar();
+  b.classList.add('on');filtro=b.dataset.f;aplicar(true);
+});
+
+/* apertura con saltos repetidos (Animmaster Grid/5): la caratula brinca
+   en pasos hacia el centro y entra a la resena */
+if(!RM_G) document.querySelectorAll('.gcard').forEach(card=>{
+  card.addEventListener('click',ev=>{
+    const img=card.querySelector('.gimg img');
+    if(!img||!img.currentSrc||document.body.dataset.saliendo) return;
+    ev.preventDefault();
+    document.body.dataset.saliendo='1';
+    const r=img.getBoundingClientRect();
+    const fw=Math.min(520,innerWidth*.82), fh=fw*(215/460);
+    const fin={left:innerWidth/2-fw/2, top:innerHeight/2-fh/2, width:fw, height:fh};
+    const velo=document.createElement('div');
+    velo.style.cssText='position:fixed;inset:0;background:rgba(10,17,31,0);transition:background .5s ease;z-index:180;pointer-events:none';
+    document.body.appendChild(velo);
+    requestAnimationFrame(()=>{velo.style.background='rgba(10,17,31,.72)'});
+    const HOPS=6;
+    for(let i=0;i<HOPS;i++){
+      const f=i/(HOPS-1);
+      const cl=document.createElement('div');
+      const L=r.left+(fin.left-r.left)*f, T=r.top+(fin.top-r.top)*f;
+      const W=r.width+(fin.width-r.width)*f, H=r.height+(fin.height-r.height)*f;
+      cl.style.cssText=`position:fixed;left:${L}px;top:${T}px;width:${W}px;height:${H}px;background:url('${img.currentSrc}') center/cover;border-radius:10px;z-index:181;opacity:0;box-shadow:0 18px 50px rgba(0,0,0,.5)`;
+      document.body.appendChild(cl);
+      setTimeout(()=>{cl.style.opacity='1';},60+i*70);
+    }
+    setTimeout(()=>{location.href=card.href;},60+HOPS*70+240);
+  });
 });
 </script>
 </body>

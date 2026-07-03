@@ -192,6 +192,31 @@ if(slot){
   });
 }
 
+/* ── cortina de transicion al navegar (PT/9-10 adaptado a multipagina):
+   al hacer clic en un link interno sube una cortina con el logo kinetic
+   y despues navega. Sin cortina de llegada (el contenido entra con sus
+   propios reveals), asi no hay parpadeos. ── */
+if(!RM){
+  var cort = document.createElement('div');
+  cort.className = 'fx-cortina'; cort.setAttribute('aria-hidden','true');
+  cort.innerHTML = '<b>Dos <em>para</em> <i>Duo</i></b>';
+  document.body.appendChild(cort);
+  document.addEventListener('click', function(ev){
+    if(ev.defaultPrevented || ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
+    var a = ev.target.closest && ev.target.closest('a[href]');
+    if(!a || a.target === '_blank' || a.hasAttribute('download')) return;
+    var href = a.getAttribute('href');
+    if(!href || href.charAt(0) === '#' || /^[a-z]+:/i.test(href) && a.origin !== location.origin) return;
+    /* anclas dentro de la misma pagina: sin cortina */
+    if(a.pathname === location.pathname && a.hash) return;
+    ev.preventDefault();
+    cort.classList.add('in');
+    setTimeout(function(){ location.href = a.href; }, 400);
+  });
+  /* al volver con el boton atras (bfcache) la cortina no debe quedarse pegada */
+  addEventListener('pageshow', function(e){ if(e.persisted) cort.classList.remove('in'); });
+}
+
 /* ── codigo Konami: arriba arriba abajo abajo izq der izq der B A ── */
 var K = [38,38,40,40,37,39,37,39,66,65], ki = 0;
 addEventListener('keydown', function(e){

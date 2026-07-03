@@ -163,9 +163,9 @@ PAGE = f'''<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css?v=5">
-<link rel="stylesheet" href="../assets/fx.css?v=3">
+<link rel="stylesheet" href="../assets/fx.css?v=4">
 <script src="../assets/menu.js?v=5" defer></script>
-<script src="../assets/fx.js?v=3" defer data-fx-base="../"></script>
+<script src="../assets/fx.js?v=4" defer data-fx-base="../"></script>
 <style>
 @media (prefers-reduced-motion: reduce){{*,*::before,*::after{{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}}}
 *{{margin:0;padding:0;box-sizing:border-box}}
