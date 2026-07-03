@@ -254,7 +254,7 @@ PAGE = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css?v=5">
-<link rel="stylesheet" href="../assets/fx.css?v=4">
+<link rel="stylesheet" href="../assets/fx.css?v=5">
 <script src="../assets/menu.js?v=5" defer></script>
 <script src="../assets/fx.js?v=4" defer data-fx-base="../"></script>
 <script src="../assets/ascii-title.js?v=1" defer></script>
@@ -431,7 +431,7 @@ INDEX = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css?v=5">
-<link rel="stylesheet" href="../assets/fx.css?v=4">
+<link rel="stylesheet" href="../assets/fx.css?v=5">
 <script src="../assets/menu.js?v=5" defer></script>
 <script src="../assets/fx.js?v=4" defer data-fx-base="../"></script>
 <script src="../assets/ascii-title.js?v=1" defer></script>
@@ -601,7 +601,7 @@ slugs = [render_page(r) for r in juntos + extras]
 slugs += [render_page(r, solo=True) for r in solo]
 
 # ---------- sitemap + robots + nojekyll ----------
-urls = [f'{BASE}/', f'{BASE}/nosotros.html', f'{BASE}/merch.html', f'{BASE}/apoyo.html', f'{BASE}/contacto.html', f'{BASE}/listas/mejores-juegos-cooperativos-para-parejas.html', f'{BASE}/blog/', f'{BASE}/resenas/'] + [f'{BASE}/resenas/{s}.html' for s in slugs]
+urls = [f'{BASE}/', f'{BASE}/nosotros.html', f'{BASE}/merch.html', f'{BASE}/apoyo.html', f'{BASE}/contacto.html', f'{BASE}/listas/mejores-juegos-cooperativos-para-parejas.html', f'{BASE}/blog/', f'{BASE}/blog/it-takes-two-o-split-fiction.html', f'{BASE}/resenas/'] + [f'{BASE}/resenas/{s}.html' for s in slugs]
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 sm += '\n'.join(f'  <url><loc>{u}</loc></url>' for u in urls) + '\n</urlset>'
 (ROOT/'sitemap.xml').write_text(sm, encoding='utf-8')
