@@ -78,7 +78,7 @@ var HOVER = matchMedia('(hover: hover)').matches;
 
 /* ── 1. dot grid del hero ── */
 var hero = document.querySelector('header#inicio');
-if(hero && HOVER && !RM){
+if(hero && !RM){  /* rinde tambien en movil; la interaccion es por cursor O toque */
   /* cubre TODO el home (decision Jack): canvas fijo al viewport, detras del contenido */
   var cv = document.createElement('canvas');
   cv.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none';
@@ -89,6 +89,8 @@ if(hero && HOVER && !RM){
   var DOT = 2.5, GAP = 34, PROX = 130, SHOCK = 240;
   var BASE = {r:39, g:59, b:94};      /* --line */
   var ACTIVE = {r:255, g:122, b:41};  /* --p2 naranja */
+  /* shimmer ambiente: es el "show" en movil (sin cursor); en desktop sutil porque manda el cursor */
+  var AMB = HOVER ? 0.12 : 0.34;
   var dots = [], w = 1, h = 1, dpr = 1;
   var mx = -9999, my = -9999;
 
@@ -122,10 +124,11 @@ if(hero && HOVER && !RM){
     }
   });
 
-  var last = performance.now();
+  var last = performance.now(), tGlobal = 0;
   (function tick(now){
     requestAnimationFrame(tick);
     var dt = Math.min(32, now - last) / 1000; last = now;
+    tGlobal += dt;
     ctx.clearRect(0, 0, w, h);
     for(var i = 0; i < dots.length; i++){
       var d = dots[i];
@@ -133,15 +136,18 @@ if(hero && HOVER && !RM){
       d.vx += (-30 * d.ox - 8 * d.vx) * dt;
       d.vy += (-30 * d.oy - 8 * d.vy) * dt;
       d.ox += d.vx * dt; d.oy += d.vy * dt;
-      /* repulsion suave cerca del cursor */
+      /* empuje cerca del cursor O del toque */
       var dx = d.cx - mx, dy = d.cy - my, dsq = dx * dx + dy * dy;
-      var t = 0;
+      var push = 0;
       if(dsq < PROX * PROX){
         var dist = Math.sqrt(dsq) || 1;
-        t = 1 - dist / PROX;
-        d.vx += (dx / dist) * t * 60 * dt * 30;
-        d.vy += (dy / dist) * t * 60 * dt * 30;
+        push = 1 - dist / PROX;
+        d.vx += (dx / dist) * push * 60 * dt * 30;
+        d.vy += (dy / dist) * push * 60 * dt * 30;
       }
+      /* shimmer ambiente: ola diagonal que mantiene VIVO el fondo sin cursor (clave en movil) */
+      var amb = AMB * (0.5 + 0.5 * Math.sin(d.cx * 0.011 + d.cy * 0.013 - tGlobal * 1.3));
+      var t = push > amb ? push : amb;
       var r = (BASE.r + (ACTIVE.r - BASE.r) * t) | 0;
       var g = (BASE.g + (ACTIVE.g - BASE.g) * t) | 0;
       var b = (BASE.b + (ACTIVE.b - BASE.b) * t) | 0;

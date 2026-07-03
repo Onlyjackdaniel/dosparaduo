@@ -43,7 +43,7 @@ if (items.length && !RM){
 }
 
 /* ── 2. fondo: pozo de gravedad ── */
-if (HOVER && !RM){
+if (!RM){  /* rinde tambien en movil; toque atrae, tap = shockwave */
   var cv = document.createElement('canvas');
   cv.style.cssText = 'position:fixed;inset:0;z-index:0;pointer-events:none';
   cv.setAttribute('aria-hidden','true');
@@ -64,7 +64,7 @@ if (HOVER && !RM){
   });
   parts.forEach(function(p){ p.px = p.x; p.py = p.y; });
 
-  var mx = -9e3, my = -9e3;
+  var mx = -9e3, my = -9e3, tG = 0;
   addEventListener('pointermove', function(e){ mx = e.clientX; my = e.clientY; }, {passive:true});
   addEventListener('click', function(e){
     for (var i = 0; i < parts.length; i++){
@@ -78,6 +78,7 @@ if (HOVER && !RM){
 
   (function frame(){
     requestAnimationFrame(frame);
+    tG += 0.016;
     /* desvanecido para estelas */
     ctx.fillStyle = 'rgba(10,17,31,.16)';
     ctx.fillRect(0, 0, W, H);
@@ -91,6 +92,9 @@ if (HOVER && !RM){
         var g = 2600 / d2;
         p.vx += (dx / d) * g; p.vy += (dy / d) * g;
       }
+      /* flujo ambiente: las particulas vagan elegante aunque no haya cursor (movil) */
+      p.vx += Math.sin(p.y * 0.006 + tG) * 0.02;
+      p.vy += Math.cos(p.x * 0.006 + tG * 0.9) * 0.02;
       p.vx *= .985; p.vy *= .985;
       p.x += p.vx; p.y += p.vy;
       if (p.x < -20) p.x = W + 20; if (p.x > W + 20) p.x = -20;

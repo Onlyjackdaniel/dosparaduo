@@ -250,10 +250,9 @@ void main() {
 }
 `
 function initParticles(container) {
-	const particleCount = Math.max(
-		1,
-		Math.floor(num(container.dataset.count, 200)),
-	)
+	const _declared = Math.floor(num(container.dataset.count, 200))
+	const _mob = window.matchMedia('(max-width: 760px)').matches
+	const particleCount = Math.max(1, _mob ? Math.round(_declared * 0.6) : _declared)
 	const particleSpread = num(container.dataset.spread, 10)
 	const speed = num(container.dataset.speed, 0.1)
 	const particleColors = (container.dataset.colors || '')

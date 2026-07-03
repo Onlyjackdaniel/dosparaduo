@@ -435,7 +435,7 @@ INDEX = """<!DOCTYPE html>
 <script src="../assets/menu.js?v=5" defer></script>
 <script src="../assets/fx.js?v=4" defer data-fx-base="../"></script>
 <script src="../assets/ascii-title.js?v=1" defer></script>
-<script src="../assets/particles-bg.js?v=1" defer></script>
+<script src="../assets/particles-bg.js?v=2" defer></script>
 <style>__CSS__
 .particles-container{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none}
 .particles-container canvas{width:100%;height:100%;display:block}
