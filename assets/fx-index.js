@@ -54,10 +54,11 @@ var HOVER = matchMedia('(hover: hover)').matches;
 /* ── 1. dot grid del hero ── */
 var hero = document.querySelector('header#inicio');
 if(hero && HOVER && !RM){
+  /* cubre TODO el home (decision Jack): canvas fijo al viewport, detras del contenido */
   var cv = document.createElement('canvas');
-  cv.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none';
+  cv.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none';
   cv.setAttribute('aria-hidden','true');
-  hero.insertBefore(cv, hero.firstChild);
+  document.body.insertBefore(cv, document.body.firstChild);
   var ctx = cv.getContext('2d');
 
   var DOT = 2.5, GAP = 34, PROX = 130, SHOCK = 240;
@@ -67,9 +68,8 @@ if(hero && HOVER && !RM){
   var mx = -9999, my = -9999;
 
   function build(){
-    var r = hero.getBoundingClientRect();
     dpr = Math.max(1, devicePixelRatio || 1);
-    w = r.width; h = r.height;
+    w = innerWidth; h = innerHeight;
     cv.width = (w * dpr) | 0; cv.height = (h * dpr) | 0;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     dots.length = 0;
@@ -80,16 +80,14 @@ if(hero && HOVER && !RM){
       dots.push({cx: sx + x * cell, cy: sy + y * cell, ox: 0, oy: 0, vx: 0, vy: 0});
   }
   build();
-  new ResizeObserver(build).observe(hero);
+  addEventListener('resize', build);
 
-  hero.addEventListener('pointermove', function(e){
-    var r = cv.getBoundingClientRect();
-    mx = e.clientX - r.left; my = e.clientY - r.top;
+  addEventListener('pointermove', function(e){
+    mx = e.clientX; my = e.clientY;
   }, {passive:true});
-  hero.addEventListener('pointerleave', function(){ mx = -9999; my = -9999; });
-  hero.addEventListener('click', function(e){
-    var r = cv.getBoundingClientRect();
-    var cx = e.clientX - r.left, cy = e.clientY - r.top;
+  document.documentElement.addEventListener('pointerleave', function(){ mx = -9999; my = -9999; });
+  addEventListener('click', function(e){
+    var cx = e.clientX, cy = e.clientY;
     for(var i = 0; i < dots.length; i++){
       var d = dots[i], dist = Math.hypot(d.cx - cx, d.cy - cy);
       if(dist < SHOCK){
@@ -153,7 +151,7 @@ if(triCv && !RM){
   function triDraw(p){
     tctx.clearRect(0, 0, TW, TH);
     /* ola que barre de izquierda a derecha; banda de ancho .3 */
-    var wave = p * 1.9 - .45;
+    var wave = p * 1.6 - .18;  /* arranca casi de inmediato y cierra antes del final */
     for(var i = 0; i < tris.length; i++){
       var tr = tris[i];
       var d = Math.abs(tr.nx + tr.rnd * .18 - wave);
