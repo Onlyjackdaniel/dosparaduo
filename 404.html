@@ -48,7 +48,7 @@
 <a class="fx-btn" href="/dosparaduo/"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#coin"/></svg> Insert coin para continuar</a>
 <div class="coin">CRÉDITOS RESTANTES: ∞</div>
 <canvas id="mini" width="340" height="150" aria-label="Mini-juego: atrapa las monedas"></canvas>
-<p class="mini-hint">▸ ATRAPA 10 MONEDAS PARA CONTINUAR · CLIC O TAP</p>
+<p class="mini-hint">▸ ATRAPA 12 MONEDAS PARA CONTINUAR · CLIC O TAP</p>
 <script>
 (function(){
   var cv = document.getElementById('mini'); if(!cv) return;
@@ -60,7 +60,7 @@
     var mx = (e.clientX - r.left) * (W / r.width), my = (e.clientY - r.top) * (H / r.height);
     for(var i = coins.length - 1; i >= 0; i--){
       var c = coins[i];
-      if(Math.hypot(c.x - mx, c.y - my) < c.r + 7){ coins.splice(i,1); score++; if(score >= 10 && !done){ done = true; ganar(); } break; }
+      if(Math.hypot(c.x - mx, c.y - my) < c.r + 7){ coins.splice(i,1); score++; if(score >= 12 && !done){ done = true; ganar(); } break; }
     }
   });
   function ganar(){ try{ if(window.dpdUnlock) window.dpdUnlock('gameover'); else if(window.fxConfetti) window.fxConfetti(); }catch(e){} }
@@ -76,7 +76,7 @@
       ctx.fillStyle = '#8a6a17'; ctx.font = 'bold 12px monospace'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('$', c.x, c.y + 1);
     }
     ctx.fillStyle = '#3cb8ec'; ctx.font = 'bold 14px monospace'; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
-    ctx.fillText((done ? '★ ' : '') + 'MONEDAS: ' + score + ' / 10', 10, 8);
+    ctx.fillText((done ? '★ ' : '') + 'MONEDAS: ' + score + ' / 12', 10, 8);
     if(done){ ctx.fillStyle = '#f0f4ff'; ctx.font = 'bold 16px monospace'; ctx.textAlign = 'center'; ctx.fillText('¡CONTINUE!', W/2, H/2); }
   })();
 })();

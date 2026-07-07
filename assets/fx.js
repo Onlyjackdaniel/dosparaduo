@@ -189,7 +189,6 @@ if(slot){
     slot.classList.remove('coin-pop'); void slot.offsetWidth; slot.classList.add('coin-pop');
     if(coins === 1) unlock('coin1');
     else if(coins === 10) unlock('coin10');
-    else if(coins === 30) unlock('coin30');
     else if(coins === 100) unlock('coin100');
   });
 }
@@ -240,7 +239,6 @@ var ACH = [
   {id:'konami',      ico:'game-controller', nom:'SALA SECRETA',             txt:'Hallaste la sala oculta con el codigo sagrado.',   pista:'Un codigo clasico de 30 vidas…',            cel:true},
   {id:'coin1',       ico:'coin',            nom:'CREDITO ACEPTADO',         txt:'Insertaste tu primera moneda.',                     pista:'Hay una ranura de monedas en el inicio.'},
   {id:'coin10',      ico:'coins',           nom:'HIGH ROLLER',              txt:'10 monedas en la maquina.',                         pista:'Sigue metiendo monedas…',                    cel:true},
-  {id:'coin30',      ico:'coins',           nom:'30 VIDAS',                 txt:'30 monedas. El codigo lo aprueba.',                 pista:'¿Cuantas vidas daba el codigo?',             cel:true},
   {id:'coin100',     ico:'coins',           nom:'BALLENA DORADA',           txt:'100 monedas. ¿Todo bien en casa?',                  pista:'Solo para valientes (o aburridos).',         cel:true},
   {id:'noctambulo',  ico:'joystick',        nom:'TURNO NOCTURNO',           txt:'Nos visitaste de madrugada. GG.',                   pista:'Se juega mejor de madrugada.'},
   {id:'biblioteca',  ico:'scroll',          nom:'RATA DE BIBLIOTECA',       txt:'Leiste TODAS las resenas. Respeto absoluto.',       pista:'Leete TODAS las resenas hasta el final.',    cel:true},
@@ -326,7 +324,7 @@ function revelarSala(){
 
 /* ── tarjeta de jugador (canvas descargable / compartible) ── */
 function rango(n){
-  return n >= 9 ? '100% · PLATINO' : n >= 7 ? 'TRUE GAMER' : n >= 5 ? 'SPEEDRUNNER' : n >= 3 ? 'CO-OP PRO' : n >= 1 ? 'PARTY MEMBER' : 'NOOB';
+  return n >= 8 ? '100% · PLATINO' : n >= 6 ? 'TRUE GAMER' : n >= 4 ? 'SPEEDRUNNER' : n >= 2 ? 'CO-OP PRO' : n >= 1 ? 'PARTY MEMBER' : 'NOOB';
 }
 function abrirTarjeta(){
   var i, n = 0, badges = [];
