@@ -41,7 +41,11 @@ def es_en_vivo(video_id):
 
 
 def main():
-    xml = fetch(FEED).read().decode('utf-8', 'ignore')
+    try:
+        xml = fetch(FEED).read().decode('utf-8', 'ignore')
+    except Exception as e:
+        print(f'No se pudo leer el feed ({e}); no se toca nada.')
+        return
     entries = re.findall(r'<entry>(.*?)</entry>', xml, re.S)
     videos = []
     for e in entries:

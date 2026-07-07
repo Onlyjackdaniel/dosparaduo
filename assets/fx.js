@@ -179,7 +179,7 @@ window.fxConfetti = function(){
   })(t0);
 };
 
-/* ── moneda del footer: INSERT COIN ── */
+/* ── moneda del footer: INSERT COIN (con niveles, engancha a los logros) ── */
 var slot = document.getElementById('coin-slot');
 if(slot){
   var coins = 0;
@@ -187,8 +187,10 @@ if(slot){
     coins++;
     var c = slot.querySelector('[data-coins]'); if(c) c.textContent = coins;
     slot.classList.remove('coin-pop'); void slot.offsetWidth; slot.classList.add('coin-pop');
-    if(coins === 1) fxToast('CREDITO ACEPTADO', 'Gracias por la moneda. El duo sigue jugando.', 'coin');
-    if(coins === 10){ fxToast('LOGRO DESBLOQUEADO', 'HIGH ROLLER: 10 monedas en la maquina.', 'coins'); window.fxConfetti(); }
+    if(coins === 1) unlock('coin1');
+    else if(coins === 10) unlock('coin10');
+    else if(coins === 30) unlock('coin30');
+    else if(coins === 100) unlock('coin100');
   });
 }
 
@@ -217,15 +219,233 @@ if(!RM){
   addEventListener('pageshow', function(e){ if(e.persisted) cort.classList.remove('in'); });
 }
 
-/* ── codigo Konami: arriba arriba abajo abajo izq der izq der B A ── */
+/* ── codigo Konami: revela la SALA DE ARCADE oculta ── */
 var K = [38,38,40,40,37,39,37,39,66,65], ki = 0;
 addEventListener('keydown', function(e){
   ki = (e.keyCode === K[ki]) ? ki + 1 : (e.keyCode === K[0] ? 1 : 0);
-  if(ki === K.length){
-    ki = 0;
-    if(!RM){ document.body.classList.remove('fx-crt'); void document.body.offsetWidth; document.body.classList.add('fx-crt'); }
-    window.fxConfetti();
-    fxToast('LOGRO DESBLOQUEADO', 'CODIGO KONAMI: 30 vidas para el duo.', 'game-controller');
-  }
+  if(ki === K.length){ ki = 0; revelarSala(); }
 });
+
+/* ============================================================
+   SISTEMA DE LOGROS + SALA DE ARCADE (la desbloquea el Konami)
+   Progreso persistente en localStorage. La sala se inyecta arriba
+   del <footer> y queda oculta hasta que se ingresa el codigo.
+   ============================================================ */
+var LS = {
+  get:function(k,d){ try{ var v = localStorage.getItem(k); return v==null ? d : JSON.parse(v); }catch(e){ return d; } },
+  set:function(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+};
+
+var ACH = [
+  {id:'konami',      ico:'game-controller', nom:'SALA SECRETA',             txt:'Hallaste la sala oculta con el codigo sagrado.',   pista:'Un codigo clasico de 30 vidas…',            cel:true},
+  {id:'coin1',       ico:'coin',            nom:'CREDITO ACEPTADO',         txt:'Insertaste tu primera moneda.',                     pista:'Hay una ranura de monedas en el inicio.'},
+  {id:'coin10',      ico:'coins',           nom:'HIGH ROLLER',              txt:'10 monedas en la maquina.',                         pista:'Sigue metiendo monedas…',                    cel:true},
+  {id:'coin30',      ico:'coins',           nom:'30 VIDAS',                 txt:'30 monedas. El codigo lo aprueba.',                 pista:'¿Cuantas vidas daba el codigo?',             cel:true},
+  {id:'coin100',     ico:'coins',           nom:'BALLENA DORADA',           txt:'100 monedas. ¿Todo bien en casa?',                  pista:'Solo para valientes (o aburridos).',         cel:true},
+  {id:'noctambulo',  ico:'joystick',        nom:'TURNO NOCTURNO',           txt:'Nos visitaste de madrugada. GG.',                   pista:'Se juega mejor de madrugada.'},
+  {id:'biblioteca',  ico:'scroll',          nom:'RATA DE BIBLIOTECA',       txt:'Leiste TODAS las resenas. Respeto absoluto.',       pista:'Leete TODAS las resenas hasta el final.',    cel:true},
+  {id:'gameover',    ico:'crosshair',       nom:'TE PERDISTE, PERO GANASTE',txt:'Sobreviviste a la pantalla de Game Over.',          pista:'Pierdete en una pagina que no existe.'},
+  {id:'cazatesoros', ico:'trophy',          nom:'CAZATESOROS',              txt:'Encontraste las monedas escondidas por el sitio.',  pista:'Hay monedas escondidas en varias paginas.',  cel:true}
+];
+
+var got = LS.get('dpd-logros', {});
+function tiene(id){ return !!got[id]; }
+function unlock(id){
+  if(got[id]) return;
+  var a = null, i;
+  for(i = 0; i < ACH.length; i++) if(ACH[i].id === id){ a = ACH[i]; break; }
+  if(!a) return;
+  got[id] = 1; LS.set('dpd-logros', got);
+  if(window.fxToast) window.fxToast('LOGRO DESBLOQUEADO', a.nom + ' · ' + a.txt, a.ico);
+  if(a.cel && window.fxConfetti) window.fxConfetti();
+  pintarSala();
+}
+window.dpdUnlock = unlock;
+
+/* ── monedas escondidas por el sitio (una por pagina clave) ── */
+var COINS = [
+  {id:'m1', pos:'top:38%;left:8px',  match:function(){ return !!document.querySelector('header#inicio'); }},
+  {id:'m2', pos:'top:52%;right:8px', match:function(){ return /nosotros\.html$/.test(location.pathname); }},
+  {id:'m3', pos:'top:30%;right:8px', match:function(){ return /resenas\/(index\.html)?$/.test(location.pathname); }},
+  {id:'m4', pos:'top:60%;left:8px',  match:function(){ return /apoyo\.html$/.test(location.pathname); }},
+  {id:'m5', pos:'top:44%;right:8px', match:function(){ return /resenas\/it-takes-two\.html$/.test(location.pathname); }}
+];
+var COINS_TOTAL = COINS.length;
+
+/* ── la Sala: se inyecta arriba del footer, oculta hasta el Konami ── */
+var sala = null;
+function construirSala(){
+  var footer = document.querySelector('footer');
+  if(!footer || document.getElementById('dpd-sala')) return;
+  sala = document.createElement('section');
+  sala.id = 'dpd-sala'; sala.className = 'sala';
+  if(!LS.get('dpd-sala-found', false)) sala.classList.add('oculta');
+  footer.parentNode.insertBefore(sala, footer);
+  pintarSala();
+}
+function pintarSala(){
+  if(!sala) return;
+  var i, n = 0;
+  for(i = 0; i < ACH.length; i++) if(got[ACH[i].id]) n++;
+  var mon = LS.get('dpd-monedas', []);
+  var rr = window._dpdResenas;
+  var extra = ' · ' + mon.length + ' / ' + COINS_TOTAL + ' monedas';
+  if(rr) extra += ' · ' + rr.leidas + ' / ' + rr.total + ' resenas';
+  var cards = '';
+  for(i = 0; i < ACH.length; i++){
+    var a = ACH[i], on = !!got[a.id];
+    cards += '<li class="logro ' + (on ? 'on' : 'off') + '">' +
+      '<svg class="ico" aria-hidden="true"><use href="' + FX_BASE + 'assets/icons.svg#' + (on ? a.ico : 'star') + '"/></svg>' +
+      '<div><b>' + (on ? a.nom : 'BLOQUEADO') + '</b><span>' + (on ? a.txt : a.pista) + '</span></div></li>';
+  }
+  sala.innerHTML =
+    '<div class="sala-in">' +
+      '<div class="sala-head">' +
+        '<h2><svg class="ico" aria-hidden="true"><use href="' + FX_BASE + 'assets/icons.svg#trophy"/></svg> Sala de Arcade</h2>' +
+        '<p class="sala-sub">Zona secreta · tu progreso se guarda en este navegador</p>' +
+        '<div class="sala-bar"><span style="width:' + Math.round(n / ACH.length * 100) + '%"></span></div>' +
+        '<p class="sala-count">' + n + ' / ' + ACH.length + ' logros' + extra + '</p>' +
+      '</div>' +
+      '<ul class="sala-grid">' + cards + '</ul>' +
+      '<div class="sala-cta">' +
+        '<button type="button" class="sala-card-btn" id="dpd-card-btn">▸ Generar mi tarjeta de jugador</button>' +
+        (n === ACH.length ? '<p class="sala-100">★ ¡100%! Eres leyenda del duo. Comparte tu tarjeta y etiquetanos.</p>' : '') +
+      '</div>' +
+    '</div>';
+  var b = document.getElementById('dpd-card-btn');
+  if(b) b.addEventListener('click', abrirTarjeta);
+}
+function revelarSala(){
+  var primera = !tiene('konami');
+  LS.set('dpd-sala-found', true);
+  if(sala) sala.classList.remove('oculta');
+  if(!RM){ document.body.classList.remove('fx-crt'); void document.body.offsetWidth; document.body.classList.add('fx-crt'); }
+  unlock('konami');
+  if(sala) setTimeout(function(){ sala.scrollIntoView({behavior: RM ? 'auto' : 'smooth', block:'center'}); }, primera ? 550 : 120);
+}
+
+/* ── tarjeta de jugador (canvas descargable / compartible) ── */
+function rango(n){
+  return n >= 9 ? '100% · PLATINO' : n >= 7 ? 'TRUE GAMER' : n >= 5 ? 'SPEEDRUNNER' : n >= 3 ? 'CO-OP PRO' : n >= 1 ? 'PARTY MEMBER' : 'NOOB';
+}
+function abrirTarjeta(){
+  var i, n = 0, badges = [];
+  for(i = 0; i < ACH.length; i++) if(got[ACH[i].id]){ n++; badges.push(ACH[i].nom); }
+  var wrap = document.createElement('div'); wrap.className = 'gcard-wrap';
+  wrap.innerHTML =
+    '<div class="gcard-box">' +
+      '<canvas class="gcard-cv" width="720" height="405"></canvas>' +
+      '<div class="gcard-btns">' +
+        '<a class="gcard-dl" download="tarjeta-dos-para-duo.png">▸ Descargar PNG</a>' +
+        '<button type="button" class="gcard-share" hidden>Compartir</button>' +
+        '<button type="button" class="gcard-x">Cerrar</button>' +
+      '</div></div>';
+  document.body.appendChild(wrap);
+  var cv = wrap.querySelector('canvas'), ctx = cv.getContext('2d');
+  function draw(){
+    var g = ctx.createLinearGradient(0, 0, 720, 405);
+    g.addColorStop(0, '#0f1929'); g.addColorStop(1, '#142440');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, 720, 405);
+    ctx.strokeStyle = '#ffd166'; ctx.lineWidth = 4; ctx.strokeRect(12, 12, 696, 381);
+    ctx.textBaseline = 'top'; ctx.textAlign = 'left';
+    ctx.fillStyle = '#ffd166'; ctx.font = '700 19px "Space Mono", monospace';
+    ctx.fillText('TARJETA DE JUGADOR', 34, 32);
+    ctx.fillStyle = '#f0f4ff'; ctx.font = '44px Bungee, sans-serif';
+    ctx.fillText('DOS PARA DUO', 32, 58);
+    ctx.fillStyle = '#3cb8ec'; ctx.font = '700 24px "Space Mono", monospace';
+    ctx.fillText('RANGO: ' + rango(n), 34, 132);
+    ctx.fillStyle = '#ff7a29'; ctx.font = '64px Bungee, sans-serif';
+    ctx.fillText(n + ' / ' + ACH.length, 34, 168);
+    ctx.fillStyle = '#8da0bf'; ctx.font = '400 14px "Space Mono", monospace';
+    ctx.fillText('LOGROS DESBLOQUEADOS', 250, 205);
+    ctx.font = '400 16px "Outfit", sans-serif';
+    var y = 258;
+    if(!badges.length){ ctx.fillStyle = '#8da0bf'; ctx.fillText('Aun sin logros… ¡a explorar!', 34, y); }
+    badges.slice(0, 6).forEach(function(bn){
+      ctx.fillStyle = '#ffd166'; ctx.fillText('★', 34, y);
+      ctx.fillStyle = '#f0f4ff'; ctx.fillText(bn, 58, y); y += 23;
+    });
+    ctx.fillStyle = '#8da0bf'; ctx.font = '400 13px "Space Mono", monospace';
+    ctx.fillText('onlyjackdaniel.github.io/dosparaduo', 34, 372);
+    var a = wrap.querySelector('.gcard-dl'); try{ a.href = cv.toDataURL('image/png'); }catch(e){}
+  }
+  if(document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+  draw();
+  var sh = wrap.querySelector('.gcard-share');
+  if(navigator.share && navigator.canShare){
+    sh.hidden = false;
+    sh.addEventListener('click', function(){
+      cv.toBlob(function(blob){
+        if(!blob) return;
+        var file = new File([blob], 'tarjeta-dos-para-duo.png', {type:'image/png'});
+        try{ if(navigator.canShare({files:[file]})) navigator.share({files:[file], title:'Dos para Duo', text:'Mi tarjeta de jugador en Dos para Duo'}); }catch(e){}
+      });
+    });
+  }
+  wrap.querySelector('.gcard-x').addEventListener('click', function(){ wrap.remove(); });
+  wrap.addEventListener('click', function(e){ if(e.target === wrap) wrap.remove(); });
+}
+
+/* ── logro nocturno ── */
+function checkNoctambulo(){ var h = new Date().getHours(); if(h >= 0 && h < 5) unlock('noctambulo'); }
+
+/* ── monedas escondidas ── */
+function initMonedas(){
+  var mon = LS.get('dpd-monedas', []);
+  COINS.forEach(function(m){
+    if(mon.indexOf(m.id) !== -1) return;
+    if(!m.match()) return;
+    var el = document.createElement('button');
+    el.type = 'button'; el.className = 'dpd-coin'; el.setAttribute('aria-label', 'Moneda escondida');
+    el.style.cssText = 'position:fixed;' + m.pos;
+    el.innerHTML = '<svg class="ico" aria-hidden="true"><use href="' + FX_BASE + 'assets/icons.svg#coin"/></svg>';
+    el.addEventListener('click', function(){
+      var cur = LS.get('dpd-monedas', []);
+      if(cur.indexOf(m.id) === -1){ cur.push(m.id); LS.set('dpd-monedas', cur); }
+      el.classList.add('got'); setTimeout(function(){ el.remove(); }, 340);
+      if(window.fxToast) window.fxToast('MONEDA ENCONTRADA', cur.length + ' / ' + COINS_TOTAL + ' monedas escondidas.', 'coin');
+      if(cur.length >= COINS_TOTAL) unlock('cazatesoros');
+      pintarSala();
+    });
+    document.body.appendChild(el);
+  });
+}
+
+/* ── logro de completista: leer TODAS las resenas ── */
+function initBiblioteca(){
+  var m = location.pathname.match(/\/resenas\/([a-z0-9-]+)\.html$/);
+  function checkTotal(){
+    fetch(FX_BASE + 'assets/resenas.json').then(function(r){ return r.json(); }).then(function(list){
+      var total = list.length, cur = LS.get('dpd-leidas', []);
+      var validas = cur.filter(function(s){ return list.indexOf(s) !== -1; });
+      window._dpdResenas = {leidas: validas.length, total: total};
+      if(total > 0 && validas.length >= total) unlock('biblioteca');
+      pintarSala();
+    }).catch(function(){});
+  }
+  if(m){
+    var slug = m[1], marcada = false;
+    var registrar = function(){
+      if(marcada) return; marcada = true;
+      removeEventListener('scroll', alScroll);
+      var cur = LS.get('dpd-leidas', []);
+      if(cur.indexOf(slug) === -1){ cur.push(slug); LS.set('dpd-leidas', cur); }
+      checkTotal();
+    };
+    var alScroll = function(){
+      var doc = document.documentElement, max = doc.scrollHeight - doc.clientHeight;
+      /* cuenta si la resena cabe en pantalla o si llegaste cerca del final */
+      if(max <= 60 || (doc.scrollTop + doc.clientHeight >= doc.scrollHeight - 140)) registrar();
+    };
+    addEventListener('scroll', alScroll, {passive:true}); alScroll();
+    setTimeout(function(){ registrar(); }, 15000);   /* o quedarte a leerla tambien cuenta */
+  }
+  if(m || LS.get('dpd-sala-found', false)) checkTotal();
+}
+
+/* ── arranque del sistema de logros ── */
+construirSala();
+checkNoctambulo();
+initMonedas();
+initBiblioteca();
 })();

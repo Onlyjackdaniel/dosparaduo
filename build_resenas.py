@@ -254,9 +254,9 @@ PAGE = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css?v=5">
-<link rel="stylesheet" href="../assets/fx.css?v=5">
+<link rel="stylesheet" href="../assets/fx.css?v=6">
 <script src="../assets/menu.js?v=5" defer></script>
-<script src="../assets/fx.js?v=4" defer data-fx-base="../"></script>
+<script src="../assets/fx.js?v=6" defer data-fx-base="../"></script>
 <script src="../assets/ascii-title.js?v=1" defer></script>
 <style>__CSS__
 .game-head{text-align:center;margin-bottom:46px}
@@ -431,9 +431,9 @@ INDEX = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css?v=5">
-<link rel="stylesheet" href="../assets/fx.css?v=5">
+<link rel="stylesheet" href="../assets/fx.css?v=6">
 <script src="../assets/menu.js?v=5" defer></script>
-<script src="../assets/fx.js?v=4" defer data-fx-base="../"></script>
+<script src="../assets/fx.js?v=6" defer data-fx-base="../"></script>
 <script src="../assets/ascii-title.js?v=1" defer></script>
 <script src="../assets/particles-bg.js?v=2" defer></script>
 <style>__CSS__
@@ -607,5 +607,7 @@ sm += '\n'.join(f'  <url><loc>{u}</loc></url>' for u in urls) + '\n</urlset>'
 (ROOT/'sitemap.xml').write_text(sm, encoding='utf-8')
 (ROOT/'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n', encoding='utf-8')
 (ROOT/'.nojekyll').write_text('', encoding='utf-8')
+# manifiesto de slugs para el logro "Rata de biblioteca" (lo lee assets/fx.js)
+(ROOT/'assets'/'resenas.json').write_text(json.dumps(slugs, ensure_ascii=False), encoding='utf-8')
 
 print(f'OK: galeria unica {len(juntos)+len(solo)} juegos + {len(extras)} extras = {len(slugs)} paginas, sitemap con {len(urls)} URLs')

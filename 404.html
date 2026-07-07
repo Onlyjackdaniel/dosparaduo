@@ -24,8 +24,8 @@
 <meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/fx.css?v=5">
-<script src="assets/fx.js?v=4" defer></script>
+<link rel="stylesheet" href="assets/fx.css?v=6">
+<script src="assets/fx.js?v=6" defer></script>
 <style>
   body{margin:0;background:#0a111f;color:#f0f4ff;font-family:'Outfit',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;overflow:hidden}
   .scan{position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(0,0,0,.14) 2px 4px)}
@@ -36,6 +36,8 @@
   a{display:inline-flex;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;background:#3cb8ec;color:#062536;text-decoration:none;font-weight:700;padding:15px 30px;border-radius:8px;box-shadow:0 0 22px rgba(60,184,236,.4)}
   .coin{margin-top:26px;font-family:'Space Mono',monospace;font-size:.65rem;letter-spacing:2px;color:#ffd166;animation:blink 1.6s steps(2) infinite}
   @keyframes blink{50%{opacity:.3}}
+  #mini{margin-top:22px;border:1px dashed #273b5e;border-radius:10px;background:rgba(20,36,64,.5);touch-action:none;max-width:92vw;cursor:crosshair}
+  .mini-hint{margin-top:10px;font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:2px;color:#8da0bf}
 </style>
 </head>
 <body>
@@ -44,6 +46,40 @@
 <h1 data-scramble>Game Over</h1>
 <p>Esta pantalla no existe, se la comió un zombi, o Player 2 tocó algo que no debía. Probablemente lo tercero.</p>
 <a class="fx-btn" href="/dosparaduo/"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#coin"/></svg> Insert coin para continuar</a>
-<div class="coin">CRÉDITOS RESTANTES: ∞ · ↑↑↓↓←→←→BA</div>
+<div class="coin">CRÉDITOS RESTANTES: ∞</div>
+<canvas id="mini" width="340" height="150" aria-label="Mini-juego: atrapa las monedas"></canvas>
+<p class="mini-hint">▸ ATRAPA 10 MONEDAS PARA CONTINUAR · CLIC O TAP</p>
+<script>
+(function(){
+  var cv = document.getElementById('mini'); if(!cv) return;
+  var ctx = cv.getContext('2d'), W = cv.width, H = cv.height;
+  var coins = [], score = 0, done = false, t = 0;
+  function spawn(){ coins.push({x:18 + Math.random()*(W-36), y:-14, r:11, v:1.1 + Math.random()*1.5}); }
+  cv.addEventListener('pointerdown', function(e){
+    var r = cv.getBoundingClientRect();
+    var mx = (e.clientX - r.left) * (W / r.width), my = (e.clientY - r.top) * (H / r.height);
+    for(var i = coins.length - 1; i >= 0; i--){
+      var c = coins[i];
+      if(Math.hypot(c.x - mx, c.y - my) < c.r + 7){ coins.splice(i,1); score++; if(score >= 10 && !done){ done = true; ganar(); } break; }
+    }
+  });
+  function ganar(){ try{ if(window.dpdUnlock) window.dpdUnlock('gameover'); else if(window.fxConfetti) window.fxConfetti(); }catch(e){} }
+  (function loop(){
+    requestAnimationFrame(loop);
+    t++; if(!done && t % 40 === 0) spawn();
+    ctx.clearRect(0,0,W,H);
+    for(var i = coins.length - 1; i >= 0; i--){
+      var c = coins[i]; c.y += c.v;
+      if(c.y > H + 16){ coins.splice(i,1); continue; }
+      ctx.beginPath(); ctx.arc(c.x, c.y, c.r, 0, 6.2832); ctx.fillStyle = '#ffd166'; ctx.fill();
+      ctx.lineWidth = 2; ctx.strokeStyle = '#b98a1f'; ctx.stroke();
+      ctx.fillStyle = '#8a6a17'; ctx.font = 'bold 12px monospace'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('$', c.x, c.y + 1);
+    }
+    ctx.fillStyle = '#3cb8ec'; ctx.font = 'bold 14px monospace'; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
+    ctx.fillText((done ? '★ ' : '') + 'MONEDAS: ' + score + ' / 10', 10, 8);
+    if(done){ ctx.fillStyle = '#f0f4ff'; ctx.font = 'bold 16px monospace'; ctx.textAlign = 'center'; ctx.fillText('¡CONTINUE!', W/2, H/2); }
+  })();
+})();
+</script>
 </body>
 </html>

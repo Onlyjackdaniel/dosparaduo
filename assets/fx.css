@@ -89,3 +89,52 @@ a,button,summary,[data-video]{cursor:pointer}
   .fx-tilt{transform:none !important}
   body.fx-crt{animation:none}
 }
+
+/* ============================================================
+   SALA DE ARCADE + LOGROS (fx.js) · oculta hasta el codigo Konami
+   ============================================================ */
+.sala{max-width:1000px;margin:0 auto;padding:34px 20px 6px}
+.sala.oculta{display:none}
+.sala-in{border:1px solid var(--line);border-radius:16px;padding:26px 22px;box-shadow:0 18px 50px rgba(0,0,0,.4);
+  background:radial-gradient(120% 100% at 50% 0,rgba(var(--p2-rgb),.06),transparent 60%),linear-gradient(160deg,var(--panel),var(--bg-2))}
+.sala-head{text-align:center;margin-bottom:22px}
+.sala-head h2{font-family:var(--display);font-size:clamp(1.3rem,4vw,2rem);text-transform:uppercase;letter-spacing:1px;margin:0;display:flex;gap:10px;align-items:center;justify-content:center}
+.sala-head h2 .ico{color:var(--gold);width:1.1em;height:1.1em}
+.sala-sub{font-family:var(--mono);font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin:6px 0 14px}
+.sala-bar{height:8px;border-radius:6px;background:var(--bg);border:1px solid var(--line);overflow:hidden;max-width:340px;margin:0 auto}
+.sala-bar span{display:block;height:100%;background:linear-gradient(90deg,var(--p1),var(--gold),var(--p2));box-shadow:0 0 12px rgba(var(--p2-rgb),.5);transition:width .6s cubic-bezier(.2,.9,.25,1)}
+.sala-count{font-family:var(--mono);font-size:.72rem;letter-spacing:1px;color:var(--gold);margin:10px 0 0}
+.sala-grid{list-style:none;margin:0;padding:0;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.logro{display:flex;gap:12px;align-items:flex-start;padding:13px 15px;border-radius:12px;border:1px solid var(--line);background:rgba(10,17,31,.5);transition:transform .2s,border-color .2s}
+.logro .ico{width:1.7em;height:1.7em;flex:none}
+.logro b{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:3px}
+.logro span{font-size:.82rem;color:var(--muted);line-height:1.35}
+.logro.on{border-color:rgba(255,209,102,.5)}
+.logro.on .ico{color:var(--gold);filter:drop-shadow(0 0 7px rgba(255,209,102,.5))}
+.logro.on b{color:var(--gold)}
+.logro.on:hover{transform:translateY(-3px)}
+.logro.off{opacity:.6}
+.logro.off .ico{color:var(--line)}
+.logro.off b{color:var(--muted)}
+.sala-cta{text-align:center;margin-top:20px}
+.sala-card-btn{font-family:var(--mono);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;background:var(--p2);color:var(--p2-ink);border:none;border-radius:10px;padding:13px 22px;font-weight:700}
+.sala-100{color:var(--gold);font-size:.85rem;margin:14px 0 0}
+
+/* tarjeta de jugador (modal descargable) */
+.gcard-wrap{position:fixed;inset:0;z-index:360;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(6,11,22,.82)}
+.gcard-box{max-width:min(96vw,760px);text-align:center}
+.gcard-cv{width:100%;height:auto;border-radius:14px;box-shadow:0 20px 60px rgba(0,0,0,.6);border:1px solid var(--gold)}
+.gcard-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.gcard-btns a,.gcard-btns button{font-family:var(--mono);font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);border-radius:9px;padding:12px 18px;cursor:pointer;background:var(--panel);color:var(--text)}
+.gcard-btns .gcard-dl{background:var(--gold);color:#2a1606;border-color:var(--gold);font-weight:700}
+
+/* monedas escondidas por el sitio */
+.dpd-coin{z-index:180;width:36px;height:36px;padding:0;border:none;background:none;color:var(--gold);opacity:.4;filter:drop-shadow(0 0 6px rgba(255,209,102,.45));transition:opacity .2s,transform .25s}
+.dpd-coin .ico{width:28px;height:28px}
+.dpd-coin:hover{opacity:1;transform:scale(1.25)}
+.dpd-coin.got{opacity:0;transform:scale(1.9) translateY(-24px)}
+
+@media (prefers-reduced-motion:reduce){
+  .sala-bar span{transition:none}
+  .dpd-coin{transition:opacity .2s}
+}
