@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(r'D:\dosparaduo-web')
 OUT = ROOT / 'listas'
 OUT.mkdir(exist_ok=True)
-BASE = 'https://onlyjackdaniel.github.io/dosparaduo'
+BASE = 'https://dosparaduo.com'
 
 CSP = ('<meta http-equiv="Content-Security-Policy" content="default-src \'self\'; '
        "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; "
@@ -148,7 +148,7 @@ PAGE = f'''<!DOCTYPE html>
 <link rel="apple-touch-icon" href="../assets/icon-512.png">
 <link rel="manifest" href="../site.webmanifest">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
+<meta name="twitter:image" content="https://dosparaduo.com/assets/icon-512.png">
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
 <meta property="og:title" content="Los mejores juegos cooperativos para parejas, probados en pareja">
 <meta property="og:description" content="Ranking honesto de una pareja gamer real: del imprescindible It Takes Two al sufrimiento compartido de Cuphead.">
@@ -163,9 +163,9 @@ PAGE = f'''<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css?v=5">
-<link rel="stylesheet" href="../assets/fx.css?v=6">
+<link rel="stylesheet" href="../assets/fx.css?v=7">
 <script src="../assets/menu.js?v=5" defer></script>
-<script src="../assets/fx.js?v=6" defer data-fx-base="../"></script>
+<script src="../assets/fx.js?v=7" defer data-fx-base="../"></script>
 <style>
 @media (prefers-reduced-motion: reduce){{*,*::before,*::after{{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}}}
 *{{margin:0;padding:0;box-sizing:border-box}}

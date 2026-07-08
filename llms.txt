@@ -6,9 +6,9 @@ Canal de YouTube: https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw
 
 ## Contenido principal
 
-- [Inicio](https://onlyjackdaniel.github.io/dosparaduo/): presentación del canal, últimos videos y quiénes somos.
-- [Reseñas de juegos jugados en pareja](https://onlyjackdaniel.github.io/dosparaduo/resenas/): 52 juegos jugados juntos con reseñas reales publicadas en Steam: co-op, terror, plataformas e indies. Cada juego tiene su página con la reseña completa, horas jugadas, veredicto (recomendado o no) y el video del canal cuando existe.
-- [Solo runs](https://onlyjackdaniel.github.io/dosparaduo/resenas/solo.html): juegos jugados en solitario por Player 1, también con reseña completa.
+- [Inicio](https://dosparaduo.com/): presentación del canal, últimos videos y quiénes somos.
+- [Reseñas de juegos jugados en pareja](https://dosparaduo.com/resenas/): 52 juegos jugados juntos con reseñas reales publicadas en Steam: co-op, terror, plataformas e indies. Cada juego tiene su página con la reseña completa, horas jugadas, veredicto (recomendado o no) y el video del canal cuando existe.
+- [Solo runs](https://dosparaduo.com/resenas/solo.html): juegos jugados en solitario por Player 1, también con reseña completa.
 
 ## Temas que cubrimos
 

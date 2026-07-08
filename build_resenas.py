@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(r'D:\dosparaduo-web')
 OUT = ROOT / 'resenas'
 OUT.mkdir(exist_ok=True)
-BASE = 'https://onlyjackdaniel.github.io/dosparaduo'
+BASE = 'https://dosparaduo.com'
 
 CSP = ('<meta http-equiv="Content-Security-Policy" content="default-src \'self\'; '
        "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; "
@@ -241,7 +241,7 @@ PAGE = """<!DOCTYPE html>
 <link rel="apple-touch-icon" href="../assets/icon-512.png">
 <link rel="manifest" href="../site.webmanifest">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
+<meta name="twitter:image" content="https://dosparaduo.com/assets/icon-512.png">
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
 <meta property="og:title" content="Reseña: __NOMBRE__ | Dos para Duo">
 <meta property="og:description" content="__DESC__">
@@ -254,9 +254,9 @@ PAGE = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css?v=5">
-<link rel="stylesheet" href="../assets/fx.css?v=6">
+<link rel="stylesheet" href="../assets/fx.css?v=7">
 <script src="../assets/menu.js?v=5" defer></script>
-<script src="../assets/fx.js?v=6" defer data-fx-base="../"></script>
+<script src="../assets/fx.js?v=7" defer data-fx-base="../"></script>
 <script src="../assets/ascii-title.js?v=1" defer></script>
 <style>__CSS__
 .game-head{text-align:center;margin-bottom:46px}
@@ -420,7 +420,7 @@ INDEX = """<!DOCTYPE html>
 <link rel="apple-touch-icon" href="../assets/icon-512.png">
 <link rel="manifest" href="../site.webmanifest">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://onlyjackdaniel.github.io/dosparaduo/assets/icon-512.png">
+<meta name="twitter:image" content="https://dosparaduo.com/assets/icon-512.png">
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
 <meta property="og:title" content="Reseñas | Dos para Duo">
 <meta property="og:description" content="Los juegos que jugamos juntos, reseñados de verdad.">
@@ -431,9 +431,9 @@ INDEX = """<!DOCTYPE html>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
 <link rel="stylesheet" href="../assets/menu.css?v=5">
-<link rel="stylesheet" href="../assets/fx.css?v=6">
+<link rel="stylesheet" href="../assets/fx.css?v=7">
 <script src="../assets/menu.js?v=5" defer></script>
-<script src="../assets/fx.js?v=6" defer data-fx-base="../"></script>
+<script src="../assets/fx.js?v=7" defer data-fx-base="../"></script>
 <script src="../assets/ascii-title.js?v=1" defer></script>
 <script src="../assets/particles-bg.js?v=2" defer></script>
 <style>__CSS__
