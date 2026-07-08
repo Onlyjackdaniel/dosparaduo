@@ -5,7 +5,7 @@ v1: 'Los mejores juegos cooperativos para parejas'."""
 import json, re, unicodedata, html as hm
 from pathlib import Path
 
-ROOT = Path(r'D:\dosparaduo-web')
+ROOT = Path(__file__).resolve().parent   # raíz del repo; portable (PC de Jack y CI de GitHub)
 OUT = ROOT / 'listas'
 OUT.mkdir(exist_ok=True)
 BASE = 'https://dosparaduo.com'

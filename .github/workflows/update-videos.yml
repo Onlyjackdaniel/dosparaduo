@@ -21,14 +21,17 @@ jobs:
       - name: Actualizar sección de videos desde el RSS del canal
         run: python scripts/update_videos.py
 
+      - name: Regenerar reseñas, sitemap y llms.txt (fuente única, anti-drift)
+        run: python build_resenas.py
+
       - name: Commit y push si hubo cambios
         run: |
-          if ! git diff --quiet index.html; then
+          git add index.html llms.txt sitemap.xml robots.txt resenas assets/resenas.json
+          if git diff --cached --quiet; then
+            echo "Sin cambios: nada que publicar."
+          else
             git config user.name "dosparaduo-bot"
             git config user.email "actions@github.com"
-            git add index.html
-            git commit -m "Videos actualizados desde el feed del canal"
+            git commit -m "Auto: videos + reseñas/sitemap/llms regenerados desde la fuente"
             git push
-          else
-            echo "Sin cambios — nada que publicar."
           fi

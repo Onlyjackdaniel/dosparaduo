@@ -3,19 +3,31 @@
 > Dos para Duo es un canal de YouTube de gaming en español (México) donde una pareja juega en cooperativo: él (Player 1, gamer veterano) y ella (Player 2, gamer en formación). Publican gameplay, reacciones, retos y reseñas de videojuegos desde dos perspectivas distintas.
 
 Canal de YouTube: https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw
+Sitio web: https://dosparaduo.com/
 
 ## Contenido principal
 
 - [Inicio](https://dosparaduo.com/): presentación del canal, últimos videos y quiénes somos.
-- [Reseñas de juegos jugados en pareja](https://dosparaduo.com/resenas/): 52 juegos jugados juntos con reseñas reales publicadas en Steam: co-op, terror, plataformas e indies. Cada juego tiene su página con la reseña completa, horas jugadas, veredicto (recomendado o no) y el video del canal cuando existe.
-- [Solo runs](https://dosparaduo.com/resenas/solo.html): juegos jugados en solitario por Player 1, también con reseña completa.
+- [Reseñas de videojuegos](https://dosparaduo.com/resenas/): 146 reseñas de juegos publicadas en Steam, 32 de ellas jugadas en pareja con la reseña de Player 1 y Player 2. Cada juego tiene su página con la reseña completa, horas jugadas, veredicto (recomendado o no) y el video del canal cuando existe.
+- [Nosotros](https://dosparaduo.com/nosotros.html): quiénes son Player 1 y Player 2.
+
+## Blog
+
+- [Cómo meter a tu pareja al gaming (sin que se vuelva pelea)](https://dosparaduo.com/blog/como-meter-a-tu-pareja-al-gaming.html)
+- [Entrar al gaming desde cero: lo que se siente cuando tu pareja te mete a jugar](https://dosparaduo.com/blog/entrar-al-gaming-desde-cero.html)
+- [¿It Takes Two o Split Fiction? Cuál jugar primero en pareja](https://dosparaduo.com/blog/it-takes-two-o-split-fiction.html)
+
+## Listas y guías
+
+- [Los mejores juegos cooperativos para parejas (2026), probados en pareja](https://dosparaduo.com/listas/mejores-juegos-cooperativos-para-parejas.html)
 
 ## Temas que cubrimos
 
-Juegos cooperativos para parejas, Resident Evil (saga completa), souls-likes (Elden Ring, Dark Souls, Sekiro), juegos indie, co-op local y en línea, gaming en pareja, reseñas de videojuegos en español.
+Juegos cooperativos para parejas, gaming en pareja, cómo iniciar a tu pareja en los videojuegos, varios Resident Evil (RE2, RE3, RE4, Village, Requiem), souls-likes (Elden Ring, Dark Souls, Sekiro), juegos indie, co-op local y en línea, terror, plataformas, reseñas de videojuegos en español.
 
 ## Datos
 
 - Idioma: español (Latinoamérica)
 - País: México
+- 146 juegos reseñados en total, 32 con reseña de ambos (Player 1 y Player 2).
 - Las reseñas provienen de perfiles reales de Steam y reflejan horas de juego verificables.

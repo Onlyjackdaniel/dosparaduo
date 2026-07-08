@@ -5,7 +5,7 @@ Re-ejecutable: cuando existan reseñas de Anahí se agregan al JSON y se regener
 import json, re, unicodedata, html as htmlmod
 from pathlib import Path
 
-ROOT = Path(r'D:\dosparaduo-web')
+ROOT = Path(__file__).resolve().parent   # raíz del repo; portable (PC de Jack y CI de GitHub)
 OUT = ROOT / 'resenas'
 OUT.mkdir(exist_ok=True)
 BASE = 'https://dosparaduo.com'
@@ -38,8 +38,13 @@ SELECCION = ["Radical Rabbit Stew","Split Fiction","Borderlands 2","Blanc","We W
 EXTRAS = ["OBS Studio","3DMark","Banana","My Name is Mayo","My Name is Mayo 2","My Name is Mayo 3","Achievement Clicker 2018","Cookie Clicker","Duck Simulator 2","A Story About Farting"]
 
 VIDEOS = {"move or die":"Ra5H1bkkEj4","god of war ragnarok":"PnrH_GSsT8k","resident evil 4":"EU0jZirCx6k"}
+# Fechas REALES de subida a YouTube (verificadas contra la página de cada video, 8 jul 2026).
+# Necesarias para el uploadDate del VideoObject (campo requerido por Google). NO inventar:
+# al agregar un video a VIDEOS, agrega aquí su fecha real o el uploadDate se omite.
+VIDEO_DATES = {"Ra5H1bkkEj4":"2026-02-03T03:00:44-08:00","PnrH_GSsT8k":"2026-01-18T13:07:00-08:00","EU0jZirCx6k":"2026-01-10T19:05:19-08:00"}
 
 MESES = {'January':'ene','February':'feb','March':'mar','April':'abr','May':'may','June':'jun','July':'jul','August':'ago','September':'sep','October':'oct','November':'nov','December':'dic'}
+MES_NUM = {'January':'01','February':'02','March':'03','April':'04','May':'05','June':'06','July':'07','August':'08','September':'09','October':'10','November':'11','December':'12'}
 
 def norm(s):
     s = s.replace('™','').replace('®','').replace('’',"'")
@@ -57,6 +62,16 @@ def fecha_es(f):
     m = re.match(r'(\d+)\s+(\w+)(?:,\s*(\d{4}))?', f)
     if not m: return f
     return f"{m.group(1)} {MESES.get(m.group(2), m.group(2))} {m.group(3) or '2026'}"
+
+def fecha_iso(f):
+    # ISO 8601 para datePublished. Si la reseña de Steam no trae año (reseña de este
+    # año), se OMITE en vez de inventar el año.
+    if not f: return ''
+    m = re.match(r'(\d+)\s+(\w+),\s*(\d{4})', f)
+    if not m: return ''
+    mm = MES_NUM.get(m.group(2))
+    if not mm: return ''
+    return f"{m.group(3)}-{mm}-{int(m.group(1)):02d}"
 
 def excerpt(h, n=155):
     t = re.sub(r'<[^>]+>',' ', h)
@@ -161,6 +176,11 @@ extras = buscar(EXTRAS)
 _sel = {norm(n) for n in SELECCION} | {norm(n) for n in EXTRAS}
 solo = [r for r in reviews if norm(r['nombre']) not in _sel]
 
+# Orden canónico de TODAS las páginas de reseña (juntos + extras + solo).
+# Coincide con el orden en que render_page genera los slugs más abajo, y alimenta
+# el ItemList (schema de colección) + el índice de búsqueda completo del index.
+allpages = [(r['nombre'], slug(r['nombre'])) for r in juntos + extras + solo]
+
 # Reseñas manuales de Anahí (Player 2). Formato de cada entrada en reviews_anahi.json:
 # {"nombre": "It Takes Two", "voto": "up"|"down", "horas": "15", "fecha": "jun 2026", "html": "<p>texto...</p>"}
 # horas y fecha son opcionales. El match es por nombre normalizado contra el juego de la página.
@@ -170,6 +190,33 @@ if _anahi_path.exists():
     for a in json.loads(_anahi_path.read_text(encoding='utf-8')):
         ANAHI[norm(a['nombre'])] = a
 print(f'Reseñas de Anahí cargadas: {len(ANAHI)}')
+
+# ---------- descubrimiento de blogs y listas (fuente única: se leen del disco) ----------
+# Así el sitemap y llms.txt nunca se desincronizan: al agregar un blog o una lista,
+# el próximo rebuild los detecta solo. Antes estaban hardcodeados y ya habían driftado
+# (llms.txt decía 52 juegos con 146 reales y apuntaba a /resenas/solo.html inexistente).
+def _titulo_html(p):
+    t = p.read_text(encoding='utf-8')
+    m = re.search(r'<title>(.*?)</title>', t, re.I | re.S)
+    if not m:
+        return p.stem.replace('-', ' ')
+    titulo = re.split(r'\s*[|·]\s*Dos para Duo', htmlmod.unescape(m.group(1)).strip())[0].strip()
+    return des_guionar(titulo)
+
+def _descubrir(carpeta):
+    d = ROOT / carpeta
+    if not d.exists():
+        return []
+    out = []
+    for p in sorted(d.glob('*.html')):
+        if p.name == 'index.html':
+            continue
+        out.append({'url': f'{BASE}/{carpeta}/{p.name}', 'titulo': _titulo_html(p)})
+    return out
+
+BLOGS = _descubrir('blog')
+LISTAS = _descubrir('listas')
+print(f'Blogs detectados: {len(BLOGS)} · Listas detectadas: {len(LISTAS)}')
 
 CSS = """
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
@@ -250,6 +297,7 @@ PAGE = """<!DOCTYPE html>
 <link rel="canonical" href="__URL__">
 <script type="application/ld+json">__SCHEMA__</script>
 <script type="application/ld+json">__BREADCRUMB__</script>
+__VIDEOSCHEMA__
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
@@ -339,14 +387,6 @@ def render_page(r, solo=False):
     rec = r['voto'] == 'up'
     desc = excerpt(r['html'])
     url = f"{BASE}/resenas/{s}.html"
-    schema = json.dumps({
-        "@context":"https://schema.org","@type":"Review",
-        "itemReviewed":{"@type":"VideoGame","name":nombre},
-        "author":{"@type":"Person","name":"Jack de Dos para Duo"},
-        "publisher":{"@type":"Organization","name":"Dos para Duo","sameAs":"https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw"},
-        "inLanguage":"es","reviewBody":desc,
-        "positiveNotes" if rec else "negativeNotes":{"@type":"ItemList","itemListElement":[]}
-    }, ensure_ascii=False)
     breadcrumb = json.dumps({
         "@context":"https://schema.org","@type":"BreadcrumbList",
         "itemListElement":[
@@ -367,8 +407,39 @@ def render_page(r, solo=False):
         p2body = f'<div class="meta-row" style="justify-content:flex-start;margin:0 0 16px">{chips_html}</div><div class="rbody">{sanitize_html(a2["html"])}</div>'
     else:
         p2body = f'<div class="pending"><span class="q">?</span>{p2txt}</div>'
+    # Schema Review: P1 siempre; P2 (Anahí) como segundo nodo cuando ella también reseñó
+    # (es el diferencial del sitio: dos perspectivas). itemReviewed con sameAs a Steam y
+    # datePublished real (se omite si la reseña no trae año, para no inventar).
+    _pub = {"@type":"Organization","name":"Dos para Duo","sameAs":"https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw"}
+    _item = {"@type":"VideoGame","name":nombre,"sameAs":f"https://store.steampowered.com/app/{app}/"}
+    p1_review = {"@context":"https://schema.org","@type":"Review","itemReviewed":_item,
+                 "author":{"@type":"Person","name":"Jack de Dos para Duo"},"publisher":_pub,
+                 "inLanguage":"es","reviewBody":desc}
+    _dp = fecha_iso(r['fecha'])
+    if _dp: p1_review["datePublished"] = _dp
+    reviews_ld = [p1_review]
+    if a2:
+        reviews_ld.append({"@context":"https://schema.org","@type":"Review","itemReviewed":_item,
+                           "author":{"@type":"Person","name":"Anahí de Dos para Duo"},"publisher":_pub,
+                           "inLanguage":"es","reviewBody":excerpt(a2["html"])})
+    schema = json.dumps(reviews_ld[0] if len(reviews_ld) == 1 else reviews_ld, ensure_ascii=False)
     vid = VIDEOS.get(norm(nombre))
     video_html = VIDEO_BLOCK.replace('__VID__', vid).replace('__NOMBRE_ESC__', htmlmod.escape(nombre)) if vid else ''
+    # VideoObject solo cuando de verdad hay video del canal (evita inventar). uploadDate
+    # es fecha real verificada (VIDEO_DATES); si faltara, se omite en vez de fabricarla.
+    if vid:
+        _vo = {"@context":"https://schema.org","@type":"VideoObject",
+            "name":f"{nombre} en Dos para Duo",
+            "description":f"Player 1 y Player 2 juegan {nombre} en el canal Dos para Duo.",
+            "thumbnailUrl":[f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"],
+            "embedUrl":f"https://www.youtube.com/embed/{vid}",
+            "contentUrl":f"https://www.youtube.com/watch?v={vid}",
+            "inLanguage":"es",
+            "publisher":{"@type":"Organization","name":"Dos para Duo","sameAs":"https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw"}}
+        if VIDEO_DATES.get(vid): _vo["uploadDate"] = VIDEO_DATES[vid]
+        videoschema = '<script type="application/ld+json">' + json.dumps(_vo, ensure_ascii=False) + '</script>'
+    else:
+        videoschema = ''
     page = (PAGE
         .replace('<head>', '<head>\n' + GTAG, 1)
         .replace('__BREADCRUMB__', breadcrumb)
@@ -388,7 +459,8 @@ def render_page(r, solo=False):
         .replace('__FECHA__', fecha_es(r['fecha']))
         .replace('__CONTENIDO__', sanitize_html(r['html']))
         .replace('__STEAMURL__', f"https://steamcommunity.com/id/Onlyjackdaniel/recommended/{app}/")
-        .replace('__VIDEO__', video_html))
+        .replace('__VIDEO__', video_html)
+        .replace('__VIDEOSCHEMA__', videoschema))
     (OUT / f'{s}.html').write_text(page, encoding='utf-8')
     return s
 
@@ -427,6 +499,7 @@ INDEX = """<!DOCTYPE html>
 <meta property="og:type" content="website">
 <link rel="canonical" href="__BASE__/resenas/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Reseñas | Dos para Duo","description":"Reseñas en español de los juegos que jugamos juntos.","isPartOf":{"@type":"WebSite","name":"Dos para Duo","url":"__BASE__/"}}</script>
+<script type="application/ld+json">__ITEMLIST__</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Outfit:wght@300;400;600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/tokens.css">
@@ -479,7 +552,7 @@ __NAV__
 <main>
   <p class="crumb"><a href="../index.html">← Inicio</a> / Reseñas</p>
   <div class="ascii-wrap"><canvas class="ascii-title" data-texto="RESEÑAS"></canvas><h1 class="sec vh">Reseñas</h1></div>
-  <p class="sub sub-center">Los <b style="color:var(--text)">__NT__ juegos que hemos jugado juntos</b>, reseñados de verdad en Steam, con la reseña de cada quien y el video del canal cuando lo grabamos.</p>
+  <p class="sub sub-center">Los <b style="color:var(--text)">__NT__ juegos que hemos jugado juntos</b>, reseñados de verdad en Steam, con la reseña de cada quien y el video del canal cuando lo grabamos. En total llevamos <b style="color:var(--text)">__TOTAL__ reseñas</b>: búscalas todas aquí arriba.</p>
   <div class="tools">
     <input id="buscar" type="text" placeholder="Buscar juego...">
     <button class="fbtn on" data-f="todos" type="button">Todos</button>
@@ -511,7 +584,7 @@ function aplicar(conFlip){
     const okF=filtro==='todos'||c.dataset.video==='1';
     c.style.display=(okT&&okF)?'':'none';if(okT&&okF)vis++;
   });
-  document.getElementById('empty').style.display=vis?'none':'block';
+  document.getElementById('empty').style.display=(vis||t)?'none':'block';
   if(conFlip&&!RM_G) cards.forEach(c=>{
     if(c.style.display==='none') return;
     const a=antes.get(c);
@@ -530,16 +603,19 @@ function aplicar(conFlip){
 q.addEventListener('input',()=>{aplicar(true);waveList();});
 /* Scroll/31 adaptado: lista "select your game" en oleada al buscar */
 const wl=document.getElementById('wave-list');
+/* índice completo de las __TOTAL__ reseñas: la búsqueda encuentra CUALQUIER juego,
+   aunque su tarjeta no esté renderizada en esta página (arregla el long tail). */
+const ALL=__ALLGAMES__;
 function waveList(){
   const txt=q.value.toLowerCase().trim();
   if(!txt){wl.classList.remove('on');wl.innerHTML='';return;}
-  const hits=cards.filter(c=>c.dataset.nombre.includes(txt)).slice(0,8);
+  const hits=ALL.filter(g=>g.n.includes(txt)).slice(0,8);
   wl.innerHTML=hits.length
-    ? hits.map((c,i)=>{
-        const n=c.querySelector('h3').textContent;
+    ? hits.map((g,i)=>{
+        const n=g.d;
         const ix=n.toLowerCase().indexOf(txt);
         const rot=ix>-1?n.slice(0,ix)+'<b>'+n.slice(ix,ix+txt.length)+'</b>'+n.slice(ix+txt.length):n;
-        return `<a href="${c.getAttribute('href')}" style="--wd:${i*70}ms;--wx:${i%2?'40px':'-40px'}">▸ ${rot}<small>${c.dataset.video==='1'?'EN EL CANAL':'STEAM'}</small></a>`;
+        return `<a href="${g.s}.html" style="--wd:${i*70}ms;--wx:${i%2?'40px':'-40px'}">▸ ${rot}<small>${g.v?'EN EL CANAL':'STEAM'}</small></a>`;
       }).join('')
     : '<span class="nada">▮ SIN RESULTADOS EN ESTA MAQUINA ▮</span>';
   wl.classList.remove('on');void wl.offsetWidth;wl.classList.add('on');
@@ -584,6 +660,16 @@ if(!RM_G) document.querySelectorAll('.gcard').forEach(card=>{
 </body>
 </html>"""
 
+# ItemList (señal de colección para IA/Google) + índice de búsqueda con las 146.
+_itemlist = json.dumps({
+    "@context":"https://schema.org","@type":"ItemList",
+    "name":"Reseñas de videojuegos de Dos para Duo",
+    "numberOfItems":len(allpages),
+    "itemListElement":[{"@type":"ListItem","position":i+1,"url":f"{BASE}/resenas/{s}.html","name":n}
+                       for i,(n,s) in enumerate(allpages)]
+}, ensure_ascii=False).replace('<', '\\u003c')  # blinda contra un </script> en un nombre
+_allgames = json.dumps([{"n":norm(n),"d":n,"s":s,"v":1 if VIDEOS.get(norm(n)) else 0}
+                        for n,s in allpages], ensure_ascii=False).replace('<', '\\u003c')
 index_html = (INDEX
     .replace('<head>', '<head>\n' + GTAG, 1)
     .replace('__CSS__', CSS)
@@ -591,7 +677,10 @@ index_html = (INDEX
     .replace('__FOOTER__', FOOTER.replace('__HOME__','../'))
     .replace('__CARDS__', cards_juntos)
     .replace('__EXTRAS__', cards_extras)
+    .replace('__ITEMLIST__', _itemlist)
+    .replace('__ALLGAMES__', _allgames)
     .replace('__NT__', str(len(oficiales)))
+    .replace('__TOTAL__', str(len(allpages)))
     .replace('__BASE__', BASE))
 (OUT/'index.html').write_text(index_html, encoding='utf-8')
 
@@ -601,13 +690,69 @@ slugs = [render_page(r) for r in juntos + extras]
 slugs += [render_page(r, solo=True) for r in solo]
 
 # ---------- sitemap + robots + nojekyll ----------
-urls = [f'{BASE}/', f'{BASE}/nosotros.html', f'{BASE}/merch.html', f'{BASE}/apoyo.html', f'{BASE}/contacto.html', f'{BASE}/listas/mejores-juegos-cooperativos-para-parejas.html', f'{BASE}/blog/', f'{BASE}/blog/it-takes-two-o-split-fiction.html', f'{BASE}/blog/como-meter-a-tu-pareja-al-gaming.html', f'{BASE}/blog/entrar-al-gaming-desde-cero.html', f'{BASE}/resenas/'] + [f'{BASE}/resenas/{s}.html' for s in slugs]
+urls = [f'{BASE}/', f'{BASE}/nosotros.html', f'{BASE}/merch.html', f'{BASE}/apoyo.html', f'{BASE}/contacto.html']
+urls += [l['url'] for l in LISTAS]
+urls += [f'{BASE}/blog/'] + [b['url'] for b in BLOGS]
+urls += [f'{BASE}/resenas/'] + [f'{BASE}/resenas/{s}.html' for s in slugs]
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 sm += '\n'.join(f'  <url><loc>{u}</loc></url>' for u in urls) + '\n</urlset>'
 (ROOT/'sitemap.xml').write_text(sm, encoding='utf-8')
 (ROOT/'robots.txt').write_text(f'User-agent: *\nAllow: /\nSitemap: {BASE}/sitemap.xml\n', encoding='utf-8')
 (ROOT/'.nojekyll').write_text('', encoding='utf-8')
+
+# ---------- llms.txt (generado desde datos reales: nunca vuelve a driftar) ----------
+# Cifras y enlaces salen de los mismos datos que el resto del sitio. Editar a mano
+# este archivo es lo que causó el drift (52 vs 146, link muerto a solo.html): NO se edita
+# a mano, se regenera aquí.
+_blog_md = '\n'.join(f"- [{b['titulo']}]({b['url']})" for b in BLOGS) or '- (sin entradas todavía)'
+_lista_md = '\n'.join(f"- [{l['titulo']}]({l['url']})" for l in LISTAS) or '- (sin listas todavía)'
+LLMS = f"""# Dos para Duo
+
+> Dos para Duo es un canal de YouTube de gaming en español (México) donde una pareja juega en cooperativo: él (Player 1, gamer veterano) y ella (Player 2, gamer en formación). Publican gameplay, reacciones, retos y reseñas de videojuegos desde dos perspectivas distintas.
+
+Canal de YouTube: https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw
+Sitio web: {BASE}/
+
+## Contenido principal
+
+- [Inicio]({BASE}/): presentación del canal, últimos videos y quiénes somos.
+- [Reseñas de videojuegos]({BASE}/resenas/): {len(allpages)} reseñas de juegos publicadas en Steam, {len(oficiales)} de ellas jugadas en pareja con la reseña de Player 1 y Player 2. Cada juego tiene su página con la reseña completa, horas jugadas, veredicto (recomendado o no) y el video del canal cuando existe.
+- [Nosotros]({BASE}/nosotros.html): quiénes son Player 1 y Player 2.
+
+## Blog
+
+{_blog_md}
+
+## Listas y guías
+
+{_lista_md}
+
+## Temas que cubrimos
+
+Juegos cooperativos para parejas, gaming en pareja, cómo iniciar a tu pareja en los videojuegos, varios Resident Evil (RE2, RE3, RE4, Village, Requiem), souls-likes (Elden Ring, Dark Souls, Sekiro), juegos indie, co-op local y en línea, terror, plataformas, reseñas de videojuegos en español.
+
+## Datos
+
+- Idioma: español (Latinoamérica)
+- País: México
+- {len(allpages)} juegos reseñados en total, {len(oficiales)} con reseña de ambos (Player 1 y Player 2).
+- Las reseñas provienen de perfiles reales de Steam y reflejan horas de juego verificables.
+"""
+(ROOT/'llms.txt').write_text(LLMS, encoding='utf-8')
+
+# ---------- cifra de "juegos jugados juntos" en el home (misma fuente, no drift) ----------
+# Estaba hardcodeada en 62 y ya no coincidía con resenas/index (32). Se inyecta desde
+# aquí, entre marcadores, para que siempre refleje el dato real.
+_home = ROOT / 'index.html'
+if _home.exists():
+    _h = _home.read_text(encoding='utf-8')
+    _h2 = re.sub(r'(<!-- AUTO:NJUNTOS -->).*?(<!-- /AUTO:NJUNTOS -->)',
+                 rf'\g<1>{len(oficiales)}\g<2>', _h, flags=re.S)
+    if _h2 != _h:
+        _home.write_text(_h2, encoding='utf-8')
+        print(f'home index.html: NJUNTOS -> {len(oficiales)}')
 # manifiesto de slugs para el logro "Rata de biblioteca" (lo lee assets/fx.js)
 (ROOT/'assets'/'resenas.json').write_text(json.dumps(slugs, ensure_ascii=False), encoding='utf-8')
 
 print(f'OK: galeria unica {len(juntos)+len(solo)} juegos + {len(extras)} extras = {len(slugs)} paginas, sitemap con {len(urls)} URLs')
+print(f'llms.txt regenerado: {len(allpages)} resenas ({len(oficiales)} en pareja) + {len(BLOGS)} blogs + {len(LISTAS)} listas. ItemList e indice de busqueda con {len(allpages)} items.')
