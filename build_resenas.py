@@ -42,6 +42,16 @@ VIDEOS = {"move or die":"Ra5H1bkkEj4","god of war ragnarok":"PnrH_GSsT8k","resid
 # Necesarias para el uploadDate del VideoObject (campo requerido por Google). NO inventar:
 # al agregar un video a VIDEOS, agrega aquí su fecha real o el uploadDate se omite.
 VIDEO_DATES = {"Ra5H1bkkEj4":"2026-02-03T03:00:44-08:00","PnrH_GSsT8k":"2026-01-18T13:07:00-08:00","EU0jZirCx6k":"2026-01-10T19:05:19-08:00"}
+# Titulo + descripcion del VideoObject del HOME (@graph de index.html). Fuente UNICA: aqui.
+# El home NO se edita a mano; el bloque entre <!-- AUTO:VIDEOSCHEMA --> se regenera aqui abajo.
+# Al agregar un video: sumarlo a VIDEOS + VIDEO_DATES + VIDEO_META (sin las 3 piezas se omite
+# del @graph, para no inventar). uploadDate va con zona horaria (date-only disparo el aviso GSC
+# WNC-10030322 el 9 jul 2026: "falta zona horaria" + "valor no valido").
+VIDEO_META = {
+ "Ra5H1bkkEj4":{"name":"Move or Die con mi pareja: ¿Quién gana cuando todo es azar?","description":"Jugamos Move or Die en pareja: rondas de 20 segundos, caos total y la eterna pregunta de quién es el peor del equipo."},
+ "PnrH_GSsT8k":{"name":"¿Juego o película? God of War Ragnarok desde la perspectiva correcta","description":"God of War Ragnarok visto desde dos perspectivas: el que juega y la que acompaña. ¿Jugarlo o verlo?"},
+ "EU0jZirCx6k":{"name":"Mi pareja jugó Resident Evil 4 Remake sin experiencia: esto pasó","description":"De no saber que existía Resident Evil a enfrentarse al RE4 Remake sin experiencia previa. Esto fue lo que pasó."},
+}
 
 MESES = {'January':'ene','February':'feb','March':'mar','April':'abr','May':'may','June':'jun','July':'jul','August':'ago','September':'sep','October':'oct','November':'nov','December':'dic'}
 MES_NUM = {'January':'01','February':'02','March':'03','April':'04','May':'05','June':'06','July':'07','August':'08','September':'09','October':'10','November':'11','December':'12'}
@@ -748,9 +758,24 @@ if _home.exists():
     _h = _home.read_text(encoding='utf-8')
     _h2 = re.sub(r'(<!-- AUTO:NJUNTOS -->).*?(<!-- /AUTO:NJUNTOS -->)',
                  rf'\g<1>{len(oficiales)}\g<2>', _h, flags=re.S)
+    # @graph de VideoObject del home: fuente unica VIDEOS + VIDEO_DATES + VIDEO_META (no drift).
+    # Solo entra el video con las 3 piezas. uploadDate = datetime real con zona horaria.
+    _vobjs = []
+    for _g, _vid in VIDEOS.items():
+        _m = VIDEO_META.get(_vid); _d = VIDEO_DATES.get(_vid)
+        if not (_m and _d): continue
+        _vobjs.append({"@type":"VideoObject","name":_m["name"],"description":_m["description"],
+                       "thumbnailUrl":f"https://i.ytimg.com/vi/{_vid}/maxresdefault.jpg","uploadDate":_d,
+                       "embedUrl":f"https://www.youtube-nocookie.com/embed/{_vid}",
+                       "url":f"https://www.youtube.com/watch?v={_vid}"})
+    _graph = ('<script type="application/ld+json">'
+              + json.dumps({"@context":"https://schema.org","@graph":_vobjs}, ensure_ascii=False)
+              + '</script>')
+    _h2 = re.sub(r'(<!-- AUTO:VIDEOSCHEMA -->).*?(<!-- /AUTO:VIDEOSCHEMA -->)',
+                 lambda mm: mm.group(1)+_graph+mm.group(2), _h2, flags=re.S)
     if _h2 != _h:
         _home.write_text(_h2, encoding='utf-8')
-        print(f'home index.html: NJUNTOS -> {len(oficiales)}')
+        print(f'home index.html: NJUNTOS -> {len(oficiales)}, VideoObject @graph -> {len(_vobjs)}')
 # manifiesto de slugs para el logro "Rata de biblioteca" (lo lee assets/fx.js)
 (ROOT/'assets'/'resenas.json').write_text(json.dumps(slugs, ensure_ascii=False), encoding='utf-8')
 
