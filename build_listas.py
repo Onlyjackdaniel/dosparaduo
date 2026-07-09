@@ -133,7 +133,8 @@ list_schema = {"@context":"https://schema.org","@type":"ItemList",
   "itemListElement":schema_items}
 breadcrumb = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
   {"@type":"ListItem","position":1,"name":"Inicio","item":f"{BASE}/"},
-  {"@type":"ListItem","position":2,"name":"Los mejores juegos cooperativos para parejas"}]}
+  {"@type":"ListItem","position":2,"name":"Blog","item":f"{BASE}/blog/"},
+  {"@type":"ListItem","position":3,"name":"Los mejores juegos cooperativos para parejas"}]}
 
 PAGE = f'''<!DOCTYPE html>
 <html lang="es">

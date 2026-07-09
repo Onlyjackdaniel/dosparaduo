@@ -24,9 +24,12 @@ jobs:
       - name: Regenerar reseñas, sitemap y llms.txt (fuente única, anti-drift)
         run: python build_resenas.py
 
+      - name: Regenerar páginas de listas (fuente única, anti-drift)
+        run: python build_listas.py
+
       - name: Commit y push si hubo cambios
         run: |
-          git add index.html llms.txt sitemap.xml robots.txt resenas assets/resenas.json
+          git add index.html llms.txt sitemap.xml robots.txt resenas listas assets/resenas.json
           if git diff --cached --quiet; then
             echo "Sin cambios: nada que publicar."
           else
