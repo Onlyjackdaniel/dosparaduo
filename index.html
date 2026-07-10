@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.youtube-nocookie.com https://www.youtube.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.youtube-nocookie.com https://www.youtube.com; connect-src 'self' https://api.web3forms.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action 'self' https://api.web3forms.com; base-uri 'self'; object-src 'none'">
 <!-- Google tag (gtag.js) + Consent Mode v2 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NXJ8PNJZFP"></script>
 <script>
@@ -720,6 +720,95 @@
     </a>
   </div>
 </section>
+
+<style>
+  /* Bloque de contacto del home: estilos propios (scoped a #contacto) para no chocar con el resto. */
+  #contacto{position:relative;z-index:1;max-width:620px;margin:0 auto;padding:20px 24px 10px}
+  #contacto .c-exito{display:none;background:rgba(108,242,168,.1);border:1px solid rgba(108,242,168,.45);color:#6cf2a8;border-radius:12px;padding:18px 20px;margin-bottom:24px;font-weight:300}
+  #contacto .c-exito b{font-weight:600}
+  #contacto form{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:32px 28px}
+  #contacto label{display:block;font-family:var(--mono);font-size:.66rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin:0 0 7px}
+  #contacto input,#contacto select,#contacto textarea{width:100%;background:var(--bg-2);border:1px solid var(--line);border-radius:8px;color:var(--text);font-family:var(--body);font-size:.95rem;padding:13px 15px;margin-bottom:20px;transition:border-color .2s}
+  #contacto input:focus,#contacto select:focus,#contacto textarea:focus{outline:none;border-color:var(--p1)}
+  #contacto textarea{min-height:120px;resize:vertical}
+  #contacto button{width:100%;font-family:var(--mono);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;background:var(--p1);color:#062536;font-weight:700;border:0;border-radius:8px;padding:16px;cursor:pointer;box-shadow:0 0 22px rgba(var(--p1-rgb),.4);transition:transform .15s}
+  #contacto button:hover{transform:translateY(-2px)}
+  #contacto button:disabled{opacity:.6;cursor:progress;transform:none}
+  #contacto .c-alt{margin-top:20px;text-align:center;color:var(--muted);font-weight:300;font-size:.88rem}
+  #contacto .c-alt a{color:var(--p2);text-decoration:none}
+</style>
+
+<section id="contacto">
+  <div class="sec-head reveal"><span class="num">[ 04 ]</span><h2 data-scramble>Manda señal</h2></div>
+  <p class="sec-sub reveal">¿Colaboración, propuesta, duda o solo saludar? Leemos todo y contestamos en cuanto soltamos el control.</p>
+
+  <div class="c-exito" id="contacto-exito">✔ <b>¡Mensaje recibido!</b> Gracias por escribirnos, te contestamos pronto.</div>
+
+  <!-- Web3Forms (mismo backend que /contacto). access_key pública por diseño -> enruta a hola@dosparaduo.com.
+       Envío por AJAX (éxito sin recargar). Anti-spam: honeypot "botcheck". Respaldo: mailto de abajo. -->
+  <form data-web3 action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="219880d7-c3eb-4c94-9b78-fc95896f165c">
+    <input type="hidden" name="subject" value="📨 Mensaje desde dosparaduo (home)">
+    <input type="hidden" name="from_name" value="Sitio Dos para Duo">
+    <input type="hidden" name="redirect" value="https://dosparaduo.com/?enviado=1#contacto">
+    <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+    <label for="h-nombre">Tu nombre</label>
+    <input id="h-nombre" type="text" name="nombre" placeholder="¿Cómo te llamas?" required>
+
+    <label for="h-correo">Tu correo</label>
+    <input id="h-correo" type="email" name="email" placeholder="para poder contestarte" required>
+
+    <label for="h-asunto">Asunto</label>
+    <select id="h-asunto" name="asunto" required>
+      <option value="" disabled selected>Elige uno…</option>
+      <option>🤝 Colaboración / propuesta</option>
+      <option>❓ Duda</option>
+      <option>🎮 Recomendarnos un juego</option>
+      <option>👋 Solo saludar</option>
+    </select>
+
+    <label for="h-mensaje">Mensaje</label>
+    <textarea id="h-mensaje" name="mensaje" placeholder="Cuéntanos…" required></textarea>
+
+    <button type="submit">▸ Enviar mensaje</button>
+  </form>
+
+  <p class="c-alt">¿O prefieres el correo directo? Escríbenos a <a href="mailto:hola@dosparaduo.com">hola@dosparaduo.com</a>.</p>
+</section>
+
+<script>
+// Envío AJAX del form de contacto del home a Web3Forms (éxito sin recargar; si falla, cae al mailto).
+(function(){
+  var form = document.querySelector('#contacto form[data-web3]');
+  var exito = document.getElementById('contacto-exito');
+  if (new URLSearchParams(location.search).get('enviado') === '1' && exito) {
+    exito.style.display = 'block';
+    if (form) form.reset();
+  }
+  if (!form) return;
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var btn = form.querySelector('button[type=submit]');
+    var orig = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Enviando…';
+    try {
+      var res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form)
+      });
+      var data = await res.json();
+      if (data.success) {
+        exito.style.display = 'block';
+        form.reset();
+        exito.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else { throw new Error(data.message || 'error'); }
+    } catch (err) {
+      btn.disabled = false; btn.textContent = orig;
+      alert('No se pudo enviar ahora. Escríbenos directo a hola@dosparaduo.com y lo resolvemos.');
+    }
+  });
+})();
+</script>
 
 <footer>
   <div class="f-logo">Dos <em>para</em> <b>Duo</b></div>
