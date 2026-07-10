@@ -28,6 +28,7 @@ function icono(a) {
   if (t.indexOf('merch') > -1) return 't-shirt';
   if (t.indexOf('ap') === 0 || t.indexOf('apóyanos') > -1) return 'gift';
   if (t.indexOf('nosotros') > -1) return 'users-three';
+  if (t.indexOf('contacto') > -1) return 'envelope';
   if (t.indexOf('suscr') > -1) return 'youtube-logo';
   return 'star';
 }

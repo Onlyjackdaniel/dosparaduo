@@ -272,6 +272,7 @@ NAV = """<nav>
     <a href="__HOME__merch.html">Merch</a>
     <a href="__HOME__apoyo.html">Apóyanos</a>
     <a href="__HOME__nosotros.html">Nosotros</a>
+    <a href="__HOME__contacto.html">Contacto</a>
     <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="../assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>"""
