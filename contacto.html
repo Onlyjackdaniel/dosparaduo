@@ -101,9 +101,11 @@ footer a{color:var(--p1);text-decoration:none}
 
   <div class="exito" id="exito">✔ <b>¡Mensaje recibido!</b> Gracias por escribirnos, te contestamos pronto.</div>
 
-  <!-- ANTI-SPAM / PRIVACIDAD: endpoint con hash de FormSubmit (alias del correo de contacto)
-       para NO exponer ningún email en el código fuente. El captcha viene activo por defecto. -->
-  <form action="https://formsubmit.co/919c86b1cda696b44d3a367040c0d62b" method="POST">
+  <!-- FormSubmit -> hola@dosparaduo.com (correo PÚBLICO de la marca, buzón Zoho). Se expone a
+       propósito porque es el correo de contacto de cara al público; el anti-spam lo da el captcha
+       (_captcha=true, abajo). Requiere activación ÚNICA de FormSubmit: al primer envío llega un
+       correo de confirmación a hola@ (Zoho) -> clic en "Activate" y queda funcionando. -->
+  <form action="https://formsubmit.co/hola@dosparaduo.com" method="POST">
     <input type="hidden" name="_subject" value="📨 Mensaje desde dosparaduo (sitio web)">
     <input type="hidden" name="_template" value="table">
     <input type="hidden" name="_captcha" value="true">
