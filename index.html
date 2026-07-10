@@ -800,6 +800,7 @@
       if (data.success) {
         exito.style.display = 'block';
         form.reset();
+        btn.disabled = false; btn.textContent = orig;
         exito.scrollIntoView({ behavior: 'smooth', block: 'center' });
       } else { throw new Error(data.message || 'error'); }
     } catch (err) {
