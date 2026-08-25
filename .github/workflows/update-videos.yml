@@ -18,6 +18,10 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Traer reseñas nuevas desde Steam (fuente del sitio)
+        run: python scripts/actualizar_resenas_steam.py
+        continue-on-error: true
+
       - name: Actualizar sección de videos desde el RSS del canal
         run: python scripts/update_videos.py
 
@@ -29,7 +33,7 @@ jobs:
 
       - name: Commit y push si hubo cambios
         run: |
-          git add index.html llms.txt sitemap.xml robots.txt resenas listas assets/resenas.json
+          git add index.html llms.txt sitemap.xml robots.txt resenas listas assets/resenas.json reviews_jack_raw.json patitas.json CANDIDATOS_A_VIDEO.md
           if git diff --cached --quiet; then
             echo "Sin cambios: nada que publicar."
           else

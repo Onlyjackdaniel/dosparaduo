@@ -1,0 +1,54 @@
+# Candidatos a video co-op
+
+Juegos que ya jugaron juntos y tienen resena, pero todavia no tienen video: **49**.
+Generado solo por build_resenas.py en cada corrida. De aqui se elige que se graba el viernes.
+
+- Radical Rabbit Stew
+- Split Fiction
+- Borderlands 2
+- Blanc
+- We Were Here Too
+- We Were Here Expeditions: The FriendShip
+- SUPER CRAZY RHYTHM CASTLE
+- Stumble Guys
+- Screencheat
+- Sagrada
+- Pummel Party
+- Portal 2
+- Overcooked! All You Can Eat
+- METAL SLUG 3
+- METAL SLUG
+- Keep Talking and Nobody Explodes
+- Exploding Kittens 2
+- Disney Epic Mickey 2: The Power of Two
+- Biped
+- Bloons TD 6
+- It Takes Two
+- Cuphead
+- The Typing of The Dead: Overkill
+- VVVVVV
+- Resident Evil Requiem
+- The Stanley Parable: Ultra Deluxe
+- A Game About Digging A Hole
+- Bongo Cat
+- FUCK HITLER
+- Tiny Pasture
+- A Park Full of Cats
+- A Shelter Full of Cats
+- The Room Two
+- Resident Evil 3
+- Resident Evil 2
+- Ori and the Blind Forest: Definitive Edition
+- The Last Campfire
+- Ghost of Tsushima DIRECTOR'S CUT
+- Dofamine
+- Spirit City: Lofi Sessions
+- Florence
+- A Castle Full of Cats
+- A Building Full of Cats
+- Cats in Time
+- Bendy and the Dark Revival
+- Resident Evil Village
+- Sekiro: Shadows Die Twice - GOTY Edition
+- God of War
+- Marvel's Spider-Man Remastered

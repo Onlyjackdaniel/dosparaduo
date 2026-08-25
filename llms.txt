@@ -8,7 +8,7 @@ Sitio web: https://dosparaduo.com/
 ## Contenido principal
 
 - [Inicio](https://dosparaduo.com/): presentación del canal, últimos videos y quiénes somos.
-- [Reseñas de videojuegos](https://dosparaduo.com/resenas/): 146 reseñas de juegos publicadas en Steam, 32 de ellas jugadas en pareja con la reseña de Player 1 y Player 2. Cada juego tiene su página con la reseña completa, horas jugadas, veredicto (recomendado o no) y el video del canal cuando existe.
+- [Reseñas de videojuegos](https://dosparaduo.com/resenas/): 157 reseñas de juegos publicadas en Steam, 32 de ellas jugadas en pareja con la reseña de Player 1 y Player 2. Cada juego tiene su página con la reseña completa, horas jugadas, veredicto (recomendado o no) y el video del canal cuando existe.
 - [Nosotros](https://dosparaduo.com/nosotros.html): quiénes son Player 1 y Player 2.
 
 ## Blog
@@ -29,5 +29,5 @@ Juegos cooperativos para parejas, gaming en pareja, cómo iniciar a tu pareja en
 
 - Idioma: español (Latinoamérica)
 - País: México
-- 146 juegos reseñados en total, 32 con reseña de ambos (Player 1 y Player 2).
+- 157 juegos reseñados en total, 32 con reseña de ambos (Player 1 y Player 2).
 - Las reseñas provienen de perfiles reales de Steam y reflejan horas de juego verificables.
