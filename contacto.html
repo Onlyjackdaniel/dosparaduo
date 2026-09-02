@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.youtube-nocookie.com https://www.youtube.com; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.youtube-nocookie.com https://www.youtube.com; connect-src 'self' https://api.web3forms.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action 'self' https://api.web3forms.com; base-uri 'self'; object-src 'none'">
 <!-- Google tag (gtag.js) + Consent Mode v2 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-NXJ8PNJZFP"></script>
 <script>
@@ -91,6 +91,7 @@ footer a{color:var(--p1);text-decoration:none}
     <a href="merch.html">Merch</a>
     <a href="apoyo.html">Apóyanos</a>
     <a href="nosotros.html">Nosotros</a>
+    <a href="contacto.html">Contacto</a>
     <a class="btn-yt fx-btn" href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw?sub_confirmation=1" target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="assets/icons.svg#youtube-logo"/></svg> Suscríbete</a>
   </div>
 </nav>
@@ -101,14 +102,16 @@ footer a{color:var(--p1);text-decoration:none}
 
   <div class="exito" id="exito">✔ <b>¡Mensaje recibido!</b> Gracias por escribirnos, te contestamos pronto.</div>
 
-  <!-- ANTI-SPAM / PRIVACIDAD: endpoint con hash de FormSubmit (alias del correo de contacto)
-       para NO exponer ningún email en el código fuente. El captcha viene activo por defecto. -->
-  <form action="https://formsubmit.co/919c86b1cda696b44d3a367040c0d62b" method="POST">
-    <input type="hidden" name="_subject" value="📨 Mensaje desde dosparaduo (sitio web)">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_captcha" value="true">
-    <input type="hidden" name="_next" value="https://dosparaduo.com/contacto.html?enviado=1">
-    <input type="text" name="_honey" style="display:none">
+  <!-- Web3Forms (backend confiable para sitios estáticos; reemplazó a FormSubmit tras su caída del
+       9 jul 2026). Envío por AJAX -> éxito sin recargar. La access_key es pública por diseño (solo
+       enruta al correo verificado, hola@dosparaduo.com). Anti-spam: honeypot "botcheck". Respaldo
+       siempre: el mailto a hola@ de abajo, por si el backend fallara. -->
+  <form data-web3 action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="219880d7-c3eb-4c94-9b78-fc95896f165c">
+    <input type="hidden" name="subject" value="📨 Mensaje desde dosparaduo (sitio web)">
+    <input type="hidden" name="from_name" value="Sitio Dos para Duo">
+    <input type="hidden" name="redirect" value="https://dosparaduo.com/contacto.html?enviado=1">
+    <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
     <label for="nombre">Tu nombre</label>
     <input id="nombre" type="text" name="nombre" placeholder="¿Cómo te llamas?" required>
@@ -131,7 +134,7 @@ footer a{color:var(--p1);text-decoration:none}
     <button type="submit">▸ Enviar mensaje</button>
   </form>
 
-  <p class="alt">¿Prefieres YouTube? Déjanos un comentario en <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">cualquier video</a>, también los leemos todos.</p>
+  <p class="alt">¿O prefieres el correo directo? Escríbenos a <a href="mailto:hola@dosparaduo.com">hola@dosparaduo.com</a>. También puedes dejarnos un comentario en <a href="https://www.youtube.com/channel/UCgb9fFANiLW5zgiPVXBRBdw" target="_blank" rel="noopener">cualquier video</a>, los leemos todos.</p>
 </main>
 <footer>
   <div class="f-logo">Dos <em style="font-style:normal;color:var(--p1)">para</em> <b style="color:var(--p2)">Duo</b></div>
@@ -143,10 +146,38 @@ footer a{color:var(--p1);text-decoration:none}
   </div>
 </footer>
 <script>
-if (new URLSearchParams(location.search).get('enviado') === '1') {
-  document.getElementById('exito').style.display = 'block';
-  document.querySelector('form').reset();
-}
+// Envío AJAX a Web3Forms: muestra el éxito sin recargar. Si algo falla, cae al mailto.
+(function(){
+  var form = document.querySelector('form[data-web3]');
+  var exito = document.getElementById('exito');
+  // Fallback no-JS: si Web3Forms redirigió con ?enviado=1, muestra el éxito igual.
+  if (new URLSearchParams(location.search).get('enviado') === '1' && exito) {
+    exito.style.display = 'block';
+    if (form) form.reset();
+  }
+  if (!form) return;
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var btn = form.querySelector('button[type=submit]');
+    var orig = btn.textContent;
+    btn.disabled = true; btn.textContent = 'Enviando…';
+    try {
+      var res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form)
+      });
+      var data = await res.json();
+      if (data.success) {
+        exito.style.display = 'block';
+        form.reset();
+        btn.disabled = false; btn.textContent = orig;
+        exito.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else { throw new Error(data.message || 'error'); }
+    } catch (err) {
+      btn.disabled = false; btn.textContent = orig;
+      alert('No se pudo enviar ahora. Escríbenos directo a hola@dosparaduo.com y lo resolvemos.');
+    }
+  });
+})();
 </script>
 </body>
 </html>
