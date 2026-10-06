@@ -1,0 +1,5 @@
+# Basura de Python
+__pycache__/
+
+# Lista interna de candidatos a video: se genera local con build_resenas.py, no se publica
+CANDIDATOS_A_VIDEO.md
