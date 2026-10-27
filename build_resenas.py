@@ -252,6 +252,16 @@ BLOGS = _descubrir('blog')
 LISTAS = _descubrir('listas')
 print(f'Blogs detectados: {len(BLOGS)} · Listas detectadas: {len(LISTAS)}')
 
+# Qué reseñas aparecen en el ranking de alguna lista (se lee de la lista publicada, no se duplica
+# el ranking aquí). Cada una lleva un enlace de vuelta a la lista: más enlaces internos = Google
+# rastrea antes esas páginas (27 oct 2026).
+EN_LISTA = {}
+for l in LISTAS:
+    _t = (ROOT / 'listas' / l['url'].rsplit('/', 1)[1]).read_text(encoding='utf-8')
+    for _s, _n in re.findall(r'<article class="rank-card[^"]*" id="([^"]+)">\s*<div class="rank-num">(\d+)</div>', _t):
+        EN_LISTA.setdefault(_s, (int(_n), l))
+print(f'Reseñas enlazadas desde listas: {len(EN_LISTA)}')
+
 CSS = """
 @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important}}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
@@ -384,6 +394,9 @@ __VIDEOSCHEMA__
 .backrow{margin-top:50px;text-align:center}
 .back{font-family:var(--mono);font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:var(--text);text-decoration:none;border:1px solid var(--line);border-radius:8px;padding:12px 24px}
 .back:hover{border-color:var(--p1);color:var(--p1)}
+.enlista{display:block;margin:28px 0 0;padding:16px 20px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--text);text-decoration:none;font-weight:300}
+.enlista b{color:var(--gold);font-family:var(--display);font-weight:400}
+.enlista:hover{border-color:var(--gold)}
 @media(max-width:820px){.duo-cols{grid-template-columns:1fr}}
 </style>
 </head>
@@ -414,6 +427,7 @@ __NAV__
       __P2BODY__
     </aside>
   </div>
+  __ENLISTA__
   __PATITAS__
   __VIDEO__
   <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
@@ -469,6 +483,12 @@ def render_page(r, solo=False):
                            "author":{"@type":"Person","name":"Anahí de Dos para Duo"},"publisher":_pub,
                            "inLanguage":"es","reviewBody":excerpt(a2["html"])})
     schema = json.dumps(reviews_ld[0] if len(reviews_ld) == 1 else reviews_ld, ensure_ascii=False)
+    if s in EN_LISTA:
+        _pos, _l = EN_LISTA[s]
+        enlista = (f'<a class="enlista fx-btn" href="../listas/{_l["url"].rsplit("/", 1)[1]}#{s}">'
+                   f'<b>#{_pos}</b> en nuestro top: {htmlmod.escape(_l["titulo"])} ▸</a>')
+    else:
+        enlista = ''
     vid = VIDEOS.get(norm(nombre))
     video_html = VIDEO_BLOCK.replace('__VID__', vid).replace('__NOMBRE_ESC__', htmlmod.escape(nombre)) if vid else ''
     # VideoObject solo cuando de verdad hay video del canal (evita inventar). uploadDate
@@ -490,6 +510,7 @@ def render_page(r, solo=False):
         .replace('<head>', '<head>\n' + GTAG, 1)
         .replace('__BREADCRUMB__', breadcrumb)
         .replace('__P2BODY__', p2body)
+        .replace('__ENLISTA__', enlista)
         .replace('__CSS__', CSS)
         .replace('__NAV__', NAV.replace('__HOME__','../'))
         .replace('__FOOTER__', FOOTER.replace('__HOME__','../'))
@@ -600,6 +621,7 @@ __NAV__
   <p class="crumb"><a href="/">← Inicio</a> / Reseñas</p>
   <div class="ascii-wrap"><canvas class="ascii-title" data-texto="RESEÑAS"></canvas><h1 class="sec vh">Reseñas</h1></div>
   <p class="sub sub-center">Los <b style="color:var(--text)">__NT__ juegos que hemos jugado juntos</b>, reseñados de verdad en Steam, con la reseña de cada quien y el video del canal cuando lo grabamos. En total llevamos <b style="color:var(--text)">__TOTAL__ reseñas</b>: búscalas todas aquí arriba.</p>
+  __TOPLISTA__
   <div class="tools">
     <input id="buscar" type="text" placeholder="Buscar juego...">
     <button class="fbtn on" data-f="todos" type="button">Todos</button>
@@ -728,6 +750,7 @@ index_html = (INDEX
     .replace('__ALLGAMES__', _allgames)
     .replace('__NT__', str(len(oficiales)))
     .replace('__TOTAL__', str(len(allpages)))
+    .replace('__TOPLISTA__', (f'<p class="sub sub-center">¿No saben por dónde empezar? <a href="../listas/{LISTAS[0]["url"].rsplit("/", 1)[1]}" style="color:var(--gold)">{htmlmod.escape(LISTAS[0]["titulo"])} ▸</a> · <a href="../listas/" style="color:var(--p2)">Todas las listas</a></p>' if LISTAS else ''))
     .replace('__BASE__', BASE))
 (OUT/'index.html').write_text(index_html, encoding='utf-8')
 
