@@ -283,14 +283,14 @@ footer a{color:var(--p2);text-decoration:none}
 """
 
 NAV = """<nav>
-  <a class="logo" href="__HOME__index.html">
+  <a class="logo" href="/">
     <img src="../assets/icon-512.png" width="36" height="36" alt="Logo Dos para Duo">
     <span>Dos <em style="color:var(--gold);font-style:normal">para</em> <b style="color:var(--p2)">Duo</b></span>
   </a>
   <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
   <div class="nav-links">
-    <a href="__HOME__index.html#inicio">Inicio</a>
-    <a href="__HOME__index.html#videos">Videos</a>
+    <a href="/#inicio">Inicio</a>
+    <a href="/#videos">Videos</a>
     <a href="__HOME__resenas/">Reseñas</a>
     <a href="__HOME__blog/">Blog</a>
     <a href="__HOME__merch.html">Merch</a>
@@ -597,7 +597,7 @@ INDEX = """<!DOCTYPE html>
 <div class="particles-container" aria-hidden="true" data-particles data-colors="#3cb8ec,#ff7a29,#ffd166" data-count="315" data-spread="10" data-speed="0.08" data-base-size="90" data-size-randomness="1" data-camera-distance="20" data-hover="true" data-hover-factor="0.6" data-alpha="true" data-rotation="true" data-dpr="1"></div>
 __NAV__
 <main>
-  <p class="crumb"><a href="../index.html">← Inicio</a> / Reseñas</p>
+  <p class="crumb"><a href="/">← Inicio</a> / Reseñas</p>
   <div class="ascii-wrap"><canvas class="ascii-title" data-texto="RESEÑAS"></canvas><h1 class="sec vh">Reseñas</h1></div>
   <p class="sub sub-center">Los <b style="color:var(--text)">__NT__ juegos que hemos jugado juntos</b>, reseñados de verdad en Steam, con la reseña de cada quien y el video del canal cuando lo grabamos. En total llevamos <b style="color:var(--text)">__TOTAL__ reseñas</b>: búscalas todas aquí arriba.</p>
   <div class="tools">
@@ -738,7 +738,7 @@ slugs += [render_page(r, solo=True) for r in solo]
 
 # ---------- sitemap + robots + nojekyll ----------
 urls = [f'{BASE}/', f'{BASE}/nosotros.html', f'{BASE}/merch.html', f'{BASE}/apoyo.html', f'{BASE}/contacto.html']
-urls += [l['url'] for l in LISTAS]
+urls += ([f'{BASE}/listas/'] if LISTAS else []) + [l['url'] for l in LISTAS]
 urls += [f'{BASE}/blog/'] + [b['url'] for b in BLOGS]
 urls += [f'{BASE}/resenas/'] + [f'{BASE}/resenas/{s}.html' for s in slugs]
 sm = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

@@ -128,13 +128,13 @@ faq_schema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
     {"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in FAQ]}
 
 list_schema = {"@context":"https://schema.org","@type":"ItemList",
-  "name":"Los mejores juegos cooperativos para parejas",
-  "description":"Ranking de juegos co-op para jugar en pareja, probados por una pareja real con horas verificables en Steam.",
+  "name":"Los mejores juegos cooperativos de PC para parejas",
+  "description":"Ranking de juegos cooperativos de PC para jugar en pareja, probados por una pareja real con horas verificables en Steam.",
   "itemListElement":schema_items}
 breadcrumb = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
   {"@type":"ListItem","position":1,"name":"Inicio","item":f"{BASE}/"},
   {"@type":"ListItem","position":2,"name":"Blog","item":f"{BASE}/blog/"},
-  {"@type":"ListItem","position":3,"name":"Los mejores juegos cooperativos para parejas"}]}
+  {"@type":"ListItem","position":3,"name":"Los mejores juegos cooperativos de PC para parejas"}]}
 
 PAGE = f'''<!DOCTYPE html>
 <html lang="es">
@@ -142,8 +142,8 @@ PAGE = f'''<!DOCTYPE html>
 {GTAG}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Los mejores juegos cooperativos para parejas (2026), probados en pareja | Dos para Duo</title>
-<meta name="description" content="10 juegos co-op para jugar en pareja, probados por una pareja real: It Takes Two, Split Fiction, Overcooked, Portal 2 y más. Con horas jugadas reales, para quién es cada uno y qué esperar.">
+<title>Mejores juegos cooperativos de PC para parejas (2026) | Dos para Duo</title>
+<meta name="description" content="10 juegos cooperativos de PC para jugar en pareja, probados por una pareja real en Steam: It Takes Two, Split Fiction, Overcooked, Portal 2 y más. Con horas jugadas reales y para quién es cada uno.">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="alternate icon" href="../assets/icon-512.png">
 <link rel="apple-touch-icon" href="../assets/icon-512.png">
@@ -151,7 +151,7 @@ PAGE = f'''<!DOCTYPE html>
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://dosparaduo.com/assets/icon-512.png">
 <link rel="preconnect" href="https://i.ytimg.com" crossorigin>
-<meta property="og:title" content="Los mejores juegos cooperativos para parejas, probados en pareja">
+<meta property="og:title" content="Mejores juegos cooperativos de PC para parejas, probados en pareja">
 <meta property="og:description" content="Ranking honesto de una pareja gamer real: del imprescindible It Takes Two al sufrimiento compartido de Cuphead.">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{idx[norm('It Takes Two')]['appid']}/header.jpg">
@@ -232,14 +232,14 @@ footer a{{color:var(--p1);text-decoration:none}}
 <body>
 <div class="atmos"></div>
 <nav>
-  <a class="logo" href="../index.html">
+  <a class="logo" href="/">
     <img src="../assets/icon-512.png" width="36" height="36" alt="Logo Dos para Duo">
     <span>Dos <em style="color:var(--gold);font-style:normal">para</em> <b style="color:var(--p2)">Duo</b></span>
   </a>
   <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
   <div class="nav-links">
-    <a href="../index.html#inicio">Inicio</a>
-    <a href="../index.html#videos">Videos</a>
+    <a href="/#inicio">Inicio</a>
+    <a href="/#videos">Videos</a>
     <a href="../resenas/">Reseñas</a>
     <a href="../blog/">Blog</a>
     <a href="../merch.html">Merch</a>
@@ -250,8 +250,8 @@ footer a{{color:var(--p1);text-decoration:none}}
   </div>
 </nav>
 <main>
-  <p class="crumb"><a href="../index.html">← Inicio</a> / <a href="../blog/">Blog</a> / Co-op para parejas</p>
-  <h1>Los mejores juegos <span>cooperativos para parejas</span></h1>
+  <p class="crumb"><a href="/">← Inicio</a> / <a href="../blog/">Blog</a> / Co-op para parejas</p>
+  <h1>Los mejores juegos <span>cooperativos de PC para parejas</span></h1>
   <p class="intro">Somos <b>Jack y Anahí</b>, una pareja que juega junta (casi) todas las noches: uno gamer de toda la vida, la otra empezando casi de cero. Esta lista no salió de notas de prensa: <b>cada juego lo jugamos en pareja de verdad</b>, con las horas para probarlo. Aquí está lo que funcionó, para quién es cada uno, y en cuál casi nos peleamos.</p>
   <p class="cred">★ PROBADO EN PAREJA · <b>+250 HRS</b> ACUMULADAS SOLO EN ESTA LISTA · ACTUALIZADA JUN 2026</p>
 
@@ -286,3 +286,44 @@ footer a{{color:var(--p1);text-decoration:none}}
 
 (OUT/'mejores-juegos-cooperativos-para-parejas.html').write_text(PAGE, encoding='utf-8')
 print('OK: listas/mejores-juegos-cooperativos-para-parejas.html generada con', len(RANKING), 'juegos +', len(menciones_html), 'menciones')
+
+# ---- Índice /listas/ (27 oct 2026): antes daba 404. Reusa la plantilla de la lista para no duplicar estilos ----
+LISTAS_INDICE = [
+ ("mejores-juegos-cooperativos-para-parejas.html", "Los mejores juegos cooperativos de PC para parejas",
+  f"Nuestro top {len(RANKING)} de juegos co-op probados en pareja, del imprescindible It Takes Two al sufrimiento compartido de Cuphead.",
+  idx[norm('It Takes Two')]['appid']),
+]
+cards = '\n'.join(f'''    <article class="rank-card reveal fx-spot">
+      <div class="rank-num">{i:02d}</div>
+      <div class="rank-img"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{app}/header.jpg" width="460" height="215" alt="" loading="lazy" onerror="this.style.display='none'"></div>
+      <div class="rank-body">
+        <h3>{hm.escape(t)}</h3>
+        <p class="rank-blurb">{hm.escape(d)}</p>
+        <div class="rank-links"><a class="mini-btn fx-btn" href="{f}">Ver la lista ▸</a></div>
+      </div>
+    </article>''' for i, (f, t, d, app) in enumerate(LISTAS_INDICE, 1))
+idx_schema = {"@context":"https://schema.org","@type":"CollectionPage","name":"Listas de Dos para Duo",
+  "url":f"{BASE}/listas/","hasPart":[{"@type":"Article","name":t,"url":f"{BASE}/listas/{f}"} for f,t,_,_ in LISTAS_INDICE]}
+idx_crumb = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Inicio","item":f"{BASE}/"},
+  {"@type":"ListItem","position":2,"name":"Listas"}]}
+head, rest = PAGE.split('<link rel="canonical"', 1)
+rest = rest.split('<link rel="preconnect"', 1)[1]
+head = re.sub(r'<title>.*?</title>', '<title>Listas de juegos para jugar en pareja | Dos para Duo</title>', head)
+head = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="Listas de juegos para jugar en pareja, probados por una pareja real: cooperativos de PC y más, con horas jugadas reales.">', head)
+head = re.sub(r'<meta property="og:title" content="[^"]*">', '<meta property="og:title" content="Listas de juegos para jugar en pareja">', head)
+head = re.sub(r'<meta property="og:description" content="[^"]*">', '<meta property="og:description" content="Tops de juegos probados en pareja por Jack y Anahí.">', head)
+head = re.sub(r'<meta property="og:url" content="[^"]*">', f'<meta property="og:url" content="{BASE}/listas/">', head)
+INDEX = (head + f'<link rel="canonical" href="{BASE}/listas/">\n'
+  f'<script type="application/ld+json">{json.dumps(idx_schema, ensure_ascii=False)}</script>\n'
+  f'<script type="application/ld+json">{json.dumps(idx_crumb, ensure_ascii=False)}</script>\n'
+  '<link rel="preconnect"' + rest)
+INDEX = re.sub(r'<main>.*?</main>', lambda m: f'''<main>
+  <p class="crumb"><a href="/">← Inicio</a> / Listas</p>
+  <h1>Listas para jugar <span>en pareja</span></h1>
+  <p class="intro">Tops que armamos <b>después de jugarlos juntos</b>, no de leer notas de prensa. Cada uno trae las horas reales y para qué tipo de pareja funciona.</p>
+
+{cards}
+</main>''', INDEX, flags=re.S)
+(OUT/'index.html').write_text(INDEX, encoding='utf-8')
+print('OK: listas/index.html generado con', len(LISTAS_INDICE), 'lista(s)')
