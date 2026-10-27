@@ -210,6 +210,17 @@ extras = buscar(EXTRAS)
 _sel = {norm(n) for n in SELECCION} | {norm(n) for n in EXTRAS}
 solo = [r for r in reviews if norm(r['nombre']) not in _sel]
 
+# Cada reseña enlaza a las 4 siguientes de su mismo grupo (en círculo): así toda página recibe
+# exactamente 4 enlaces internos de otras reseñas y no solo del índice y el sitemap. Antes del
+# 27 oct 2026 las reseñas no se enlazaban entre sí y 140 de 168 páginas seguían sin indexar.
+RELACIONADOS = {}
+for _grupo, _titulo in ((juntos, 'Más juegos que jugamos <span>juntos</span>'),
+                        (extras, 'Más cosas que <span>reseñamos</span>'),
+                        (solo, 'Más <span>reseñas</span>')):
+    for _i, _r in enumerate(_grupo):
+        _otros = [_grupo[(_i + k) % len(_grupo)] for k in range(1, min(5, len(_grupo)))]
+        RELACIONADOS[slug(_r['nombre'])] = (_titulo, _otros)
+
 # Orden canónico de TODAS las páginas de reseña (juntos + extras + solo).
 # Coincide con el orden en que render_page genera los slugs más abajo, y alimenta
 # el ItemList (schema de colección) + el índice de búsqueda completo del index.
@@ -397,6 +408,14 @@ __VIDEOSCHEMA__
 .enlista{display:block;margin:28px 0 0;padding:16px 20px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--text);text-decoration:none;font-weight:300}
 .enlista b{color:var(--gold);font-family:var(--display);font-weight:400}
 .enlista:hover{border-color:var(--gold)}
+.rel-sec{margin-top:48px}
+.rel-sec h2{font-family:var(--display);font-size:1.2rem;text-transform:uppercase;margin-bottom:16px}
+.rel-sec h2 span{color:var(--p2)}
+.rel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.rel-card{display:block;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;color:var(--text);text-decoration:none;transition:border-color .2s}
+.rel-card:hover{border-color:var(--p2)}
+.rel-card img{width:100%;aspect-ratio:460/215;object-fit:cover;display:block}
+.rel-card span{display:block;padding:10px 12px;font-size:.9rem}
 @media(max-width:820px){.duo-cols{grid-template-columns:1fr}}
 </style>
 </head>
@@ -430,6 +449,7 @@ __NAV__
   __ENLISTA__
   __PATITAS__
   __VIDEO__
+  __RELACIONADOS__
   <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 __FOOTER__
@@ -489,6 +509,12 @@ def render_page(r, solo=False):
                    f'<b>#{_pos}</b> en nuestro top: {htmlmod.escape(_l["titulo"])} ▸</a>')
     else:
         enlista = ''
+    _rel_titulo, _rel = RELACIONADOS.get(s, ('', []))
+    relacionados = ('<section class="rel-sec">\n    <h2>' + _rel_titulo + '</h2>\n    <div class="rel-grid">' + ''.join(
+        f'<a class="rel-card fx-spot" href="{slug(o["nombre"])}.html">'
+        f'<img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/{o["appid"]}/header.jpg" '
+        f'width="460" height="215" alt="" loading="lazy" onerror="this.style.display=\'none\'">'
+        f'<span>{htmlmod.escape(o["nombre"])}</span></a>' for o in _rel) + '</div>\n  </section>') if _rel else ''
     vid = VIDEOS.get(norm(nombre))
     video_html = VIDEO_BLOCK.replace('__VID__', vid).replace('__NOMBRE_ESC__', htmlmod.escape(nombre)) if vid else ''
     # VideoObject solo cuando de verdad hay video del canal (evita inventar). uploadDate
@@ -511,6 +537,7 @@ def render_page(r, solo=False):
         .replace('__BREADCRUMB__', breadcrumb)
         .replace('__P2BODY__', p2body)
         .replace('__ENLISTA__', enlista)
+        .replace('__RELACIONADOS__', relacionados)
         .replace('__CSS__', CSS)
         .replace('__NAV__', NAV.replace('__HOME__','../'))
         .replace('__FOOTER__', FOOTER.replace('__HOME__','../'))

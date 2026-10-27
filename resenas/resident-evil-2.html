@@ -113,6 +113,14 @@ footer a{color:var(--p2);text-decoration:none}
 .enlista{display:block;margin:28px 0 0;padding:16px 20px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--text);text-decoration:none;font-weight:300}
 .enlista b{color:var(--gold);font-family:var(--display);font-weight:400}
 .enlista:hover{border-color:var(--gold)}
+.rel-sec{margin-top:48px}
+.rel-sec h2{font-family:var(--display);font-size:1.2rem;text-transform:uppercase;margin-bottom:16px}
+.rel-sec h2 span{color:var(--p2)}
+.rel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.rel-card{display:block;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;color:var(--text);text-decoration:none;transition:border-color .2s}
+.rel-card:hover{border-color:var(--p2)}
+.rel-card img{width:100%;aspect-ratio:460/215;object-fit:cover;display:block}
+.rel-card span{display:block;padding:10px 12px;font-size:.9rem}
 @media(max-width:820px){.duo-cols{grid-template-columns:1fr}}
 </style>
 </head>
@@ -163,6 +171,10 @@ footer a{color:var(--p2);text-decoration:none}
   
   
   
+  <section class="rel-sec">
+    <h2>Más juegos que jugamos <span>juntos</span></h2>
+    <div class="rel-grid"><a class="rel-card fx-spot" href="ori-and-the-blind-forest-definitive-edition.html"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/387290/header.jpg" width="460" height="215" alt="" loading="lazy" onerror="this.style.display='none'"><span>Ori and the Blind Forest: Definitive Edition</span></a><a class="rel-card fx-spot" href="the-last-campfire.html"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/990630/header.jpg" width="460" height="215" alt="" loading="lazy" onerror="this.style.display='none'"><span>The Last Campfire</span></a><a class="rel-card fx-spot" href="ghost-of-tsushima-director-s-cut.html"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2215430/header.jpg" width="460" height="215" alt="" loading="lazy" onerror="this.style.display='none'"><span>Ghost of Tsushima DIRECTOR&#x27;S CUT</span></a><a class="rel-card fx-spot" href="dofamine.html"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1441180/header.jpg" width="460" height="215" alt="" loading="lazy" onerror="this.style.display='none'"><span>Dofamine</span></a></div>
+  </section>
   <div class="backrow"><a class="back fx-btn" href="./">◂ Todas las reseñas</a></div>
 </main>
 <footer>
