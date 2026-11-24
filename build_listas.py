@@ -66,6 +66,10 @@ RANKING = [
   "Mario Party sin contrato de paz: tablero, minijuegos y traiciones con armas. Es el juego que sacas cuando la relación está sólida y quieres ponerla a prueba con risas. Cada partida termina con un '¿por qué me hiciste eso?' y con ganas de la revancha inmediata."),
  ("Biped", "El más tierno",
   "Dos robotitos que caminan con dos patas cada uno, y cada pata es un stick. Suena simple hasta que hay que coordinarse para cruzar un puente y los dos terminan en el suelo, de risa. Corto, precioso y accesible. De los mejores para una pareja donde uno apenas empieza a jugar."),
+ ("Tools Up!", "El de remodelar a gritos",
+  "Remodelar una casa nunca había sido tan divertido ni tan estresante. Los niveles normales salen sin mucho reto, pero los de tiempo vuelven la tarde una carrera de órdenes y risas. Lo que más disfrutamos fue planear quién hace qué para sacar el mejor tiempo, y cada nivel cambia el escenario o las tareas. Le metimos 30 horas, y los DLC sí valen la pena."),
+ ("Spiritfarer®: Edición Farewell", "El que se queda con ustedes",
+  "Empieza como un juego de gestión: mejorar el barco, juntar recursos, explorar. Y termina hablándote de la vida, de la muerte y de quien juega a tu lado. Cada alma que suben al barco trae su historia, y despedirla pega más de lo que su arte tan amable deja ver. Jugado de a dos, cada despedida se platica. Van 44 horas, y cuesta saber cuándo parar."),
  ("Cuphead", "El de sufrir juntos",
   "Para parejas que ya pasaron las pruebas anteriores y quieren el modo difícil de la relación. Jefes brutales estilo caricatura de los años 30 donde morir es parte del ritmo. 43 horas en nuestro contador lo confirman: pocas cosas unen más que por fin tumbar juntos al jefe que los humilló veinte veces."),
 ]
