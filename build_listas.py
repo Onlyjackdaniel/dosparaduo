@@ -125,7 +125,7 @@ FAQ = [
  ("¿Cuáles son para reírse y cuáles para sufrir?",
   "Para reír: Biped, Move or Die, Pummel Party y Overcooked (al principio). Para sufrir bonito: Cuphead y los niveles finales de Overcooked. Para pensar juntos: Portal 2, We Were Here Too y Keep Talking and Nobody Explodes."),
  ("¿Necesitamos dos copias del juego?",
-  "No siempre. It Takes Two y Split Fiction incluyen Friend's Pass (una copia basta para jugar en línea). Overcooked, Move or Die, Pummel Party, Biped y Cuphead se juegan en el mismo sillón con una sola copia. We Were Here Too y Keep Talking sí piden configuración aparte."),
+  "No siempre. It Takes Two y Split Fiction incluyen Friend's Pass (una copia basta para jugar en línea). Overcooked, Move or Die, Pummel Party, Biped, Tools Up! y Cuphead se juegan en el mismo sillón con una sola copia. We Were Here Too y Keep Talking sí piden configuración aparte."),
 ]
 faq_html = '\n'.join(f'''    <details class="faq reveal"><summary>{hm.escape(q)}</summary><p>{hm.escape(a)}</p></details>''' for q,a in FAQ)
 faq_schema = {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
